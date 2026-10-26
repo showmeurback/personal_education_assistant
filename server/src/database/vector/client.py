@@ -1,30 +1,34 @@
-# import weaviate
-# import functools
-
-
-# def wvt_client(func):
-#     @functools.wraps(func)
-#     def wrapper(*args, **kwargs):
-#         # client = weaviate.connect_to_local(host="weaviate")
-#         client = weaviate.connect_to_local()
-#         try:
-#             return func(client=client, *args, **kwargs)
-#         finally:
-#             client.close()
-
-#     return wrapper
+import functools
+from contextlib import contextmanager
 
 import weaviate
-import functools
+
+from settings import settings
+
+
+def connect():
+    return weaviate.connect_to_local(
+        host=settings.weaviate_host,
+        port=settings.weaviate_port,
+        grpc_port=settings.weaviate_grpc_port,
+    )
+
+
+@contextmanager
+def weaviate_client():
+    client = connect()
+    try:
+        yield client
+    finally:
+        client.close()
 
 
 def wvt_client(func):
     @functools.wraps(func)
     def wrapper(*args, **kwargs):
-        client = weaviate.connect_to_local(host="weaviate", port=8080, grpc_port=50051)
-        try:
-            return func(client=client, *args, **kwargs)
-        finally:
-            client.close()
-
+        if kwargs.get("client") is not None:
+            return func(*args, **kwargs)
+        with weaviate_client() as client:
+            kwargs["client"] = client
+            return func(*args, **kwargs)
     return wrapper

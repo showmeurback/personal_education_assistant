@@ -1,0 +1,186 @@
+{
+  "tag": "v2",
+  "dataset": "heldout",
+  "checks": 51,
+  "reports": 17,
+  "judge_models": {
+    "strict": "minimaxai/minimax-m3.1-flash",
+    "objective": "minimaxai/minimax-m3.1-flash",
+    "loyal": "minimaxai/minimax-m3.1-flash"
+  },
+  "vision": {
+    "enabled": false,
+    "model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+    "max_images": 12
+  },
+  "duration_minutes": 73.4,
+  "modes": {
+    "hybrid": {
+      "metrics": {
+        "reports": 51,
+        "accuracy_auto": 0.979,
+        "coverage": 0.922,
+        "accuracy_strict": 0.902,
+        "accuracy_with_teacher": 0.98,
+        "precision_reject": 1.0,
+        "recall_reject": 0.97,
+        "f1_reject": 0.985,
+        "false_accept_rate": 0.029,
+        "false_reject_rate": 0.0,
+        "manual_rate": 0.078,
+        "llm_calls_total": 185,
+        "llm_calls_mean": 3.63,
+        "seconds_mean": 86.39,
+        "seconds_median": 82.8,
+        "decided_by": {
+          "judges": 51
+        },
+        "invalid_judgements": 0,
+        "seconds_max": 178.3,
+        "image_seconds_median": 0.0,
+        "vision_calls_total": 0
+      },
+      "by_category": {
+        "real_ok": {
+          "approve": 14,
+          "manual_review": 3
+        },
+        "wrong_course": {
+          "reject": 17
+        },
+        "wrong_lab": {
+          "reject": 15,
+          "approve": 1,
+          "manual_review": 1
+        }
+      },
+      "judges": {
+        "strict": {
+          "model": "minimaxai/minimax-m3.1-flash",
+          "valid": 51,
+          "accuracy": 0.922,
+          "seconds_median": 48.6
+        },
+        "objective": {
+          "model": "minimaxai/minimax-m3.1-flash",
+          "valid": 51,
+          "accuracy": 0.961,
+          "seconds_median": 36.8
+        },
+        "loyal": {
+          "model": "minimaxai/minimax-m3.1-flash",
+          "valid": 51,
+          "accuracy": 0.961,
+          "seconds_median": 33.8
+        },
+        "shared_errors": {
+          "strict+objective": 1,
+          "strict+loyal": 1,
+          "objective+loyal": 2
+        }
+      }
+    },
+    "neural": {
+      "metrics": {
+        "reports": 51,
+        "accuracy_auto": 0.961,
+        "coverage": 1.0,
+        "accuracy_strict": 0.961,
+        "accuracy_with_teacher": 0.961,
+        "precision_reject": 1.0,
+        "recall_reject": 0.941,
+        "f1_reject": 0.97,
+        "false_accept_rate": 0.059,
+        "false_reject_rate": 0.0,
+        "manual_rate": 0.0,
+        "llm_calls_total": 153,
+        "llm_calls_mean": 3,
+        "seconds_mean": 0.0,
+        "seconds_median": 0.0,
+        "decided_by": {
+          "judges": 51
+        },
+        "invalid_judgements": 0,
+        "seconds_max": 0.0,
+        "image_seconds_median": 0.0,
+        "vision_calls_total": 0
+      },
+      "by_category": {
+        "real_ok": {
+          "approve": 17
+        },
+        "wrong_course": {
+          "reject": 17
+        },
+        "wrong_lab": {
+          "reject": 15,
+          "approve": 2
+        }
+      },
+      "judges": {
+        "strict": {
+          "model": "minimaxai/minimax-m3.1-flash",
+          "valid": 51,
+          "accuracy": 0.922,
+          "seconds_median": 48.6
+        },
+        "objective": {
+          "model": "minimaxai/minimax-m3.1-flash",
+          "valid": 51,
+          "accuracy": 0.961,
+          "seconds_median": 36.8
+        },
+        "loyal": {
+          "model": "minimaxai/minimax-m3.1-flash",
+          "valid": 51,
+          "accuracy": 0.961,
+          "seconds_median": 33.8
+        },
+        "shared_errors": {
+          "strict+objective": 1,
+          "strict+loyal": 1,
+          "objective+loyal": 2
+        }
+      }
+    },
+    "symbolic": {
+      "metrics": {
+        "reports": 51,
+        "accuracy_auto": 0.373,
+        "coverage": 1.0,
+        "accuracy_strict": 0.373,
+        "accuracy_with_teacher": 0.373,
+        "precision_reject": 1.0,
+        "recall_reject": 0.059,
+        "f1_reject": 0.111,
+        "false_accept_rate": 0.941,
+        "false_reject_rate": 0.0,
+        "manual_rate": 0.0,
+        "llm_calls_total": 0,
+        "llm_calls_mean": 0,
+        "seconds_mean": 0.01,
+        "seconds_median": 0.0,
+        "decided_by": {
+          "symbolic": 51
+        },
+        "invalid_judgements": 0,
+        "seconds_max": 0.0,
+        "image_seconds_median": 0.0,
+        "vision_calls_total": 0
+      },
+      "by_category": {
+        "real_ok": {
+          "approve": 17
+        },
+        "wrong_course": {
+          "reject": 2,
+          "approve": 15
+        },
+        "wrong_lab": {
+          "approve": 17
+        }
+      }
+    }
+  },
+  "agreement_neural_hybrid": 0.922
+}

@@ -5,7 +5,7 @@ MCP сервер для образовательной платформы.
     cd server/src
     fastmcp run mcp_servers/education_tools.py --transport sse --port 8001
 
-Предоставляет инструменты для внешних MCP-клиентов (Claude Desktop и др.).
+Предоставляет инструменты для внешних MCP-клиентов (настольных ассистентов, IDE и др.).
 Логика доступа к данным импортируется из rag.queries.
 """
 import sys

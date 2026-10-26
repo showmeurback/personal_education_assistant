@@ -91,15 +91,6 @@ def parse_question_payload(payload: Any) -> list[ExamQuestion]:
     return questions
 
 
-def coerce_to_text(response: Any) -> str:
-    """Безопасно приводит объект ответа LLM к строке."""
-    if response is None:
-        return ""
-    if hasattr(response, "content"):
-        return str(getattr(response, "content"))
-    return str(response)
-
-
 def _split_numbered_questions(text: str) -> list[ExamQuestion]:
     """Разделяет текст на вопросы по нумерованным паттернам (1., 2., 3. и т.д.)."""
     pattern = r'\b(\d+\.\s+)'

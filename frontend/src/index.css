@@ -1,14 +1,15 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
+@plugin "@tailwindcss/typography";
 
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --font-heading: "Instrument Serif", serif;
-  --font-body: "DM Sans", sans-serif;
-  --font-mono: "JetBrains Mono", monospace;
-  --font-sans: "DM Sans", sans-serif;
+  --font-heading: "Unbounded Variable", "Golos Text Variable", sans-serif;
+  --font-body: "Golos Text Variable", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --font-sans: "Golos Text Variable", system-ui, sans-serif;
 
   --radius-sm: calc(var(--radius) * 0.6);
   --radius-md: calc(var(--radius) * 0.8);
@@ -56,52 +57,61 @@
   --color-sidebar-ring: var(--sidebar-ring);
   --color-surface: var(--surface);
   --color-surface-2: var(--surface-2);
+  --color-symbolic: var(--symbolic);
+  --color-neural: var(--neural);
 }
 
 :root {
-  --radius: 0.625rem;
+  --radius: 0.6rem;
 
-  /* Dark-first: these are dark theme values as default */
-  --background: oklch(0.13 0.01 270);
-  --foreground: oklch(0.95 0.01 270);
-  --card: oklch(0.17 0.01 270);
-  --card-foreground: oklch(0.95 0.01 270);
-  --popover: oklch(0.17 0.01 270);
-  --popover-foreground: oklch(0.95 0.01 270);
-  --primary: oklch(0.55 0.25 270);
-  --primary-foreground: oklch(1 0 0);
-  --secondary: oklch(0.22 0.01 270);
-  --secondary-foreground: oklch(0.95 0.01 270);
-  --muted: oklch(0.22 0.01 270);
-  --muted-foreground: oklch(0.55 0.02 270);
-  --accent: oklch(0.55 0.25 270);
-  --accent-foreground: oklch(1 0 0);
-  --destructive: oklch(0.58 0.22 25);
-  --destructive-foreground: oklch(1 0 0);
-  --success: oklch(0.65 0.17 160);
-  --success-foreground: oklch(1 0 0);
-  --warning: oklch(0.75 0.16 70);
-  --warning-foreground: oklch(0.15 0 0);
-  --border: oklch(0.25 0.01 270);
-  --input: oklch(0.25 0.01 270);
-  --ring: oklch(0.55 0.25 270);
-  --chart-1: oklch(0.55 0.25 270);
-  --chart-2: oklch(0.65 0.17 160);
-  --chart-3: oklch(0.75 0.16 70);
-  --chart-4: oklch(0.6 0.18 230);
-  --chart-5: oklch(0.6 0.2 340);
+  /* Тёмно-синяя тема: глубокий navy-фон, кобальтовый основной цвет.
+     Фиолетовый (бывший фирменный цвет) теперь обозначает нейросетевые
+     компоненты, кобальт — символьные. */
+  --background: #0a1328;
+  --foreground: #e7edf8;
+  --card: #0f1b36;
+  --card-foreground: #e7edf8;
+  --popover: #0f1b36;
+  --popover-foreground: #e7edf8;
+  --primary: #3b7bff;
+  --primary-foreground: #ffffff;
+  --secondary: #16264a;
+  --secondary-foreground: #e7edf8;
+  --muted: #16264a;
+  --muted-foreground: #8fa3c8;
+  --accent: #1d3266;
+  --accent-foreground: #e7edf8;
+  --destructive: #f0556a;
+  --destructive-foreground: #ffffff;
+  --success: #2ebd85;
+  --success-foreground: #04170f;
+  --warning: #f2b544;
+  --warning-foreground: #1d1403;
+  --border: #213560;
+  --input: #213560;
+  --ring: #3b7bff;
+  --chart-1: #3b7bff;
+  --chart-2: #2ebd85;
+  --chart-3: #f2b544;
+  --chart-4: #9b7bff;
+  --chart-5: #f0556a;
 
-  --sidebar: oklch(0.15 0.01 270);
-  --sidebar-foreground: oklch(0.7 0.02 270);
-  --sidebar-primary: oklch(0.55 0.25 270);
-  --sidebar-primary-foreground: oklch(1 0 0);
-  --sidebar-accent: oklch(0.2 0.01 270);
-  --sidebar-accent-foreground: oklch(0.95 0.01 270);
-  --sidebar-border: oklch(0.2 0.01 270);
-  --sidebar-ring: oklch(0.55 0.25 270);
+  --sidebar: #081024;
+  --sidebar-foreground: #9fb1d3;
+  --sidebar-primary: #3b7bff;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #13213f;
+  --sidebar-accent-foreground: #e7edf8;
+  --sidebar-border: #182a50;
+  --sidebar-ring: #3b7bff;
 
-  --surface: oklch(0.18 0.01 270);
-  --surface-2: oklch(0.21 0.01 270);
+  --surface: #13213f;
+  --surface-2: #1a2b50;
+
+  --symbolic: #3b7bff;
+  --neural: #9b7bff;
+
+  color-scheme: dark;
 }
 
 @layer base {
@@ -113,7 +123,19 @@
     margin: 0;
   }
   h1, h2, h3, h4, h5, h6 {
-    @apply font-heading tracking-tight;
+    @apply font-heading;
+    letter-spacing: -0.015em;
+    font-weight: 560;
+  }
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
   }
 
   /* Custom scrollbar for chat areas */
@@ -124,14 +146,25 @@
     background: transparent;
   }
   .chat-scroll::-webkit-scrollbar-thumb {
-    background: oklch(0.35 0.01 270);
+    background: #2a4275;
     border-radius: 9999px;
   }
   .chat-scroll::-webkit-scrollbar-thumb:hover {
-    background: oklch(0.45 0.01 270);
+    background: #3a5799;
   }
   .chat-scroll {
     scrollbar-width: thin;
-    scrollbar-color: oklch(0.35 0.01 270) transparent;
+    scrollbar-color: #2a4275 transparent;
   }
 }
+
+/* Ответы ассистента: типографика Markdown в цветах темы */
+.prose {
+  --tw-prose-invert-body: var(--color-foreground);
+  --tw-prose-invert-headings: var(--color-foreground);
+  --tw-prose-invert-bold: var(--color-foreground);
+  --tw-prose-invert-th-borders: var(--color-border);
+  --tw-prose-invert-td-borders: var(--color-border);
+}
+.prose :where(h1, h2, h3, h4):not(:where(.not-prose *)) { font-family: var(--font-body); font-weight: 600; }
+.prose :where(table):not(:where(.not-prose *)) { font-size: 0.85em; }

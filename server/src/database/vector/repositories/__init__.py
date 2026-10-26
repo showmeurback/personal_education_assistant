@@ -1,2 +1,2 @@
-from .report_index import ReportIndex
-from .storage import StorageManager
+from .report_index import ReportIndex, InMemoryReportIndex
+from .storage import StorageManager, MaterialStore

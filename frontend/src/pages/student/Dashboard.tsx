@@ -1,123 +1,67 @@
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
+import { BookOpen } from "lucide-react";
 import { useAuthStore } from "@/store/authStore";
-import { coursesApi } from "@/api/courses";
-import { testsApi } from "@/api/tests";
+import { meApi } from "@/api";
 import { CourseCard } from "@/components/course/CourseCard";
 import { Button } from "@/components/ui/button";
-import { motion } from "framer-motion";
-import { BookOpen, ClipboardCheck, TrendingUp, GraduationCap, ArrowRight } from "lucide-react";
-
-function StatCard({ icon: Icon, label, value, color }: {
-  icon: React.ElementType;
-  label: string;
-  value: string | number;
-  color: string;
-}) {
-  return (
-    <div className="p-5 rounded-2xl bg-card border border-border">
-      <div className={`w-10 h-10 rounded-xl ${color} flex items-center justify-center mb-3`}>
-        <Icon className="w-5 h-5" />
-      </div>
-      <p className="text-2xl font-heading text-foreground">{value}</p>
-      <p className="text-sm text-muted-foreground mt-1">{label}</p>
-    </div>
-  );
-}
+import { EmptyState, PageHeader, Panel, StatTile, StatusBadge } from "@/components/common";
+import { formatDate } from "@/utils/constants";
 
 export default function StudentDashboard() {
-  const { id, name } = useAuthStore();
+  const { name } = useAuthStore();
+  const courses = useQuery({ queryKey: ["me-courses"], queryFn: meApi.courses });
+  const tests = useQuery({ queryKey: ["me-tests"], queryFn: () => meApi.testResults() });
+  const reports = useQuery({ queryKey: ["me-reports"], queryFn: meApi.reports });
 
-  const { data: myCourses } = useQuery({
-    queryKey: ["student-courses-full", id],
-    queryFn: () => coursesApi.getStudentCoursesFull(id!),
-    enabled: !!id,
-  });
-
-  const { data: testResults } = useQuery({
-    queryKey: ["student-tests", id],
-    queryFn: () => testsApi.getStudentResults(id!),
-    enabled: !!id,
-  });
-
-  const avgScore = testResults?.length
-    ? Math.round(testResults.reduce((s, t) => s + t.percentage, 0) / testResults.length)
-    : 0;
-
-  const completedCount = myCourses?.filter((c) => c.is_completed).length ?? 0;
-  const activeCourses = myCourses?.filter((c) => !c.is_completed).slice(0, 3) ?? [];
-  const firstName = name.split(" ")[0];
+  const list = courses.data ?? [];
+  const avg = tests.data?.length
+    ? Math.round(tests.data.reduce((s, t) => s + t.percentage, 0) / tests.data.length)
+    : null;
+  const needAction = (reports.data ?? []).filter((r) => r.status === "ai-rejected" || r.status === "not-approved");
+  const active = list.filter((c) => !c.is_completed);
 
   return (
-    <div className="space-y-8">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-      >
-        <h1 className="text-4xl font-heading text-foreground">
-          Привет, {firstName}
-        </h1>
-        <p className="text-muted-foreground mt-1">Ваша сводка за сегодня</p>
-      </motion.div>
+    <div>
+      <PageHeader title={`Здравствуйте, ${name.split(" ")[0]}`} description="Что происходит в ваших курсах." />
 
-      {/* Stats */}
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-        <StatCard
-          icon={BookOpen}
-          label="Всего курсов"
-          value={myCourses?.length ?? 0}
-          color="bg-violet-500/15 text-violet-400"
-        />
-        <StatCard
-          icon={GraduationCap}
-          label="Завершено"
-          value={completedCount}
-          color="bg-emerald-500/15 text-emerald-400"
-        />
-        <StatCard
-          icon={ClipboardCheck}
-          label="Тестов пройдено"
-          value={testResults?.length ?? 0}
-          color="bg-blue-500/15 text-blue-400"
-        />
-        <StatCard
-          icon={TrendingUp}
-          label="Средний %"
-          value={`${avgScore}%`}
-          color="bg-amber-500/15 text-amber-400"
-        />
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-8">
+        <StatTile label="Курсов" value={list.length} />
+        <StatTile label="Завершено" value={list.filter((c) => c.is_completed).length} tone="success" />
+        <StatTile label="Тестов пройдено" value={tests.data?.length ?? 0} />
+        <StatTile label="Средний результат тестов" value={avg === null ? "—" : `${avg}%`} tone="primary" />
       </div>
 
-      {/* Active courses preview */}
-      {activeCourses.length > 0 && (
-        <section className="space-y-4">
-          <div className="flex items-center justify-between">
-            <h2 className="text-2xl font-heading text-foreground">Активные курсы</h2>
-            <Link to="/student/my-courses">
-              <Button variant="ghost" size="sm" className="gap-1 text-muted-foreground hover:text-foreground">
-                Все курсы <ArrowRight className="w-4 h-4" />
-              </Button>
-            </Link>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {activeCourses.map((c, i) => (
-              <CourseCard key={c.id} course={c} basePath="/student" index={i} />
+      {needAction.length > 0 && (
+        <Panel title="Отчёты, которые нужно доработать" className="mb-8">
+          <ul className="divide-y divide-border">
+            {needAction.slice(0, 5).map((r) => (
+              <li key={r.report_id} className="py-3 flex flex-wrap items-center gap-3">
+                <div className="flex-1 min-w-0">
+                  <Link to={`/student/courses/${r.course_id}/labs/${r.lab_id}`} className="text-sm text-foreground hover:text-primary">
+                    {r.course_title}: лабораторная {r.lab_number} «{r.lab_title}»
+                  </Link>
+                  <p className="text-xs text-muted-foreground">{formatDate(r.created_at)}</p>
+                </div>
+                <StatusBadge status={r.status} />
+              </li>
             ))}
-          </div>
-        </section>
+          </ul>
+        </Panel>
       )}
 
-      {/* Empty state */}
-      {(!myCourses || myCourses.length === 0) && (
-        <div className="p-12 rounded-2xl bg-card border border-border text-center">
-          <BookOpen className="w-16 h-16 text-muted-foreground mx-auto mb-4" />
-          <h3 className="text-xl font-heading text-foreground mb-2">Вы ещё не записаны на курсы</h3>
-          <p className="text-muted-foreground mb-4">Перейдите в каталог, чтобы выбрать курс и отправить заявку</p>
-          <Link to="/student/catalog">
-            <Button className="bg-primary hover:bg-primary/90">Перейти в каталог</Button>
-          </Link>
+      <div className="flex items-center justify-between mb-3">
+        <h2 className="font-body text-base font-semibold text-foreground">Активные курсы</h2>
+        <Link to="/student/my-courses" className="text-sm text-primary hover:underline">Все мои курсы</Link>
+      </div>
+      {active.length > 0 ? (
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {active.slice(0, 6).map((c) => <CourseCard key={c.id} course={c} to={`/student/courses/${c.id}`} />)}
         </div>
+      ) : (
+        <EmptyState icon={BookOpen} title={list.length ? "Все курсы завершены" : "Вы ещё не записаны на курсы"}
+          text="Выберите курс в каталоге и отправьте заявку преподавателю."
+          action={<Link to="/student/catalog"><Button>Открыть каталог</Button></Link>} />
       )}
     </div>
   );

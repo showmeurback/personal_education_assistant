@@ -1,265 +1,146 @@
-from typing import Optional
-from .models import Question, EvaluationResponse, TestGenerationResponse
-from .session import SessionManager
-from .agent import TestGenerationAgent
-from .evaluator import TestEvaluator
-from .processor import MaterialProcessor
-from .material_provider import MaterialProvider
-from .schemas import (GenerateByTopicRequest, GenerateByFileRequest, SubmitAnswersRequest, TestsResponse,
-                      QuestionResponse, EvaluationResponseAPI)
-from database.sql.repositories.test_results import TestResultRepository
+"""Генерация и проверка тестов.
 
-# Бизнес-логика системы
+Нейросетевой компонент (LLM) генерирует вопросы по фрагментам материалов курса,
+найденным гибридным поиском; символьный компонент разбирает ответ модели по
+формальной грамматике (ВОПРОС / A–D / ОТВЕТ), отбраковывает некорректные
+вопросы и детерминированно оценивает ответы студента по шкале.
+
+Каждый сгенерированный тест хранится под собственным идентификатором и
+привязан к студенту. Прежняя реализация держала один общий «сеанс» на всё
+приложение, поэтому тест одного студента перезаписывал тест другого.
+"""
+from __future__ import annotations
+
+import threading
+import time
+import uuid
+from dataclasses import dataclass, field
+
+from common.text_extraction import normalize_whitespace
+from database.sql.repositories.test_results import TestResultRepository
+from .agent import TestGenerationAgent
+from .config import Config
+from .evaluator import TestEvaluator
+from .material_provider import MaterialProvider
+from .models import Question
+from .review import review_mistakes
+
+_TTL_SECONDS = 3 * 3600
+_MAX_SESSIONS = 2000
+
+
+@dataclass
+class TestSession:
+    student_id: int
+    course_id: int
+    topic: str | None
+    source: str
+    difficulty: str
+    questions: list[Question]
+    material: str | None = None  # фрагменты материалов, по которым сгенерирован тест (для разбора ошибок)
+    created_at: float = field(default_factory=time.time)
+    submitted: bool = False
+
+
+class TestServiceError(Exception):
+    pass
+
+
 class TestService:
-    def __init__(self):
-        self.session = SessionManager()
+    def __init__(self) -> None:
+        self._sessions: dict[str, TestSession] = {}
+        self._lock = threading.Lock()
         self.agent = TestGenerationAgent()
-        self.evaluator = TestEvaluator()
-        self.processor = MaterialProcessor()
         self.material_provider = MaterialProvider()
 
-    # Загрузка материала
-    def upload_material(self, material: str) -> dict:
-        if not material or not material.strip():
-            return {
-                "success": False,
-                "error": "Материал не может быть пустым"
-            }
+    def _put(self, session: TestSession) -> str:
+        test_id = uuid.uuid4().hex
+        now = time.time()
+        with self._lock:
+            for key in [k for k, s in self._sessions.items() if now - s.created_at > _TTL_SECONDS]:
+                del self._sessions[key]
+            if len(self._sessions) >= _MAX_SESSIONS:
+                oldest = min(self._sessions, key=lambda k: self._sessions[k].created_at)
+                del self._sessions[oldest]
+            self._sessions[test_id] = session
+        return test_id
 
-        try:
-            self.session.set_material(material)
-            return {
-                "success": True,
-                "message": f"Материал загружен: {len(material)} символов",
-                "material_length": len(material)
-            }
-        except Exception as e:
-            return {
-                "success": False,
-                "error": str(e)
-            }
+    def get(self, test_id: str, student_id: int) -> TestSession:
+        session = self._sessions.get(test_id)
+        if session is None or session.student_id != student_id:
+            raise TestServiceError("Тест не найден или срок его действия истёк. Сгенерируйте новый тест.")
+        return session
 
-    # Генерация теста по теме
-    def generate_by_topic(self, request: GenerateByTopicRequest) -> TestsResponse:
-        # Валидация
-        if not request.topic or not request.topic.strip():
-            return TestsResponse(
-                success=False,
-                total_questions=0,
-                difficulty=request.difficulty,
-                error="Тема не может быть пустой"
-            )
-
-        if not (1 <= request.num_questions <= 20):
-            return TestsResponse(
-                success=False,
-                total_questions=0,
-                difficulty=request.difficulty,
-                error="Количество вопросов должно быть от 1 до 20"
-            )
-
-        # Получаем материал из векторной БД курса
-        success, material, message = self.material_provider.get_validated_material(
-            request.topic, course_id=request.course_id
-        )
-
-        if not success:
-            return TestsResponse(
-                success=False,
-                total_questions=0,
-                difficulty=request.difficulty,
-                error=message
-            )
-
-        # Подготавливаем материал для LLM
-        processed_material = self.processor.prepare_for_llm(material)
-
-        # Генерируем вопросы из материала
-        gen_response: TestGenerationResponse = self.agent.generate_from_file(
-            material=processed_material,
-            num_questions=request.num_questions,
-            difficulty=request.difficulty
-        )
-
-        if not gen_response.success:
-            return TestsResponse(
-                success=False,
-                total_questions=0,
-                difficulty=request.difficulty,
-                error=gen_response.error
-            )
-
-        # Сохраняем в сессию
-        self.session.set_test(
-            questions=gen_response.questions,
-            difficulty=request.difficulty,
-            num_questions=request.num_questions
-        )
-        self.session.topic = request.topic
-        self.session.source = "topic"
-
-        questions_response = [
-            QuestionResponse(
-                question_num=q.question_num,
-                text=q.text,
-                options=q.options,
-                type=q.type
-            )
-            for q in gen_response.questions
-        ]
-
-        return TestsResponse(
-            success=True,
-            total_questions=len(gen_response.questions),
-            difficulty=request.difficulty,
-            questions=questions_response
-        )
-
-    # Генерировать тест из загруженного файла
-    def generate_by_file(self, request: GenerateByFileRequest) -> TestsResponse:
-
-        # Проверяем что материал загружен
-        if not self.session.has_material():
-            return TestsResponse(
-                success=False,
-                total_questions=0,
-                difficulty=request.difficulty,
-                error="Сначала загрузите файл материала"
-            )
-
-        # Валидация
-        if not (1 <= request.num_questions <= 20):
-            return TestsResponse(
-                success=False,
-                total_questions=0,
-                difficulty=request.difficulty,
-                error="Количество вопросов должно быть от 1 до 20"
-            )
-
-        # Подготавливаем материал
-        material = self.session.get_material()
-        processed_material = self.processor.prepare_for_llm(material)
-
-        # Генерируем
-        gen_response: TestGenerationResponse = self.agent.generate_from_file(
-            material=processed_material,
-            num_questions=request.num_questions,
-            difficulty=request.difficulty
-        )
-
-        if not gen_response.success:
-            return TestsResponse(
-                success=False,
-                total_questions=0,
-                difficulty=request.difficulty,
-                error=gen_response.error
-            )
-
-        # Сохраняем в сессию
-        self.session.set_test(
-            questions=gen_response.questions,
-            difficulty=request.difficulty,
-            num_questions=request.num_questions
-        )
-        self.session.topic = None
-        self.session.source = "file"
-
-        # Преобразуем в API ответ
-        questions_response = [
-            QuestionResponse(
-                question_num=q.question_num,
-                text=q.text,
-                options=q.options,
-                type=q.type
-            )
-            for q in gen_response.questions
-        ]
-
-        return TestsResponse(
-            success=True,
-            total_questions=len(gen_response.questions),
-            difficulty=request.difficulty,
-            questions=questions_response
-        )
-
-    # Проверить ответы на тест
-    def submit_answers(self, request: SubmitAnswersRequest) -> EvaluationResponseAPI:
-
-        # Проверяем что тест сгенерирован
-        if not self.session.is_test_generated():
-            return EvaluationResponseAPI(
-                success=False,
-                error="Сначала сгенерируйте тест"
-            )
-
-        questions = self.session.get_questions()
-
-        # Проверяем количество ответов
-        if len(request.answers) != len(questions):
-            return EvaluationResponseAPI(
-                success=False,
-                error=f"Ожидается {len(questions)} ответов, получено {len(request.answers)}"
-            )
-
-        # Вычисляем результаты
-        eval_response: EvaluationResponse = self.evaluator.evaluate_answers(
-            questions=questions,
-            user_answers=request.answers
-        )
-
-        if not eval_response.success:
-            return EvaluationResponseAPI(
-                success=False,
-                error=eval_response.error
-            )
-
-        # Сохраняем результат в БД
-        try:
-            answers_detail = []
-            if eval_response.results:
-                for r in eval_response.results:
-                    answers_detail.append({
-                        "question_num": r.question_num,
-                        "question_text": r.question_text,
-                        "options": r.options,
-                        "user_answer": r.user_answer,
-                        "correct_answer": r.correct_answer,
-                        "is_correct": r.is_correct,
-                    })
-
-            repo = TestResultRepository()
-            repo.save(
-                student_id=request.student_id,
-                course_id=request.course_id,
-                topic=self.session.topic,
-                source=self.session.source or "unknown",
-                difficulty=self.session.difficulty or "medium",
-                total_questions=eval_response.total_questions,
-                correct_answers=eval_response.correct_answers,
-                wrong_answers=eval_response.wrong_answers,
-                percentage=eval_response.percentage,
-                answers=answers_detail,
-            )
-        except Exception as e:
-            print(f"[TEST-SERVICE] Ошибка сохранения результата: {e}")
-
-        # Преобразуем в API ответ
-        return EvaluationResponseAPI(
-            success=True,
-            total_questions=eval_response.total_questions,
-            correct_answers=eval_response.correct_answers,
-            wrong_answers=eval_response.wrong_answers,
-            percentage=eval_response.percentage
-        )
-
-    # Получить статус текущей сессии
-    def get_status(self) -> dict:
-        return self.session.get_status()
-
-    # Сбросить сессию
-    def reset_session(self) -> dict:
-        self.session.reset()
+    def _generate(self, *, student_id: int, course_id: int, material: str, num_questions: int,
+                  difficulty: str, topic: str | None, source: str) -> dict:
+        material = normalize_whitespace(material)[:Config.MAX_MATERIAL_LENGTH]
+        response = self.agent.generate_from_file(material=material, num_questions=num_questions,
+                                                 difficulty=difficulty)
+        if not response.success or not response.questions:
+            raise TestServiceError(response.error or "Не удалось сгенерировать тест")
+        questions = response.questions[:num_questions]
+        for i, q in enumerate(questions, start=1):
+            q.question_num = i
+        test_id = self._put(TestSession(student_id=student_id, course_id=course_id, topic=topic,
+                                        source=source, difficulty=difficulty, questions=questions,
+                                        material=material))
         return {
-            "success": True,
-            "message": "Сессия сброшена"
+            "test_id": test_id,
+            "difficulty": difficulty,
+            "total_questions": len(questions),
+            "questions": [{"question_num": q.question_num, "text": q.text, "options": q.options,
+                           "type": q.type} for q in questions],
+        }
+
+    def generate_by_topic(self, *, student_id: int, course_id: int, topic: str, num_questions: int,
+                          difficulty: str) -> dict:
+        ok, material, message = self.material_provider.get_validated_material(topic, course_id=course_id)
+        if not ok or not material:
+            raise TestServiceError(message)
+        return self._generate(student_id=student_id, course_id=course_id, material=material,
+                              num_questions=num_questions, difficulty=difficulty,
+                              topic=topic.strip(), source="topic")
+
+    def generate_by_material(self, *, student_id: int, course_id: int, material: str, filename: str,
+                             num_questions: int, difficulty: str) -> dict:
+        if len(material.strip()) < 200:
+            raise TestServiceError("В файле слишком мало текста для генерации теста")
+        return self._generate(student_id=student_id, course_id=course_id, material=material,
+                              num_questions=num_questions, difficulty=difficulty,
+                              topic=f"Файл: {filename}", source="file")
+
+    def submit(self, *, test_id: str, student_id: int, answers: list[str]) -> dict:
+        session = self.get(test_id, student_id)
+        if session.submitted:
+            raise TestServiceError("Ответы на этот тест уже отправлены")
+        if len(answers) != len(session.questions):
+            raise TestServiceError(f"Ожидается {len(session.questions)} ответов, получено {len(answers)}")
+        result = TestEvaluator.evaluate_answers(session.questions, answers)
+        if not result.success:
+            raise TestServiceError(result.error or "Ошибка оценки")
+        session.submitted = True
+        wrong = [{"question_num": r.question_num, "question_text": r.question_text, "options": r.options,
+                  "user_answer": r.user_answer, "correct_answer": r.correct_answer}
+                 for r in (result.results or []) if not r.is_correct]
+        explanations = review_mistakes(wrong, session.material)
+        TestResultRepository().save(
+            student_id=student_id, course_id=session.course_id, topic=session.topic,
+            source=session.source, difficulty=session.difficulty,
+            total_questions=result.total_questions, correct_answers=result.correct_answers,
+            wrong_answers=result.wrong_answers, percentage=result.percentage,
+            answers=[{
+                "question_num": r.question_num, "question_text": r.question_text, "options": r.options,
+                "user_answer": r.user_answer, "correct_answer": r.correct_answer,
+                "is_correct": r.is_correct, "explanation": explanations.get(r.question_num),
+            } for r in (result.results or [])],
+        )
+        return {
+            "total_questions": result.total_questions,
+            "correct_answers": result.correct_answers,
+            "wrong_answers": result.wrong_answers,
+            "percentage": result.percentage,
+            "grade": result.grade,
+            "grade_description": result.grade_description,
+            "results": [{**r.model_dump(), "explanation": explanations.get(r.question_num)}
+                        for r in (result.results or [])],
         }

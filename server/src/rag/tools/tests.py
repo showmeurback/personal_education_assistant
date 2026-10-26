@@ -43,10 +43,10 @@ def make_test_tools(student_id: int, course_id: int):
         """
         logger.debug(f"    → get_test_mistakes(test_result_id={test_result_id})")
         try:
-            mistakes = query_test_mistakes(test_result_id)
+            mistakes = query_test_mistakes(test_result_id, student_id)
             if not mistakes:
                 logger.debug("    ← get_test_mistakes: ошибок нет")
-                return f"В тесте ID {test_result_id} нет ошибок — все ответы правильные!"
+                return f"Тест ID {test_result_id} не найден среди ваших тестов или в нём нет ошибок."
             lines = [f"Ошибки в тесте ID {test_result_id}:"]
             for m in mistakes:
                 options = m["options"]  # уже dict после queries.py

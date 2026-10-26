@@ -1,6 +1,7 @@
 from typing import Optional
 
-from langchain_google_genai import ChatGoogleGenerativeAI
+from llm.chat import invoke_text
+from log import logger
 
 from .models import Question, TestGenerationResponse
 from .parser import TestParser
@@ -12,21 +13,11 @@ class TestGenerationAgent:
     def __init__(self):
         self.parser = TestParser(debug=False)
 
-    def _get_llm(self, temperature: float = 0.5) -> ChatGoogleGenerativeAI:
-        return ChatGoogleGenerativeAI(
-            model=Config.MODEL_NAME,
-            google_api_key=Config.API_KEY,
-            temperature=temperature,
-            max_output_tokens=Config.MAX_TOKENS,
-        )
-
     def _call_llm(self, prompt: str, temperature: float = 0.5) -> Optional[str]:
         try:
-            llm = self._get_llm(temperature)
-            response = llm.invoke(prompt)
-            return response.content.strip()
+            return invoke_text(prompt, temperature=temperature, max_tokens=Config.MAX_TOKENS).strip()
         except Exception as e:
-            print(f"Ошибка LLM: {e}")
+            logger.error(f"Ошибка LLM при генерации теста: {e}")
             return None
 
     def validate_topic(self, topic: str) -> bool:
@@ -37,7 +28,7 @@ class TestGenerationAgent:
                 return False
             return "YES" in answer.upper()
         except Exception as e:
-            print(f"Ошибка валидации темы: {e}")
+            logger.error(f"Ошибка валидации темы: {e}")
             return False
 
     def validate_topic_in_material(self, topic: str, material: str) -> bool:
@@ -56,7 +47,7 @@ class TestGenerationAgent:
             found_words = sum(1 for word in important_words if word in material_lower)
             return found_words >= max(1, len(important_words) // 2)
         except Exception as e:
-            print(f"Ошибка проверки темы в материале: {e}")
+            logger.error(f"Ошибка проверки темы в материале: {e}")
             return False
 
     def generate_from_topic(self, topic: str, num_questions: int = 4, difficulty: str = "medium") -> TestGenerationResponse:
@@ -136,7 +127,7 @@ class TestGenerationAgent:
             )
 
         except Exception as e:
-            print(f"Ошибка генерации вопросов: {e}")
+            logger.error(f"Ошибка генерации вопросов: {e}")
             return TestGenerationResponse(
                 success=False,
                 questions=None,

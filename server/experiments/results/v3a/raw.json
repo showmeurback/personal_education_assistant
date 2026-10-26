@@ -1,0 +1,4357 @@
+[
+ {
+  "mode": "symbolic",
+  "repeat": 1,
+  "id": 1,
+  "lab": 1,
+  "category": "original",
+  "expected": "approve",
+  "decision": "approve",
+  "decided_by": "symbolic",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 0,
+  "seconds": 0.68,
+  "reason": "Формальные проверки пройдены",
+  "rule": null,
+  "lab_doubt": null,
+  "judges": []
+ },
+ {
+  "mode": "symbolic",
+  "repeat": 1,
+  "id": 2,
+  "lab": 1,
+  "category": "original",
+  "expected": "approve",
+  "decision": "approve",
+  "decided_by": "symbolic",
+  "score": null,
+  "similarity": 0.5,
+  "llm_calls": 0,
+  "seconds": 0.05,
+  "reason": "Формальные проверки пройдены",
+  "rule": null,
+  "lab_doubt": null,
+  "judges": []
+ },
+ {
+  "mode": "symbolic",
+  "repeat": 1,
+  "id": 3,
+  "lab": 1,
+  "category": "original",
+  "expected": "approve",
+  "decision": "approve",
+  "decided_by": "symbolic",
+  "score": null,
+  "similarity": 0.625,
+  "llm_calls": 0,
+  "seconds": 0.06,
+  "reason": "Формальные проверки пройдены",
+  "rule": null,
+  "lab_doubt": null,
+  "judges": []
+ },
+ {
+  "mode": "symbolic",
+  "repeat": 1,
+  "id": 4,
+  "lab": 1,
+  "category": "original",
+  "expected": "approve",
+  "decision": "approve",
+  "decided_by": "symbolic",
+  "score": null,
+  "similarity": 0.609,
+  "llm_calls": 0,
+  "seconds": 0.04,
+  "reason": "Формальные проверки пройдены",
+  "rule": null,
+  "lab_doubt": null,
+  "judges": []
+ },
+ {
+  "mode": "symbolic",
+  "repeat": 1,
+  "id": 5,
+  "lab": 1,
+  "category": "weak_ok",
+  "expected": "approve",
+  "decision": "approve",
+  "decided_by": "symbolic",
+  "score": null,
+  "similarity": 0.562,
+  "llm_calls": 0,
+  "seconds": 0.02,
+  "reason": "Формальные проверки пройдены",
+  "rule": null,
+  "lab_doubt": null,
+  "judges": []
+ },
+ {
+  "mode": "symbolic",
+  "repeat": 1,
+  "id": 6,
+  "lab": 1,
+  "category": "weak_ok",
+  "expected": "approve",
+  "decision": "approve",
+  "decided_by": "symbolic",
+  "score": null,
+  "similarity": 0.562,
+  "llm_calls": 0,
+  "seconds": 0.02,
+  "reason": "Формальные проверки пройдены",
+  "rule": null,
+  "lab_doubt": null,
+  "judges": []
+ },
+ {
+  "mode": "symbolic",
+  "repeat": 1,
+  "id": 7,
+  "lab": 1,
+  "category": "copy_exact",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "simhash",
+  "score": null,
+  "similarity": 1.0,
+  "llm_calls": 0,
+  "seconds": 0.01,
+  "reason": "Сходство с другим отчётом 100%",
+  "rule": null,
+  "lab_doubt": null,
+  "judges": []
+ },
+ {
+  "mode": "symbolic",
+  "repeat": 1,
+  "id": 8,
+  "lab": 1,
+  "category": "copy_light",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "simhash",
+  "score": null,
+  "similarity": 0.859,
+  "llm_calls": 0,
+  "seconds": 0.02,
+  "reason": "Сходство с другим отчётом 86%",
+  "rule": null,
+  "lab_doubt": null,
+  "judges": []
+ },
+ {
+  "mode": "symbolic",
+  "repeat": 1,
+  "id": 9,
+  "lab": 1,
+  "category": "incomplete",
+  "expected": "reject",
+  "decision": "approve",
+  "decided_by": "symbolic",
+  "score": null,
+  "similarity": 0.547,
+  "llm_calls": 0,
+  "seconds": 0.03,
+  "reason": "Формальные проверки пройдены",
+  "rule": null,
+  "lab_doubt": null,
+  "judges": []
+ },
+ {
+  "mode": "symbolic",
+  "repeat": 1,
+  "id": 10,
+  "lab": 1,
+  "category": "incomplete",
+  "expected": "reject",
+  "decision": "approve",
+  "decided_by": "symbolic",
+  "score": null,
+  "similarity": 0.531,
+  "llm_calls": 0,
+  "seconds": 0.03,
+  "reason": "Формальные проверки пройдены",
+  "rule": null,
+  "lab_doubt": null,
+  "judges": []
+ },
+ {
+  "mode": "symbolic",
+  "repeat": 1,
+  "id": 11,
+  "lab": 1,
+  "category": "off_topic",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "symbolic",
+  "score": null,
+  "similarity": 0.516,
+  "llm_calls": 0,
+  "seconds": 0.04,
+  "reason": "Правило R6: отчёт не по теме",
+  "rule": null,
+  "lab_doubt": null,
+  "judges": []
+ },
+ {
+  "mode": "symbolic",
+  "repeat": 1,
+  "id": 12,
+  "lab": 1,
+  "category": "keywords",
+  "expected": "reject",
+  "decision": "approve",
+  "decided_by": "symbolic",
+  "score": null,
+  "similarity": 0.672,
+  "llm_calls": 0,
+  "seconds": 0.03,
+  "reason": "Формальные проверки пройдены",
+  "rule": null,
+  "lab_doubt": null,
+  "judges": []
+ },
+ {
+  "mode": "symbolic",
+  "repeat": 1,
+  "id": 13,
+  "lab": 1,
+  "category": "injection",
+  "expected": "reject",
+  "decision": "approve",
+  "decided_by": "symbolic",
+  "score": null,
+  "similarity": 0.562,
+  "llm_calls": 0,
+  "seconds": 0.07,
+  "reason": "Формальные проверки пройдены",
+  "rule": null,
+  "lab_doubt": null,
+  "judges": []
+ },
+ {
+  "mode": "symbolic",
+  "repeat": 1,
+  "id": 14,
+  "lab": 1,
+  "category": "too_short",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "rules",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 0,
+  "seconds": 0.01,
+  "reason": "Не выполнены формальные требования",
+  "rule": null,
+  "lab_doubt": null,
+  "judges": []
+ },
+ {
+  "mode": "symbolic",
+  "repeat": 1,
+  "id": 15,
+  "lab": 1,
+  "category": "no_sections",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "rules",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 0,
+  "seconds": 0.02,
+  "reason": "Не выполнены формальные требования",
+  "rule": null,
+  "lab_doubt": null,
+  "judges": []
+ },
+ {
+  "mode": "symbolic",
+  "repeat": 1,
+  "id": 16,
+  "lab": 2,
+  "category": "original",
+  "expected": "approve",
+  "decision": "approve",
+  "decided_by": "symbolic",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 0,
+  "seconds": 0.04,
+  "reason": "Формальные проверки пройдены",
+  "rule": null,
+  "lab_doubt": null,
+  "judges": []
+ },
+ {
+  "mode": "symbolic",
+  "repeat": 1,
+  "id": 17,
+  "lab": 2,
+  "category": "original",
+  "expected": "approve",
+  "decision": "approve",
+  "decided_by": "symbolic",
+  "score": null,
+  "similarity": 0.594,
+  "llm_calls": 0,
+  "seconds": 0.04,
+  "reason": "Формальные проверки пройдены",
+  "rule": null,
+  "lab_doubt": null,
+  "judges": []
+ },
+ {
+  "mode": "symbolic",
+  "repeat": 1,
+  "id": 18,
+  "lab": 2,
+  "category": "original",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "rules",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 0,
+  "seconds": 0.02,
+  "reason": "Не выполнены формальные требования",
+  "rule": null,
+  "lab_doubt": null,
+  "judges": []
+ },
+ {
+  "mode": "symbolic",
+  "repeat": 1,
+  "id": 19,
+  "lab": 2,
+  "category": "original",
+  "expected": "approve",
+  "decision": "approve",
+  "decided_by": "symbolic",
+  "score": null,
+  "similarity": 0.734,
+  "llm_calls": 0,
+  "seconds": 0.03,
+  "reason": "Формальные проверки пройдены",
+  "rule": null,
+  "lab_doubt": null,
+  "judges": []
+ },
+ {
+  "mode": "symbolic",
+  "repeat": 1,
+  "id": 20,
+  "lab": 2,
+  "category": "weak_ok",
+  "expected": "approve",
+  "decision": "approve",
+  "decided_by": "symbolic",
+  "score": null,
+  "similarity": 0.656,
+  "llm_calls": 0,
+  "seconds": 0.05,
+  "reason": "Формальные проверки пройдены",
+  "rule": null,
+  "lab_doubt": null,
+  "judges": []
+ },
+ {
+  "mode": "symbolic",
+  "repeat": 1,
+  "id": 21,
+  "lab": 2,
+  "category": "weak_ok",
+  "expected": "approve",
+  "decision": "approve",
+  "decided_by": "symbolic",
+  "score": null,
+  "similarity": 0.688,
+  "llm_calls": 0,
+  "seconds": 0.03,
+  "reason": "Формальные проверки пройдены",
+  "rule": null,
+  "lab_doubt": null,
+  "judges": []
+ },
+ {
+  "mode": "symbolic",
+  "repeat": 1,
+  "id": 22,
+  "lab": 2,
+  "category": "copy_exact",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "simhash",
+  "score": null,
+  "similarity": 1.0,
+  "llm_calls": 0,
+  "seconds": 0.01,
+  "reason": "Сходство с другим отчётом 100%",
+  "rule": null,
+  "lab_doubt": null,
+  "judges": []
+ },
+ {
+  "mode": "symbolic",
+  "repeat": 1,
+  "id": 23,
+  "lab": 2,
+  "category": "copy_light",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "simhash",
+  "score": null,
+  "similarity": 0.922,
+  "llm_calls": 0,
+  "seconds": 0.02,
+  "reason": "Сходство с другим отчётом 92%",
+  "rule": null,
+  "lab_doubt": null,
+  "judges": []
+ },
+ {
+  "mode": "symbolic",
+  "repeat": 1,
+  "id": 24,
+  "lab": 2,
+  "category": "incomplete",
+  "expected": "reject",
+  "decision": "approve",
+  "decided_by": "symbolic",
+  "score": null,
+  "similarity": 0.484,
+  "llm_calls": 0,
+  "seconds": 0.03,
+  "reason": "Формальные проверки пройдены",
+  "rule": null,
+  "lab_doubt": null,
+  "judges": []
+ },
+ {
+  "mode": "symbolic",
+  "repeat": 1,
+  "id": 25,
+  "lab": 2,
+  "category": "incomplete",
+  "expected": "reject",
+  "decision": "approve",
+  "decided_by": "symbolic",
+  "score": null,
+  "similarity": 0.578,
+  "llm_calls": 0,
+  "seconds": 0.02,
+  "reason": "Формальные проверки пройдены",
+  "rule": null,
+  "lab_doubt": null,
+  "judges": []
+ },
+ {
+  "mode": "symbolic",
+  "repeat": 1,
+  "id": 26,
+  "lab": 2,
+  "category": "off_topic",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "symbolic",
+  "score": null,
+  "similarity": 0.641,
+  "llm_calls": 0,
+  "seconds": 0.03,
+  "reason": "Правило R6: отчёт не по теме",
+  "rule": null,
+  "lab_doubt": null,
+  "judges": []
+ },
+ {
+  "mode": "symbolic",
+  "repeat": 1,
+  "id": 27,
+  "lab": 2,
+  "category": "keywords",
+  "expected": "reject",
+  "decision": "approve",
+  "decided_by": "symbolic",
+  "score": null,
+  "similarity": 0.562,
+  "llm_calls": 0,
+  "seconds": 0.01,
+  "reason": "Формальные проверки пройдены",
+  "rule": null,
+  "lab_doubt": null,
+  "judges": []
+ },
+ {
+  "mode": "symbolic",
+  "repeat": 1,
+  "id": 28,
+  "lab": 2,
+  "category": "injection",
+  "expected": "reject",
+  "decision": "approve",
+  "decided_by": "symbolic",
+  "score": null,
+  "similarity": 0.547,
+  "llm_calls": 0,
+  "seconds": 0.03,
+  "reason": "Формальные проверки пройдены",
+  "rule": null,
+  "lab_doubt": null,
+  "judges": []
+ },
+ {
+  "mode": "symbolic",
+  "repeat": 1,
+  "id": 29,
+  "lab": 2,
+  "category": "too_short",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "rules",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 0,
+  "seconds": 0.01,
+  "reason": "Не выполнены формальные требования",
+  "rule": null,
+  "lab_doubt": null,
+  "judges": []
+ },
+ {
+  "mode": "symbolic",
+  "repeat": 1,
+  "id": 30,
+  "lab": 2,
+  "category": "no_sections",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "rules",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 0,
+  "seconds": 0.02,
+  "reason": "Не выполнены формальные требования",
+  "rule": null,
+  "lab_doubt": null,
+  "judges": []
+ },
+ {
+  "mode": "symbolic",
+  "repeat": 1,
+  "id": 31,
+  "lab": 3,
+  "category": "original",
+  "expected": "approve",
+  "decision": "approve",
+  "decided_by": "symbolic",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 0,
+  "seconds": 0.03,
+  "reason": "Формальные проверки пройдены",
+  "rule": null,
+  "lab_doubt": null,
+  "judges": []
+ },
+ {
+  "mode": "symbolic",
+  "repeat": 1,
+  "id": 32,
+  "lab": 3,
+  "category": "original",
+  "expected": "approve",
+  "decision": "approve",
+  "decided_by": "symbolic",
+  "score": null,
+  "similarity": 0.578,
+  "llm_calls": 0,
+  "seconds": 0.04,
+  "reason": "Формальные проверки пройдены",
+  "rule": null,
+  "lab_doubt": null,
+  "judges": []
+ },
+ {
+  "mode": "symbolic",
+  "repeat": 1,
+  "id": 33,
+  "lab": 3,
+  "category": "original",
+  "expected": "approve",
+  "decision": "approve",
+  "decided_by": "symbolic",
+  "score": null,
+  "similarity": 0.531,
+  "llm_calls": 0,
+  "seconds": 0.02,
+  "reason": "Формальные проверки пройдены",
+  "rule": null,
+  "lab_doubt": null,
+  "judges": []
+ },
+ {
+  "mode": "symbolic",
+  "repeat": 1,
+  "id": 34,
+  "lab": 3,
+  "category": "original",
+  "expected": "approve",
+  "decision": "approve",
+  "decided_by": "symbolic",
+  "score": null,
+  "similarity": 0.5,
+  "llm_calls": 0,
+  "seconds": 0.02,
+  "reason": "Формальные проверки пройдены",
+  "rule": null,
+  "lab_doubt": null,
+  "judges": []
+ },
+ {
+  "mode": "symbolic",
+  "repeat": 1,
+  "id": 35,
+  "lab": 3,
+  "category": "weak_ok",
+  "expected": "approve",
+  "decision": "approve",
+  "decided_by": "symbolic",
+  "score": null,
+  "similarity": 0.484,
+  "llm_calls": 0,
+  "seconds": 0.02,
+  "reason": "Формальные проверки пройдены",
+  "rule": null,
+  "lab_doubt": null,
+  "judges": []
+ },
+ {
+  "mode": "symbolic",
+  "repeat": 1,
+  "id": 36,
+  "lab": 3,
+  "category": "weak_ok",
+  "expected": "approve",
+  "decision": "approve",
+  "decided_by": "symbolic",
+  "score": null,
+  "similarity": 0.547,
+  "llm_calls": 0,
+  "seconds": 0.03,
+  "reason": "Формальные проверки пройдены",
+  "rule": null,
+  "lab_doubt": null,
+  "judges": []
+ },
+ {
+  "mode": "symbolic",
+  "repeat": 1,
+  "id": 37,
+  "lab": 3,
+  "category": "copy_exact",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "simhash",
+  "score": null,
+  "similarity": 1.0,
+  "llm_calls": 0,
+  "seconds": 0.01,
+  "reason": "Сходство с другим отчётом 100%",
+  "rule": null,
+  "lab_doubt": null,
+  "judges": []
+ },
+ {
+  "mode": "symbolic",
+  "repeat": 1,
+  "id": 38,
+  "lab": 3,
+  "category": "copy_light",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "simhash",
+  "score": null,
+  "similarity": 0.875,
+  "llm_calls": 0,
+  "seconds": 0.03,
+  "reason": "Сходство с другим отчётом 88%",
+  "rule": null,
+  "lab_doubt": null,
+  "judges": []
+ },
+ {
+  "mode": "symbolic",
+  "repeat": 1,
+  "id": 39,
+  "lab": 3,
+  "category": "incomplete",
+  "expected": "reject",
+  "decision": "approve",
+  "decided_by": "symbolic",
+  "score": null,
+  "similarity": 0.609,
+  "llm_calls": 0,
+  "seconds": 0.06,
+  "reason": "Формальные проверки пройдены",
+  "rule": null,
+  "lab_doubt": null,
+  "judges": []
+ },
+ {
+  "mode": "symbolic",
+  "repeat": 1,
+  "id": 40,
+  "lab": 3,
+  "category": "incomplete",
+  "expected": "reject",
+  "decision": "approve",
+  "decided_by": "symbolic",
+  "score": null,
+  "similarity": 0.609,
+  "llm_calls": 0,
+  "seconds": 0.06,
+  "reason": "Формальные проверки пройдены",
+  "rule": null,
+  "lab_doubt": null,
+  "judges": []
+ },
+ {
+  "mode": "symbolic",
+  "repeat": 1,
+  "id": 41,
+  "lab": 3,
+  "category": "off_topic",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "symbolic",
+  "score": null,
+  "similarity": 0.578,
+  "llm_calls": 0,
+  "seconds": 0.05,
+  "reason": "Правило R6: отчёт не по теме",
+  "rule": null,
+  "lab_doubt": null,
+  "judges": []
+ },
+ {
+  "mode": "symbolic",
+  "repeat": 1,
+  "id": 42,
+  "lab": 3,
+  "category": "keywords",
+  "expected": "reject",
+  "decision": "approve",
+  "decided_by": "symbolic",
+  "score": null,
+  "similarity": 0.562,
+  "llm_calls": 0,
+  "seconds": 0.02,
+  "reason": "Формальные проверки пройдены",
+  "rule": null,
+  "lab_doubt": null,
+  "judges": []
+ },
+ {
+  "mode": "symbolic",
+  "repeat": 1,
+  "id": 43,
+  "lab": 3,
+  "category": "injection",
+  "expected": "reject",
+  "decision": "approve",
+  "decided_by": "symbolic",
+  "score": null,
+  "similarity": 0.609,
+  "llm_calls": 0,
+  "seconds": 0.03,
+  "reason": "Формальные проверки пройдены",
+  "rule": null,
+  "lab_doubt": null,
+  "judges": []
+ },
+ {
+  "mode": "symbolic",
+  "repeat": 1,
+  "id": 44,
+  "lab": 3,
+  "category": "too_short",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "rules",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 0,
+  "seconds": 0.01,
+  "reason": "Не выполнены формальные требования",
+  "rule": null,
+  "lab_doubt": null,
+  "judges": []
+ },
+ {
+  "mode": "symbolic",
+  "repeat": 1,
+  "id": 45,
+  "lab": 3,
+  "category": "no_sections",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "rules",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 0,
+  "seconds": 0.02,
+  "reason": "Не выполнены формальные требования",
+  "rule": null,
+  "lab_doubt": null,
+  "judges": []
+ },
+ {
+  "mode": "neural",
+  "repeat": 1,
+  "id": 1,
+  "lab": 1,
+  "category": "original",
+  "expected": "approve",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 21.9,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "rule": "majority",
+  "lab_doubt": false,
+  "judges": [
+   {
+    "judge": "loyal",
+    "model": "nvidia/nemotron-3.5-lightning-30b-a3b@nothink",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "model": "openai/gpt-oss-20b",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b@nothink",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 1,
+  "id": 2,
+  "lab": 1,
+  "category": "original",
+  "expected": "approve",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 12.05,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "rule": "majority",
+  "lab_doubt": false,
+  "judges": [
+   {
+    "judge": "loyal",
+    "model": "nvidia/nemotron-3.5-lightning-30b-a3b@nothink",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "model": "openai/gpt-oss-20b",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b@nothink",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 1,
+  "id": 3,
+  "lab": 1,
+  "category": "original",
+  "expected": "approve",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 15.72,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "rule": "majority",
+  "lab_doubt": false,
+  "judges": [
+   {
+    "judge": "loyal",
+    "model": "nvidia/nemotron-3.5-lightning-30b-a3b@nothink",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "model": "openai/gpt-oss-20b",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b@nothink",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 1,
+  "id": 4,
+  "lab": 1,
+  "category": "original",
+  "expected": "approve",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 14.13,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "rule": "majority",
+  "lab_doubt": false,
+  "judges": [
+   {
+    "judge": "loyal",
+    "model": "nvidia/nemotron-3.5-lightning-30b-a3b@nothink",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "model": "openai/gpt-oss-20b",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b@nothink",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 1,
+  "id": 5,
+  "lab": 1,
+  "category": "weak_ok",
+  "expected": "approve",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 19.75,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "rule": "majority",
+  "lab_doubt": false,
+  "judges": [
+   {
+    "judge": "loyal",
+    "model": "nvidia/nemotron-3.5-lightning-30b-a3b@nothink",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "model": "openai/gpt-oss-20b",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b@nothink",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 1,
+  "id": 6,
+  "lab": 1,
+  "category": "weak_ok",
+  "expected": "approve",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 41.68,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "rule": "majority",
+  "lab_doubt": false,
+  "judges": [
+   {
+    "judge": "loyal",
+    "model": "nvidia/nemotron-3.5-lightning-30b-a3b@nothink",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "model": "openai/gpt-oss-20b",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b@nothink",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 1,
+  "id": 7,
+  "lab": 1,
+  "category": "copy_exact",
+  "expected": "reject",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 0.01,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "rule": "majority",
+  "lab_doubt": false,
+  "judges": [
+   {
+    "judge": "loyal",
+    "model": "nvidia/nemotron-3.5-lightning-30b-a3b@nothink",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "model": "openai/gpt-oss-20b",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b@nothink",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 1,
+  "id": 8,
+  "lab": 1,
+  "category": "copy_light",
+  "expected": "reject",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 15.83,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "rule": "majority",
+  "lab_doubt": false,
+  "judges": [
+   {
+    "judge": "loyal",
+    "model": "nvidia/nemotron-3.5-lightning-30b-a3b@nothink",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "model": "openai/gpt-oss-20b",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b@nothink",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 1,
+  "id": 9,
+  "lab": 1,
+  "category": "incomplete",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 15.92,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "rule": "majority",
+  "lab_doubt": false,
+  "judges": [
+   {
+    "judge": "loyal",
+    "model": "nvidia/nemotron-3.5-lightning-30b-a3b@nothink",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "model": "openai/gpt-oss-20b",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b@nothink",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.95,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 1,
+  "id": 10,
+  "lab": 1,
+  "category": "incomplete",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 12.47,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "rule": "majority",
+  "lab_doubt": false,
+  "judges": [
+   {
+    "judge": "loyal",
+    "model": "nvidia/nemotron-3.5-lightning-30b-a3b@nothink",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "model": "openai/gpt-oss-20b",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b@nothink",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.95,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 1,
+  "id": 11,
+  "lab": 1,
+  "category": "off_topic",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 11.26,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "rule": "majority",
+  "lab_doubt": true,
+  "judges": [
+   {
+    "judge": "loyal",
+    "model": "nvidia/nemotron-3.5-lightning-30b-a3b@nothink",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "model": "openai/gpt-oss-20b",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b@nothink",
+    "valid": true,
+    "verdict": false,
+    "confidence": 1.0,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 1,
+  "id": 12,
+  "lab": 1,
+  "category": "keywords",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 20.68,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "rule": "majority",
+  "lab_doubt": false,
+  "judges": [
+   {
+    "judge": "loyal",
+    "model": "nvidia/nemotron-3.5-lightning-30b-a3b@nothink",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "model": "openai/gpt-oss-20b",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b@nothink",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.95,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 1,
+  "id": 13,
+  "lab": 1,
+  "category": "injection",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 12.33,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "rule": "majority",
+  "lab_doubt": false,
+  "judges": [
+   {
+    "judge": "loyal",
+    "model": "nvidia/nemotron-3.5-lightning-30b-a3b@nothink",
+    "valid": true,
+    "verdict": true,
+    "confidence": 1.0,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "model": "openai/gpt-oss-20b",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b@nothink",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.95,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 1,
+  "id": 14,
+  "lab": 1,
+  "category": "too_short",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 20.39,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "rule": "majority",
+  "lab_doubt": false,
+  "judges": [
+   {
+    "judge": "loyal",
+    "model": "nvidia/nemotron-3.5-lightning-30b-a3b@nothink",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.85,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "model": "openai/gpt-oss-20b",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.9,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b@nothink",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.95,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 1,
+  "id": 15,
+  "lab": 1,
+  "category": "no_sections",
+  "expected": "reject",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 49.66,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "rule": "majority",
+  "lab_doubt": false,
+  "judges": [
+   {
+    "judge": "loyal",
+    "model": "nvidia/nemotron-3.5-lightning-30b-a3b@nothink",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "model": "openai/gpt-oss-20b",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b@nothink",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 1,
+  "id": 16,
+  "lab": 2,
+  "category": "original",
+  "expected": "approve",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 15.83,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "rule": "majority",
+  "lab_doubt": false,
+  "judges": [
+   {
+    "judge": "loyal",
+    "model": "nvidia/nemotron-3.5-lightning-30b-a3b@nothink",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "model": "openai/gpt-oss-20b",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b@nothink",
+    "valid": true,
+    "verdict": true,
+    "confidence": 1.0,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 1,
+  "id": 17,
+  "lab": 2,
+  "category": "original",
+  "expected": "approve",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 50.87,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "rule": "majority",
+  "lab_doubt": false,
+  "judges": [
+   {
+    "judge": "loyal",
+    "model": "nvidia/nemotron-3.5-lightning-30b-a3b@nothink",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "model": "openai/gpt-oss-20b",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b@nothink",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 1,
+  "id": 18,
+  "lab": 2,
+  "category": "original",
+  "expected": "reject",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 16.02,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "rule": "majority",
+  "lab_doubt": false,
+  "judges": [
+   {
+    "judge": "loyal",
+    "model": "nvidia/nemotron-3.5-lightning-30b-a3b@nothink",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "model": "openai/gpt-oss-20b",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.8,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b@nothink",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 1,
+  "id": 19,
+  "lab": 2,
+  "category": "original",
+  "expected": "approve",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 13.27,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "rule": "majority",
+  "lab_doubt": false,
+  "judges": [
+   {
+    "judge": "loyal",
+    "model": "nvidia/nemotron-3.5-lightning-30b-a3b@nothink",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "model": "openai/gpt-oss-20b",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b@nothink",
+    "valid": true,
+    "verdict": true,
+    "confidence": 1.0,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 1,
+  "id": 20,
+  "lab": 2,
+  "category": "weak_ok",
+  "expected": "approve",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 12.17,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "rule": "majority",
+  "lab_doubt": false,
+  "judges": [
+   {
+    "judge": "loyal",
+    "model": "nvidia/nemotron-3.5-lightning-30b-a3b@nothink",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "model": "openai/gpt-oss-20b",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b@nothink",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 1,
+  "id": 21,
+  "lab": 2,
+  "category": "weak_ok",
+  "expected": "approve",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 14.75,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "rule": "majority",
+  "lab_doubt": false,
+  "judges": [
+   {
+    "judge": "loyal",
+    "model": "nvidia/nemotron-3.5-lightning-30b-a3b@nothink",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "model": "openai/gpt-oss-20b",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b@nothink",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 1,
+  "id": 22,
+  "lab": 2,
+  "category": "copy_exact",
+  "expected": "reject",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 0.01,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "rule": "majority",
+  "lab_doubt": false,
+  "judges": [
+   {
+    "judge": "loyal",
+    "model": "nvidia/nemotron-3.5-lightning-30b-a3b@nothink",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "model": "openai/gpt-oss-20b",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b@nothink",
+    "valid": true,
+    "verdict": true,
+    "confidence": 1.0,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 1,
+  "id": 23,
+  "lab": 2,
+  "category": "copy_light",
+  "expected": "reject",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 24.32,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "rule": "majority",
+  "lab_doubt": false,
+  "judges": [
+   {
+    "judge": "loyal",
+    "model": "nvidia/nemotron-3.5-lightning-30b-a3b@nothink",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "model": "openai/gpt-oss-20b",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b@nothink",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 1,
+  "id": 24,
+  "lab": 2,
+  "category": "incomplete",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 21.55,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "rule": "majority",
+  "lab_doubt": false,
+  "judges": [
+   {
+    "judge": "loyal",
+    "model": "nvidia/nemotron-3.5-lightning-30b-a3b@nothink",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "model": "openai/gpt-oss-20b",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.92,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b@nothink",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.95,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 1,
+  "id": 25,
+  "lab": 2,
+  "category": "incomplete",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 27.05,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "rule": "majority",
+  "lab_doubt": false,
+  "judges": [
+   {
+    "judge": "loyal",
+    "model": "nvidia/nemotron-3.5-lightning-30b-a3b@nothink",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "model": "openai/gpt-oss-20b",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.9,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b@nothink",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.95,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 1,
+  "id": 26,
+  "lab": 2,
+  "category": "off_topic",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 29.27,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "rule": "majority",
+  "lab_doubt": false,
+  "judges": [
+   {
+    "judge": "loyal",
+    "model": "nvidia/nemotron-3.5-lightning-30b-a3b@nothink",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "model": "openai/gpt-oss-20b",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b@nothink",
+    "valid": true,
+    "verdict": false,
+    "confidence": 1.0,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 1,
+  "id": 27,
+  "lab": 2,
+  "category": "keywords",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 30.46,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "rule": "majority",
+  "lab_doubt": false,
+  "judges": [
+   {
+    "judge": "loyal",
+    "model": "nvidia/nemotron-3.5-lightning-30b-a3b@nothink",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "model": "openai/gpt-oss-20b",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b@nothink",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.95,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 1,
+  "id": 28,
+  "lab": 2,
+  "category": "injection",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 36.82,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "rule": "majority",
+  "lab_doubt": false,
+  "judges": [
+   {
+    "judge": "loyal",
+    "model": "nvidia/nemotron-3.5-lightning-30b-a3b@nothink",
+    "valid": true,
+    "verdict": true,
+    "confidence": 1.0,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "model": "openai/gpt-oss-20b",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.9,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b@nothink",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.95,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 1,
+  "id": 29,
+  "lab": 2,
+  "category": "too_short",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 32.89,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "rule": "majority",
+  "lab_doubt": false,
+  "judges": [
+   {
+    "judge": "loyal",
+    "model": "nvidia/nemotron-3.5-lightning-30b-a3b@nothink",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "model": "openai/gpt-oss-20b",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b@nothink",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.95,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 1,
+  "id": 30,
+  "lab": 2,
+  "category": "no_sections",
+  "expected": "reject",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 34.14,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "rule": "majority",
+  "lab_doubt": false,
+  "judges": [
+   {
+    "judge": "loyal",
+    "model": "nvidia/nemotron-3.5-lightning-30b-a3b@nothink",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "model": "openai/gpt-oss-20b",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b@nothink",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.98,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 1,
+  "id": 31,
+  "lab": 3,
+  "category": "original",
+  "expected": "approve",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 34.97,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "rule": "majority",
+  "lab_doubt": false,
+  "judges": [
+   {
+    "judge": "loyal",
+    "model": "nvidia/nemotron-3.5-lightning-30b-a3b@nothink",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "model": "openai/gpt-oss-20b",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b@nothink",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 1,
+  "id": 32,
+  "lab": 3,
+  "category": "original",
+  "expected": "approve",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 14.31,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "rule": "majority",
+  "lab_doubt": false,
+  "judges": [
+   {
+    "judge": "loyal",
+    "model": "nvidia/nemotron-3.5-lightning-30b-a3b@nothink",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "model": "openai/gpt-oss-20b",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b@nothink",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 1,
+  "id": 33,
+  "lab": 3,
+  "category": "original",
+  "expected": "approve",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 29.5,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "rule": "majority",
+  "lab_doubt": false,
+  "judges": [
+   {
+    "judge": "loyal",
+    "model": "nvidia/nemotron-3.5-lightning-30b-a3b@nothink",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "model": "openai/gpt-oss-20b",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b@nothink",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 1,
+  "id": 34,
+  "lab": 3,
+  "category": "original",
+  "expected": "approve",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 33.9,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "rule": "majority",
+  "lab_doubt": false,
+  "judges": [
+   {
+    "judge": "loyal",
+    "model": "nvidia/nemotron-3.5-lightning-30b-a3b@nothink",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "model": "openai/gpt-oss-20b",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b@nothink",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 1,
+  "id": 35,
+  "lab": 3,
+  "category": "weak_ok",
+  "expected": "approve",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 27.42,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "rule": "majority",
+  "lab_doubt": false,
+  "judges": [
+   {
+    "judge": "loyal",
+    "model": "nvidia/nemotron-3.5-lightning-30b-a3b@nothink",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "model": "openai/gpt-oss-20b",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b@nothink",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 1,
+  "id": 36,
+  "lab": 3,
+  "category": "weak_ok",
+  "expected": "approve",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 24.19,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "rule": "majority",
+  "lab_doubt": false,
+  "judges": [
+   {
+    "judge": "loyal",
+    "model": "nvidia/nemotron-3.5-lightning-30b-a3b@nothink",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "model": "openai/gpt-oss-20b",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b@nothink",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 1,
+  "id": 37,
+  "lab": 3,
+  "category": "copy_exact",
+  "expected": "reject",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 15.34,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "rule": "majority",
+  "lab_doubt": false,
+  "judges": [
+   {
+    "judge": "loyal",
+    "model": "nvidia/nemotron-3.5-lightning-30b-a3b@nothink",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "model": "openai/gpt-oss-20b",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b@nothink",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 1,
+  "id": 38,
+  "lab": 3,
+  "category": "copy_light",
+  "expected": "reject",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 33.39,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "rule": "majority",
+  "lab_doubt": false,
+  "judges": [
+   {
+    "judge": "loyal",
+    "model": "nvidia/nemotron-3.5-lightning-30b-a3b@nothink",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "model": "openai/gpt-oss-20b",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b@nothink",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 1,
+  "id": 39,
+  "lab": 3,
+  "category": "incomplete",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 23.26,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "rule": "majority",
+  "lab_doubt": false,
+  "judges": [
+   {
+    "judge": "loyal",
+    "model": "nvidia/nemotron-3.5-lightning-30b-a3b@nothink",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "model": "openai/gpt-oss-20b",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b@nothink",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.95,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 1,
+  "id": 40,
+  "lab": 3,
+  "category": "incomplete",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 23.26,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "rule": "majority",
+  "lab_doubt": false,
+  "judges": [
+   {
+    "judge": "loyal",
+    "model": "nvidia/nemotron-3.5-lightning-30b-a3b@nothink",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "model": "openai/gpt-oss-20b",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b@nothink",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.95,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 1,
+  "id": 41,
+  "lab": 3,
+  "category": "off_topic",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 24.13,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "rule": "majority",
+  "lab_doubt": false,
+  "judges": [
+   {
+    "judge": "loyal",
+    "model": "nvidia/nemotron-3.5-lightning-30b-a3b@nothink",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "model": "openai/gpt-oss-20b",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b@nothink",
+    "valid": true,
+    "verdict": false,
+    "confidence": 1.0,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 1,
+  "id": 42,
+  "lab": 3,
+  "category": "keywords",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 26.84,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "rule": "majority",
+  "lab_doubt": false,
+  "judges": [
+   {
+    "judge": "loyal",
+    "model": "nvidia/nemotron-3.5-lightning-30b-a3b@nothink",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "model": "openai/gpt-oss-20b",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b@nothink",
+    "valid": true,
+    "verdict": false,
+    "confidence": 1.0,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 1,
+  "id": 43,
+  "lab": 3,
+  "category": "injection",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 11.77,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "rule": "majority",
+  "lab_doubt": false,
+  "judges": [
+   {
+    "judge": "loyal",
+    "model": "nvidia/nemotron-3.5-lightning-30b-a3b@nothink",
+    "valid": true,
+    "verdict": true,
+    "confidence": 1.0,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "model": "openai/gpt-oss-20b",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.9,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b@nothink",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.95,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 1,
+  "id": 44,
+  "lab": 3,
+  "category": "too_short",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 23.61,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "rule": "majority",
+  "lab_doubt": false,
+  "judges": [
+   {
+    "judge": "loyal",
+    "model": "nvidia/nemotron-3.5-lightning-30b-a3b@nothink",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.85,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "model": "openai/gpt-oss-20b",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.9,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b@nothink",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.95,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 1,
+  "id": 45,
+  "lab": 3,
+  "category": "no_sections",
+  "expected": "reject",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 13.35,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "rule": "majority",
+  "lab_doubt": false,
+  "judges": [
+   {
+    "judge": "loyal",
+    "model": "nvidia/nemotron-3.5-lightning-30b-a3b@nothink",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "model": "openai/gpt-oss-20b",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b@nothink",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 1,
+  "id": 1,
+  "lab": 1,
+  "category": "original",
+  "expected": "approve",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": 0.95,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 0.01,
+  "reason": "Единогласно «за», P = 0.95 ≥ 0.65",
+  "rule": "A2",
+  "lab_doubt": false,
+  "judges": [
+   {
+    "judge": "loyal",
+    "model": "nvidia/nemotron-3.5-lightning-30b-a3b@nothink",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "model": "openai/gpt-oss-20b",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b@nothink",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 1,
+  "id": 2,
+  "lab": 1,
+  "category": "original",
+  "expected": "approve",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": 0.95,
+  "similarity": 0.5,
+  "llm_calls": 3,
+  "seconds": 0.01,
+  "reason": "Единогласно «за», P = 0.95 ≥ 0.65",
+  "rule": "A2",
+  "lab_doubt": false,
+  "judges": [
+   {
+    "judge": "loyal",
+    "model": "nvidia/nemotron-3.5-lightning-30b-a3b@nothink",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "model": "openai/gpt-oss-20b",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b@nothink",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 1,
+  "id": 3,
+  "lab": 1,
+  "category": "original",
+  "expected": "approve",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": 0.95,
+  "similarity": 0.625,
+  "llm_calls": 3,
+  "seconds": 0.01,
+  "reason": "Единогласно «за», P = 0.95 ≥ 0.65",
+  "rule": "A2",
+  "lab_doubt": false,
+  "judges": [
+   {
+    "judge": "loyal",
+    "model": "nvidia/nemotron-3.5-lightning-30b-a3b@nothink",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "model": "openai/gpt-oss-20b",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b@nothink",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 1,
+  "id": 4,
+  "lab": 1,
+  "category": "original",
+  "expected": "approve",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": 0.95,
+  "similarity": 0.609,
+  "llm_calls": 3,
+  "seconds": 0.01,
+  "reason": "Единогласно «за», P = 0.95 ≥ 0.65",
+  "rule": "A2",
+  "lab_doubt": false,
+  "judges": [
+   {
+    "judge": "loyal",
+    "model": "nvidia/nemotron-3.5-lightning-30b-a3b@nothink",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "model": "openai/gpt-oss-20b",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b@nothink",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 1,
+  "id": 5,
+  "lab": 1,
+  "category": "weak_ok",
+  "expected": "approve",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": 0.95,
+  "similarity": 0.562,
+  "llm_calls": 3,
+  "seconds": 0.01,
+  "reason": "Единогласно «за», P = 0.95 ≥ 0.65",
+  "rule": "A2",
+  "lab_doubt": false,
+  "judges": [
+   {
+    "judge": "loyal",
+    "model": "nvidia/nemotron-3.5-lightning-30b-a3b@nothink",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "model": "openai/gpt-oss-20b",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b@nothink",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 1,
+  "id": 6,
+  "lab": 1,
+  "category": "weak_ok",
+  "expected": "approve",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": 0.95,
+  "similarity": 0.562,
+  "llm_calls": 3,
+  "seconds": 0.01,
+  "reason": "Единогласно «за», P = 0.95 ≥ 0.65",
+  "rule": "A2",
+  "lab_doubt": false,
+  "judges": [
+   {
+    "judge": "loyal",
+    "model": "nvidia/nemotron-3.5-lightning-30b-a3b@nothink",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "model": "openai/gpt-oss-20b",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b@nothink",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 1,
+  "id": 7,
+  "lab": 1,
+  "category": "copy_exact",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "simhash",
+  "score": null,
+  "similarity": 1.0,
+  "llm_calls": 0,
+  "seconds": 0.01,
+  "reason": "Сходство с другим отчётом 100%",
+  "rule": null,
+  "lab_doubt": null,
+  "judges": []
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 1,
+  "id": 8,
+  "lab": 1,
+  "category": "copy_light",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "simhash",
+  "score": null,
+  "similarity": 0.859,
+  "llm_calls": 0,
+  "seconds": 0.01,
+  "reason": "Сходство с другим отчётом 86%",
+  "rule": null,
+  "lab_doubt": null,
+  "judges": []
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 1,
+  "id": 9,
+  "lab": 1,
+  "category": "incomplete",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "judges",
+  "score": 0.05,
+  "similarity": 0.547,
+  "llm_calls": 4,
+  "seconds": 1.89,
+  "reason": "Единогласно «против», P = 0.05 ≤ 0.35",
+  "rule": "A3",
+  "lab_doubt": false,
+  "judges": [
+   {
+    "judge": "loyal",
+    "model": "nvidia/nemotron-3.5-lightning-30b-a3b@nothink",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "model": "openai/gpt-oss-20b",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b@nothink",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.95,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 1,
+  "id": 10,
+  "lab": 1,
+  "category": "incomplete",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "judges",
+  "score": 0.35,
+  "similarity": 0.531,
+  "llm_calls": 4,
+  "seconds": 5.35,
+  "reason": "Голоса 1:2; «против» уверенно голосуют сильные оценщики (объективный оценщик, строгий оценщик), P = 0.35",
+  "rule": "A6",
+  "lab_doubt": false,
+  "judges": [
+   {
+    "judge": "loyal",
+    "model": "nvidia/nemotron-3.5-lightning-30b-a3b@nothink",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "model": "openai/gpt-oss-20b",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b@nothink",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.95,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 1,
+  "id": 11,
+  "lab": 1,
+  "category": "off_topic",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "judges",
+  "score": 0.02,
+  "similarity": 0.516,
+  "llm_calls": 4,
+  "seconds": 2.12,
+  "reason": "Единогласно «против», P = 0.02 ≤ 0.35",
+  "rule": "A3",
+  "lab_doubt": true,
+  "judges": [
+   {
+    "judge": "loyal",
+    "model": "nvidia/nemotron-3.5-lightning-30b-a3b@nothink",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "model": "openai/gpt-oss-20b",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b@nothink",
+    "valid": true,
+    "verdict": false,
+    "confidence": 1.0,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 1,
+  "id": 12,
+  "lab": 1,
+  "category": "keywords",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "judges",
+  "score": 0.05,
+  "similarity": 0.672,
+  "llm_calls": 4,
+  "seconds": 3.41,
+  "reason": "Единогласно «против», P = 0.05 ≤ 0.35",
+  "rule": "A3",
+  "lab_doubt": false,
+  "judges": [
+   {
+    "judge": "loyal",
+    "model": "nvidia/nemotron-3.5-lightning-30b-a3b@nothink",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "model": "openai/gpt-oss-20b",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b@nothink",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.95,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 1,
+  "id": 13,
+  "lab": 1,
+  "category": "injection",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "judges",
+  "score": 0.367,
+  "similarity": 0.562,
+  "llm_calls": 4,
+  "seconds": 4.82,
+  "reason": "Голоса 1:2; «против» уверенно голосуют сильные оценщики (объективный оценщик, строгий оценщик), P = 0.37",
+  "rule": "A6",
+  "lab_doubt": false,
+  "judges": [
+   {
+    "judge": "loyal",
+    "model": "nvidia/nemotron-3.5-lightning-30b-a3b@nothink",
+    "valid": true,
+    "verdict": true,
+    "confidence": 1.0,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "model": "openai/gpt-oss-20b",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b@nothink",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.95,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 1,
+  "id": 14,
+  "lab": 1,
+  "category": "too_short",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "rules",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 0,
+  "seconds": 0.0,
+  "reason": "Не выполнены формальные требования",
+  "rule": null,
+  "lab_doubt": null,
+  "judges": []
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 1,
+  "id": 15,
+  "lab": 1,
+  "category": "no_sections",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "rules",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 0,
+  "seconds": 0.0,
+  "reason": "Не выполнены формальные требования",
+  "rule": null,
+  "lab_doubt": null,
+  "judges": []
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 1,
+  "id": 16,
+  "lab": 2,
+  "category": "original",
+  "expected": "approve",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": 0.967,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 0.01,
+  "reason": "Единогласно «за», P = 0.97 ≥ 0.65",
+  "rule": "A2",
+  "lab_doubt": false,
+  "judges": [
+   {
+    "judge": "loyal",
+    "model": "nvidia/nemotron-3.5-lightning-30b-a3b@nothink",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "model": "openai/gpt-oss-20b",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b@nothink",
+    "valid": true,
+    "verdict": true,
+    "confidence": 1.0,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 1,
+  "id": 17,
+  "lab": 2,
+  "category": "original",
+  "expected": "approve",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": 0.95,
+  "similarity": 0.594,
+  "llm_calls": 3,
+  "seconds": 0.01,
+  "reason": "Единогласно «за», P = 0.95 ≥ 0.65",
+  "rule": "A2",
+  "lab_doubt": false,
+  "judges": [
+   {
+    "judge": "loyal",
+    "model": "nvidia/nemotron-3.5-lightning-30b-a3b@nothink",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "model": "openai/gpt-oss-20b",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b@nothink",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 1,
+  "id": 18,
+  "lab": 2,
+  "category": "original",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "rules",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 0,
+  "seconds": 0.0,
+  "reason": "Не выполнены формальные требования",
+  "rule": null,
+  "lab_doubt": null,
+  "judges": []
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 1,
+  "id": 19,
+  "lab": 2,
+  "category": "original",
+  "expected": "approve",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": 0.967,
+  "similarity": 0.734,
+  "llm_calls": 3,
+  "seconds": 0.01,
+  "reason": "Единогласно «за», P = 0.97 ≥ 0.65",
+  "rule": "A2",
+  "lab_doubt": false,
+  "judges": [
+   {
+    "judge": "loyal",
+    "model": "nvidia/nemotron-3.5-lightning-30b-a3b@nothink",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "model": "openai/gpt-oss-20b",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b@nothink",
+    "valid": true,
+    "verdict": true,
+    "confidence": 1.0,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 1,
+  "id": 20,
+  "lab": 2,
+  "category": "weak_ok",
+  "expected": "approve",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": 0.95,
+  "similarity": 0.656,
+  "llm_calls": 3,
+  "seconds": 0.01,
+  "reason": "Единогласно «за», P = 0.95 ≥ 0.65",
+  "rule": "A2",
+  "lab_doubt": false,
+  "judges": [
+   {
+    "judge": "loyal",
+    "model": "nvidia/nemotron-3.5-lightning-30b-a3b@nothink",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "model": "openai/gpt-oss-20b",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b@nothink",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 1,
+  "id": 21,
+  "lab": 2,
+  "category": "weak_ok",
+  "expected": "approve",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": 0.95,
+  "similarity": 0.688,
+  "llm_calls": 3,
+  "seconds": 0.01,
+  "reason": "Единогласно «за», P = 0.95 ≥ 0.65",
+  "rule": "A2",
+  "lab_doubt": false,
+  "judges": [
+   {
+    "judge": "loyal",
+    "model": "nvidia/nemotron-3.5-lightning-30b-a3b@nothink",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "model": "openai/gpt-oss-20b",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b@nothink",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 1,
+  "id": 22,
+  "lab": 2,
+  "category": "copy_exact",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "simhash",
+  "score": null,
+  "similarity": 1.0,
+  "llm_calls": 0,
+  "seconds": 0.01,
+  "reason": "Сходство с другим отчётом 100%",
+  "rule": null,
+  "lab_doubt": null,
+  "judges": []
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 1,
+  "id": 23,
+  "lab": 2,
+  "category": "copy_light",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "simhash",
+  "score": null,
+  "similarity": 0.922,
+  "llm_calls": 0,
+  "seconds": 0.01,
+  "reason": "Сходство с другим отчётом 92%",
+  "rule": null,
+  "lab_doubt": null,
+  "judges": []
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 1,
+  "id": 24,
+  "lab": 2,
+  "category": "incomplete",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "judges",
+  "score": 0.36,
+  "similarity": 0.484,
+  "llm_calls": 4,
+  "seconds": 3.11,
+  "reason": "Голоса 1:2; «против» уверенно голосуют сильные оценщики (объективный оценщик, строгий оценщик), P = 0.36",
+  "rule": "A6",
+  "lab_doubt": false,
+  "judges": [
+   {
+    "judge": "loyal",
+    "model": "nvidia/nemotron-3.5-lightning-30b-a3b@nothink",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "model": "openai/gpt-oss-20b",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.92,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b@nothink",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.95,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 1,
+  "id": 25,
+  "lab": 2,
+  "category": "incomplete",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "judges",
+  "score": 0.367,
+  "similarity": 0.578,
+  "llm_calls": 4,
+  "seconds": 4.54,
+  "reason": "Голоса 1:2; «против» уверенно голосуют сильные оценщики (объективный оценщик, строгий оценщик), P = 0.37",
+  "rule": "A6",
+  "lab_doubt": false,
+  "judges": [
+   {
+    "judge": "loyal",
+    "model": "nvidia/nemotron-3.5-lightning-30b-a3b@nothink",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "model": "openai/gpt-oss-20b",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.9,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b@nothink",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.95,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 1,
+  "id": 26,
+  "lab": 2,
+  "category": "off_topic",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "judges",
+  "score": 0.02,
+  "similarity": 0.641,
+  "llm_calls": 4,
+  "seconds": 36.15,
+  "reason": "Единогласно «против», P = 0.02 ≤ 0.35",
+  "rule": "A3",
+  "lab_doubt": false,
+  "judges": [
+   {
+    "judge": "loyal",
+    "model": "nvidia/nemotron-3.5-lightning-30b-a3b@nothink",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "model": "openai/gpt-oss-20b",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b@nothink",
+    "valid": true,
+    "verdict": false,
+    "confidence": 1.0,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 1,
+  "id": 27,
+  "lab": 2,
+  "category": "keywords",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "judges",
+  "score": 0.05,
+  "similarity": 0.562,
+  "llm_calls": 4,
+  "seconds": 24.3,
+  "reason": "Единогласно «против», P = 0.05 ≤ 0.35",
+  "rule": "A3",
+  "lab_doubt": false,
+  "judges": [
+   {
+    "judge": "loyal",
+    "model": "nvidia/nemotron-3.5-lightning-30b-a3b@nothink",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "model": "openai/gpt-oss-20b",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b@nothink",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.95,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 1,
+  "id": 28,
+  "lab": 2,
+  "category": "injection",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "judges",
+  "score": 0.383,
+  "similarity": 0.547,
+  "llm_calls": 4,
+  "seconds": 18.72,
+  "reason": "Голоса 1:2; «против» уверенно голосуют сильные оценщики (объективный оценщик, строгий оценщик), P = 0.38",
+  "rule": "A6",
+  "lab_doubt": false,
+  "judges": [
+   {
+    "judge": "loyal",
+    "model": "nvidia/nemotron-3.5-lightning-30b-a3b@nothink",
+    "valid": true,
+    "verdict": true,
+    "confidence": 1.0,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "model": "openai/gpt-oss-20b",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.9,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b@nothink",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.95,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 1,
+  "id": 29,
+  "lab": 2,
+  "category": "too_short",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "rules",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 0,
+  "seconds": 0.0,
+  "reason": "Не выполнены формальные требования",
+  "rule": null,
+  "lab_doubt": null,
+  "judges": []
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 1,
+  "id": 30,
+  "lab": 2,
+  "category": "no_sections",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "rules",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 0,
+  "seconds": 0.0,
+  "reason": "Не выполнены формальные требования",
+  "rule": null,
+  "lab_doubt": null,
+  "judges": []
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 1,
+  "id": 31,
+  "lab": 3,
+  "category": "original",
+  "expected": "approve",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": 0.95,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 15.36,
+  "reason": "Единогласно «за», P = 0.95 ≥ 0.65",
+  "rule": "A2",
+  "lab_doubt": false,
+  "judges": [
+   {
+    "judge": "loyal",
+    "model": "nvidia/nemotron-3.5-lightning-30b-a3b@nothink",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "model": "openai/gpt-oss-20b",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b@nothink",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 1,
+  "id": 32,
+  "lab": 3,
+  "category": "original",
+  "expected": "approve",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": 0.95,
+  "similarity": 0.578,
+  "llm_calls": 3,
+  "seconds": 0.01,
+  "reason": "Единогласно «за», P = 0.95 ≥ 0.65",
+  "rule": "A2",
+  "lab_doubt": false,
+  "judges": [
+   {
+    "judge": "loyal",
+    "model": "nvidia/nemotron-3.5-lightning-30b-a3b@nothink",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "model": "openai/gpt-oss-20b",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b@nothink",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 1,
+  "id": 33,
+  "lab": 3,
+  "category": "original",
+  "expected": "approve",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": 0.95,
+  "similarity": 0.531,
+  "llm_calls": 3,
+  "seconds": 15.35,
+  "reason": "Единогласно «за», P = 0.95 ≥ 0.65",
+  "rule": "A2",
+  "lab_doubt": false,
+  "judges": [
+   {
+    "judge": "loyal",
+    "model": "nvidia/nemotron-3.5-lightning-30b-a3b@nothink",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "model": "openai/gpt-oss-20b",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b@nothink",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 1,
+  "id": 34,
+  "lab": 3,
+  "category": "original",
+  "expected": "approve",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": 0.95,
+  "similarity": 0.5,
+  "llm_calls": 3,
+  "seconds": 15.37,
+  "reason": "Единогласно «за», P = 0.95 ≥ 0.65",
+  "rule": "A2",
+  "lab_doubt": false,
+  "judges": [
+   {
+    "judge": "loyal",
+    "model": "nvidia/nemotron-3.5-lightning-30b-a3b@nothink",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "model": "openai/gpt-oss-20b",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b@nothink",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 1,
+  "id": 35,
+  "lab": 3,
+  "category": "weak_ok",
+  "expected": "approve",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": 0.95,
+  "similarity": 0.484,
+  "llm_calls": 3,
+  "seconds": 11.5,
+  "reason": "Единогласно «за», P = 0.95 ≥ 0.65",
+  "rule": "A2",
+  "lab_doubt": false,
+  "judges": [
+   {
+    "judge": "loyal",
+    "model": "nvidia/nemotron-3.5-lightning-30b-a3b@nothink",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "model": "openai/gpt-oss-20b",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b@nothink",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 1,
+  "id": 36,
+  "lab": 3,
+  "category": "weak_ok",
+  "expected": "approve",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": 0.95,
+  "similarity": 0.547,
+  "llm_calls": 3,
+  "seconds": 15.34,
+  "reason": "Единогласно «за», P = 0.95 ≥ 0.65",
+  "rule": "A2",
+  "lab_doubt": false,
+  "judges": [
+   {
+    "judge": "loyal",
+    "model": "nvidia/nemotron-3.5-lightning-30b-a3b@nothink",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "model": "openai/gpt-oss-20b",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b@nothink",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 1,
+  "id": 37,
+  "lab": 3,
+  "category": "copy_exact",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "simhash",
+  "score": null,
+  "similarity": 1.0,
+  "llm_calls": 0,
+  "seconds": 0.01,
+  "reason": "Сходство с другим отчётом 100%",
+  "rule": null,
+  "lab_doubt": null,
+  "judges": []
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 1,
+  "id": 38,
+  "lab": 3,
+  "category": "copy_light",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "simhash",
+  "score": null,
+  "similarity": 0.875,
+  "llm_calls": 0,
+  "seconds": 0.01,
+  "reason": "Сходство с другим отчётом 88%",
+  "rule": null,
+  "lab_doubt": null,
+  "judges": []
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 1,
+  "id": 39,
+  "lab": 3,
+  "category": "incomplete",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "judges",
+  "score": 0.35,
+  "similarity": 0.609,
+  "llm_calls": 4,
+  "seconds": 23.42,
+  "reason": "Голоса 1:2; «против» уверенно голосуют сильные оценщики (объективный оценщик, строгий оценщик), P = 0.35",
+  "rule": "A6",
+  "lab_doubt": false,
+  "judges": [
+   {
+    "judge": "loyal",
+    "model": "nvidia/nemotron-3.5-lightning-30b-a3b@nothink",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "model": "openai/gpt-oss-20b",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b@nothink",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.95,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 1,
+  "id": 40,
+  "lab": 3,
+  "category": "incomplete",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "judges",
+  "score": 0.35,
+  "similarity": 0.609,
+  "llm_calls": 4,
+  "seconds": 21.25,
+  "reason": "Голоса 1:2; «против» уверенно голосуют сильные оценщики (объективный оценщик, строгий оценщик), P = 0.35",
+  "rule": "A6",
+  "lab_doubt": false,
+  "judges": [
+   {
+    "judge": "loyal",
+    "model": "nvidia/nemotron-3.5-lightning-30b-a3b@nothink",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "model": "openai/gpt-oss-20b",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b@nothink",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.95,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 1,
+  "id": 41,
+  "lab": 3,
+  "category": "off_topic",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "judges",
+  "score": 0.02,
+  "similarity": 0.578,
+  "llm_calls": 4,
+  "seconds": 17.87,
+  "reason": "Единогласно «против», P = 0.02 ≤ 0.35",
+  "rule": "A3",
+  "lab_doubt": false,
+  "judges": [
+   {
+    "judge": "loyal",
+    "model": "nvidia/nemotron-3.5-lightning-30b-a3b@nothink",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "model": "openai/gpt-oss-20b",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b@nothink",
+    "valid": true,
+    "verdict": false,
+    "confidence": 1.0,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 1,
+  "id": 42,
+  "lab": 3,
+  "category": "keywords",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "judges",
+  "score": 0.033,
+  "similarity": 0.562,
+  "llm_calls": 4,
+  "seconds": 19.88,
+  "reason": "Единогласно «против», P = 0.03 ≤ 0.35",
+  "rule": "A3",
+  "lab_doubt": false,
+  "judges": [
+   {
+    "judge": "loyal",
+    "model": "nvidia/nemotron-3.5-lightning-30b-a3b@nothink",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "model": "openai/gpt-oss-20b",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b@nothink",
+    "valid": true,
+    "verdict": false,
+    "confidence": 1.0,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 1,
+  "id": 43,
+  "lab": 3,
+  "category": "injection",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "judges",
+  "score": 0.383,
+  "similarity": 0.609,
+  "llm_calls": 4,
+  "seconds": 3.81,
+  "reason": "Голоса 1:2; «против» уверенно голосуют сильные оценщики (объективный оценщик, строгий оценщик), P = 0.38",
+  "rule": "A6",
+  "lab_doubt": false,
+  "judges": [
+   {
+    "judge": "loyal",
+    "model": "nvidia/nemotron-3.5-lightning-30b-a3b@nothink",
+    "valid": true,
+    "verdict": true,
+    "confidence": 1.0,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "model": "openai/gpt-oss-20b",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.9,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b@nothink",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.95,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 1,
+  "id": 44,
+  "lab": 3,
+  "category": "too_short",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "rules",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 0,
+  "seconds": 0.0,
+  "reason": "Не выполнены формальные требования",
+  "rule": null,
+  "lab_doubt": null,
+  "judges": []
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 1,
+  "id": 45,
+  "lab": 3,
+  "category": "no_sections",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "rules",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 0,
+  "seconds": 0.0,
+  "reason": "Не выполнены формальные требования",
+  "rule": null,
+  "lab_doubt": null,
+  "judges": []
+ }
+]

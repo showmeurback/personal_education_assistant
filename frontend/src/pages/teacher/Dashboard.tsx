@@ -1,77 +1,62 @@
 import { useQuery } from "@tanstack/react-query";
-import { useAuthStore } from "@/store/authStore";
-import { coursesApi } from "@/api/courses";
-import { reportsApi } from "@/api/reports";
-import { CourseCard } from "@/components/course/CourseCard";
-import { Badge } from "@/components/ui/badge";
-import { GraduationCap, FileText, Users } from "lucide-react";
-import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import { GraduationCap } from "lucide-react";
+import { useAuthStore } from "@/store/authStore";
+import { teacherApi } from "@/api";
+import { CourseCard } from "@/components/course/CourseCard";
+import { Button } from "@/components/ui/button";
+import { EmptyState, PageHeader, Panel, StatTile, StatusBadge } from "@/components/common";
+import { formatDateTime } from "@/utils/constants";
 
 export default function TeacherDashboard() {
-  const { id, name } = useAuthStore();
-
-  const { data: courses } = useQuery({
-    queryKey: ["teacher-courses", id],
-    queryFn: () => coursesApi.getTeacherCourses(id!),
-    enabled: !!id,
-  });
-
-  const { data: pending } = useQuery({
-    queryKey: ["pending-reports", id],
-    queryFn: () => reportsApi.getPending(id!),
-    enabled: !!id,
-  });
-
-  const firstName = name.split(" ")[0];
-  const pendingCount = pending?.reports?.length ?? 0;
+  const { name } = useAuthStore();
+  const courses = useQuery({ queryKey: ["t-courses"], queryFn: teacherApi.courses });
+  const queue = useQuery({ queryKey: ["t-queue"], queryFn: teacherApi.queue });
+  const list = courses.data ?? [];
+  const q = queue.data ?? [];
+  const manual = q.filter((r) => r.status === "manual-review").length;
 
   return (
-    <div className="space-y-8">
-      <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
-        <h1 className="text-4xl font-heading text-foreground">Привет, {firstName}</h1>
-        <p className="text-muted-foreground mt-1">Панель преподавателя</p>
-      </motion.div>
-
-      {/* Stats */}
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-        <div className="p-5 rounded-2xl bg-card border border-border">
-          <div className="w-10 h-10 rounded-xl bg-violet-500/15 text-violet-400 flex items-center justify-center mb-3">
-            <GraduationCap className="w-5 h-5" />
-          </div>
-          <p className="text-2xl font-heading text-foreground">{courses?.length ?? 0}</p>
-          <p className="text-sm text-muted-foreground mt-1">Курсов</p>
-        </div>
-        <Link to="/teacher/reports" className="p-5 rounded-2xl bg-card border border-border hover:border-primary/30 transition-all group">
-          <div className="w-10 h-10 rounded-xl bg-amber-500/15 text-amber-400 flex items-center justify-center mb-3">
-            <FileText className="w-5 h-5" />
-          </div>
-          <div className="flex items-center gap-2">
-            <p className="text-2xl font-heading text-foreground">{pendingCount}</p>
-            {pendingCount > 0 && <Badge className="bg-amber-500/20 text-amber-400">Ждут</Badge>}
-          </div>
-          <p className="text-sm text-muted-foreground mt-1">Отчётов на проверку</p>
-        </Link>
-        <div className="p-5 rounded-2xl bg-card border border-border">
-          <div className="w-10 h-10 rounded-xl bg-emerald-500/15 text-emerald-400 flex items-center justify-center mb-3">
-            <Users className="w-5 h-5" />
-          </div>
-          <p className="text-2xl font-heading text-foreground">—</p>
-          <p className="text-sm text-muted-foreground mt-1">Студентов</p>
-        </div>
+    <div>
+      <PageHeader title={`Здравствуйте, ${name.split(" ")[0]}`} description="Курсы и отчёты, ожидающие вашего решения." />
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-8">
+        <StatTile label="Курсов" value={list.length} />
+        <StatTile label="Студентов на курсах" value={list.reduce((s, c) => s + c.students, 0)} />
+        <StatTile label="Отчётов к проверке" value={q.length} tone="primary" />
+        <StatTile label="Из них спорных" value={manual} tone={manual ? "warning" : "default"} hint="Компоненты системы разошлись" />
       </div>
 
-      {/* Courses */}
-      {courses && courses.length > 0 && (
-        <section>
-          <h2 className="text-2xl font-heading text-foreground mb-4">Мои курсы</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {courses.map((c, i) => (
-              <CourseCard key={c.id} course={c} basePath="/teacher" index={i} />
+      {q.length > 0 && (
+        <Panel title="Очередь проверки" className="mb-8" actions={<Link to="/teacher/reports" className="text-sm text-primary hover:underline">Вся очередь</Link>}>
+          <ul className="divide-y divide-border">
+            {q.slice(0, 5).map((r) => (
+              <li key={r.report_id}>
+                <Link to={`/teacher/reports/${r.report_id}`} className="py-2.5 flex flex-wrap items-center gap-3 hover:text-primary">
+                  <span className="flex-1 min-w-0 text-sm">
+                    <span className="text-foreground">{r.student_name}</span>
+                    <span className="text-muted-foreground">, {r.course_title}, лабораторная {r.lab_number}</span>
+                    <span className="block text-xs text-muted-foreground">{formatDateTime(r.created_at)}</span>
+                  </span>
+                  <StatusBadge status={r.status} />
+                </Link>
+              </li>
             ))}
-          </div>
-        </section>
+          </ul>
+        </Panel>
       )}
+
+      <div className="flex items-center justify-between mb-3">
+        <h2 className="font-body text-base font-semibold text-foreground">Курсы</h2>
+        <Link to="/teacher/courses/new"><Button size="sm">Создать курс</Button></Link>
+      </div>
+      {list.length ? (
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {list.map((c) => (
+            <CourseCard key={c.id} course={c} to={`/teacher/courses/${c.id}`}
+              footer={<p className="text-xs text-muted-foreground">Студентов: {c.students}; заявок: {c.pending_requests}; отчётов к проверке: {c.pending_reports}</p>} />
+          ))}
+        </div>
+      ) : <EmptyState icon={GraduationCap} title="Курсов пока нет" action={<Link to="/teacher/courses/new"><Button>Создать первый курс</Button></Link>} />}
     </div>
   );
 }

@@ -64,13 +64,13 @@ class ChatRepository:
         """Returns last `limit` messages as list of (role, content) tuples."""
         query = """
             SELECT role, content FROM (
-                SELECT role, content, created_at
+                SELECT id, role, content
                 FROM chat_messages
                 WHERE chat_id = %s
-                ORDER BY created_at DESC
+                ORDER BY id DESC
                 LIMIT %s
             ) sub
-            ORDER BY created_at ASC
+            ORDER BY id ASC
         """
         curs.execute(query, (chat_id, limit))
         return curs.fetchall()

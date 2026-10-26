@@ -47,6 +47,15 @@ class ExamSession:
         self._cursor = 0
         self._active_question: ExamQuestion | None = None
         self.results: list[ExamResult] = []
+        self.saved = False
+
+    @property
+    def total(self) -> int:
+        return len(self._questions)
+
+    @property
+    def active_question(self) -> ExamQuestion | None:
+        return self._active_question
 
     def has_next_question(self) -> bool:
         """Возвращает True, если в экзамене есть еще не заданные вопросы."""

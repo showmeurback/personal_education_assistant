@@ -1,0 +1,186 @@
+{
+  "tag": "v3",
+  "dataset": "heldout",
+  "checks": 51,
+  "reports": 17,
+  "judge_models": {
+    "strict": "nvidia/nemotron-3-ultra-550b-a55b@nothink",
+    "objective": "openai/gpt-oss-20b",
+    "loyal": "nvidia/nemotron-3.5-lightning-30b-a3b@nothink"
+  },
+  "vision": {
+    "enabled": true,
+    "model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+    "max_images": 12
+  },
+  "duration_minutes": 21.4,
+  "modes": {
+    "hybrid": {
+      "metrics": {
+        "reports": 51,
+        "accuracy_auto": 1.0,
+        "coverage": 0.667,
+        "accuracy_strict": 0.667,
+        "accuracy_with_teacher": 1.0,
+        "precision_reject": 1.0,
+        "recall_reject": 1.0,
+        "f1_reject": 1.0,
+        "false_accept_rate": 0.0,
+        "false_reject_rate": 0.0,
+        "manual_rate": 0.333,
+        "llm_calls_total": 171,
+        "llm_calls_mean": 3.35,
+        "seconds_mean": 24.4,
+        "seconds_median": 19.0,
+        "decided_by": {
+          "judges": 51
+        },
+        "invalid_judgements": 1,
+        "seconds_max": 74.6,
+        "image_seconds_median": 0.1,
+        "vision_calls_total": 146
+      },
+      "by_category": {
+        "real_ok": {
+          "approve": 16,
+          "manual_review": 1
+        },
+        "wrong_course": {
+          "reject": 10,
+          "manual_review": 7
+        },
+        "wrong_lab": {
+          "reject": 8,
+          "manual_review": 9
+        }
+      },
+      "judges": {
+        "strict": {
+          "model": "nvidia/nemotron-3-ultra-550b-a55b@nothink",
+          "valid": 50,
+          "accuracy": 0.98,
+          "seconds_median": 9.600000000000001
+        },
+        "objective": {
+          "model": "openai/gpt-oss-20b",
+          "valid": 51,
+          "accuracy": 0.98,
+          "seconds_median": 10.1
+        },
+        "loyal": {
+          "model": "nvidia/nemotron-3.5-lightning-30b-a3b@nothink",
+          "valid": 51,
+          "accuracy": 0.686,
+          "seconds_median": 3.6
+        },
+        "shared_errors": {
+          "strict+objective": 0,
+          "strict+loyal": 1,
+          "objective+loyal": 0
+        }
+      }
+    },
+    "neural": {
+      "metrics": {
+        "reports": 51,
+        "accuracy_auto": 0.98,
+        "coverage": 1.0,
+        "accuracy_strict": 0.98,
+        "accuracy_with_teacher": 0.98,
+        "precision_reject": 0.971,
+        "recall_reject": 1.0,
+        "f1_reject": 0.986,
+        "false_accept_rate": 0.0,
+        "false_reject_rate": 0.059,
+        "manual_rate": 0.0,
+        "llm_calls_total": 153,
+        "llm_calls_mean": 3,
+        "seconds_mean": 0.76,
+        "seconds_median": 0.0,
+        "decided_by": {
+          "judges": 51
+        },
+        "invalid_judgements": 0,
+        "seconds_max": 11.8,
+        "image_seconds_median": 0.0,
+        "vision_calls_total": 0
+      },
+      "by_category": {
+        "real_ok": {
+          "approve": 16,
+          "reject": 1
+        },
+        "wrong_course": {
+          "reject": 17
+        },
+        "wrong_lab": {
+          "reject": 17
+        }
+      },
+      "judges": {
+        "strict": {
+          "model": "nvidia/nemotron-3-ultra-550b-a55b@nothink",
+          "valid": 51,
+          "accuracy": 0.98,
+          "seconds_median": 9.8
+        },
+        "objective": {
+          "model": "openai/gpt-oss-20b",
+          "valid": 51,
+          "accuracy": 0.98,
+          "seconds_median": 9.8
+        },
+        "loyal": {
+          "model": "nvidia/nemotron-3.5-lightning-30b-a3b@nothink",
+          "valid": 51,
+          "accuracy": 0.686,
+          "seconds_median": 3.6
+        },
+        "shared_errors": {
+          "strict+objective": 0,
+          "strict+loyal": 1,
+          "objective+loyal": 0
+        }
+      }
+    },
+    "symbolic": {
+      "metrics": {
+        "reports": 51,
+        "accuracy_auto": 0.373,
+        "coverage": 1.0,
+        "accuracy_strict": 0.373,
+        "accuracy_with_teacher": 0.373,
+        "precision_reject": 1.0,
+        "recall_reject": 0.059,
+        "f1_reject": 0.111,
+        "false_accept_rate": 0.941,
+        "false_reject_rate": 0.0,
+        "manual_rate": 0.0,
+        "llm_calls_total": 0,
+        "llm_calls_mean": 0,
+        "seconds_mean": 0.02,
+        "seconds_median": 0.0,
+        "decided_by": {
+          "symbolic": 51
+        },
+        "invalid_judgements": 0,
+        "seconds_max": 0.0,
+        "image_seconds_median": 0.0,
+        "vision_calls_total": 0
+      },
+      "by_category": {
+        "real_ok": {
+          "approve": 17
+        },
+        "wrong_course": {
+          "reject": 2,
+          "approve": 15
+        },
+        "wrong_lab": {
+          "approve": 17
+        }
+      }
+    }
+  },
+  "agreement_neural_hybrid": 0.667
+}

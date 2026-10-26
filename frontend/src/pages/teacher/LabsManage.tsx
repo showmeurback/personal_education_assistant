@@ -1,144 +1,101 @@
 import { useState } from "react";
-import { useParams, Link } from "react-router-dom";
-import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
-import { labsApi, type Lab } from "@/api/labs";
+import { useParams } from "react-router-dom";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { FlaskConical, Pencil, Trash2 } from "lucide-react";
+import { toast } from "sonner";
+import { errorMessage, labsApi, type Lab } from "@/api";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
-import { ArrowLeft, Plus, Pencil, Trash2, Loader2 } from "lucide-react";
-import { motion } from "framer-motion";
-import { toast } from "sonner";
+import { EmptyState, PageHeader } from "@/components/common";
+
+const EMPTY = { number: 1, title: "", task: "", min_words: "" as number | "", required_sections: "" };
 
 export default function LabsManage() {
-  const { id } = useParams<{ id: string }>();
-  const courseId = Number(id);
-  const queryClient = useQueryClient();
-  const [dialogOpen, setDialogOpen] = useState(false);
-  const [editingLab, setEditingLab] = useState<Lab | null>(null);
-  const [number, setNumber] = useState(1);
-  const [title, setTitle] = useState("");
-  const [task, setTask] = useState("");
+  const courseId = Number(useParams().id);
+  const qc = useQueryClient();
+  const labs = useQuery({ queryKey: ["labs", courseId], queryFn: () => labsApi.list(courseId) });
+  const [open, setOpen] = useState(false);
+  const [editing, setEditing] = useState<Lab | null>(null);
+  const [form, setForm] = useState(EMPTY);
 
-  const { data: labs } = useQuery({
-    queryKey: ["course-labs", courseId],
-    queryFn: () => labsApi.getAll(courseId),
-  });
-
-  const createMutation = useMutation({
-    mutationFn: () => labsApi.create(courseId, { number, title, task }),
-    onSuccess: () => {
-      toast.success("Лабораторная создана");
-      queryClient.invalidateQueries({ queryKey: ["course-labs", courseId] });
-      resetForm();
-    },
-    onError: () => toast.error("Ошибка создания"),
-  });
-
-  const updateMutation = useMutation({
-    mutationFn: () => labsApi.update(editingLab!.id, { number, title, task }),
-    onSuccess: () => {
-      toast.success("Лабораторная обновлена");
-      queryClient.invalidateQueries({ queryKey: ["course-labs", courseId] });
-      resetForm();
-    },
-  });
-
-  const deleteMutation = useMutation({
-    mutationFn: (labId: number) => labsApi.delete(labId),
-    onSuccess: () => {
-      toast.success("Лабораторная удалена");
-      queryClient.invalidateQueries({ queryKey: ["course-labs", courseId] });
-    },
-  });
-
-  const resetForm = () => {
-    setDialogOpen(false);
-    setEditingLab(null);
-    setNumber((labs?.length ?? 0) + 1);
-    setTitle("");
-    setTask("");
+  const openNew = () => { setEditing(null); setForm({ ...EMPTY, number: (labs.data?.length ?? 0) + 1 }); setOpen(true); };
+  const openEdit = (l: Lab) => {
+    setEditing(l);
+    setForm({ number: l.number, title: l.title, task: l.task, min_words: l.min_words ?? "", required_sections: l.required_sections ?? "" });
+    setOpen(true);
   };
-
-  const openEdit = (lab: Lab) => {
-    setEditingLab(lab);
-    setNumber(lab.number);
-    setTitle(lab.title);
-    setTask(lab.task);
-    setDialogOpen(true);
-  };
-
-  const openNew = () => {
-    setEditingLab(null);
-    setNumber((labs?.length ?? 0) + 1);
-    setTitle("");
-    setTask("");
-    setDialogOpen(true);
-  };
+  const payload = () => ({
+    number: form.number, title: form.title.trim(), task: form.task,
+    min_words: form.min_words === "" ? null : Number(form.min_words),
+    required_sections: form.required_sections.trim() || null,
+  });
+  const done = (msg: string) => () => { toast.success(msg); setOpen(false); qc.invalidateQueries({ queryKey: ["labs", courseId] }); };
+  const save = useMutation({
+    mutationFn: () => (editing ? labsApi.update(editing.id, payload()) : labsApi.create(courseId, payload())),
+    onSuccess: done(editing ? "Лабораторная обновлена" : "Лабораторная добавлена"),
+    onError: (e) => toast.error(errorMessage(e)),
+  });
+  const remove = useMutation({
+    mutationFn: (id: number) => labsApi.remove(id),
+    onSuccess: () => { toast.success("Лабораторная удалена"); qc.invalidateQueries({ queryKey: ["labs", courseId] }); },
+    onError: (e) => toast.error(errorMessage(e)),
+  });
 
   return (
-    <div className="max-w-3xl mx-auto space-y-6">
-      <Link to={`/teacher/courses/${courseId}`} className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors">
-        <ArrowLeft className="w-4 h-4" /> Назад к курсу
-      </Link>
+    <div className="max-w-3xl">
+      <PageHeader back={{ to: `/teacher/courses/${courseId}`, label: "К курсу" }} title="Лабораторные работы"
+        description="Задание и формальные требования к отчёту: по ним работают продукционные правила проверки."
+        actions={<Button onClick={openNew}>Добавить</Button>} />
+      {labs.data?.length ? (
+        <ul className="rounded-lg border border-border divide-y divide-border bg-card">
+          {labs.data.map((l) => (
+            <li key={l.id} className="flex items-start gap-4 px-4 py-3.5">
+              <span className="w-9 h-9 rounded-md bg-surface-2 flex items-center justify-center font-heading text-sm text-primary shrink-0">{l.number}</span>
+              <div className="flex-1 min-w-0">
+                <p className="text-sm font-medium text-foreground">{l.title}</p>
+                <p className="text-xs text-muted-foreground line-clamp-2">{l.task}</p>
+                <p className="text-xs text-muted-foreground mt-1">
+                  Не менее {l.min_words ?? 120} слов{l.required_sections ? `; разделы: ${l.required_sections.split(/\n|;|,/).filter((s) => s.trim()).join(", ")}` : ""}
+                </p>
+              </div>
+              <button className="p-2 text-muted-foreground hover:text-foreground" aria-label="Изменить" onClick={() => openEdit(l)}><Pencil className="w-4 h-4" /></button>
+              <button className="p-2 text-muted-foreground hover:text-destructive" aria-label="Удалить"
+                onClick={() => { if (window.confirm(`Удалить «${l.title}» вместе с отчётами студентов?`)) remove.mutate(l.id); }}><Trash2 className="w-4 h-4" /></button>
+            </li>
+          ))}
+        </ul>
+      ) : <EmptyState icon={FlaskConical} title="Лабораторных пока нет" action={<Button onClick={openNew}>Добавить первую</Button>} />}
 
-      <div className="flex items-center justify-between">
-        <h1 className="text-3xl font-heading text-foreground">Лабораторные</h1>
-        <Button onClick={openNew} className="bg-primary hover:bg-primary/90 gap-2">
-          <Plus className="w-4 h-4" /> Добавить
-        </Button>
-        <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
-          <DialogContent className="bg-card border-border">
-            <DialogHeader>
-              <DialogTitle className="font-heading">{editingLab ? "Редактировать" : "Новая лабораторная"}</DialogTitle>
-            </DialogHeader>
-            <div className="space-y-4">
-              <div className="space-y-2">
-                <Label>Номер</Label>
-                <Input type="number" value={number} onChange={(e) => setNumber(Number(e.target.value))} className="bg-background border-border w-24" />
-              </div>
-              <div className="space-y-2">
-                <Label>Название</Label>
-                <Input value={title} onChange={(e) => setTitle(e.target.value)} placeholder="Название лабораторной" className="bg-background border-border" />
-              </div>
-              <div className="space-y-2">
-                <Label>Задание</Label>
-                <Textarea value={task} onChange={(e) => setTask(e.target.value)} placeholder="Описание задания..." rows={4} className="bg-background border-border" />
-              </div>
-              <Button
-                onClick={() => (editingLab ? updateMutation.mutate() : createMutation.mutate())}
-                disabled={!title || createMutation.isPending || updateMutation.isPending}
-                className="w-full bg-primary hover:bg-primary/90"
-              >
-                {(createMutation.isPending || updateMutation.isPending) ? <Loader2 className="w-4 h-4 animate-spin" /> : editingLab ? "Сохранить" : "Создать"}
-              </Button>
+      <Dialog open={open} onOpenChange={setOpen}>
+        <DialogContent className="bg-card border-border max-w-lg">
+          <DialogHeader><DialogTitle>{editing ? "Изменить лабораторную" : "Новая лабораторная"}</DialogTitle></DialogHeader>
+          <div className="space-y-4">
+            <div className="grid grid-cols-[90px_1fr] gap-3">
+              <div className="space-y-1.5"><Label htmlFor="n">Номер</Label>
+                <Input id="n" type="number" min={1} value={form.number} onChange={(e) => setForm({ ...form, number: Number(e.target.value) || 1 })} /></div>
+              <div className="space-y-1.5"><Label htmlFor="ti">Название</Label>
+                <Input id="ti" value={form.title} onChange={(e) => setForm({ ...form, title: e.target.value })} /></div>
             </div>
-          </DialogContent>
-        </Dialog>
-      </div>
-
-      <div className="space-y-2">
-        {labs?.length === 0 && <p className="text-muted-foreground text-center py-12">Лабораторных пока нет</p>}
-        {labs?.map((lab, i) => (
-          <motion.div key={lab.id} initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: i * 0.05 }}
-            className="flex items-center gap-4 p-4 rounded-xl bg-card border border-border">
-            <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary font-heading text-lg shrink-0">{lab.number}</div>
-            <div className="flex-1 min-w-0">
-              <p className="font-medium text-foreground">{lab.title}</p>
-              <p className="text-sm text-muted-foreground line-clamp-1">{lab.task}</p>
+            <div className="space-y-1.5"><Label htmlFor="ta">Задание</Label>
+              <Textarea id="ta" rows={5} value={form.task} onChange={(e) => setForm({ ...form, task: e.target.value })} />
+              <p className="text-xs text-muted-foreground">Ключевые понятия задания система ищет в отчёте (правило R6), а оценщики сверяют отчёт с этим текстом.</p></div>
+            <div className="grid grid-cols-[140px_1fr] gap-3">
+              <div className="space-y-1.5"><Label htmlFor="mw">Минимум слов</Label>
+                <Input id="mw" type="number" min={0} placeholder="120" value={form.min_words}
+                  onChange={(e) => setForm({ ...form, min_words: e.target.value === "" ? "" : Number(e.target.value) })} /></div>
+              <div className="space-y-1.5"><Label htmlFor="rs">Обязательные разделы</Label>
+                <Textarea id="rs" rows={2} placeholder={"Цель работы\nВыводы"} value={form.required_sections}
+                  onChange={(e) => setForm({ ...form, required_sections: e.target.value })} /></div>
             </div>
-            <div className="flex gap-1">
-              <button onClick={() => openEdit(lab)} className="p-2 rounded-md text-muted-foreground hover:text-foreground hover:bg-surface-2 transition-colors">
-                <Pencil className="w-4 h-4" />
-              </button>
-              <button onClick={() => deleteMutation.mutate(lab.id)} className="p-2 rounded-md text-muted-foreground hover:text-destructive hover:bg-destructive/10 transition-colors">
-                <Trash2 className="w-4 h-4" />
-              </button>
-            </div>
-          </motion.div>
-        ))}
-      </div>
+            <Button className="w-full" disabled={!form.title.trim() || save.isPending} onClick={() => save.mutate()}>
+              {save.isPending ? "Сохраняем…" : editing ? "Сохранить" : "Добавить"}
+            </Button>
+          </div>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }

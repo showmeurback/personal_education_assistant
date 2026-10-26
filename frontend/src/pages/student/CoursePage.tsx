@@ -1,177 +1,216 @@
-import { useParams, Link } from "react-router-dom";
-import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
-import { useAuthStore } from "@/store/authStore";
-import { coursesApi } from "@/api/courses";
-import { recommendationsApi } from "@/api/recommendations";
-import { labsApi } from "@/api/labs";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { StarRating } from "@/components/course/StarRating";
-import { DIFFICULTY_MAP, COURSE_COLORS } from "@/utils/constants";
-import {
-  FlaskConical, ClipboardCheck, GraduationCap, MessageCircle,
-  FileText, ArrowLeft, Download, Send, Lock,
-} from "lucide-react";
-import { motion } from "framer-motion";
+import { Link, useParams } from "react-router-dom";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { Download, FileText, FlaskConical, Lock, Target } from "lucide-react";
 import { toast } from "sonner";
+import { coursesApi, errorMessage, labsApi, meApi, type WeakTopicsMap } from "@/api";
+import { Button } from "@/components/ui/button";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { EmptyState, Loading, Meter, PageHeader, Panel, StatusBadge } from "@/components/common";
+import { COURSE_TINTS, DIFFICULTY_MAP, formatDate } from "@/utils/constants";
 
 export default function CoursePage() {
-  const { id } = useParams<{ id: string }>();
-  const courseId = Number(id);
-  const { id: studentId } = useAuthStore();
-  const queryClient = useQueryClient();
+  const courseId = Number(useParams().id);
+  const qc = useQueryClient();
+  const course = useQuery({ queryKey: ["course", courseId], queryFn: () => coursesApi.get(courseId) });
+  const enrolled = !!course.data?.enrolled;
+  const labs = useQuery({ queryKey: ["labs", courseId], queryFn: () => labsApi.list(courseId), enabled: enrolled });
+  const files = useQuery({ queryKey: ["files", courseId], queryFn: () => coursesApi.files(courseId), enabled: enrolled });
+  const reports = useQuery({ queryKey: ["me-reports"], queryFn: meApi.reports, enabled: enrolled });
+  const tests = useQuery({ queryKey: ["me-tests", courseId], queryFn: () => meApi.testResults(courseId), enabled: enrolled });
+  const exams = useQuery({ queryKey: ["me-exams", courseId], queryFn: () => meApi.examResults(courseId), enabled: enrolled });
 
-  const { data: course } = useQuery({
-    queryKey: ["course-info", courseId],
-    queryFn: () => coursesApi.getInfo(courseId),
-  });
-  const { data: labs } = useQuery({
-    queryKey: ["course-labs", courseId],
-    queryFn: () => labsApi.getAll(courseId),
-  });
-  const { data: files } = useQuery({
-    queryKey: ["course-files", courseId],
-    queryFn: () => coursesApi.getFiles(courseId),
-  });
-  const { data: myCourses } = useQuery({
-    queryKey: ["student-courses-full", studentId],
-    queryFn: () => coursesApi.getStudentCoursesFull(studentId!),
-    enabled: !!studentId,
+  const enroll = useMutation({
+    mutationFn: () => coursesApi.requestAccess(courseId),
+    onSuccess: () => {
+      toast.success("Заявка отправлена преподавателю");
+      qc.invalidateQueries({ queryKey: ["course", courseId] });
+    },
+    onError: (e) => toast.error(errorMessage(e)),
   });
 
-  const enrolledCourse = myCourses?.find((c) => c.id === courseId);
-  const isEnrolled = !!enrolledCourse;
-  const isCompleted = enrolledCourse?.is_completed ?? false;
-  const myRating = enrolledCourse?.my_rating ?? null;
-
-  const enrollMutation = useMutation({
-    mutationFn: () => coursesApi.sendRequest(courseId, studentId!),
-    onSuccess: () => toast.success("Заявка отправлена"),
-    onError: () => toast.error("Ошибка при отправке заявки"),
-  });
-
-  const handleRate = async (rating: number) => {
-    if (!studentId) return;
-    try {
-      await recommendationsApi.rateCourse(courseId, { student_id: studentId, rating });
-      toast.success(`Оценка ${rating}/5 сохранена`);
-      queryClient.invalidateQueries({ queryKey: ["student-courses-full", studentId] });
-    } catch {
-      toast.error("Не удалось сохранить оценку");
-    }
-  };
-
-  if (!course) return <div className="animate-pulse h-96 rounded-2xl bg-card border border-border" />;
-
-  const colorClass = COURSE_COLORS[course.id % COURSE_COLORS.length];
-  const diff = DIFFICULTY_MAP[course.difficulty] ?? DIFFICULTY_MAP.intermediate;
+  if (course.isLoading) return <Loading />;
+  if (!course.data) return <EmptyState icon={Lock} title="Курс не найден" />;
+  const c = course.data;
+  const diff = DIFFICULTY_MAP[c.difficulty] ?? DIFFICULTY_MAP.intermediate;
+  const lastReport = (labId: number) => reports.data?.find((r) => r.lab_id === labId);
 
   return (
-    <div className="space-y-6">
-      <Link to="/student/catalog" className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors">
-        <ArrowLeft className="w-4 h-4" /> Каталог
-      </Link>
-
-      <motion.div className={`rounded-2xl bg-gradient-to-br ${colorClass} p-8 relative overflow-hidden`} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
-        <span className="absolute -bottom-8 -right-4 text-[10rem] font-heading text-white/5 leading-none select-none">{course.title.charAt(0)}</span>
-        <div className="relative z-10">
-          <div className="flex gap-2 mb-3">
-            <Badge className={diff.color}>{diff.label}</Badge>
-            {course.tags?.map((t) => <Badge key={t} variant="secondary" className="bg-white/10 text-white border-0">{t}</Badge>)}
-          </div>
-          <h1 className="text-3xl font-heading text-white mb-2">{course.title}</h1>
-          <p className="text-white/70 max-w-xl">{course.description}</p>
-          {isCompleted && (
-            <div className="mt-4 flex items-center gap-3">
-              <StarRating value={myRating} onChange={handleRate} size="md" />
-              <span className="text-white/60 text-sm">
-                {myRating ? `Ваша оценка: ${myRating}/5` : "Оцените курс"}
-              </span>
-            </div>
-          )}
-          {!isEnrolled && (
-            <Button className="mt-4 bg-white/20 hover:bg-white/30 text-white border-0" onClick={() => enrollMutation.mutate()} disabled={enrollMutation.isPending}>
-              <Send className="w-4 h-4 mr-2" />{enrollMutation.isPending ? "Отправка..." : "Записаться на курс"}
-            </Button>
-          )}
+    <div>
+      <PageHeader back={{ to: "/student/my-courses", label: "Мои курсы" }} title={c.title} />
+      <div className="rounded-lg border border-border p-5 sm:p-6 mb-6" style={{ background: COURSE_TINTS[c.id % COURSE_TINTS.length] }}>
+        <div className="flex flex-wrap gap-2 mb-3">
+          <span className={`rounded-md border px-2 py-0.5 text-xs bg-black/20 ${diff.color}`}>{diff.label}</span>
+          {c.tags.map((t) => <span key={t} className="rounded-md bg-black/20 px-2 py-0.5 text-xs text-white/80">{t}</span>)}
         </div>
-      </motion.div>
+        <p className="text-white/85 max-w-2xl">{c.description}</p>
+        {!enrolled && (
+          <div className="mt-5">
+            {c.request_status === "pending" ? (
+              <p className="text-sm text-white/80">Заявка отправлена и ждёт решения преподавателя.</p>
+            ) : (
+              <Button onClick={() => enroll.mutate()} disabled={enroll.isPending}>
+                {c.request_status === "rejected" ? "Отправить заявку повторно" : "Записаться на курс"}
+              </Button>
+            )}
+          </div>
+        )}
+      </div>
 
-      {isEnrolled ? (
-        <Tabs defaultValue="labs" className="space-y-4">
-          <TabsList className="bg-card border border-border">
-            <TabsTrigger value="labs" className="gap-2"><FlaskConical className="w-4 h-4" /> Лабораторные</TabsTrigger>
-            <TabsTrigger value="test" className="gap-2"><ClipboardCheck className="w-4 h-4" /> Тесты</TabsTrigger>
-            <TabsTrigger value="exam" className="gap-2"><GraduationCap className="w-4 h-4" /> Экзамен</TabsTrigger>
-            <TabsTrigger value="chat" className="gap-2"><MessageCircle className="w-4 h-4" /> Чат</TabsTrigger>
-            <TabsTrigger value="files" className="gap-2"><FileText className="w-4 h-4" /> Файлы</TabsTrigger>
+      {!enrolled ? (
+        <EmptyState icon={Lock} title="Материалы доступны после зачисления"
+          text="Лабораторные, тесты, экзамен и ассистент откроются, когда преподаватель одобрит заявку." />
+      ) : (
+        <Tabs defaultValue="labs">
+          <TabsList className="mb-5 flex-wrap h-auto">
+            <TabsTrigger value="labs">Лабораторные</TabsTrigger>
+            <TabsTrigger value="gaps">Что подтянуть</TabsTrigger>
+            <TabsTrigger value="learn">Тесты и экзамен</TabsTrigger>
+            <TabsTrigger value="chat">Ассистент</TabsTrigger>
+            <TabsTrigger value="files">Материалы</TabsTrigger>
           </TabsList>
 
-          <TabsContent value="labs" className="space-y-3">
-            {labs?.length === 0 && <p className="text-muted-foreground text-center py-12">Лабораторных пока нет</p>}
-            {labs?.map((lab, i) => (
-              <motion.div key={lab.id} initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: i * 0.05 }}>
-                <Link to={`/student/courses/${courseId}/labs/${lab.id}`} className="flex items-center gap-4 p-4 rounded-xl bg-card border border-border hover:border-primary/30 transition-all group">
-                  <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary font-heading text-lg shrink-0">{lab.number}</div>
-                  <div className="flex-1 min-w-0">
-                    <p className="font-medium text-foreground group-hover:text-primary transition-colors">{lab.title}</p>
-                    <p className="text-sm text-muted-foreground line-clamp-1">{lab.task}</p>
-                  </div>
-                </Link>
-              </motion.div>
-            ))}
+          <TabsContent value="labs">
+            {labs.isLoading ? <Loading /> : labs.data?.length ? (
+              <ul className="rounded-lg border border-border divide-y divide-border bg-card">
+                {labs.data.map((lab) => {
+                  const r = lastReport(lab.id);
+                  return (
+                    <li key={lab.id}>
+                      <Link to={`/student/courses/${courseId}/labs/${lab.id}`} className="flex items-center gap-4 px-4 py-3.5 hover:bg-surface/60">
+                        <span className="w-9 h-9 rounded-md bg-surface-2 flex items-center justify-center font-heading text-sm text-primary shrink-0">{lab.number}</span>
+                        <span className="flex-1 min-w-0">
+                          <span className="block text-sm font-medium text-foreground">{lab.title}</span>
+                          <span className="block text-xs text-muted-foreground line-clamp-1">{lab.task}</span>
+                        </span>
+                        {r ? <StatusBadge status={r.status} /> : <span className="text-xs text-muted-foreground">не сдана</span>}
+                      </Link>
+                    </li>
+                  );
+                })}
+              </ul>
+            ) : <EmptyState icon={FlaskConical} title="Лабораторных пока нет" />}
           </TabsContent>
 
-          <TabsContent value="test">
-            <div className="text-center py-12">
-              <ClipboardCheck className="w-12 h-12 text-muted-foreground mx-auto mb-4" />
-              <h3 className="text-lg font-heading text-foreground mb-2">Тестирование</h3>
-              <p className="text-muted-foreground mb-4">Пройдите тест по материалам курса</p>
-              <Link to={`/student/courses/${courseId}/test`}><Button className="bg-primary hover:bg-primary/90">Начать тест</Button></Link>
-            </div>
+          <TabsContent value="gaps">
+            <WeakTopicsPanel courseId={courseId} hasMaterials={!!c.has_materials} />
           </TabsContent>
 
-          <TabsContent value="exam">
-            <div className="text-center py-12">
-              <GraduationCap className="w-12 h-12 text-muted-foreground mx-auto mb-4" />
-              <h3 className="text-lg font-heading text-foreground mb-2">Экзамен</h3>
-              <p className="text-muted-foreground mb-4">AI-экзаменатор задаст вопросы и оценит ваши ответы</p>
-              <Link to={`/student/courses/${courseId}/exam`}><Button className="bg-primary hover:bg-primary/90">Начать экзамен</Button></Link>
-            </div>
+          <TabsContent value="learn" className="grid md:grid-cols-2 gap-4">
+            <Panel title="Тест по материалам" description="Вопросы с вариантами ответа по выбранной теме."
+              actions={<Link to={`/student/courses/${courseId}/test`}><Button size="sm">Пройти тест</Button></Link>}>
+              {tests.data?.length ? (
+                <ul className="text-sm space-y-1.5">
+                  {tests.data.slice(0, 5).map((t) => (
+                    <li key={t.id} className="flex justify-between gap-3">
+                      <span className="text-foreground truncate">{t.topic ?? "Без темы"}</span>
+                      <span className="text-muted-foreground shrink-0">{Math.round(t.percentage)}%, {formatDate(t.created_at)}</span>
+                    </li>
+                  ))}
+                </ul>
+              ) : <p className="text-sm text-muted-foreground">Тестов ещё не было.</p>}
+            </Panel>
+            <Panel title="Пробный экзамен" description="Письменные ответы оценивает языковая модель по шкале 0–100."
+              actions={<Link to={`/student/courses/${courseId}/exam`}><Button size="sm">Начать</Button></Link>}>
+              {exams.data?.length ? (
+                <ul className="text-sm space-y-1.5">
+                  {exams.data.slice(0, 5).map((e) => (
+                    <li key={e.id} className="flex justify-between gap-3">
+                      <span className="text-foreground">{e.total_questions} вопр.</span>
+                      <span className="text-muted-foreground">{e.avg_score != null ? `${Math.round(e.avg_score)} из 100` : "—"}, {formatDate(e.created_at)}</span>
+                    </li>
+                  ))}
+                </ul>
+              ) : <p className="text-sm text-muted-foreground">Экзамен ещё не проходили.</p>}
+            </Panel>
           </TabsContent>
 
           <TabsContent value="chat">
-            <div className="text-center py-12">
-              <MessageCircle className="w-12 h-12 text-muted-foreground mx-auto mb-4" />
-              <h3 className="text-lg font-heading text-foreground mb-2">AI-ассистент</h3>
-              <p className="text-muted-foreground mb-4">Задайте вопросы по материалам курса</p>
-              <Link to={`/student/courses/${courseId}/chat`}><Button className="bg-primary hover:bg-primary/90">Открыть чат</Button></Link>
-            </div>
+            <Panel title="Ассистент по материалам курса"
+              description={c.has_materials ? "Задавайте вопросы — ответы строятся на загруженных лекциях, источники указываются."
+                : "Преподаватель ещё не загрузил материалы, поэтому ассистент пока недоступен."}
+              actions={c.has_materials ? <Link to={`/student/courses/${courseId}/chat`}><Button size="sm">Открыть чат</Button></Link> : undefined}>
+              <p className="text-sm text-muted-foreground">Ассистент помнит предпочтения из профиля: например, «объясняй на примерах».</p>
+            </Panel>
           </TabsContent>
 
-          <TabsContent value="files" className="space-y-3">
-            {files?.length === 0 && <p className="text-muted-foreground text-center py-12">Файлов нет</p>}
-            {files?.map((file) => (
-              <div key={file.id} className="flex items-center gap-3 p-4 rounded-xl bg-card border border-border">
-                <FileText className="w-5 h-5 text-muted-foreground shrink-0" />
-                <span className="flex-1 text-sm text-foreground truncate">{file.filename}</span>
-                <a href={coursesApi.downloadFile(courseId, file.file_id)} className="p-2 rounded-md text-muted-foreground hover:text-foreground hover:bg-surface-2 transition-colors">
-                  <Download className="w-4 h-4" />
-                </a>
-              </div>
-            ))}
+          <TabsContent value="files">
+            {files.data?.length ? (
+              <ul className="rounded-lg border border-border divide-y divide-border bg-card">
+                {files.data.map((f) => (
+                  <li key={f.id} className="flex items-center gap-3 px-4 py-3">
+                    <FileText className="w-4 h-4 text-muted-foreground" />
+                    <span className="flex-1 text-sm text-foreground truncate">{f.filename}</span>
+                    <Button variant="ghost" size="sm" onClick={() => coursesApi.downloadFile(courseId, f).catch((e) => toast.error(errorMessage(e)))}>
+                      <Download className="w-4 h-4 mr-1.5" /> Скачать
+                    </Button>
+                  </li>
+                ))}
+              </ul>
+            ) : <EmptyState icon={FileText} title="Материалов пока нет" />}
           </TabsContent>
         </Tabs>
-      ) : (
-        <div className="p-12 rounded-2xl bg-card border border-border text-center">
-          <Lock className="w-16 h-16 text-muted-foreground mx-auto mb-4" />
-          <h3 className="text-xl font-heading text-foreground mb-2">Запишитесь на курс</h3>
-          <p className="text-muted-foreground max-w-md mx-auto">
-            Чтобы получить доступ к лабораторным, тестам, экзаменам и AI-ассистенту, отправьте заявку на запись. Преподаватель рассмотрит её в ближайшее время.
-          </p>
-        </div>
       )}
+    </div>
+  );
+}
+
+const TONE: Record<string, "danger" | "warning" | "primary"> = { "слабо": "danger", "нужно подтянуть": "warning" };
+
+function WeakTopicsPanel({ courseId, hasMaterials }: { courseId: number; hasMaterials: boolean }) {
+  // сначала мгновенная символьная карта, затем советы модели и фрагменты лекций
+  const base = useQuery({ queryKey: ["weak-topics", courseId, "base"], queryFn: () => meApi.weakTopics(courseId, false) });
+  const full = useQuery({ queryKey: ["weak-topics", courseId, "full"], queryFn: () => meApi.weakTopics(courseId, true),
+    staleTime: 5 * 60_000, enabled: !!base.data && base.data.topics.length > 0 });
+  if (base.isLoading) return <Loading />;
+  const data: WeakTopicsMap | undefined = full.data ?? base.data;
+  const advicePending = !full.data && full.isFetching;
+  if (!data || data.evidence_total === 0) {
+    return <EmptyState icon={Target} title="Пока нечего анализировать"
+      text="Пройдите тест или пробный экзамен, сдайте лабораторную — и здесь появятся темы, которые стоит подтянуть." />;
+  }
+  return (
+    <div className="space-y-4">
+      {data.topics.length === 0 ? (
+        <Panel title="Пробелов не найдено">
+          <p className="text-sm text-muted-foreground">По всем темам, где есть результаты, уровень освоения не ниже 70 %.</p>
+        </Panel>
+      ) : data.topics.map((t) => (
+        <Panel key={t.topic} title={t.topic}
+          description={`Уровень освоения ${Math.round(t.mastery * 100)} % — ${t.level}. Основание: тестов ${t.evidence.test}, ответов экзамена ${t.evidence.exam}, отчётов ${t.evidence.lab}.`}>
+          <Meter value={t.mastery} tone={TONE[t.level] ?? "primary"} markers={[{ at: 0.7, label: "порог" }]} />
+          {t.advice ? <p className="mt-3 text-sm text-foreground">{t.advice}</p>
+            : advicePending && <p className="mt-3 text-sm text-muted-foreground">Готовим совет по вашим ошибкам…</p>}
+          {t.details.length > 0 && (
+            <details className="mt-3">
+              <summary className="cursor-pointer text-sm text-primary">Ваши ошибки по теме ({t.details.length})</summary>
+              <ul className="mt-2 space-y-1 text-sm text-muted-foreground list-disc pl-5">
+                {t.details.map((d, i) => <li key={i}>{d}</li>)}
+              </ul>
+            </details>
+          )}
+          {t.sources.length > 0 && (
+            <div className="mt-3 space-y-1.5">
+              <p className="text-xs text-muted-foreground">Что перечитать в материалах курса</p>
+              {t.sources.map((s, i) => (
+                <p key={i} className="text-sm"><span className="text-foreground">{s.filename}</span>
+                  <span className="text-muted-foreground"> — «{s.snippet}…»</span></p>
+              ))}
+            </div>
+          )}
+          <div className="mt-4 flex flex-wrap gap-2">
+            <Link to={`/student/courses/${courseId}/test?topic=${encodeURIComponent(t.topic)}`}><Button size="sm">Пройти тест по теме</Button></Link>
+            {hasMaterials && (
+              <Link to={`/student/courses/${courseId}/chat?q=${encodeURIComponent(`Объясни тему «${t.topic}»: что важно понять и где я мог ошибиться?`)}`}>
+                <Button size="sm" variant="outline">Спросить ассистента</Button>
+              </Link>
+            )}
+          </div>
+        </Panel>
+      ))}
+      {data.strong.length > 0 && (
+        <p className="text-sm text-muted-foreground">Освоено хорошо: {data.strong.map((s) => `${s.topic} (${Math.round(s.mastery * 100)} %)`).join(", ")}.</p>
+      )}
+      <p className="text-xs text-muted-foreground">{data.method}{data.with_advice && !data.llm_used && data.topics.length > 0 ? " Советы сейчас недоступны: языковая модель не ответила." : ""}</p>
     </div>
   );
 }

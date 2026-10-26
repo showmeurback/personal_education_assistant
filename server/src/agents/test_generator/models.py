@@ -37,7 +37,7 @@ class EvaluationResponse(BaseModel):
     correct_answers: Optional[int] = None
     wrong_answers: Optional[int] = None
     percentage: Optional[float] = None
-    grade: Optional[int] = None  # 0-10
+    grade: Optional[str] = None  # 0–10
     grade_description: Optional[str] = None
     results: Optional[List[EvaluationResult]] = None
     error: Optional[str] = None

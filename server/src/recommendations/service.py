@@ -32,6 +32,37 @@ from .signals import (
     composite_score,
 )
 from .semantic import get_semantic_scores
+from .signals import WEIGHTS
+
+_SIGNAL_TEXT = {
+    "tag_match": None,  # формируется отдельно с перечислением тегов
+    "quality": "высокий рейтинг курса",
+    "collaborative": "его выбирают студенты с похожими курсами",
+    "semantic": "описание курса близко к вашей характеристике",
+    "popularity": "популярный курс",
+    "freshness": "новый курс",
+    "content": "много материалов и лабораторных",
+    "engagement": "активно обсуждается в чатах",
+}
+
+
+def _explain(contrib: dict[str, float], matched_tags: list[str], semantic: float,
+             rating: float) -> list[str]:
+    """Человекочитаемое объяснение рекомендации: 2–3 сигнала с наибольшим вкладом."""
+    reasons = []
+    for name, value in sorted(contrib.items(), key=lambda kv: -kv[1]):
+        if value <= 0.005 or len(reasons) >= 3:
+            continue
+        if name == "tag_match":
+            if matched_tags:
+                reasons.append("совпадает с вашими интересами: " + ", ".join(matched_tags))
+        elif name == "quality":
+            reasons.append(f"рейтинг курса {rating:.1f} из 5")
+        elif name == "semantic":
+            reasons.append(f"описание близко к вашей характеристике (сходство {semantic:.2f})")
+        else:
+            reasons.append(_SIGNAL_TEXT[name])
+    return reasons
 
 _config = EducationDatabaseConfig()
 
@@ -85,6 +116,7 @@ class RecommendationService:
                 c.description,
                 crs.difficulty,
                 c.created_at,
+                c.teacher_id,
                 crs.enrollment_count,
                 crs.bayesian_rating,
                 crs.content_richness,
@@ -120,12 +152,13 @@ class RecommendationService:
                 "description": row[2],
                 "difficulty": row[3],
                 "created_at": row[4],
-                "enrollment_count": row[5],
-                "bayesian_rating": float(row[6]),
-                "content_richness": float(row[7]),
-                "freshness": float(row[8]),
-                "max_enr": float(row[9]),
-                "max_cr": float(row[10]),
+                "teacher_id": row[5],
+                "enrollment_count": row[6],
+                "bayesian_rating": float(row[7]),
+                "content_richness": float(row[8]),
+                "freshness": float(row[9]),
+                "max_enr": float(row[10]),
+                "max_cr": float(row[11]),
                 "tags": tags_map.get(row[0], []),
             }
             for row in rows
@@ -190,6 +223,17 @@ class RecommendationService:
                 engagement=eng,
             )
 
+            contributions = {
+                "tag_match": WEIGHTS["tag_match"] * tm,
+                "quality": WEIGHTS["quality"] * qual,
+                "collaborative": WEIGHTS["collaborative"] * collab,
+                "semantic": WEIGHTS["semantic"] * sem,
+                "popularity": WEIGHTS["popularity"] * pop,
+                "freshness": WEIGHTS["freshness"] * fresh,
+                "content": WEIGHTS["content"] * cont,
+                "engagement": WEIGHTS["engagement"] * eng,
+            }
+            matched_tags = [t for t in course["tags"] if t.lower() in {i.lower() for i in interests}]
             scored.append({
                 "id": cid,
                 "title": course["title"],
@@ -200,6 +244,10 @@ class RecommendationService:
                 "tag_match": round(tm, 2),
                 "bayesian_rating": course["bayesian_rating"],
                 "enrollment_count": course["enrollment_count"],
+                "teacher_id": course.get("teacher_id"),
+                "created_at": str(course["created_at"]) if course.get("created_at") else None,
+                "signals": {k: round(v, 4) for k, v in contributions.items()},
+                "explanation": _explain(contributions, matched_tags, sem, course["bayesian_rating"]),
             })
 
         scored.sort(key=lambda x: x["score"], reverse=True)

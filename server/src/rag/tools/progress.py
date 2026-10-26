@@ -35,9 +35,12 @@ def make_progress_tool(student_id: int, course_id: int):
             if r["total"]:
                 lines.append(
                     f"**Лабораторные:** {r['total']} отчётов — принято: {r['approved']}, "
-                    f"на проверке: {r['pending']}, не принято: {r['not-approved']}"
+                    f"на проверке: {r['pending'] + r['manual-review']}, "
+                    f"не принято: {r['not-approved'] + r['ai-rejected']}"
                 )
-                status_map = {"approved": "принято", "pending": "на проверке", "not-approved": "не принято"}
+                status_map = {"approved": "принято", "pending": "у преподавателя",
+                              "manual-review": "на ручной проверке", "not-approved": "не принято",
+                              "ai-rejected": "отклонено автоматической проверкой"}
                 for d in r["details"]:
                     comment = f" | Комментарий: {d['comment']}" if d["comment"] else ""
                     lines.append(f"  - {d['lab_title']} | {status_map.get(d['status'], d['status'])}{comment}")

@@ -1,202 +1,64 @@
-import { useState, useEffect } from "react";
-import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
-import { useAuthStore } from "@/store/authStore";
-import { authApi } from "@/api/auth";
-import { recommendationsApi } from "@/api/recommendations";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Textarea } from "@/components/ui/textarea";
-import { TAGS } from "@/utils/constants";
-import { User, Tag, MessageSquare } from "lucide-react";
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { toast } from "sonner";
-import { cn } from "@/lib/utils";
+import { errorMessage, meApi } from "@/api";
+import { Button } from "@/components/ui/button";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
+import { Chip, Loading, PageHeader, Panel } from "@/components/common";
+import { TAGS } from "@/utils/constants";
 
 export default function Profile() {
-  const { id } = useAuthStore();
-  const queryClient = useQueryClient();
-  const [selectedInterests, setSelectedInterests] = useState<string[]>([]);
-  const [style, setStyle] = useState("");
-  const [notes, setNotes] = useState("");
+  const profile = useQuery({ queryKey: ["me-profile"], queryFn: meApi.profile });
+  const interests = useQuery({ queryKey: ["me-interests"], queryFn: meApi.interests });
+  const prefs = useQuery({ queryKey: ["me-prefs"], queryFn: meApi.preferences });
+  const p = profile.data;
+  return (
+    <div className="max-w-2xl">
+      <PageHeader title={p ? `${p.first_name} ${p.last_name}` : "Профиль"} description={p ? `Логин: ${p.login}` : undefined} />
+      {p && interests.data && prefs.data ? (
+        <ProfileForms about0={p.characteristic ?? ""} tags0={interests.data}
+          style0={prefs.data.preferred_explanation_style ?? ""} notes0={prefs.data.notes ?? ""} />
+      ) : <Loading />}
+    </div>
+  );
+}
 
-  const { data: profile } = useQuery({
-    queryKey: ["student-profile", id],
-    queryFn: () => authApi.getStudent(id!),
-    enabled: !!id,
-  });
+function ProfileForms({ about0, tags0, style0, notes0 }: { about0: string; tags0: string[]; style0: string; notes0: string }) {
+  const qc = useQueryClient();
+  const [about, setAbout] = useState(about0);
+  const [tags, setTags] = useState<string[]>(tags0);
+  const [style, setStyle] = useState(style0);
+  const [notes, setNotes] = useState(notes0);
 
-  const { data: interests } = useQuery({
-    queryKey: ["student-interests", id],
-    queryFn: () => recommendationsApi.getInterests(id!),
-    enabled: !!id,
-  });
-
-  const { data: preferences } = useQuery({
-    queryKey: ["student-preferences", id],
-    queryFn: () => authApi.getPreferences(id!),
-    enabled: !!id,
-  });
-
-  useEffect(() => {
-    if (interests) {
-      setSelectedInterests(interests.filter((t) => (TAGS as readonly string[]).includes(t)));
-    }
-  }, [interests]);
-
-  useEffect(() => {
-    if (preferences) {
-      setStyle(preferences.preferred_explanation_style ?? "");
-      setNotes(preferences.notes ?? "");
-    }
-  }, [preferences]);
-
-  const updateInterestsMutation = useMutation({
-    mutationFn: () => recommendationsApi.updateInterests(id!, selectedInterests),
-    onSuccess: () => toast.success("Интересы обновлены"),
-    onError: () => toast.error("Ошибка обновления"),
-  });
-
-  const updatePrefsMutation = useMutation({
-    mutationFn: () =>
-      authApi.updatePreferences(id!, {
-        preferred_explanation_style: style,
-        notes,
-      }),
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["student-preferences", id] });
-      toast.success("Предпочтения сохранены");
-    },
-    onError: () => toast.error("Ошибка сохранения"),
-  });
-
-  const toggleInterest = (tag: string) => {
-    setSelectedInterests((prev) =>
-      prev.includes(tag) ? prev.filter((t) => t !== tag) : [...prev, tag]
-    );
-  };
-
-  const interestsChanged =
-    JSON.stringify([...selectedInterests].sort()) !==
-    JSON.stringify(
-      (interests ?? []).filter((t) => (TAGS as readonly string[]).includes(t)).sort()
-    );
-
-  const prefsChanged =
-    style !== (preferences?.preferred_explanation_style ?? "") ||
-    notes !== (preferences?.notes ?? "");
+  const saved = (what: string, key: string) => () => { toast.success(`${what} сохранены`); qc.invalidateQueries({ queryKey: [key] }); qc.invalidateQueries({ queryKey: ["me-recs"] }); };
+  const fail = (e: unknown) => toast.error(errorMessage(e));
+  const saveAbout = useMutation({ mutationFn: () => meApi.updateCharacteristic(about), onSuccess: saved("Сведения о себе", "me-profile"), onError: fail });
+  const saveTags = useMutation({ mutationFn: () => meApi.updateInterests(tags), onSuccess: saved("Интересы", "me-interests"), onError: fail });
+  const savePrefs = useMutation({ mutationFn: () => meApi.updatePreferences({ preferred_explanation_style: style, notes }), onSuccess: saved("Предпочтения", "me-prefs"), onError: fail });
 
   return (
-    <div className="max-w-2xl mx-auto space-y-8">
-      <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
-        <h1 className="text-4xl font-heading text-foreground">Профиль</h1>
-      </motion.div>
-
-      {/* Info card */}
-      <div className="p-6 rounded-2xl bg-card border border-border">
-        <div className="flex items-center gap-4 mb-6">
-          <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center">
-            <User className="w-8 h-8 text-primary" />
+      <div className="space-y-4">
+        <Panel title="Интересы" description="По ним подбираются рекомендованные курсы.">
+          <div className="flex flex-wrap gap-2">
+            {TAGS.map((t) => <Chip key={t} active={tags.includes(t)} onClick={() => setTags((x) => x.includes(t) ? x.filter((y) => y !== t) : [...x, t])}>{t}</Chip>)}
           </div>
-          <div>
-            <h2 className="text-xl font-heading text-foreground">
-              {profile?.first_name} {profile?.last_name}
-            </h2>
-            <p className="text-sm text-muted-foreground">@{profile?.login}</p>
+          <Button size="sm" className="mt-4" onClick={() => saveTags.mutate()} disabled={saveTags.isPending}>Сохранить интересы</Button>
+        </Panel>
+        <Panel title="О себе" description="Сравнивается с описаниями курсов по смыслу — это уточняет рекомендации.">
+          <Textarea rows={4} value={about} onChange={(e) => setAbout(e.target.value)} aria-label="О себе"
+            placeholder="Цели, опыт, что хотите изучить" />
+          <Button size="sm" className="mt-3" onClick={() => saveAbout.mutate()} disabled={saveAbout.isPending}>Сохранить</Button>
+        </Panel>
+        <Panel title="Как объяснять материал" description="Ассистент учитывает эти настройки во всех диалогах.">
+          <div className="space-y-3">
+            <div className="space-y-1.5"><Label htmlFor="st">Стиль объяснения</Label>
+              <Textarea id="st" rows={3} value={style} onChange={(e) => setStyle(e.target.value)} placeholder="Например: коротко, с примерами кода" /></div>
+            <div className="space-y-1.5"><Label htmlFor="nt">Заметки</Label>
+              <Textarea id="nt" rows={2} value={notes} onChange={(e) => setNotes(e.target.value)} placeholder="Например: лучше понимаю через аналогии" /></div>
           </div>
-        </div>
-        {profile?.characteristic && (
-          <div className="p-4 rounded-xl bg-surface border border-border">
-            <p className="text-sm text-muted-foreground mb-1">Характеристика</p>
-            <p className="text-foreground">{profile.characteristic}</p>
-          </div>
-        )}
+          <Button size="sm" className="mt-3" onClick={() => savePrefs.mutate()} disabled={savePrefs.isPending}>Сохранить предпочтения</Button>
+        </Panel>
       </div>
-
-      {/* Preferences */}
-      <div className="p-6 rounded-2xl bg-card border border-border">
-        <div className="flex items-center gap-2 mb-4">
-          <MessageSquare className="w-5 h-5 text-primary" />
-          <h2 className="text-xl font-heading text-foreground">
-            Предпочтения по объяснениям
-          </h2>
-        </div>
-        <p className="text-sm text-muted-foreground mb-4">
-          Укажите, как вам удобнее получать объяснения от AI-ассистента. Эти
-          настройки используются по умолчанию во всех чатах.
-        </p>
-        <div className="space-y-4">
-          <div>
-            <label className="text-sm font-medium text-foreground mb-1.5 block">
-              Стиль объяснения
-            </label>
-            <Textarea
-              value={style}
-              onChange={(e) => setStyle(e.target.value)}
-              placeholder="Например: объясняй просто, на пальцах, с примерами из жизни"
-              className="resize-none"
-              rows={3}
-            />
-          </div>
-          <div>
-            <label className="text-sm font-medium text-foreground mb-1.5 block">
-              Дополнительные заметки
-            </label>
-            <Textarea
-              value={notes}
-              onChange={(e) => setNotes(e.target.value)}
-              placeholder="Например: я лучше понимаю через аналогии, не люблю формулы"
-              className="resize-none"
-              rows={2}
-            />
-          </div>
-          {prefsChanged && (
-            <Button
-              onClick={() => updatePrefsMutation.mutate()}
-              disabled={updatePrefsMutation.isPending}
-              className="bg-primary hover:bg-primary/90"
-            >
-              {updatePrefsMutation.isPending ? "Сохранение..." : "Сохранить предпочтения"}
-            </Button>
-          )}
-        </div>
-      </div>
-
-      {/* Interests */}
-      <div className="p-6 rounded-2xl bg-card border border-border">
-        <div className="flex items-center gap-2 mb-4">
-          <Tag className="w-5 h-5 text-primary" />
-          <h2 className="text-xl font-heading text-foreground">Интересы</h2>
-        </div>
-        <p className="text-sm text-muted-foreground mb-4">
-          Выберите темы для персональных рекомендаций курсов
-        </p>
-        <div className="flex flex-wrap gap-2 mb-4">
-          {TAGS.map((tag) => (
-            <Badge
-              key={tag}
-              variant="outline"
-              className={cn(
-                "cursor-pointer transition-all text-sm py-1.5 px-3",
-                selectedInterests.includes(tag)
-                  ? "bg-primary/20 text-primary border-primary/40"
-                  : "border-border text-muted-foreground hover:border-primary/30"
-              )}
-              onClick={() => toggleInterest(tag)}
-            >
-              {tag}
-            </Badge>
-          ))}
-        </div>
-        {interestsChanged && (
-          <Button
-            onClick={() => updateInterestsMutation.mutate()}
-            disabled={updateInterestsMutation.isPending}
-            className="bg-primary hover:bg-primary/90"
-          >
-            {updateInterestsMutation.isPending ? "Сохранение..." : "Сохранить"}
-          </Button>
-        )}
-      </div>
-    </div>
   );
 }

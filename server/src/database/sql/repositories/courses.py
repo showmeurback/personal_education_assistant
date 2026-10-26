@@ -23,36 +23,73 @@ class CourseRepository:
 
     @postgre_connection(__config)
     def get_student_courses_detailed(self, student_id: int, curs: cursor = None) -> list[tuple]:
-        """Возвращает полные данные курсов студента со статусом завершения.
-        Каждый ряд: (id, title, description, difficulty, created_at, labs_completed, exam_completed)
+        """Курсы студента со статусом завершения.
+
+        Ряд: (id, title, description, difficulty, created_at, labs_completed, exam_completed).
+        Лаба считается сданной, если хотя бы один отчёт по ней одобрен преподавателем.
+        Ранее соединение labs×reports без DISTINCT давало неверный результат при
+        повторной сдаче отчётов.
         """
         query = """
             SELECT
-                c.id,
-                c.title,
-                c.description,
-                c.difficulty,
-                c.created_at::text,
-                CASE
-                    WHEN COUNT(l.id) = 0 THEN TRUE
-                    WHEN COUNT(r.id) FILTER (WHERE r.status = 'approved') = COUNT(l.id) THEN TRUE
-                    ELSE FALSE
-                END AS labs_completed,
+                c.id, c.title, c.description, c.difficulty, c.created_at::text,
+                (
+                    SELECT COUNT(*) = COUNT(*) FILTER (WHERE EXISTS (
+                        SELECT 1 FROM reports r
+                        WHERE r.lab_id = l.id AND r.student_id = %(sid)s AND r.status = 'approved'
+                    ))
+                    FROM labs l WHERE l.course_id = c.id
+                ) AS labs_completed,
                 EXISTS(
                     SELECT 1 FROM exam_results er
-                    WHERE er.student_id = %(sid)s
-                      AND er.course_id = c.id
-                      AND er.completed = TRUE
+                    WHERE er.student_id = %(sid)s AND er.course_id = c.id AND er.completed = TRUE
                 ) AS exam_completed
             FROM students_courses sc
             JOIN courses c ON c.id = sc.course_id
-            LEFT JOIN labs l ON l.course_id = c.id
-            LEFT JOIN reports r ON r.lab_id = l.id AND r.student_id = %(sid)s
             WHERE sc.student_id = %(sid)s
-            GROUP BY c.id, c.title, c.description, c.difficulty, c.created_at
             ORDER BY c.id
         """
         curs.execute(query, {"sid": student_id})
+        return curs.fetchall()
+
+    @postgre_connection(__config)
+    def get_owner(self, course_id: int, curs: cursor = None) -> int | None:
+        curs.execute("SELECT teacher_id FROM courses WHERE id = %s", (course_id,))
+        row = curs.fetchone()
+        return row[0] if row else None
+
+    @postgre_connection(__config)
+    def is_enrolled(self, student_id: int, course_id: int, curs: cursor = None) -> bool:
+        curs.execute(
+            "SELECT 1 FROM students_courses WHERE student_id = %s AND course_id = %s",
+            (student_id, course_id),
+        )
+        return curs.fetchone() is not None
+
+    @postgre_connection(__config)
+    def get_request_status(self, student_id: int, course_id: int, curs: cursor = None) -> str | None:
+        curs.execute(
+            "SELECT status FROM course_requests WHERE student_id = %s AND course_id = %s",
+            (student_id, course_id),
+        )
+        row = curs.fetchone()
+        return row[0] if row else None
+
+    @postgre_connection(__config)
+    def get_teacher_courses_detailed(self, teacher_id: int, curs: cursor = None) -> list[tuple]:
+        """(id, title, description, difficulty, created_at, students, pending_requests, pending_reports)"""
+        query = """
+            SELECT c.id, c.title, c.description, c.difficulty, c.created_at::text,
+                   (SELECT COUNT(*) FROM students_courses sc WHERE sc.course_id = c.id),
+                   (SELECT COUNT(*) FROM course_requests cr
+                     WHERE cr.course_id = c.id AND cr.status = 'pending'),
+                   (SELECT COUNT(*) FROM reports r JOIN labs l ON l.id = r.lab_id
+                     WHERE l.course_id = c.id AND r.status IN ('pending', 'manual-review'))
+            FROM courses c
+            WHERE c.teacher_id = %s
+            ORDER BY c.id DESC
+        """
+        curs.execute(query, (teacher_id,))
         return curs.fetchall()
 
     @postgre_connection(__config)

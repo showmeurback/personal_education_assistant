@@ -105,6 +105,13 @@ class ExamResultRepository:
         return curs.fetchall()
 
     @postgre_connection(__config)
+    def get_owner(self, exam_result_id: int, curs: cursor = None) -> tuple[int, int] | None:
+        """(student_id, course_id) результата экзамена."""
+        curs.execute("SELECT student_id, course_id FROM exam_results WHERE id = %s", (exam_result_id,))
+        row = curs.fetchone()
+        return (row[0], row[1]) if row else None
+
+    @postgre_connection(__config)
     def get_answers(self, exam_result_id: int, curs: cursor = None) -> list[tuple]:
         query = """
             SELECT question_id, question_text, user_answer, verdict,

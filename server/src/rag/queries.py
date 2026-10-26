@@ -32,9 +32,14 @@ def query_test_results(student_id: int, course_id: int) -> list[dict]:
     ]
 
 
-def query_test_mistakes(test_result_id: int) -> list[dict]:
-    """Только ошибочные ответы конкретного теста."""
-    rows = TestResultRepository().get_answers(test_result_id)
+def query_test_mistakes(test_result_id: int, student_id: int | None = None) -> list[dict]:
+    """Только ошибочные ответы конкретного теста (только если тест принадлежит студенту)."""
+    repo = TestResultRepository()
+    if student_id is not None:
+        owner = repo.get_owner(test_result_id)
+        if not owner or owner[0] != student_id:
+            return []
+    rows = repo.get_answers(test_result_id)
     mistakes = []
     for row in (rows or []):
         q_num, q_text, options, user_ans, correct_ans, is_correct = row
@@ -67,9 +72,14 @@ def query_exam_results(student_id: int, course_id: int) -> list[dict]:
     ]
 
 
-def query_exam_details(exam_result_id: int) -> list[dict]:
-    """Детали конкретного экзамена: вопросы, ответы, вердикты."""
-    rows = ExamResultRepository().get_answers(exam_result_id)
+def query_exam_details(exam_result_id: int, student_id: int | None = None) -> list[dict]:
+    """Детали конкретного экзамена: вопросы, ответы, вердикты (только своего)."""
+    repo = ExamResultRepository()
+    if student_id is not None:
+        owner = repo.get_owner(exam_result_id)
+        if not owner or owner[0] != student_id:
+            return []
+    rows = repo.get_answers(exam_result_id)
     return [
         {
             "question_id": row[0],
@@ -93,7 +103,8 @@ def query_progress(student_id: int, course_id: int) -> dict:
     exam_scores = [float(r[2]) for r in (exam_rows or []) if r[2] is not None]
 
     report_rows = ReportRepository().get_by_student_and_course(student_id, course_id)
-    statuses: dict[str, int] = {"approved": 0, "pending": 0, "not-approved": 0}
+    statuses: dict[str, int] = {"approved": 0, "pending": 0, "not-approved": 0,
+                                "ai-rejected": 0, "manual-review": 0}
     report_details = []
     for r in (report_rows or []):
         if r[4] in statuses:
@@ -131,8 +142,10 @@ def query_course_labs(course_id: int) -> list[dict]:
     ]
 
 
-def query_search_materials(storage_id: str, query: str, k: int = 5, alpha: float = 0.85) -> list[str]:
-    """Гибридный поиск по материалам курса. Возвращает список текстовых чанков."""
-    vector_storage = StorageManager.get_vector_storage(storage_id)
-    docs = vector_storage.hybrid_search(query, k=k, alpha=alpha)
-    return [doc.page_content for doc in (docs or [])]
+def query_search_materials(storage_id: str, query: str, k: int = 5, alpha: float = 0.75) -> list[dict]:
+    """Гибридный поиск по материалам курса. Возвращает фрагменты с указанием источника."""
+    store = StorageManager.get_vector_storage(storage_id)
+    return [
+        {"text": c.text, "filename": c.filename, "score": c.score}
+        for c in store.hybrid_search(query, k=k, alpha=alpha)
+    ]

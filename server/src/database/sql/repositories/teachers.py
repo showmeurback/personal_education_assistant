@@ -8,17 +8,15 @@ class TeacherRepository:
     __config = EducationDatabaseConfig()
 
     @postgre_connection(__config)
-    def auth(self, login: str, password: str, curs: cursor = None) -> int | None:
-        query = """
-            SELECT id
-            FROM teachers
-            WHERE login = %s
-            AND password = %s
-            """
-        curs.execute(query, (login, password))
+    def get_credentials(self, login: str, curs: cursor = None) -> tuple[int, str] | None:
+        """(id, хеш пароля) по логину."""
+        curs.execute("SELECT id, password FROM teachers WHERE login = %s", (login,))
         row = curs.fetchone()
-        teacher_id = row[0] if row else None
-        return teacher_id
+        return (row[0], row[1]) if row else None
+
+    @postgre_connection(__config)
+    def set_password_hash(self, user_id: int, password_hash: str, curs: cursor = None) -> None:
+        curs.execute("UPDATE teachers SET password = %s WHERE id = %s", (password_hash, user_id))
 
     @postgre_connection(__config)
     def is_login_already_used(self, login: str, curs: cursor = None) -> bool:
@@ -41,7 +39,6 @@ class TeacherRepository:
         last_name: str,
         curs: cursor = None,
     ) -> int:
-        # NEW FUNCTIONALITY: регистрация (создание) преподавателя
         query = """
             INSERT INTO teachers (login, password, first_name, last_name)
             VALUES (%s, %s, %s, %s)
@@ -52,7 +49,6 @@ class TeacherRepository:
 
     @postgre_connection(__config)
     def delete(self, teacher_id: int, curs: cursor = None) -> bool:
-        # NEW FUNCTIONALITY: удаление преподавателя
         query = """
             DELETE FROM teachers
             WHERE id = %s
@@ -63,7 +59,6 @@ class TeacherRepository:
 
     @postgre_connection(__config)
     def get_by_id(self, teacher_id: int, curs: cursor = None) -> tuple[int, str, str, str] | None:
-        # NEW FUNCTIONALITY: получение данных преподавателя
         query = """
             SELECT id, login, first_name, last_name
             FROM teachers
@@ -81,5 +76,7 @@ class TeacherRepository:
             WHERE id = %s
             """
         curs.execute(query, (teacher_id,))
-        first_name, last_name = curs.fetchone()
-        return first_name, last_name
+        row = curs.fetchone()
+        if row is None:
+            raise LookupError("user not found")
+        return row[0], row[1]

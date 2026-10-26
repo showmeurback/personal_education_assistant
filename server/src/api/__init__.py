@@ -1,16 +1,17 @@
 from .app import app
-from .endpoints import (
-    teachers,
-    students,
-    exam,
-    test_system,
-    verification,
+from .endpoints import (  # noqa: F401 — регистрация маршрутов
+    auth,
+    me,
+    teacher,
     courses,
     course_files,
-    course_requests,
     labs,
     reports,
+    tests,
+    exam,
     chat,
     results,
     recommendations,
+    system,
+    progress,
 )

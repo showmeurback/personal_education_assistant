@@ -1,2 +1,2 @@
-declare module "@fontsource-variable/dm-sans";
-declare module "@fontsource/instrument-serif";
+declare module "@fontsource-variable/unbounded";
+declare module "@fontsource-variable/golos-text";

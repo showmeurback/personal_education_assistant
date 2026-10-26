@@ -43,7 +43,7 @@ def make_exam_tools(student_id: int, course_id: int):
         """
         logger.debug(f"    → get_exam_details(exam_result_id={exam_result_id})")
         try:
-            details = query_exam_details(exam_result_id)
+            details = query_exam_details(exam_result_id, student_id)
             if not details:
                 logger.debug("    ← get_exam_details: не найдено")
                 return f"Детали экзамена ID {exam_result_id} не найдены."

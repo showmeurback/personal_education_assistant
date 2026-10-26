@@ -49,7 +49,14 @@ def _create_table_student_preferences(curs: cursor = None) -> None:
     curs.execute(query)
 
 
+@postgre_connection(_config)
+def _create_login_indexes(curs: cursor = None) -> None:
+    curs.execute("CREATE UNIQUE INDEX IF NOT EXISTS uq_teachers_login ON teachers (login)")
+    curs.execute("CREATE UNIQUE INDEX IF NOT EXISTS uq_students_login ON students (login)")
+
+
 def create_users_tables():
     _create_table_teachers()
     _create_table_students()
     _create_table_student_preferences()
+    _create_login_indexes()

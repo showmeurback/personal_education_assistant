@@ -1,0 +1,105 @@
+{
+  "model": "minimaxai/minimax-m3.1-flash",
+  "reports": 20,
+  "strict_r3_blocked_accepted": 1,
+  "duration_minutes": 65.4,
+  "modes": {
+    "symbolic": {
+      "metrics": {
+        "reports": 20,
+        "accuracy_auto": 0.5,
+        "coverage": 1.0,
+        "accuracy_strict": 0.5,
+        "accuracy_with_teacher": 0.5,
+        "precision_reject": 0.0,
+        "recall_reject": 0.0,
+        "f1_reject": 0.0,
+        "false_accept_rate": 1.0,
+        "false_reject_rate": 0.0,
+        "manual_rate": 0.0,
+        "llm_calls_total": 0,
+        "llm_calls_mean": 0,
+        "seconds_mean": 0.13,
+        "seconds_median": 0.04,
+        "decided_by": {
+          "symbolic": 20
+        },
+        "invalid_judgements": 0
+      },
+      "by_category": {
+        "real_ok": {
+          "approve": 10
+        },
+        "real_wrong_lab": {
+          "approve": 10
+        }
+      }
+    },
+    "neural": {
+      "metrics": {
+        "reports": 20,
+        "accuracy_auto": 0.9,
+        "coverage": 1.0,
+        "accuracy_strict": 0.9,
+        "accuracy_with_teacher": 0.9,
+        "precision_reject": 0.833,
+        "recall_reject": 1.0,
+        "f1_reject": 0.909,
+        "false_accept_rate": 0.0,
+        "false_reject_rate": 0.2,
+        "manual_rate": 0.0,
+        "llm_calls_total": 60,
+        "llm_calls_mean": 3,
+        "seconds_mean": 92.87,
+        "seconds_median": 38.72,
+        "decided_by": {
+          "judges": 20
+        },
+        "invalid_judgements": 1
+      },
+      "by_category": {
+        "real_ok": {
+          "approve": 8,
+          "reject": 2
+        },
+        "real_wrong_lab": {
+          "reject": 10
+        }
+      }
+    },
+    "hybrid": {
+      "metrics": {
+        "reports": 20,
+        "accuracy_auto": 0.938,
+        "coverage": 0.8,
+        "accuracy_strict": 0.75,
+        "accuracy_with_teacher": 0.95,
+        "precision_reject": 0.909,
+        "recall_reject": 1.0,
+        "f1_reject": 0.952,
+        "false_accept_rate": 0.0,
+        "false_reject_rate": 0.1,
+        "manual_rate": 0.2,
+        "llm_calls_total": 71,
+        "llm_calls_mean": 3.55,
+        "seconds_mean": 103.19,
+        "seconds_median": 56.07,
+        "decided_by": {
+          "judges": 20
+        },
+        "invalid_judgements": 0
+      },
+      "by_category": {
+        "real_ok": {
+          "manual_review": 4,
+          "approve": 5,
+          "reject": 1
+        },
+        "real_wrong_lab": {
+          "reject": 10
+        }
+      }
+    }
+  },
+  "agreement_neural_hybrid": 0.8
+}

@@ -1,47 +1,29 @@
-import { Outlet, Navigate } from "react-router-dom";
-import { useAuthStore } from "@/store/authStore";
+import { Navigate, Outlet } from "react-router-dom";
+import { useAuthStore, type UserRole } from "@/store/authStore";
 import { Sidebar } from "./Sidebar";
-import { Toaster } from "@/components/ui/sonner";
-import { TooltipProvider } from "@/components/ui/tooltip";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
-const queryClient = new QueryClient({
-  defaultOptions: { queries: { retry: 1, refetchOnWindowFocus: false } },
-});
-
-export function AppLayout() {
-  const { isAuthenticated, role } = useAuthStore();
-
+/** Каркас для авторизованного пользователя с проверкой роли. */
+export function AppLayout({ role }: { role: UserRole }) {
+  const { isAuthenticated, role: current } = useAuthStore();
   if (!isAuthenticated) return <Navigate to="/login" replace />;
+  if (current !== role) return <Navigate to={current === "teacher" ? "/teacher/dashboard" : "/student/dashboard"} replace />;
 
   return (
-    <QueryClientProvider client={queryClient}>
-      <TooltipProvider>
-        <div className="min-h-screen bg-background">
-          <Sidebar />
-          <main className="pl-60">
-            <div className="p-6 max-w-7xl mx-auto">
-              <Outlet />
-            </div>
-          </main>
+    <div className="min-h-screen bg-background">
+      <Sidebar />
+      <main className="lg:pl-64">
+        <div className="px-4 py-6 sm:px-8 sm:py-8 max-w-6xl mx-auto">
+          <Outlet />
         </div>
-        <Toaster richColors position="bottom-right" />
-      </TooltipProvider>
-    </QueryClientProvider>
+      </main>
+    </div>
   );
 }
 
 export function AuthLayout() {
   const { isAuthenticated, role } = useAuthStore();
-
   if (isAuthenticated) {
     return <Navigate to={role === "teacher" ? "/teacher/dashboard" : "/student/dashboard"} replace />;
   }
-
-  return (
-    <>
-      <Outlet />
-      <Toaster richColors position="bottom-right" />
-    </>
-  );
+  return <Outlet />;
 }

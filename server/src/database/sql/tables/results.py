@@ -89,8 +89,15 @@ def _create_table_exam_result_answers(curs: cursor = None) -> None:
     curs.execute(query)
 
 
+@postgre_connection(_config)
+def _alter_test_result_answers(curs: cursor = None) -> None:
+    # разбор ошибки: объяснение нейросетевого агента со ссылкой на материал курса
+    curs.execute("ALTER TABLE test_result_answers ADD COLUMN IF NOT EXISTS explanation TEXT")
+
+
 def create_results_tables():
     _create_table_test_results()
     _create_table_test_result_answers()
+    _alter_test_result_answers()
     _create_table_exam_results()
     _create_table_exam_result_answers()

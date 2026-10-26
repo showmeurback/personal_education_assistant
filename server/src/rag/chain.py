@@ -1,22 +1,13 @@
 import warnings
 warnings.filterwarnings("ignore", message=".*create_react_agent.*")
 from loguru import logger
-from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_core.messages import SystemMessage, HumanMessage, AIMessage, ToolMessage
 from langgraph.prebuilt import create_react_agent
 
-from settings import settings
+from llm.chat import _content_to_text, get_chat_model
 from rag.tools import make_agent_tools
 from database.sql.repositories.students import StudentRepository
 from database.sql.repositories.courses import CourseRepository
-
-
-def _get_llm():
-    return ChatGoogleGenerativeAI(
-        model=settings.model,
-        google_api_key=settings.api_key,
-        temperature=settings.temperature,
-    )
 
 
 def _build_system_prompt(student_name: str, course_title: str) -> str:
@@ -26,7 +17,8 @@ def _build_system_prompt(student_name: str, course_title: str) -> str:
 
 Правила поведения:
 - Всегда отвечай на русском языке.
-- Используй Markdown: заголовки, списки, **жирный** для ключевых терминов.
+- Используй Markdown: заголовки, списки, таблицы, **жирный** для ключевых терминов.
+- Формулы пиши обычным текстом (например, O(n log n), n^2), без LaTeX.
 - Будь дружелюбен и поддерживай студента.
 - Если для ответа нужны данные — вызывай инструменты сразу, не объясняя что собираешься делать.
 - НЕ придумывай ответы из головы — опирайся на материалы курса.
@@ -74,7 +66,22 @@ def _log_agent_trace(messages: list, history_len: int) -> None:
             step += 1
 
 
-def ask(storage_id: str, question: str, history: list, student_id: int, course_id: int, chat_id: int) -> str:
+TOOL_TITLES = {
+    "search_course_materials": "Поиск по материалам курса",
+    "get_my_test_results": "Результаты тестов",
+    "get_test_mistakes": "Ошибки в тесте",
+    "get_my_exam_results": "Результаты экзаменов",
+    "get_exam_details": "Разбор экзамена",
+    "get_my_progress": "Прогресс по курсу",
+    "get_course_labs": "Лабораторные работы",
+    "get_student_preferences": "Предпочтения студента",
+    "update_student_preferences": "Сохранение предпочтений",
+}
+
+
+def ask(storage_id: str, question: str, history: list, student_id: int, course_id: int,
+        chat_id: int) -> dict:
+    """Ответ RAG-агента. Возвращает текст ответа, использованные инструменты и источники."""
     try:
         first, last = StudentRepository().get_first_and_last_names(student_id)
         student_name = f"{first} {last}"
@@ -86,22 +93,25 @@ def ask(storage_id: str, question: str, history: list, student_id: int, course_i
     except Exception:
         course_title = "курс"
 
-    llm = _get_llm()
-    tools = make_agent_tools(student_id, course_id, storage_id, chat_id)
-    agent = create_react_agent(llm, tools)
+    sources: list[str] = []
+    tools = make_agent_tools(student_id, course_id, storage_id, chat_id, sources)
+    agent = create_react_agent(get_chat_model(), tools)
     system_prompt = _build_system_prompt(student_name, course_title)
     messages = [SystemMessage(content=system_prompt)] + list(history) + [HumanMessage(content=question)]
 
-    logger.info(f"▶ Agent | student={student_id} ({student_name}) course={course_id} ({course_title}) | '{question[:80]}'")
-    result = agent.invoke({"messages": messages})
-
+    logger.info(f"▶ Agent | student={student_id} course={course_id} | '{question[:80]}'")
+    result = agent.invoke({"messages": messages}, config={"recursion_limit": 16})
     _log_agent_trace(result["messages"], len(messages))
-    new_messages = result["messages"][len(messages):]
-    logger.info(f"◀ Agent завершил | новых шагов: {sum(1 for m in new_messages if isinstance(m, (AIMessage, ToolMessage)))}")
 
-    content = result["messages"][-1].content
-    logger.debug(f"  raw content type={type(content).__name__}, value={str(content)[:300]}")
-    if isinstance(content, list):
-        content = "".join(p.get("text", "") if isinstance(p, dict) else str(p) for p in content)
-        logger.debug(f"  content after list join: {len(content)} символов")
-    return content
+    tools_used: list[str] = []
+    for msg in result["messages"][len(messages):]:
+        if isinstance(msg, AIMessage) and msg.tool_calls:
+            for tc in msg.tool_calls:
+                title = TOOL_TITLES.get(tc["name"], tc["name"])
+                if title not in tools_used:
+                    tools_used.append(title)
+
+    content = _content_to_text(result["messages"][-1].content).strip()
+    if not content:
+        content = "Не удалось сформировать ответ. Попробуйте переформулировать вопрос."
+    return {"response": content, "tools": tools_used, "sources": sources}

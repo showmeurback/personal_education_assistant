@@ -10,24 +10,13 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  build: {
+    chunkSizeWarningLimit: 1600,
+  },
   server: {
     port: 5173,
     proxy: {
-      "/api": {
-        target: "http://localhost:8000",
-        changeOrigin: true,
-        secure: false,
-      },
-      "/teachers": {
-        target: "http://localhost:8000",
-        changeOrigin: true,
-        secure: false,
-      },
-      "/students": {
-        target: "http://localhost:8000",
-        changeOrigin: true,
-        secure: false,
-      },
+      "/api": { target: process.env.VITE_API_TARGET ?? "http://localhost:8000", changeOrigin: true },
     },
   },
 });

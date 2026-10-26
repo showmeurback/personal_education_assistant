@@ -1,0 +1,242 @@
+{
+  "model": "minimaxai/minimax-m3.1-flash",
+  "provider": "https://integrate.api.nvidia.com/v1",
+  "dataset_size": 45,
+  "categories": {
+    "original": 12,
+    "weak_ok": 6,
+    "copy_exact": 3,
+    "copy_light": 3,
+    "incomplete": 6,
+    "off_topic": 3,
+    "keywords": 3,
+    "injection": 3,
+    "too_short": 3,
+    "no_sections": 3
+  },
+  "duration_minutes": 28.1,
+  "shared_judgements": true,
+  "relabeled": [
+    18
+  ],
+  "modes": {
+    "symbolic": {
+      "metrics": {
+        "reports": 45,
+        "accuracy_auto": 0.733,
+        "coverage": 1.0,
+        "accuracy_strict": 0.733,
+        "accuracy_with_teacher": 0.733,
+        "precision_reject": 1.0,
+        "recall_reject": 0.571,
+        "f1_reject": 0.727,
+        "false_accept_rate": 0.429,
+        "false_reject_rate": 0.0,
+        "manual_rate": 0.0,
+        "llm_calls_total": 0,
+        "llm_calls_mean": 0,
+        "seconds_mean": 0.04,
+        "seconds_median": 0.02,
+        "decided_by": {
+          "symbolic": 32,
+          "simhash": 6,
+          "rules": 7
+        },
+        "invalid_judgements": 0
+      },
+      "by_category": {
+        "original": {
+          "approve": 11,
+          "reject": 1
+        },
+        "weak_ok": {
+          "approve": 6
+        },
+        "copy_exact": {
+          "reject": 3
+        },
+        "copy_light": {
+          "reject": 3
+        },
+        "incomplete": {
+          "approve": 6
+        },
+        "off_topic": {
+          "reject": 3
+        },
+        "keywords": {
+          "approve": 3
+        },
+        "injection": {
+          "approve": 3
+        },
+        "too_short": {
+          "reject": 3
+        },
+        "no_sections": {
+          "reject": 3
+        }
+      }
+    },
+    "neural": {
+      "metrics": {
+        "reports": 45,
+        "accuracy_auto": 0.8,
+        "coverage": 1.0,
+        "accuracy_strict": 0.8,
+        "accuracy_with_teacher": 0.8,
+        "precision_reject": 1.0,
+        "recall_reject": 0.679,
+        "f1_reject": 0.809,
+        "false_accept_rate": 0.321,
+        "false_reject_rate": 0.0,
+        "manual_rate": 0.0,
+        "llm_calls_total": 135,
+        "llm_calls_mean": 3,
+        "seconds_mean": 47.65,
+        "seconds_median": 33.92,
+        "decided_by": {
+          "judges": 45
+        },
+        "invalid_judgements": 1
+      },
+      "by_category": {
+        "original": {
+          "approve": 11,
+          "reject": 1
+        },
+        "weak_ok": {
+          "approve": 6
+        },
+        "copy_exact": {
+          "approve": 3
+        },
+        "copy_light": {
+          "approve": 3
+        },
+        "incomplete": {
+          "reject": 6
+        },
+        "off_topic": {
+          "reject": 3
+        },
+        "keywords": {
+          "reject": 3
+        },
+        "injection": {
+          "reject": 3
+        },
+        "too_short": {
+          "reject": 3
+        },
+        "no_sections": {
+          "approve": 3
+        }
+      },
+      "reproducibility": 1.0,
+      "metrics_repeat2": {
+        "reports": 45,
+        "accuracy_auto": 0.8,
+        "coverage": 1.0,
+        "accuracy_strict": 0.8,
+        "accuracy_with_teacher": 0.8,
+        "precision_reject": 1.0,
+        "recall_reject": 0.679,
+        "f1_reject": 0.809,
+        "false_accept_rate": 0.321,
+        "false_reject_rate": 0.0,
+        "manual_rate": 0.0,
+        "llm_calls_total": 135,
+        "llm_calls_mean": 3,
+        "seconds_mean": 39.04,
+        "seconds_median": 30.66,
+        "decided_by": {
+          "judges": 45
+        },
+        "invalid_judgements": 1
+      }
+    },
+    "hybrid": {
+      "metrics": {
+        "reports": 45,
+        "accuracy_auto": 1.0,
+        "coverage": 1.0,
+        "accuracy_strict": 1.0,
+        "accuracy_with_teacher": 1.0,
+        "precision_reject": 1.0,
+        "recall_reject": 1.0,
+        "f1_reject": 1.0,
+        "false_accept_rate": 0.0,
+        "false_reject_rate": 0.0,
+        "manual_rate": 0.0,
+        "llm_calls_total": 111,
+        "llm_calls_mean": 2.47,
+        "seconds_mean": 39.97,
+        "seconds_median": 31.35,
+        "decided_by": {
+          "judges": 32,
+          "simhash": 6,
+          "rules": 7
+        },
+        "invalid_judgements": 0
+      },
+      "by_category": {
+        "original": {
+          "approve": 11,
+          "reject": 1
+        },
+        "weak_ok": {
+          "approve": 6
+        },
+        "copy_exact": {
+          "reject": 3
+        },
+        "copy_light": {
+          "reject": 3
+        },
+        "incomplete": {
+          "reject": 6
+        },
+        "off_topic": {
+          "reject": 3
+        },
+        "keywords": {
+          "reject": 3
+        },
+        "injection": {
+          "reject": 3
+        },
+        "too_short": {
+          "reject": 3
+        },
+        "no_sections": {
+          "reject": 3
+        }
+      },
+      "reproducibility": 1.0,
+      "metrics_repeat2": {
+        "reports": 45,
+        "accuracy_auto": 1.0,
+        "coverage": 1.0,
+        "accuracy_strict": 1.0,
+        "accuracy_with_teacher": 1.0,
+        "precision_reject": 1.0,
+        "recall_reject": 1.0,
+        "f1_reject": 1.0,
+        "false_accept_rate": 0.0,
+        "false_reject_rate": 0.0,
+        "manual_rate": 0.0,
+        "llm_calls_total": 111,
+        "llm_calls_mean": 2.47,
+        "seconds_mean": 37.53,
+        "seconds_median": 28.36,
+        "decided_by": {
+          "judges": 32,
+          "simhash": 6,
+          "rules": 7
+        },
+        "invalid_judgements": 1
+      }
+    }
+  }
+}

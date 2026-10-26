@@ -6,12 +6,14 @@ Seed-скрипт для заполнения БД тестовыми данны
 
 Удаляет существующие seed-данные (teacher1, teacher2, student1..student10)
 и создаёт новые. Данные, созданные вне seed-скрипта, не затрагиваются.
-Пароли хранятся plaintext — как и в остальных эндпоинтах.
+Пароли хешируются (PBKDF2-SHA256), логин = пароль (teacher1/teacher1, student1/student1).
 """
 
 import os
 import json
 import psycopg2
+
+from auth.security import hash_password
 
 conn = psycopg2.connect(
     host=os.environ["EDUCATION_DATABASE_HOST"],
@@ -50,13 +52,13 @@ print("Очистка завершена.\n")
 # ── Преподаватели ──────────────────────────────────────────────────────────────
 cur.execute(
     "INSERT INTO teachers (login, password, first_name, last_name) VALUES (%s,%s,%s,%s) RETURNING id",
-    ("teacher1", "teacher1", "Алексей", "Соколов"),
+    ("teacher1", hash_password("teacher1"), "Алексей", "Соколов"),
 )
 t1 = cur.fetchone()[0]
 
 cur.execute(
     "INSERT INTO teachers (login, password, first_name, last_name) VALUES (%s,%s,%s,%s) RETURNING id",
-    ("teacher2", "teacher2", "Марина", "Белова"),
+    ("teacher2", hash_password("teacher2"), "Марина", "Белова"),
 )
 t2 = cur.fetchone()[0]
 print(f"Преподаватели: teacher1 ID={t1} (Соколов), teacher2 ID={t2} (Белова)")
@@ -99,7 +101,7 @@ for login, password, first_name, last_name, characteristic in students_data:
     cur.execute(
         "INSERT INTO students (login, password, first_name, last_name, characteristic) "
         "VALUES (%s,%s,%s,%s,%s) RETURNING id",
-        (login, password, first_name, last_name, characteristic),
+        (login, hash_password(password), first_name, last_name, characteristic),
     )
     student_ids.append(cur.fetchone()[0])
 

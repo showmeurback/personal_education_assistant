@@ -1,127 +1,74 @@
 import { useQuery } from "@tanstack/react-query";
-import { useAuthStore } from "@/store/authStore";
-import { testsApi } from "@/api/tests";
-import { examApi } from "@/api/exam";
-import { reportsApi } from "@/api/reports";
-import { Badge } from "@/components/ui/badge";
-import { REPORT_STATUS_MAP } from "@/utils/constants";
-import { ClipboardCheck, GraduationCap, FileText, TrendingUp } from "lucide-react";
-import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
+import { meApi } from "@/api";
+import { PageHeader, Panel, StatTile, StatusBadge } from "@/components/common";
+import { formatDate } from "@/utils/constants";
 
 export default function Progress() {
-  const { id } = useAuthStore();
+  const tests = useQuery({ queryKey: ["me-tests"], queryFn: () => meApi.testResults() });
+  const exams = useQuery({ queryKey: ["me-exams"], queryFn: () => meApi.examResults() });
+  const reports = useQuery({ queryKey: ["me-reports"], queryFn: meApi.reports });
+  const courses = useQuery({ queryKey: ["me-courses"], queryFn: meApi.courses });
+  const title = (id: number) => courses.data?.find((c) => c.id === id)?.title ?? `Курс ${id}`;
 
-  const { data: testResults } = useQuery({
-    queryKey: ["student-tests", id],
-    queryFn: () => testsApi.getStudentResults(id!),
-    enabled: !!id,
-  });
-
-  const { data: examResults } = useQuery({
-    queryKey: ["student-exams", id],
-    queryFn: () => examApi.getStudentResults(id!),
-    enabled: !!id,
-  });
-
-  const { data: reports } = useQuery({
-    queryKey: ["student-reports", id],
-    queryFn: () => reportsApi.getStudentReports(id!),
-    enabled: !!id,
-  });
-
-  const avgTest = testResults?.length
-    ? Math.round(testResults.reduce((s, t) => s + t.percentage, 0) / testResults.length)
-    : 0;
-  const avgExam = examResults?.length
-    ? (examResults.reduce((s, e) => s + (e.avg_score ?? 0), 0) / examResults.length).toFixed(1)
-    : "0";
+  const t = tests.data ?? [];
+  const e = exams.data ?? [];
+  const avgT = t.length ? Math.round(t.reduce((s, x) => s + x.percentage, 0) / t.length) : null;
+  const scored = e.filter((x) => x.avg_score != null);
+  const avgE = scored.length ? Math.round(scored.reduce((s, x) => s + (x.avg_score ?? 0), 0) / scored.length) : null;
 
   return (
-    <div className="space-y-8">
-      <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
-        <h1 className="text-4xl font-heading text-foreground">Мой прогресс</h1>
-        <p className="text-muted-foreground mt-1">История результатов</p>
-      </motion.div>
-
-      {/* Quick stats */}
-      <div className="grid grid-cols-1 sm:grid-cols-4 gap-4">
-        {[
-          { icon: ClipboardCheck, label: "Тестов", value: testResults?.length ?? 0, color: "text-violet-400 bg-violet-500/15" },
-          { icon: TrendingUp, label: "Средний %", value: `${avgTest}%`, color: "text-emerald-400 bg-emerald-500/15" },
-          { icon: GraduationCap, label: "Экзаменов", value: examResults?.length ?? 0, color: "text-amber-400 bg-amber-500/15" },
-          { icon: FileText, label: "Отчётов", value: reports?.length ?? 0, color: "text-blue-400 bg-blue-500/15" },
-        ].map((s) => (
-          <div key={s.label} className="p-5 rounded-2xl bg-card border border-border">
-            <div className={`w-10 h-10 rounded-xl ${s.color} flex items-center justify-center mb-3`}>
-              <s.icon className="w-5 h-5" />
-            </div>
-            <p className="text-2xl font-heading text-foreground">{s.value}</p>
-            <p className="text-sm text-muted-foreground mt-1">{s.label}</p>
-          </div>
-        ))}
+    <div>
+      <PageHeader title="Успеваемость" description="Результаты тестов, экзаменов и статус отчётов по всем курсам." />
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-8">
+        <StatTile label="Тестов" value={t.length} />
+        <StatTile label="Средний результат тестов" value={avgT == null ? "—" : `${avgT}%`} tone="primary" />
+        <StatTile label="Экзаменов" value={e.length} />
+        <StatTile label="Средний балл экзаменов" value={avgE == null ? "—" : `${avgE} / 100`} tone="primary" />
       </div>
-
-      {/* Tests */}
-      <section>
-        <h2 className="text-2xl font-heading text-foreground mb-4">Тесты</h2>
-        {testResults?.length === 0 && <p className="text-muted-foreground">Тестов ещё не было</p>}
-        <div className="space-y-2">
-          {testResults?.map((t, i) => (
-            <motion.div key={t.id} initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: i * 0.03 }}
-              className="flex items-center gap-4 p-4 rounded-xl bg-card border border-border">
-              <div className={`w-12 h-12 rounded-xl flex items-center justify-center font-heading text-lg ${t.percentage >= 70 ? "bg-emerald-500/15 text-emerald-400" : "bg-rose-500/15 text-rose-400"}`}>
-                {t.percentage}%
-              </div>
-              <div className="flex-1 min-w-0">
-                <p className="text-sm font-medium text-foreground">{t.topic}</p>
-                <p className="text-xs text-muted-foreground">{new Date(t.created_at).toLocaleDateString("ru")}</p>
-              </div>
-              <span className="text-sm text-muted-foreground">{t.correct_answers}/{t.total_questions}</span>
-            </motion.div>
-          ))}
-        </div>
-      </section>
-
-      {/* Exams */}
-      <section>
-        <h2 className="text-2xl font-heading text-foreground mb-4">Экзамены</h2>
-        {examResults?.length === 0 && <p className="text-muted-foreground">Экзаменов ещё не было</p>}
-        <div className="space-y-2">
-          {examResults?.map((e, i) => (
-            <motion.div key={e.id} initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: i * 0.03 }}
-              className="flex items-center gap-4 p-4 rounded-xl bg-card border border-border">
-              <div className={`w-12 h-12 rounded-xl flex items-center justify-center font-heading text-lg ${(e.avg_score ?? 0) >= 7 ? "bg-emerald-500/15 text-emerald-400" : (e.avg_score ?? 0) >= 4 ? "bg-amber-500/15 text-amber-400" : "bg-rose-500/15 text-rose-400"}`}>
-                {e.avg_score != null ? e.avg_score.toFixed(1) : "—"}
-              </div>
-              <div className="flex-1">
-                <p className="text-sm font-medium text-foreground">Экзамен ({e.total_questions} вопросов)</p>
-                <p className="text-xs text-muted-foreground">{new Date(e.created_at).toLocaleDateString("ru")}</p>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-      </section>
-
-      {/* Reports */}
-      <section>
-        <h2 className="text-2xl font-heading text-foreground mb-4">Отчёты</h2>
-        {reports?.length === 0 && <p className="text-muted-foreground">Отчётов ещё не было</p>}
-        <div className="space-y-2">
-          {reports?.map((r) => {
-            const st = REPORT_STATUS_MAP[r.status ?? "pending"] ?? REPORT_STATUS_MAP.pending;
-            return (
-              <div key={r.report_id} className="flex items-center gap-4 p-4 rounded-xl bg-card border border-border">
-                <FileText className="w-5 h-5 text-muted-foreground shrink-0" />
-                <div className="flex-1 min-w-0">
-                  <p className="text-sm font-medium text-foreground">{r.course_title} — {r.lab_title}</p>
-                  <a href={r.url} target="_blank" rel="noreferrer" className="text-xs text-primary hover:underline truncate block">{r.url}</a>
-                </div>
-                <Badge className={st.color}>{st.label}</Badge>
-              </div>
-            );
-          })}
-        </div>
-      </section>
+      <div className="grid lg:grid-cols-2 gap-4">
+        <Panel title="Тесты">
+          {t.length ? (
+            <table className="w-full text-sm">
+              <thead><tr className="text-left text-xs text-muted-foreground"><th className="pb-2 font-normal">Тема</th><th className="pb-2 font-normal">Результат</th><th className="pb-2 font-normal">Дата</th></tr></thead>
+              <tbody>{t.map((x) => (
+                <tr key={x.id} className="border-t border-border">
+                  <td className="py-2 pr-3 text-foreground">{x.topic ?? "—"}<span className="block text-xs text-muted-foreground">{title(x.course_id)}</span></td>
+                  <td className={`py-2 pr-3 ${x.percentage >= 70 ? "text-success" : x.percentage >= 50 ? "text-warning" : "text-destructive"}`}>{Math.round(x.percentage)}%</td>
+                  <td className="py-2 text-muted-foreground">{formatDate(x.created_at)}</td>
+                </tr>))}</tbody>
+            </table>
+          ) : <p className="text-sm text-muted-foreground">Тестов ещё не было.</p>}
+        </Panel>
+        <Panel title="Экзамены">
+          {e.length ? (
+            <table className="w-full text-sm">
+              <thead><tr className="text-left text-xs text-muted-foreground"><th className="pb-2 font-normal">Курс</th><th className="pb-2 font-normal">Балл</th><th className="pb-2 font-normal">Дата</th></tr></thead>
+              <tbody>{e.map((x) => (
+                <tr key={x.id} className="border-t border-border">
+                  <td className="py-2 pr-3 text-foreground">{title(x.course_id)}</td>
+                  <td className={`py-2 pr-3 ${(x.avg_score ?? 0) >= 75 ? "text-success" : (x.avg_score ?? 0) >= 35 ? "text-warning" : "text-destructive"}`}>{x.avg_score == null ? "—" : `${Math.round(x.avg_score)} / 100`}</td>
+                  <td className="py-2 text-muted-foreground">{formatDate(x.created_at)}</td>
+                </tr>))}</tbody>
+            </table>
+          ) : <p className="text-sm text-muted-foreground">Экзаменов ещё не было.</p>}
+        </Panel>
+        <Panel title="Отчёты по лабораторным" className="lg:col-span-2">
+          {reports.data?.length ? (
+            <ul className="divide-y divide-border">
+              {reports.data.map((r) => (
+                <li key={r.report_id} className="py-2.5 flex flex-wrap items-center gap-3">
+                  <Link to={`/student/courses/${r.course_id}/labs/${r.lab_id}`} className="flex-1 min-w-0 text-sm text-foreground hover:text-primary">
+                    {r.course_title}: лабораторная {r.lab_number} «{r.lab_title}»
+                    <span className="block text-xs text-muted-foreground">{formatDate(r.created_at)}</span>
+                  </Link>
+                  <StatusBadge status={r.status} />
+                </li>
+              ))}
+            </ul>
+          ) : <p className="text-sm text-muted-foreground">Отчётов ещё не было.</p>}
+        </Panel>
+      </div>
     </div>
   );
 }

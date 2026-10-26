@@ -2,36 +2,54 @@ import { create } from "zustand";
 
 export type UserRole = "student" | "teacher";
 
+export interface Session {
+  token: string;
+  role: UserRole;
+  id: number;
+  name: string;
+}
+
 interface AuthState {
+  token: string | null;
   role: UserRole | null;
   id: number | null;
   name: string;
   isAuthenticated: boolean;
-  login: (role: UserRole, id: number, name: string) => void;
+  login: (session: Session) => void;
   logout: () => void;
 }
 
-function loadFromStorage(): Pick<AuthState, "role" | "id" | "name" | "isAuthenticated"> {
+const STORAGE_KEY = "pea-session";
+
+function load(): Pick<AuthState, "token" | "role" | "id" | "name" | "isAuthenticated"> {
   try {
-    const raw = localStorage.getItem("auth");
+    const raw = localStorage.getItem(STORAGE_KEY);
     if (raw) {
-      const data = JSON.parse(raw);
-      return { role: data.role, id: data.id, name: data.name, isAuthenticated: true };
+      const s = JSON.parse(raw) as Session;
+      if (s.token) return { token: s.token, role: s.role, id: s.id, name: s.name, isAuthenticated: true };
     }
   } catch {
-    /* empty */
+    /* хранилище недоступно — начинаем без сессии */
   }
-  return { role: null, id: null, name: "", isAuthenticated: false };
+  return { token: null, role: null, id: null, name: "", isAuthenticated: false };
 }
 
 export const useAuthStore = create<AuthState>((set) => ({
-  ...loadFromStorage(),
-  login: (role, id, name) => {
-    localStorage.setItem("auth", JSON.stringify({ role, id, name }));
-    set({ role, id, name, isAuthenticated: true });
+  ...load(),
+  login: (session) => {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(session));
+    } catch {
+      /* ignore */
+    }
+    set({ ...session, isAuthenticated: true });
   },
   logout: () => {
-    localStorage.removeItem("auth");
-    set({ role: null, id: null, name: "", isAuthenticated: false });
+    try {
+      localStorage.removeItem(STORAGE_KEY);
+    } catch {
+      /* ignore */
+    }
+    set({ token: null, role: null, id: null, name: "", isAuthenticated: false });
   },
 }));

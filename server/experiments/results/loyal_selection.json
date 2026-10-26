@@ -1,0 +1,222 @@
+{
+ "nvidia/nemotron-3.5-lightning-30b-a3b@nothink": {
+  "acc": 18,
+  "n": 26,
+  "by": {
+   "own": [
+    10,
+    10,
+    0
+   ],
+   "wrong": [
+    10,
+    8,
+    0
+   ],
+   "inject": [
+    6,
+    0,
+    0
+   ]
+  },
+  "median_s": 5.7
+ },
+ "openai/gpt-oss-20b": {
+  "acc": 25,
+  "n": 26,
+  "by": {
+   "own": [
+    10,
+    9,
+    0
+   ],
+   "wrong": [
+    10,
+    10,
+    0
+   ],
+   "inject": [
+    6,
+    6,
+    0
+   ]
+  },
+  "median_s": 27.9
+ },
+ "nvidia/nemotron-3-ultra-550b-a55b@nothink": {
+  "acc": 25,
+  "n": 26,
+  "by": {
+   "own": [
+    10,
+    9,
+    0
+   ],
+   "wrong": [
+    10,
+    10,
+    0
+   ],
+   "inject": [
+    6,
+    6,
+    0
+   ]
+  },
+  "median_s": 6.9
+ },
+ "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning": {
+  "acc": 17,
+  "n": 26,
+  "by": {
+   "own": [
+    10,
+    6,
+    3
+   ],
+   "wrong": [
+    10,
+    6,
+    3
+   ],
+   "inject": [
+    6,
+    5,
+    1
+   ]
+  },
+  "median_s": 15.3
+ },
+ "z-ai/glm-5.3": {
+  "acc": 25,
+  "n": 26,
+  "by": {
+   "own": [
+    10,
+    9,
+    0
+   ],
+   "wrong": [
+    10,
+    10,
+    0
+   ],
+   "inject": [
+    6,
+    6,
+    0
+   ]
+  },
+  "median_s": 47.3
+ },
+ "nvidia/nemotron-3.5-bolt-e4b": {
+  "acc": 23,
+  "n": 26,
+  "by": {
+   "own": [
+    10,
+    10,
+    0
+   ],
+   "wrong": [
+    10,
+    9,
+    0
+   ],
+   "inject": [
+    6,
+    4,
+    0
+   ]
+  },
+  "median_s": 6.1
+ },
+ "nvidia/nemotron-3.5-lightning-30b-a3b": {
+  "acc": 23,
+  "n": 26,
+  "by": {
+   "own": [
+    10,
+    9,
+    0
+   ],
+   "wrong": [
+    10,
+    9,
+    1
+   ],
+   "inject": [
+    6,
+    5,
+    0
+   ]
+  },
+  "median_s": 38.0
+ },
+ "minimaxai/minimax-m3.1-flash": {
+  "acc": 24,
+  "n": 26,
+  "by": {
+   "own": [
+    10,
+    8,
+    0
+   ],
+   "wrong": [
+    10,
+    10,
+    0
+   ],
+   "inject": [
+    6,
+    6,
+    0
+   ]
+  },
+  "median_s": 29.1
+ },
+ "z-ai/glm-5.3@nothink": {
+  "acc": 25,
+  "n": 26,
+  "by": {
+   "own": [
+    10,
+    9,
+    1
+   ],
+   "wrong": [
+    10,
+    10,
+    0
+   ],
+   "inject": [
+    6,
+    6,
+    0
+   ]
+  },
+  "median_s": 70.8
+ },
+ "minimaxai/minimax-m3.1-flash@nothink": {
+  "acc": 24,
+  "n": 26,
+  "by": {
+   "own": [
+    10,
+    8,
+    1
+   ],
+   "wrong": [
+    10,
+    10,
+    0
+   ],
+   "inject": [
+    6,
+    6,
+    0
+   ]
+  },
+  "median_s": 31.4
+ }
+}

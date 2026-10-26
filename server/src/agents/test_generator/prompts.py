@@ -3,7 +3,8 @@ class TestGenerationPrompts:
     # Легкий уровень сложности
     @staticmethod
     def get_prompt_easy(material: str, num_questions: int) -> str:
-        return f"""Ты генератор тестов. На основе материала создай {num_questions} вопросов с 4 вариантами ответов.
+        return f"""[TASK:TEST_GEN] <count>{num_questions}</count>
+Ты генератор тестов. На основе материала создай {num_questions} вопросов с 4 вариантами ответов.
 
 Уровень: ЛЕГКИЙ (проверяет запоминание фактов и определений)
 
@@ -42,7 +43,8 @@ D) Вариант 4
     # Средний уровень сложности
     @staticmethod
     def get_prompt_medium(material: str, num_questions: int) -> str:
-        return f"""Ты генератор тестов. На основе материала создай {num_questions} вопросов с 4 вариантами ответов.
+        return f"""[TASK:TEST_GEN] <count>{num_questions}</count>
+Ты генератор тестов. На основе материала создай {num_questions} вопросов с 4 вариантами ответов.
 
 Уровень: СРЕДНИЙ (проверяет понимание концепций и связей)
 
@@ -73,7 +75,8 @@ D) Вариант 4
     # Сложный уровень сложности
     @staticmethod
     def get_prompt_hard(material: str, num_questions: int) -> str:
-        return f"""Ты генератор тестов. На основе материала создай {num_questions} вопросов с 4 вариантами ответов.
+        return f"""[TASK:TEST_GEN] <count>{num_questions}</count>
+Ты генератор тестов. На основе материала создай {num_questions} вопросов с 4 вариантами ответов.
 
 Уровень: СЛОЖНЫЙ (проверяет анализ, синтез и критическое мышление)
 

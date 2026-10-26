@@ -22,3 +22,6 @@ def create_labs_table(curs: cursor = None) -> None:
         )
     """
     curs.execute(query)
+    # Формальные требования к отчёту — исходные данные для продукционных правил
+    curs.execute("ALTER TABLE labs ADD COLUMN IF NOT EXISTS min_words INT")
+    curs.execute("ALTER TABLE labs ADD COLUMN IF NOT EXISTS required_sections TEXT")

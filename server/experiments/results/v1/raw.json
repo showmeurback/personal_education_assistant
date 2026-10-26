@@ -1,0 +1,6990 @@
+[
+ {
+  "mode": "symbolic",
+  "repeat": 1,
+  "id": 1,
+  "lab": 1,
+  "category": "original",
+  "expected": "approve",
+  "decision": "approve",
+  "decided_by": "symbolic",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 0,
+  "seconds": 0.7,
+  "reason": "Формальные проверки пройдены",
+  "judges": []
+ },
+ {
+  "mode": "symbolic",
+  "repeat": 1,
+  "id": 2,
+  "lab": 1,
+  "category": "original",
+  "expected": "approve",
+  "decision": "approve",
+  "decided_by": "symbolic",
+  "score": null,
+  "similarity": 0.5,
+  "llm_calls": 0,
+  "seconds": 0.11,
+  "reason": "Формальные проверки пройдены",
+  "judges": []
+ },
+ {
+  "mode": "symbolic",
+  "repeat": 1,
+  "id": 3,
+  "lab": 1,
+  "category": "original",
+  "expected": "approve",
+  "decision": "approve",
+  "decided_by": "symbolic",
+  "score": null,
+  "similarity": 0.625,
+  "llm_calls": 0,
+  "seconds": 0.08,
+  "reason": "Формальные проверки пройдены",
+  "judges": []
+ },
+ {
+  "mode": "symbolic",
+  "repeat": 1,
+  "id": 4,
+  "lab": 1,
+  "category": "original",
+  "expected": "approve",
+  "decision": "approve",
+  "decided_by": "symbolic",
+  "score": null,
+  "similarity": 0.609,
+  "llm_calls": 0,
+  "seconds": 0.03,
+  "reason": "Формальные проверки пройдены",
+  "judges": []
+ },
+ {
+  "mode": "symbolic",
+  "repeat": 1,
+  "id": 5,
+  "lab": 1,
+  "category": "weak_ok",
+  "expected": "approve",
+  "decision": "approve",
+  "decided_by": "symbolic",
+  "score": null,
+  "similarity": 0.562,
+  "llm_calls": 0,
+  "seconds": 0.02,
+  "reason": "Формальные проверки пройдены",
+  "judges": []
+ },
+ {
+  "mode": "symbolic",
+  "repeat": 1,
+  "id": 6,
+  "lab": 1,
+  "category": "weak_ok",
+  "expected": "approve",
+  "decision": "approve",
+  "decided_by": "symbolic",
+  "score": null,
+  "similarity": 0.562,
+  "llm_calls": 0,
+  "seconds": 0.02,
+  "reason": "Формальные проверки пройдены",
+  "judges": []
+ },
+ {
+  "mode": "symbolic",
+  "repeat": 1,
+  "id": 7,
+  "lab": 1,
+  "category": "copy_exact",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "simhash",
+  "score": null,
+  "similarity": 1.0,
+  "llm_calls": 0,
+  "seconds": 0.01,
+  "reason": "Сходство с другим отчётом 100%",
+  "judges": []
+ },
+ {
+  "mode": "symbolic",
+  "repeat": 1,
+  "id": 8,
+  "lab": 1,
+  "category": "copy_light",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "simhash",
+  "score": null,
+  "similarity": 0.859,
+  "llm_calls": 0,
+  "seconds": 0.02,
+  "reason": "Сходство с другим отчётом 86%",
+  "judges": []
+ },
+ {
+  "mode": "symbolic",
+  "repeat": 1,
+  "id": 9,
+  "lab": 1,
+  "category": "incomplete",
+  "expected": "reject",
+  "decision": "approve",
+  "decided_by": "symbolic",
+  "score": null,
+  "similarity": 0.547,
+  "llm_calls": 0,
+  "seconds": 0.03,
+  "reason": "Формальные проверки пройдены",
+  "judges": []
+ },
+ {
+  "mode": "symbolic",
+  "repeat": 1,
+  "id": 10,
+  "lab": 1,
+  "category": "incomplete",
+  "expected": "reject",
+  "decision": "approve",
+  "decided_by": "symbolic",
+  "score": null,
+  "similarity": 0.531,
+  "llm_calls": 0,
+  "seconds": 0.03,
+  "reason": "Формальные проверки пройдены",
+  "judges": []
+ },
+ {
+  "mode": "symbolic",
+  "repeat": 1,
+  "id": 11,
+  "lab": 1,
+  "category": "off_topic",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "symbolic",
+  "score": null,
+  "similarity": 0.516,
+  "llm_calls": 0,
+  "seconds": 0.03,
+  "reason": "Правило R6: отчёт не по теме",
+  "judges": []
+ },
+ {
+  "mode": "symbolic",
+  "repeat": 1,
+  "id": 12,
+  "lab": 1,
+  "category": "keywords",
+  "expected": "reject",
+  "decision": "approve",
+  "decided_by": "symbolic",
+  "score": null,
+  "similarity": 0.672,
+  "llm_calls": 0,
+  "seconds": 0.02,
+  "reason": "Формальные проверки пройдены",
+  "judges": []
+ },
+ {
+  "mode": "symbolic",
+  "repeat": 1,
+  "id": 13,
+  "lab": 1,
+  "category": "injection",
+  "expected": "reject",
+  "decision": "approve",
+  "decided_by": "symbolic",
+  "score": null,
+  "similarity": 0.562,
+  "llm_calls": 0,
+  "seconds": 0.03,
+  "reason": "Формальные проверки пройдены",
+  "judges": []
+ },
+ {
+  "mode": "symbolic",
+  "repeat": 1,
+  "id": 14,
+  "lab": 1,
+  "category": "too_short",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "rules",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 0,
+  "seconds": 0.01,
+  "reason": "Не выполнены формальные требования",
+  "judges": []
+ },
+ {
+  "mode": "symbolic",
+  "repeat": 1,
+  "id": 15,
+  "lab": 1,
+  "category": "no_sections",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "rules",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 0,
+  "seconds": 0.04,
+  "reason": "Не выполнены формальные требования",
+  "judges": []
+ },
+ {
+  "mode": "symbolic",
+  "repeat": 1,
+  "id": 16,
+  "lab": 2,
+  "category": "original",
+  "expected": "approve",
+  "decision": "approve",
+  "decided_by": "symbolic",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 0,
+  "seconds": 0.06,
+  "reason": "Формальные проверки пройдены",
+  "judges": []
+ },
+ {
+  "mode": "symbolic",
+  "repeat": 1,
+  "id": 17,
+  "lab": 2,
+  "category": "original",
+  "expected": "approve",
+  "decision": "approve",
+  "decided_by": "symbolic",
+  "score": null,
+  "similarity": 0.594,
+  "llm_calls": 0,
+  "seconds": 0.04,
+  "reason": "Формальные проверки пройдены",
+  "judges": []
+ },
+ {
+  "mode": "symbolic",
+  "repeat": 1,
+  "id": 18,
+  "lab": 2,
+  "category": "original",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "rules",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 0,
+  "seconds": 0.02,
+  "reason": "Не выполнены формальные требования",
+  "judges": []
+ },
+ {
+  "mode": "symbolic",
+  "repeat": 1,
+  "id": 19,
+  "lab": 2,
+  "category": "original",
+  "expected": "approve",
+  "decision": "approve",
+  "decided_by": "symbolic",
+  "score": null,
+  "similarity": 0.734,
+  "llm_calls": 0,
+  "seconds": 0.02,
+  "reason": "Формальные проверки пройдены",
+  "judges": []
+ },
+ {
+  "mode": "symbolic",
+  "repeat": 1,
+  "id": 20,
+  "lab": 2,
+  "category": "weak_ok",
+  "expected": "approve",
+  "decision": "approve",
+  "decided_by": "symbolic",
+  "score": null,
+  "similarity": 0.656,
+  "llm_calls": 0,
+  "seconds": 0.03,
+  "reason": "Формальные проверки пройдены",
+  "judges": []
+ },
+ {
+  "mode": "symbolic",
+  "repeat": 1,
+  "id": 21,
+  "lab": 2,
+  "category": "weak_ok",
+  "expected": "approve",
+  "decision": "approve",
+  "decided_by": "symbolic",
+  "score": null,
+  "similarity": 0.688,
+  "llm_calls": 0,
+  "seconds": 0.03,
+  "reason": "Формальные проверки пройдены",
+  "judges": []
+ },
+ {
+  "mode": "symbolic",
+  "repeat": 1,
+  "id": 22,
+  "lab": 2,
+  "category": "copy_exact",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "simhash",
+  "score": null,
+  "similarity": 1.0,
+  "llm_calls": 0,
+  "seconds": 0.01,
+  "reason": "Сходство с другим отчётом 100%",
+  "judges": []
+ },
+ {
+  "mode": "symbolic",
+  "repeat": 1,
+  "id": 23,
+  "lab": 2,
+  "category": "copy_light",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "simhash",
+  "score": null,
+  "similarity": 0.922,
+  "llm_calls": 0,
+  "seconds": 0.02,
+  "reason": "Сходство с другим отчётом 92%",
+  "judges": []
+ },
+ {
+  "mode": "symbolic",
+  "repeat": 1,
+  "id": 24,
+  "lab": 2,
+  "category": "incomplete",
+  "expected": "reject",
+  "decision": "approve",
+  "decided_by": "symbolic",
+  "score": null,
+  "similarity": 0.484,
+  "llm_calls": 0,
+  "seconds": 0.02,
+  "reason": "Формальные проверки пройдены",
+  "judges": []
+ },
+ {
+  "mode": "symbolic",
+  "repeat": 1,
+  "id": 25,
+  "lab": 2,
+  "category": "incomplete",
+  "expected": "reject",
+  "decision": "approve",
+  "decided_by": "symbolic",
+  "score": null,
+  "similarity": 0.578,
+  "llm_calls": 0,
+  "seconds": 0.03,
+  "reason": "Формальные проверки пройдены",
+  "judges": []
+ },
+ {
+  "mode": "symbolic",
+  "repeat": 1,
+  "id": 26,
+  "lab": 2,
+  "category": "off_topic",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "symbolic",
+  "score": null,
+  "similarity": 0.641,
+  "llm_calls": 0,
+  "seconds": 0.05,
+  "reason": "Правило R6: отчёт не по теме",
+  "judges": []
+ },
+ {
+  "mode": "symbolic",
+  "repeat": 1,
+  "id": 27,
+  "lab": 2,
+  "category": "keywords",
+  "expected": "reject",
+  "decision": "approve",
+  "decided_by": "symbolic",
+  "score": null,
+  "similarity": 0.562,
+  "llm_calls": 0,
+  "seconds": 0.02,
+  "reason": "Формальные проверки пройдены",
+  "judges": []
+ },
+ {
+  "mode": "symbolic",
+  "repeat": 1,
+  "id": 28,
+  "lab": 2,
+  "category": "injection",
+  "expected": "reject",
+  "decision": "approve",
+  "decided_by": "symbolic",
+  "score": null,
+  "similarity": 0.547,
+  "llm_calls": 0,
+  "seconds": 0.04,
+  "reason": "Формальные проверки пройдены",
+  "judges": []
+ },
+ {
+  "mode": "symbolic",
+  "repeat": 1,
+  "id": 29,
+  "lab": 2,
+  "category": "too_short",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "rules",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 0,
+  "seconds": 0.01,
+  "reason": "Не выполнены формальные требования",
+  "judges": []
+ },
+ {
+  "mode": "symbolic",
+  "repeat": 1,
+  "id": 30,
+  "lab": 2,
+  "category": "no_sections",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "rules",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 0,
+  "seconds": 0.03,
+  "reason": "Не выполнены формальные требования",
+  "judges": []
+ },
+ {
+  "mode": "symbolic",
+  "repeat": 1,
+  "id": 31,
+  "lab": 3,
+  "category": "original",
+  "expected": "approve",
+  "decision": "approve",
+  "decided_by": "symbolic",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 0,
+  "seconds": 0.04,
+  "reason": "Формальные проверки пройдены",
+  "judges": []
+ },
+ {
+  "mode": "symbolic",
+  "repeat": 1,
+  "id": 32,
+  "lab": 3,
+  "category": "original",
+  "expected": "approve",
+  "decision": "approve",
+  "decided_by": "symbolic",
+  "score": null,
+  "similarity": 0.578,
+  "llm_calls": 0,
+  "seconds": 0.04,
+  "reason": "Формальные проверки пройдены",
+  "judges": []
+ },
+ {
+  "mode": "symbolic",
+  "repeat": 1,
+  "id": 33,
+  "lab": 3,
+  "category": "original",
+  "expected": "approve",
+  "decision": "approve",
+  "decided_by": "symbolic",
+  "score": null,
+  "similarity": 0.531,
+  "llm_calls": 0,
+  "seconds": 0.03,
+  "reason": "Формальные проверки пройдены",
+  "judges": []
+ },
+ {
+  "mode": "symbolic",
+  "repeat": 1,
+  "id": 34,
+  "lab": 3,
+  "category": "original",
+  "expected": "approve",
+  "decision": "approve",
+  "decided_by": "symbolic",
+  "score": null,
+  "similarity": 0.5,
+  "llm_calls": 0,
+  "seconds": 0.02,
+  "reason": "Формальные проверки пройдены",
+  "judges": []
+ },
+ {
+  "mode": "symbolic",
+  "repeat": 1,
+  "id": 35,
+  "lab": 3,
+  "category": "weak_ok",
+  "expected": "approve",
+  "decision": "approve",
+  "decided_by": "symbolic",
+  "score": null,
+  "similarity": 0.484,
+  "llm_calls": 0,
+  "seconds": 0.02,
+  "reason": "Формальные проверки пройдены",
+  "judges": []
+ },
+ {
+  "mode": "symbolic",
+  "repeat": 1,
+  "id": 36,
+  "lab": 3,
+  "category": "weak_ok",
+  "expected": "approve",
+  "decision": "approve",
+  "decided_by": "symbolic",
+  "score": null,
+  "similarity": 0.547,
+  "llm_calls": 0,
+  "seconds": 0.02,
+  "reason": "Формальные проверки пройдены",
+  "judges": []
+ },
+ {
+  "mode": "symbolic",
+  "repeat": 1,
+  "id": 37,
+  "lab": 3,
+  "category": "copy_exact",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "simhash",
+  "score": null,
+  "similarity": 1.0,
+  "llm_calls": 0,
+  "seconds": 0.01,
+  "reason": "Сходство с другим отчётом 100%",
+  "judges": []
+ },
+ {
+  "mode": "symbolic",
+  "repeat": 1,
+  "id": 38,
+  "lab": 3,
+  "category": "copy_light",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "simhash",
+  "score": null,
+  "similarity": 0.875,
+  "llm_calls": 0,
+  "seconds": 0.02,
+  "reason": "Сходство с другим отчётом 88%",
+  "judges": []
+ },
+ {
+  "mode": "symbolic",
+  "repeat": 1,
+  "id": 39,
+  "lab": 3,
+  "category": "incomplete",
+  "expected": "reject",
+  "decision": "approve",
+  "decided_by": "symbolic",
+  "score": null,
+  "similarity": 0.609,
+  "llm_calls": 0,
+  "seconds": 0.02,
+  "reason": "Формальные проверки пройдены",
+  "judges": []
+ },
+ {
+  "mode": "symbolic",
+  "repeat": 1,
+  "id": 40,
+  "lab": 3,
+  "category": "incomplete",
+  "expected": "reject",
+  "decision": "approve",
+  "decided_by": "symbolic",
+  "score": null,
+  "similarity": 0.609,
+  "llm_calls": 0,
+  "seconds": 0.02,
+  "reason": "Формальные проверки пройдены",
+  "judges": []
+ },
+ {
+  "mode": "symbolic",
+  "repeat": 1,
+  "id": 41,
+  "lab": 3,
+  "category": "off_topic",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "symbolic",
+  "score": null,
+  "similarity": 0.578,
+  "llm_calls": 0,
+  "seconds": 0.04,
+  "reason": "Правило R6: отчёт не по теме",
+  "judges": []
+ },
+ {
+  "mode": "symbolic",
+  "repeat": 1,
+  "id": 42,
+  "lab": 3,
+  "category": "keywords",
+  "expected": "reject",
+  "decision": "approve",
+  "decided_by": "symbolic",
+  "score": null,
+  "similarity": 0.562,
+  "llm_calls": 0,
+  "seconds": 0.02,
+  "reason": "Формальные проверки пройдены",
+  "judges": []
+ },
+ {
+  "mode": "symbolic",
+  "repeat": 1,
+  "id": 43,
+  "lab": 3,
+  "category": "injection",
+  "expected": "reject",
+  "decision": "approve",
+  "decided_by": "symbolic",
+  "score": null,
+  "similarity": 0.609,
+  "llm_calls": 0,
+  "seconds": 0.02,
+  "reason": "Формальные проверки пройдены",
+  "judges": []
+ },
+ {
+  "mode": "symbolic",
+  "repeat": 1,
+  "id": 44,
+  "lab": 3,
+  "category": "too_short",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "rules",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 0,
+  "seconds": 0.01,
+  "reason": "Не выполнены формальные требования",
+  "judges": []
+ },
+ {
+  "mode": "symbolic",
+  "repeat": 1,
+  "id": 45,
+  "lab": 3,
+  "category": "no_sections",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "rules",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 0,
+  "seconds": 0.01,
+  "reason": "Не выполнены формальные требования",
+  "judges": []
+ },
+ {
+  "mode": "neural",
+  "repeat": 1,
+  "id": 1,
+  "lab": 1,
+  "category": "original",
+  "expected": "approve",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 54.58,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.96,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.99,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.86,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 1,
+  "id": 2,
+  "lab": 1,
+  "category": "original",
+  "expected": "approve",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 33.92,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.98,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.92,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.88,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 1,
+  "id": 3,
+  "lab": 1,
+  "category": "original",
+  "expected": "approve",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 39.67,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.96,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.96,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 1,
+  "id": 4,
+  "lab": 1,
+  "category": "original",
+  "expected": "approve",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 26.05,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.97,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.92,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.98,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 1,
+  "id": 5,
+  "lab": 1,
+  "category": "weak_ok",
+  "expected": "approve",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 27.32,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.97,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.97,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.93,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 1,
+  "id": 6,
+  "lab": 1,
+  "category": "weak_ok",
+  "expected": "approve",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 87.59,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.96,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.9,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.85,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 1,
+  "id": 7,
+  "lab": 1,
+  "category": "copy_exact",
+  "expected": "reject",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 53.34,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.96,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.99,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.86,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 1,
+  "id": 8,
+  "lab": 1,
+  "category": "copy_light",
+  "expected": "reject",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 25.05,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.98,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.93,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.94,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 1,
+  "id": 9,
+  "lab": 1,
+  "category": "incomplete",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 173.18,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": false,
+    "confidence": 1.0,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 1,
+  "id": 10,
+  "lab": 1,
+  "category": "incomplete",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 47.61,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 1,
+  "id": 11,
+  "lab": 1,
+  "category": "off_topic",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 19.51,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": false,
+    "confidence": 1.0,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": false,
+    "confidence": 1.0,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 1,
+  "id": 12,
+  "lab": 1,
+  "category": "keywords",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 41.53,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 1,
+  "id": 13,
+  "lab": 1,
+  "category": "injection",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 89.92,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 1,
+  "id": 14,
+  "lab": 1,
+  "category": "too_short",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 12.24,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 1,
+  "id": 15,
+  "lab": 1,
+  "category": "no_sections",
+  "expected": "reject",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 19.74,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.97,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.97,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.97,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 1,
+  "id": 16,
+  "lab": 2,
+  "category": "original",
+  "expected": "approve",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 105.28,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.97,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.9,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 1,
+  "id": 17,
+  "lab": 2,
+  "category": "original",
+  "expected": "approve",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 41.85,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.97,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.97,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 1,
+  "id": 18,
+  "lab": 2,
+  "category": "original",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 52.83,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.98,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.98,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 1,
+  "id": 19,
+  "lab": 2,
+  "category": "original",
+  "expected": "approve",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 123.68,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.96,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.97,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.9,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 1,
+  "id": 20,
+  "lab": 2,
+  "category": "weak_ok",
+  "expected": "approve",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 29.05,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.97,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.94,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.91,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 1,
+  "id": 21,
+  "lab": 2,
+  "category": "weak_ok",
+  "expected": "approve",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 42.7,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.96,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.8,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 1,
+  "id": 22,
+  "lab": 2,
+  "category": "copy_exact",
+  "expected": "reject",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 105.35,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.97,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.9,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 1,
+  "id": 23,
+  "lab": 2,
+  "category": "copy_light",
+  "expected": "reject",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 37.94,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.97,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.93,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.93,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 1,
+  "id": 24,
+  "lab": 2,
+  "category": "incomplete",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 33.12,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.97,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.97,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 1,
+  "id": 25,
+  "lab": 2,
+  "category": "incomplete",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 30.37,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.98,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 1,
+  "id": 26,
+  "lab": 2,
+  "category": "off_topic",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 20.2,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": false,
+    "confidence": 1.0,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": false,
+    "confidence": 1.0,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": false,
+    "confidence": 1.0,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 1,
+  "id": 27,
+  "lab": 2,
+  "category": "keywords",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 86.42,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": false,
+    "confidence": 1.0,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 1,
+  "id": 28,
+  "lab": 2,
+  "category": "injection",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 23.82,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 1,
+  "id": 29,
+  "lab": 2,
+  "category": "too_short",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 19.4,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 1,
+  "id": 30,
+  "lab": 2,
+  "category": "no_sections",
+  "expected": "reject",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 132.06,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.97,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.93,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": false,
+    "verdict": null,
+    "confidence": null,
+    "error": "Ответ модели не содержит JSON с полем verdict; начало ответа: ''"
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 1,
+  "id": 31,
+  "lab": 3,
+  "category": "original",
+  "expected": "approve",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 15.8,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.99,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.97,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.99,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 1,
+  "id": 32,
+  "lab": 3,
+  "category": "original",
+  "expected": "approve",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 11.71,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.99,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.98,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.98,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 1,
+  "id": 33,
+  "lab": 3,
+  "category": "original",
+  "expected": "approve",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 23.89,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.99,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.97,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.97,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 1,
+  "id": 34,
+  "lab": 3,
+  "category": "original",
+  "expected": "approve",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 47.46,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.98,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.97,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.98,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 1,
+  "id": 35,
+  "lab": 3,
+  "category": "weak_ok",
+  "expected": "approve",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 24.94,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.98,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.96,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.97,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 1,
+  "id": 36,
+  "lab": 3,
+  "category": "weak_ok",
+  "expected": "approve",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 86.58,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.97,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.97,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.96,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 1,
+  "id": 37,
+  "lab": 3,
+  "category": "copy_exact",
+  "expected": "reject",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 15.8,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.99,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.97,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.99,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 1,
+  "id": 38,
+  "lab": 3,
+  "category": "copy_light",
+  "expected": "reject",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 20.79,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.99,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.98,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 1,
+  "id": 39,
+  "lab": 3,
+  "category": "incomplete",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 20.74,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 1,
+  "id": 40,
+  "lab": 3,
+  "category": "incomplete",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 12.2,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 1,
+  "id": 41,
+  "lab": 3,
+  "category": "off_topic",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 47.21,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": false,
+    "confidence": 1.0,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": false,
+    "confidence": 1.0,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": false,
+    "confidence": 1.0,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 1,
+  "id": 42,
+  "lab": 3,
+  "category": "keywords",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 23.54,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 1,
+  "id": 43,
+  "lab": 3,
+  "category": "injection",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 90.82,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 1,
+  "id": 44,
+  "lab": 3,
+  "category": "too_short",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 44.9,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 1,
+  "id": 45,
+  "lab": 3,
+  "category": "no_sections",
+  "expected": "reject",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 22.77,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.99,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.96,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.97,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 1,
+  "id": 1,
+  "lab": 1,
+  "category": "original",
+  "expected": "approve",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": 0.937,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 53.37,
+  "reason": "Единогласно «за», P = 0.94 ≥ 0.65",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.96,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.99,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.86,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 1,
+  "id": 2,
+  "lab": 1,
+  "category": "original",
+  "expected": "approve",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": 0.927,
+  "similarity": 0.5,
+  "llm_calls": 3,
+  "seconds": 33.93,
+  "reason": "Единогласно «за», P = 0.93 ≥ 0.65",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.98,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.92,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.88,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 1,
+  "id": 3,
+  "lab": 1,
+  "category": "original",
+  "expected": "approve",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": 0.957,
+  "similarity": 0.625,
+  "llm_calls": 3,
+  "seconds": 39.69,
+  "reason": "Единогласно «за», P = 0.96 ≥ 0.65",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.96,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.96,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 1,
+  "id": 4,
+  "lab": 1,
+  "category": "original",
+  "expected": "approve",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": 0.957,
+  "similarity": 0.609,
+  "llm_calls": 3,
+  "seconds": 26.06,
+  "reason": "Единогласно «за», P = 0.96 ≥ 0.65",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.97,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.92,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.98,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 1,
+  "id": 5,
+  "lab": 1,
+  "category": "weak_ok",
+  "expected": "approve",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": 0.957,
+  "similarity": 0.562,
+  "llm_calls": 3,
+  "seconds": 27.32,
+  "reason": "Единогласно «за», P = 0.96 ≥ 0.65",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.97,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.97,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.93,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 1,
+  "id": 6,
+  "lab": 1,
+  "category": "weak_ok",
+  "expected": "approve",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": 0.903,
+  "similarity": 0.562,
+  "llm_calls": 3,
+  "seconds": 87.63,
+  "reason": "Единогласно «за», P = 0.90 ≥ 0.65",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.96,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.9,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.85,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 1,
+  "id": 7,
+  "lab": 1,
+  "category": "copy_exact",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "simhash",
+  "score": null,
+  "similarity": 1.0,
+  "llm_calls": 0,
+  "seconds": 0.01,
+  "reason": "Сходство с другим отчётом 100%",
+  "judges": []
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 1,
+  "id": 8,
+  "lab": 1,
+  "category": "copy_light",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "simhash",
+  "score": null,
+  "similarity": 0.859,
+  "llm_calls": 0,
+  "seconds": 0.01,
+  "reason": "Сходство с другим отчётом 86%",
+  "judges": []
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 1,
+  "id": 9,
+  "lab": 1,
+  "category": "incomplete",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "judges",
+  "score": 0.007,
+  "similarity": 0.547,
+  "llm_calls": 4,
+  "seconds": 182.14,
+  "reason": "Единогласно «против», P = 0.01 ≤ 0.35",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": false,
+    "confidence": 1.0,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 1,
+  "id": 10,
+  "lab": 1,
+  "category": "incomplete",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "judges",
+  "score": 0.01,
+  "similarity": 0.531,
+  "llm_calls": 4,
+  "seconds": 61.43,
+  "reason": "Единогласно «против», P = 0.01 ≤ 0.35",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 1,
+  "id": 11,
+  "lab": 1,
+  "category": "off_topic",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "judges",
+  "score": 0.003,
+  "similarity": 0.516,
+  "llm_calls": 4,
+  "seconds": 30.3,
+  "reason": "Единогласно «против», P = 0.00 ≤ 0.35",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": false,
+    "confidence": 1.0,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": false,
+    "confidence": 1.0,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 1,
+  "id": 12,
+  "lab": 1,
+  "category": "keywords",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "judges",
+  "score": 0.01,
+  "similarity": 0.672,
+  "llm_calls": 4,
+  "seconds": 51.94,
+  "reason": "Единогласно «против», P = 0.01 ≤ 0.35",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 1,
+  "id": 13,
+  "lab": 1,
+  "category": "injection",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "judges",
+  "score": 0.01,
+  "similarity": 0.562,
+  "llm_calls": 4,
+  "seconds": 100.83,
+  "reason": "Единогласно «против», P = 0.01 ≤ 0.35",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 1,
+  "id": 14,
+  "lab": 1,
+  "category": "too_short",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "rules",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 0,
+  "seconds": 0.0,
+  "reason": "Не выполнены формальные требования",
+  "judges": []
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 1,
+  "id": 15,
+  "lab": 1,
+  "category": "no_sections",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "rules",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 0,
+  "seconds": 0.0,
+  "reason": "Не выполнены формальные требования",
+  "judges": []
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 1,
+  "id": 16,
+  "lab": 2,
+  "category": "original",
+  "expected": "approve",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": 0.94,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 105.33,
+  "reason": "Единогласно «за», P = 0.94 ≥ 0.65",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.97,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.9,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 1,
+  "id": 17,
+  "lab": 2,
+  "category": "original",
+  "expected": "approve",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": 0.963,
+  "similarity": 0.594,
+  "llm_calls": 3,
+  "seconds": 41.87,
+  "reason": "Единогласно «за», P = 0.96 ≥ 0.65",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.97,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.97,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 1,
+  "id": 18,
+  "lab": 2,
+  "category": "original",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "rules",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 0,
+  "seconds": 0.0,
+  "reason": "Не выполнены формальные требования",
+  "judges": []
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 1,
+  "id": 19,
+  "lab": 2,
+  "category": "original",
+  "expected": "approve",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": 0.943,
+  "similarity": 0.734,
+  "llm_calls": 3,
+  "seconds": 123.75,
+  "reason": "Единогласно «за», P = 0.94 ≥ 0.65",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.96,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.97,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.9,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 1,
+  "id": 20,
+  "lab": 2,
+  "category": "weak_ok",
+  "expected": "approve",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": 0.94,
+  "similarity": 0.656,
+  "llm_calls": 3,
+  "seconds": 29.06,
+  "reason": "Единогласно «за», P = 0.94 ≥ 0.65",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.97,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.94,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.91,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 1,
+  "id": 21,
+  "lab": 2,
+  "category": "weak_ok",
+  "expected": "approve",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": 0.903,
+  "similarity": 0.688,
+  "llm_calls": 3,
+  "seconds": 42.72,
+  "reason": "Единогласно «за», P = 0.90 ≥ 0.65",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.96,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.8,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 1,
+  "id": 22,
+  "lab": 2,
+  "category": "copy_exact",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "simhash",
+  "score": null,
+  "similarity": 1.0,
+  "llm_calls": 0,
+  "seconds": 0.01,
+  "reason": "Сходство с другим отчётом 100%",
+  "judges": []
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 1,
+  "id": 23,
+  "lab": 2,
+  "category": "copy_light",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "simhash",
+  "score": null,
+  "similarity": 0.922,
+  "llm_calls": 0,
+  "seconds": 0.01,
+  "reason": "Сходство с другим отчётом 92%",
+  "judges": []
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 1,
+  "id": 24,
+  "lab": 2,
+  "category": "incomplete",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "judges",
+  "score": 0.023,
+  "similarity": 0.484,
+  "llm_calls": 4,
+  "seconds": 48.31,
+  "reason": "Единогласно «против», P = 0.02 ≤ 0.35",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.97,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.97,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 1,
+  "id": 25,
+  "lab": 2,
+  "category": "incomplete",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "judges",
+  "score": 0.013,
+  "similarity": 0.578,
+  "llm_calls": 4,
+  "seconds": 67.69,
+  "reason": "Единогласно «против», P = 0.01 ≤ 0.35",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.98,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 1,
+  "id": 26,
+  "lab": 2,
+  "category": "off_topic",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "judges",
+  "score": 0.0,
+  "similarity": 0.641,
+  "llm_calls": 4,
+  "seconds": 31.35,
+  "reason": "Единогласно «против», P = 0.00 ≤ 0.35",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": false,
+    "confidence": 1.0,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": false,
+    "confidence": 1.0,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": false,
+    "confidence": 1.0,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 1,
+  "id": 27,
+  "lab": 2,
+  "category": "keywords",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "judges",
+  "score": 0.007,
+  "similarity": 0.562,
+  "llm_calls": 4,
+  "seconds": 96.4,
+  "reason": "Единогласно «против», P = 0.01 ≤ 0.35",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": false,
+    "confidence": 1.0,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 1,
+  "id": 28,
+  "lab": 2,
+  "category": "injection",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "judges",
+  "score": 0.01,
+  "similarity": 0.547,
+  "llm_calls": 4,
+  "seconds": 38.68,
+  "reason": "Единогласно «против», P = 0.01 ≤ 0.35",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 1,
+  "id": 29,
+  "lab": 2,
+  "category": "too_short",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "rules",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 0,
+  "seconds": 0.0,
+  "reason": "Не выполнены формальные требования",
+  "judges": []
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 1,
+  "id": 30,
+  "lab": 2,
+  "category": "no_sections",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "rules",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 0,
+  "seconds": 0.0,
+  "reason": "Не выполнены формальные требования",
+  "judges": []
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 1,
+  "id": 31,
+  "lab": 3,
+  "category": "original",
+  "expected": "approve",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": 0.983,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 15.8,
+  "reason": "Единогласно «за», P = 0.98 ≥ 0.65",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.99,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.97,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.99,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 1,
+  "id": 32,
+  "lab": 3,
+  "category": "original",
+  "expected": "approve",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": 0.983,
+  "similarity": 0.578,
+  "llm_calls": 3,
+  "seconds": 11.71,
+  "reason": "Единогласно «за», P = 0.98 ≥ 0.65",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.99,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.98,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.98,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 1,
+  "id": 33,
+  "lab": 3,
+  "category": "original",
+  "expected": "approve",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": 0.977,
+  "similarity": 0.531,
+  "llm_calls": 3,
+  "seconds": 23.9,
+  "reason": "Единогласно «за», P = 0.98 ≥ 0.65",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.99,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.97,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.97,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 1,
+  "id": 34,
+  "lab": 3,
+  "category": "original",
+  "expected": "approve",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": 0.977,
+  "similarity": 0.5,
+  "llm_calls": 3,
+  "seconds": 47.49,
+  "reason": "Единогласно «за», P = 0.98 ≥ 0.65",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.98,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.97,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.98,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 1,
+  "id": 35,
+  "lab": 3,
+  "category": "weak_ok",
+  "expected": "approve",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": 0.97,
+  "similarity": 0.484,
+  "llm_calls": 3,
+  "seconds": 24.95,
+  "reason": "Единогласно «за», P = 0.97 ≥ 0.65",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.98,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.96,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.97,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 1,
+  "id": 36,
+  "lab": 3,
+  "category": "weak_ok",
+  "expected": "approve",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": 0.967,
+  "similarity": 0.547,
+  "llm_calls": 3,
+  "seconds": 86.64,
+  "reason": "Единогласно «за», P = 0.97 ≥ 0.65",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.97,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.97,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.96,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 1,
+  "id": 37,
+  "lab": 3,
+  "category": "copy_exact",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "simhash",
+  "score": null,
+  "similarity": 1.0,
+  "llm_calls": 0,
+  "seconds": 0.01,
+  "reason": "Сходство с другим отчётом 100%",
+  "judges": []
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 1,
+  "id": 38,
+  "lab": 3,
+  "category": "copy_light",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "simhash",
+  "score": null,
+  "similarity": 0.875,
+  "llm_calls": 0,
+  "seconds": 0.01,
+  "reason": "Сходство с другим отчётом 88%",
+  "judges": []
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 1,
+  "id": 39,
+  "lab": 3,
+  "category": "incomplete",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "judges",
+  "score": 0.01,
+  "similarity": 0.609,
+  "llm_calls": 4,
+  "seconds": 45.55,
+  "reason": "Единогласно «против», P = 0.01 ≤ 0.35",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 1,
+  "id": 40,
+  "lab": 3,
+  "category": "incomplete",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "judges",
+  "score": 0.01,
+  "similarity": 0.609,
+  "llm_calls": 4,
+  "seconds": 27.8,
+  "reason": "Единогласно «против», P = 0.01 ≤ 0.35",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 1,
+  "id": 41,
+  "lab": 3,
+  "category": "off_topic",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "judges",
+  "score": 0.0,
+  "similarity": 0.578,
+  "llm_calls": 4,
+  "seconds": 59.99,
+  "reason": "Единогласно «против», P = 0.00 ≤ 0.35",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": false,
+    "confidence": 1.0,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": false,
+    "confidence": 1.0,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": false,
+    "confidence": 1.0,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 1,
+  "id": 42,
+  "lab": 3,
+  "category": "keywords",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "judges",
+  "score": 0.01,
+  "similarity": 0.562,
+  "llm_calls": 4,
+  "seconds": 35.15,
+  "reason": "Единогласно «против», P = 0.01 ≤ 0.35",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 1,
+  "id": 43,
+  "lab": 3,
+  "category": "injection",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "judges",
+  "score": 0.01,
+  "similarity": 0.609,
+  "llm_calls": 4,
+  "seconds": 100.0,
+  "reason": "Единогласно «против», P = 0.01 ≤ 0.35",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 1,
+  "id": 44,
+  "lab": 3,
+  "category": "too_short",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "rules",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 0,
+  "seconds": 0.0,
+  "reason": "Не выполнены формальные требования",
+  "judges": []
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 1,
+  "id": 45,
+  "lab": 3,
+  "category": "no_sections",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "rules",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 0,
+  "seconds": 0.0,
+  "reason": "Не выполнены формальные требования",
+  "judges": []
+ },
+ {
+  "mode": "neural",
+  "repeat": 2,
+  "id": 1,
+  "lab": 1,
+  "category": "original",
+  "expected": "approve",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 92.17,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.82,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.98,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": false,
+    "verdict": null,
+    "confidence": null,
+    "error": "Ответ модели не содержит JSON с полем verdict; начало ответа: ''"
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 2,
+  "id": 2,
+  "lab": 1,
+  "category": "original",
+  "expected": "approve",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 32.88,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.96,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.85,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 2,
+  "id": 3,
+  "lab": 1,
+  "category": "original",
+  "expected": "approve",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 24.92,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.96,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.97,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.9,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 2,
+  "id": 4,
+  "lab": 1,
+  "category": "original",
+  "expected": "approve",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 30.66,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.98,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.96,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.97,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 2,
+  "id": 5,
+  "lab": 1,
+  "category": "weak_ok",
+  "expected": "approve",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 47.65,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.97,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.9,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 2,
+  "id": 6,
+  "lab": 1,
+  "category": "weak_ok",
+  "expected": "approve",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 40.29,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.92,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.78,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.88,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 2,
+  "id": 7,
+  "lab": 1,
+  "category": "copy_exact",
+  "expected": "reject",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 91.03,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.82,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.98,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.82,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 2,
+  "id": 8,
+  "lab": 1,
+  "category": "copy_light",
+  "expected": "reject",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 22.98,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.96,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.93,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.98,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 2,
+  "id": 9,
+  "lab": 1,
+  "category": "incomplete",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 10.62,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 2,
+  "id": 10,
+  "lab": 1,
+  "category": "incomplete",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 26.94,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 2,
+  "id": 11,
+  "lab": 1,
+  "category": "off_topic",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 18.8,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": false,
+    "confidence": 1.0,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": false,
+    "confidence": 1.0,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": false,
+    "confidence": 1.0,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 2,
+  "id": 12,
+  "lab": 1,
+  "category": "keywords",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 86.42,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 2,
+  "id": 13,
+  "lab": 1,
+  "category": "injection",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 12.58,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 2,
+  "id": 14,
+  "lab": 1,
+  "category": "too_short",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 15.38,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 2,
+  "id": 15,
+  "lab": 1,
+  "category": "no_sections",
+  "expected": "reject",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 47.93,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.97,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.96,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.92,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 2,
+  "id": 16,
+  "lab": 2,
+  "category": "original",
+  "expected": "approve",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 49.53,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.98,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.93,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 2,
+  "id": 17,
+  "lab": 2,
+  "category": "original",
+  "expected": "approve",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 21.36,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.98,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.94,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.96,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 2,
+  "id": 18,
+  "lab": 2,
+  "category": "original",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 19.57,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.97,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 2,
+  "id": 19,
+  "lab": 2,
+  "category": "original",
+  "expected": "approve",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 34.87,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.97,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 2,
+  "id": 20,
+  "lab": 2,
+  "category": "weak_ok",
+  "expected": "approve",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 37.57,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.97,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.92,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 2,
+  "id": 21,
+  "lab": 2,
+  "category": "weak_ok",
+  "expected": "approve",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 112.11,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.9,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.76,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 2,
+  "id": 22,
+  "lab": 2,
+  "category": "copy_exact",
+  "expected": "reject",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 49.53,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.98,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.93,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 2,
+  "id": 23,
+  "lab": 2,
+  "category": "copy_light",
+  "expected": "reject",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 24.65,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.97,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.94,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 2,
+  "id": 24,
+  "lab": 2,
+  "category": "incomplete",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 24.97,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 2,
+  "id": 25,
+  "lab": 2,
+  "category": "incomplete",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 32.57,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.98,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 2,
+  "id": 26,
+  "lab": 2,
+  "category": "off_topic",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 86.57,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": false,
+    "confidence": 1.0,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": false,
+    "confidence": 1.0,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": false,
+    "confidence": 1.0,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 2,
+  "id": 27,
+  "lab": 2,
+  "category": "keywords",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 11.2,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 2,
+  "id": 28,
+  "lab": 2,
+  "category": "injection",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 53.46,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.98,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.97,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 2,
+  "id": 29,
+  "lab": 2,
+  "category": "too_short",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 23.98,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 2,
+  "id": 30,
+  "lab": 2,
+  "category": "no_sections",
+  "expected": "reject",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 34.27,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.96,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.93,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.9,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 2,
+  "id": 31,
+  "lab": 3,
+  "category": "original",
+  "expected": "approve",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 58.58,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.98,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.92,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.98,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 2,
+  "id": 32,
+  "lab": 3,
+  "category": "original",
+  "expected": "approve",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 23.15,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.99,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.98,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.98,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 2,
+  "id": 33,
+  "lab": 3,
+  "category": "original",
+  "expected": "approve",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 29.1,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.98,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.97,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.96,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 2,
+  "id": 34,
+  "lab": 3,
+  "category": "original",
+  "expected": "approve",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 26.6,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.98,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.97,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.97,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 2,
+  "id": 35,
+  "lab": 3,
+  "category": "weak_ok",
+  "expected": "approve",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 49.1,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.98,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.97,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.92,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 2,
+  "id": 36,
+  "lab": 3,
+  "category": "weak_ok",
+  "expected": "approve",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 92.52,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.99,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.97,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.98,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 2,
+  "id": 37,
+  "lab": 3,
+  "category": "copy_exact",
+  "expected": "reject",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 58.62,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.98,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.92,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.98,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 2,
+  "id": 38,
+  "lab": 3,
+  "category": "copy_light",
+  "expected": "reject",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 26.39,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.99,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.98,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.97,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 2,
+  "id": 39,
+  "lab": 3,
+  "category": "incomplete",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 10.04,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 2,
+  "id": 40,
+  "lab": 3,
+  "category": "incomplete",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 12.11,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 2,
+  "id": 41,
+  "lab": 3,
+  "category": "off_topic",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 21.44,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": false,
+    "confidence": 1.0,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": false,
+    "confidence": 1.0,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 2,
+  "id": 42,
+  "lab": 3,
+  "category": "keywords",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 47.76,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 2,
+  "id": 43,
+  "lab": 3,
+  "category": "injection",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 43.77,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 2,
+  "id": 44,
+  "lab": 3,
+  "category": "too_short",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 24.31,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 2,
+  "id": 45,
+  "lab": 3,
+  "category": "no_sections",
+  "expected": "reject",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 15.86,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.99,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.98,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.98,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 2,
+  "id": 1,
+  "lab": 1,
+  "category": "original",
+  "expected": "approve",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": 0.95,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 86.65,
+  "reason": "Единогласно «за», P = 0.95 ≥ 0.65",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.97,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.9,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.98,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 2,
+  "id": 2,
+  "lab": 1,
+  "category": "original",
+  "expected": "approve",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": 0.957,
+  "similarity": 0.5,
+  "llm_calls": 3,
+  "seconds": 19.86,
+  "reason": "Единогласно «за», P = 0.96 ≥ 0.65",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.98,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.94,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 2,
+  "id": 3,
+  "lab": 1,
+  "category": "original",
+  "expected": "approve",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": 0.95,
+  "similarity": 0.625,
+  "llm_calls": 3,
+  "seconds": 20.02,
+  "reason": "Единогласно «за», P = 0.95 ≥ 0.65",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.98,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.93,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.94,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 2,
+  "id": 4,
+  "lab": 1,
+  "category": "original",
+  "expected": "approve",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": 0.963,
+  "similarity": 0.609,
+  "llm_calls": 3,
+  "seconds": 19.31,
+  "reason": "Единогласно «за», P = 0.96 ≥ 0.65",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.98,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.94,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.97,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 2,
+  "id": 5,
+  "lab": 1,
+  "category": "weak_ok",
+  "expected": "approve",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": 0.943,
+  "similarity": 0.562,
+  "llm_calls": 3,
+  "seconds": 83.02,
+  "reason": "Единогласно «за», P = 0.94 ≥ 0.65",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.99,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.96,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.88,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 2,
+  "id": 6,
+  "lab": 1,
+  "category": "weak_ok",
+  "expected": "approve",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": 0.873,
+  "similarity": 0.562,
+  "llm_calls": 3,
+  "seconds": 34.94,
+  "reason": "Единогласно «за», P = 0.87 ≥ 0.65",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.92,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.8,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.9,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 2,
+  "id": 7,
+  "lab": 1,
+  "category": "copy_exact",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "simhash",
+  "score": null,
+  "similarity": 1.0,
+  "llm_calls": 0,
+  "seconds": 0.01,
+  "reason": "Сходство с другим отчётом 100%",
+  "judges": []
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 2,
+  "id": 8,
+  "lab": 1,
+  "category": "copy_light",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "simhash",
+  "score": null,
+  "similarity": 0.859,
+  "llm_calls": 0,
+  "seconds": 0.02,
+  "reason": "Сходство с другим отчётом 86%",
+  "judges": []
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 2,
+  "id": 9,
+  "lab": 1,
+  "category": "incomplete",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "judges",
+  "score": 0.01,
+  "similarity": 0.547,
+  "llm_calls": 4,
+  "seconds": 25.99,
+  "reason": "Единогласно «против», P = 0.01 ≤ 0.35",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 2,
+  "id": 10,
+  "lab": 1,
+  "category": "incomplete",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "judges",
+  "score": 0.01,
+  "similarity": 0.531,
+  "llm_calls": 4,
+  "seconds": 48.73,
+  "reason": "Единогласно «против», P = 0.01 ≤ 0.35",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 2,
+  "id": 11,
+  "lab": 1,
+  "category": "off_topic",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "judges",
+  "score": 0.003,
+  "similarity": 0.516,
+  "llm_calls": 4,
+  "seconds": 72.6,
+  "reason": "Единогласно «против», P = 0.00 ≤ 0.35",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": false,
+    "confidence": 1.0,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": false,
+    "confidence": 1.0,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 2,
+  "id": 12,
+  "lab": 1,
+  "category": "keywords",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "judges",
+  "score": 0.01,
+  "similarity": 0.672,
+  "llm_calls": 4,
+  "seconds": 61.22,
+  "reason": "Единогласно «против», P = 0.01 ≤ 0.35",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 2,
+  "id": 13,
+  "lab": 1,
+  "category": "injection",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "judges",
+  "score": 0.01,
+  "similarity": 0.562,
+  "llm_calls": 4,
+  "seconds": 25.63,
+  "reason": "Единогласно «против», P = 0.01 ≤ 0.35",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 2,
+  "id": 14,
+  "lab": 1,
+  "category": "too_short",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "rules",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 0,
+  "seconds": 0.01,
+  "reason": "Не выполнены формальные требования",
+  "judges": []
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 2,
+  "id": 15,
+  "lab": 1,
+  "category": "no_sections",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "rules",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 0,
+  "seconds": 0.02,
+  "reason": "Не выполнены формальные требования",
+  "judges": []
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 2,
+  "id": 16,
+  "lab": 2,
+  "category": "original",
+  "expected": "approve",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": 0.967,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 33.87,
+  "reason": "Единогласно «за», P = 0.97 ≥ 0.65",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.98,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.97,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 2,
+  "id": 17,
+  "lab": 2,
+  "category": "original",
+  "expected": "approve",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": 0.957,
+  "similarity": 0.594,
+  "llm_calls": 3,
+  "seconds": 69.36,
+  "reason": "Единогласно «за», P = 0.96 ≥ 0.65",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.97,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.97,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.93,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 2,
+  "id": 18,
+  "lab": 2,
+  "category": "original",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "rules",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 0,
+  "seconds": 0.02,
+  "reason": "Не выполнены формальные требования",
+  "judges": []
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 2,
+  "id": 19,
+  "lab": 2,
+  "category": "original",
+  "expected": "approve",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": 0.965,
+  "similarity": 0.734,
+  "llm_calls": 3,
+  "seconds": 102.7,
+  "reason": "Единогласно «за», P = 0.96 ≥ 0.65",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.97,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.96,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": false,
+    "verdict": null,
+    "confidence": null,
+    "error": "Ответ модели не содержит JSON с полем verdict; начало ответа: ''"
+   }
+  ]
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 2,
+  "id": 20,
+  "lab": 2,
+  "category": "weak_ok",
+  "expected": "approve",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": 0.94,
+  "similarity": 0.656,
+  "llm_calls": 3,
+  "seconds": 26.07,
+  "reason": "Единогласно «за», P = 0.94 ≥ 0.65",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.97,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.93,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.92,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 2,
+  "id": 21,
+  "lab": 2,
+  "category": "weak_ok",
+  "expected": "approve",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": 0.903,
+  "similarity": 0.688,
+  "llm_calls": 3,
+  "seconds": 37.5,
+  "reason": "Единогласно «за», P = 0.90 ≥ 0.65",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.96,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.9,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.85,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 2,
+  "id": 22,
+  "lab": 2,
+  "category": "copy_exact",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "simhash",
+  "score": null,
+  "similarity": 1.0,
+  "llm_calls": 0,
+  "seconds": 0.01,
+  "reason": "Сходство с другим отчётом 100%",
+  "judges": []
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 2,
+  "id": 23,
+  "lab": 2,
+  "category": "copy_light",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "simhash",
+  "score": null,
+  "similarity": 0.922,
+  "llm_calls": 0,
+  "seconds": 0.03,
+  "reason": "Сходство с другим отчётом 92%",
+  "judges": []
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 2,
+  "id": 24,
+  "lab": 2,
+  "category": "incomplete",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "judges",
+  "score": 0.013,
+  "similarity": 0.484,
+  "llm_calls": 4,
+  "seconds": 43.73,
+  "reason": "Единогласно «против», P = 0.01 ≤ 0.35",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.98,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 2,
+  "id": 25,
+  "lab": 2,
+  "category": "incomplete",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "judges",
+  "score": 0.01,
+  "similarity": 0.578,
+  "llm_calls": 4,
+  "seconds": 40.09,
+  "reason": "Единогласно «против», P = 0.01 ≤ 0.35",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 2,
+  "id": 26,
+  "lab": 2,
+  "category": "off_topic",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "judges",
+  "score": 0.0,
+  "similarity": 0.641,
+  "llm_calls": 4,
+  "seconds": 17.6,
+  "reason": "Единогласно «против», P = 0.00 ≤ 0.35",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": false,
+    "confidence": 1.0,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": false,
+    "confidence": 1.0,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": false,
+    "confidence": 1.0,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 2,
+  "id": 27,
+  "lab": 2,
+  "category": "keywords",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "judges",
+  "score": 0.007,
+  "similarity": 0.562,
+  "llm_calls": 4,
+  "seconds": 24.53,
+  "reason": "Единогласно «против», P = 0.01 ≤ 0.35",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": false,
+    "confidence": 1.0,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 2,
+  "id": 28,
+  "lab": 2,
+  "category": "injection",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "judges",
+  "score": 0.023,
+  "similarity": 0.547,
+  "llm_calls": 4,
+  "seconds": 113.2,
+  "reason": "Единогласно «против», P = 0.02 ≤ 0.35",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.96,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.98,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 2,
+  "id": 29,
+  "lab": 2,
+  "category": "too_short",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "rules",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 0,
+  "seconds": 0.01,
+  "reason": "Не выполнены формальные требования",
+  "judges": []
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 2,
+  "id": 30,
+  "lab": 2,
+  "category": "no_sections",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "rules",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 0,
+  "seconds": 0.03,
+  "reason": "Не выполнены формальные требования",
+  "judges": []
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 2,
+  "id": 31,
+  "lab": 3,
+  "category": "original",
+  "expected": "approve",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": 0.977,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 39.15,
+  "reason": "Единогласно «за», P = 0.98 ≥ 0.65",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.98,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.97,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.98,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 2,
+  "id": 32,
+  "lab": 3,
+  "category": "original",
+  "expected": "approve",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": 0.983,
+  "similarity": 0.578,
+  "llm_calls": 3,
+  "seconds": 42.57,
+  "reason": "Единогласно «за», P = 0.98 ≥ 0.65",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.99,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.98,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.98,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 2,
+  "id": 33,
+  "lab": 3,
+  "category": "original",
+  "expected": "approve",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": 0.98,
+  "similarity": 0.531,
+  "llm_calls": 3,
+  "seconds": 18.5,
+  "reason": "Единогласно «за», P = 0.98 ≥ 0.65",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.98,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.98,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.98,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 2,
+  "id": 34,
+  "lab": 3,
+  "category": "original",
+  "expected": "approve",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": 0.977,
+  "similarity": 0.5,
+  "llm_calls": 3,
+  "seconds": 41.93,
+  "reason": "Единогласно «за», P = 0.98 ≥ 0.65",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.98,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.97,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.98,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 2,
+  "id": 35,
+  "lab": 3,
+  "category": "weak_ok",
+  "expected": "approve",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": 0.96,
+  "similarity": 0.484,
+  "llm_calls": 3,
+  "seconds": 146.45,
+  "reason": "Единогласно «за», P = 0.96 ≥ 0.65",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.98,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.95,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 2,
+  "id": 36,
+  "lab": 3,
+  "category": "weak_ok",
+  "expected": "approve",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": 0.957,
+  "similarity": 0.547,
+  "llm_calls": 3,
+  "seconds": 29.79,
+  "reason": "Единогласно «за», P = 0.96 ≥ 0.65",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.97,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.97,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.93,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 2,
+  "id": 37,
+  "lab": 3,
+  "category": "copy_exact",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "simhash",
+  "score": null,
+  "similarity": 1.0,
+  "llm_calls": 0,
+  "seconds": 0.01,
+  "reason": "Сходство с другим отчётом 100%",
+  "judges": []
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 2,
+  "id": 38,
+  "lab": 3,
+  "category": "copy_light",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "simhash",
+  "score": null,
+  "similarity": 0.875,
+  "llm_calls": 0,
+  "seconds": 0.02,
+  "reason": "Сходство с другим отчётом 88%",
+  "judges": []
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 2,
+  "id": 39,
+  "lab": 3,
+  "category": "incomplete",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "judges",
+  "score": 0.01,
+  "similarity": 0.609,
+  "llm_calls": 4,
+  "seconds": 28.36,
+  "reason": "Единогласно «против», P = 0.01 ≤ 0.35",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 2,
+  "id": 40,
+  "lab": 3,
+  "category": "incomplete",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "judges",
+  "score": 0.01,
+  "similarity": 0.609,
+  "llm_calls": 4,
+  "seconds": 98.2,
+  "reason": "Единогласно «против», P = 0.01 ≤ 0.35",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 2,
+  "id": 41,
+  "lab": 3,
+  "category": "off_topic",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "judges",
+  "score": 0.0,
+  "similarity": 0.578,
+  "llm_calls": 4,
+  "seconds": 29.93,
+  "reason": "Единогласно «против», P = 0.00 ≤ 0.35",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": false,
+    "confidence": 1.0,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": false,
+    "confidence": 1.0,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": false,
+    "confidence": 1.0,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 2,
+  "id": 42,
+  "lab": 3,
+  "category": "keywords",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "judges",
+  "score": 0.01,
+  "similarity": 0.562,
+  "llm_calls": 4,
+  "seconds": 50.43,
+  "reason": "Единогласно «против», P = 0.01 ≤ 0.35",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 2,
+  "id": 43,
+  "lab": 3,
+  "category": "injection",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "judges",
+  "score": 0.01,
+  "similarity": 0.609,
+  "llm_calls": 4,
+  "seconds": 156.51,
+  "reason": "Единогласно «против», P = 0.01 ≤ 0.35",
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 2,
+  "id": 44,
+  "lab": 3,
+  "category": "too_short",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "rules",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 0,
+  "seconds": 0.01,
+  "reason": "Не выполнены формальные требования",
+  "judges": []
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 2,
+  "id": 45,
+  "lab": 3,
+  "category": "no_sections",
+  "expected": "reject",
+  "decision": "reject",
+  "decided_by": "rules",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 0,
+  "seconds": 0.02,
+  "reason": "Не выполнены формальные требования",
+  "judges": []
+ }
+]

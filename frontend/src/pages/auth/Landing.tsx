@@ -1,136 +1,68 @@
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
-import { ArrowRight, Brain, Shield, Zap, BookOpen } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Logo } from "@/components/layout/Logo";
+import { PipelineHero } from "@/components/landing/PipelineHero";
 
 const features = [
   {
-    icon: Brain,
-    title: "AI-верификация",
-    desc: "Отчёты проверяются тремя AI-оценщиками с голосованием",
+    title: "Проверка отчётов с объяснением",
+    text: "Формальные правила и поиск заимствований отсекают явные проблемы, три языковых оценщика судят по смыслу, арбитр сводит решение. Каждый шаг виден в протоколе.",
   },
   {
-    icon: Zap,
-    title: "Генерация тестов",
-    desc: "Тесты создаются AI на основе материалов курса",
+    title: "Ассистент по материалам курса",
+    text: "Отвечает на вопросы, опираясь на загруженные преподавателем лекции, и показывает, из каких файлов взят ответ.",
   },
   {
-    icon: Shield,
-    title: "AI-экзаменатор",
-    desc: "Устный экзамен с адаптивными вопросами и оценкой",
+    title: "Тесты и пробный экзамен",
+    text: "Вопросы генерируются по материалам курса, а оценка выставляется по фиксированной шкале — одинаково для всех.",
   },
   {
-    icon: BookOpen,
-    title: "RAG-ассистент",
-    desc: "Чат с AI по материалам курса для подготовки",
+    title: "Подбор курсов",
+    text: "Рекомендации учитывают ваши интересы, оценки других студентов и смысловую близость описания курса к вашим целям.",
   },
 ];
 
 export default function Landing() {
   return (
-    <div className="min-h-screen bg-background overflow-hidden">
-      {/* Noise overlay */}
-      <div className="fixed inset-0 opacity-[0.03] pointer-events-none z-50"
-        style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E\")" }}
-      />
-
-      {/* Gradient orbs */}
-      <div className="fixed top-[-20%] left-[-10%] w-[600px] h-[600px] rounded-full bg-violet-600/10 blur-[120px]" />
-      <div className="fixed bottom-[-20%] right-[-10%] w-[500px] h-[500px] rounded-full bg-purple-600/8 blur-[100px]" />
-
-      {/* Header */}
-      <header className="relative z-10 flex items-center justify-between px-8 py-5">
-        <div className="flex items-center gap-2.5">
-          <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-violet-500 to-purple-700 flex items-center justify-center shadow-lg shadow-violet-500/20">
-            <Brain className="w-5 h-5 text-white" />
-          </div>
-          <span className="font-heading text-2xl text-foreground">EduAI</span>
-        </div>
-        <div className="flex gap-3">
-          <Link to="/login">
-            <Button variant="ghost" className="text-muted-foreground hover:text-foreground">
-              Войти
-            </Button>
-          </Link>
-          <Link to="/register">
-            <Button className="bg-primary hover:bg-primary/90">
-              Регистрация
-            </Button>
-          </Link>
+    <div className="min-h-screen bg-background">
+      <header className="flex items-center justify-between px-5 sm:px-10 h-16 border-b border-border">
+        <Logo />
+        <div className="flex gap-2">
+          <Link to="/login"><Button variant="ghost">Войти</Button></Link>
+          <Link to="/register"><Button>Создать аккаунт</Button></Link>
         </div>
       </header>
 
-      {/* Hero */}
-      <section className="relative z-10 flex flex-col items-center text-center pt-24 pb-20 px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-        >
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-border bg-surface text-sm text-muted-foreground mb-8">
-            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-            Образовательная платформа БГУИР
+      <section className="px-5 sm:px-10 pt-14 pb-16 max-w-6xl mx-auto grid lg:grid-cols-[1fr_1.1fr] gap-12 items-center">
+        <div>
+          <h1 className="text-3xl sm:text-[44px] leading-[1.1] text-foreground">
+            Персональный ассистент по обучению
+          </h1>
+          <p className="mt-5 text-lg text-muted-foreground max-w-xl leading-relaxed">
+            Гибридная интеллектуальная система: точные правила там, где ответ должен быть
+            проверяемым, и языковые модели там, где нужно понимать смысл текста.
+          </p>
+          <div className="mt-8 flex flex-wrap gap-3">
+            <Link to="/register"><Button size="lg">Начать обучение</Button></Link>
+            <Link to="/login"><Button size="lg" variant="outline">У меня есть аккаунт</Button></Link>
           </div>
-        </motion.div>
-
-        <motion.h1
-          className="text-6xl md:text-7xl lg:text-8xl font-heading text-foreground leading-[0.95] max-w-4xl"
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-        >
-          Учитесь с{" "}
-          <span className="bg-gradient-to-r from-violet-400 via-purple-400 to-fuchsia-400 bg-clip-text text-transparent">
-            интеллектом
-          </span>
-        </motion.h1>
-
-        <motion.p
-          className="mt-6 text-lg text-muted-foreground max-w-xl leading-relaxed"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.25 }}
-        >
-          AI-ассистент для курсов, тестов, экзаменов и лабораторных работ.
-          Персональный подход к каждому студенту.
-        </motion.p>
-
-        <motion.div
-          className="mt-10 flex gap-4"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-        >
-          <Link to="/register">
-            <Button size="lg" className="bg-primary hover:bg-primary/90 text-base px-8 gap-2 shadow-lg shadow-primary/25">
-              Начать обучение <ArrowRight className="w-4 h-4" />
-            </Button>
-          </Link>
-          <Link to="/login">
-            <Button size="lg" variant="outline" className="text-base px-8 border-border hover:bg-surface">
-              Войти
-            </Button>
-          </Link>
-        </motion.div>
+        </div>
+        <figure className="rounded-lg border border-border bg-card p-5 sm:p-7">
+          <PipelineHero />
+          <figcaption className="mt-3 text-sm text-muted-foreground">
+            Как проверяется отчёт: квадраты — символьные шаги, круги — нейросетевые.
+            До языковых моделей доходят только отчёты, прошедшие формальную проверку.
+          </figcaption>
+        </figure>
       </section>
 
-      {/* Features */}
-      <section className="relative z-10 px-6 pb-24">
-        <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-          {features.map((f, i) => (
-            <motion.div
-              key={f.title}
-              className="group p-6 rounded-2xl bg-surface border border-border hover:border-primary/30 transition-all duration-300"
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.5 + i * 0.1 }}
-            >
-              <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
-                <f.icon className="w-5 h-5 text-primary" />
-              </div>
-              <h3 className="font-heading text-lg text-foreground mb-2">{f.title}</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">{f.desc}</p>
-            </motion.div>
+      <section className="px-5 sm:px-10 pb-20 max-w-6xl mx-auto">
+        <div className="grid sm:grid-cols-2 gap-x-10 gap-y-8 border-t border-border pt-10">
+          {features.map((f) => (
+            <div key={f.title}>
+              <h2 className="font-body text-base font-semibold text-foreground">{f.title}</h2>
+              <p className="mt-1.5 text-sm text-muted-foreground leading-relaxed max-w-md">{f.text}</p>
+            </div>
           ))}
         </div>
       </section>

@@ -10,21 +10,21 @@ class LabRepository:
     __config = EducationDatabaseConfig()
 
     @postgre_connection(__config)
-    def get_labs(self, course_id: int, curs: cursor = None) -> list[tuple[int, int, str, str]]:
+    def get_labs(self, course_id: int, curs: cursor = None) -> list[tuple]:
         query = """
-            SELECT id, number, title, task
+            SELECT id, number, title, task, min_words, required_sections
             FROM labs
             WHERE course_id = %s
+            ORDER BY number, id
             """
         curs.execute(query, (course_id,))
         labs = curs.fetchall()
         return labs
 
     @postgre_connection(__config)
-    def get_by_id(self, lab_id: int, curs: cursor = None) -> tuple[int, int, str, str | None, int] | None:
-        # NEW FUNCTIONALITY: получение лабораторной по id
+    def get_by_id(self, lab_id: int, curs: cursor = None) -> tuple | None:
         query = """
-            SELECT id, number, title, task, course_id
+            SELECT id, number, title, task, course_id, min_words, required_sections
             FROM labs
             WHERE id = %s
             """
@@ -44,30 +44,32 @@ class LabRepository:
         return row[0] if row else None
 
     @postgre_connection(__config)
-    def create(self, lab: NewLab, course_id: int, curs: cursor = None) -> None:
-        # NEW FUNCTIONALITY: создание лабораторной
+    def create(self, lab: NewLab, course_id: int, curs: cursor = None) -> int:
         query = """
             INSERT INTO labs
-            (number, title, task, course_id)
-            VALUES (%s, %s, %s, %s)
+            (number, title, task, course_id, min_words, required_sections)
+            VALUES (%s, %s, %s, %s, %s, %s)
+            RETURNING id
             """
-        curs.execute(query, (lab.number, lab.title, lab.task, course_id))
+        curs.execute(query, (lab.number, lab.title, lab.task, course_id,
+                             lab.min_words, lab.required_sections))
+        return curs.fetchone()[0]
 
     @postgre_connection(__config)
-    def update(self, lab_id: int, *, number: int, title: str, task: str | None, curs: cursor = None) -> bool:
-        # NEW FUNCTIONALITY: обновление лабораторной (для совместимости с текущим фронтом)
+    def update(self, lab_id: int, *, number: int, title: str, task: str | None,
+               min_words: int | None = None, required_sections: str | None = None,
+               curs: cursor = None) -> bool:
         query = """
             UPDATE labs
-            SET number = %s, title = %s, task = %s
+            SET number = %s, title = %s, task = %s, min_words = %s, required_sections = %s
             WHERE id = %s
             RETURNING id
             """
-        curs.execute(query, (number, title, task, lab_id))
+        curs.execute(query, (number, title, task, min_words, required_sections, lab_id))
         return bool(curs.fetchone())
 
     @postgre_connection(__config)
     def delete(self, lab_id: int, curs: cursor = None) -> bool:
-        # NEW FUNCTIONALITY: удаление лабораторной
         query = """
             DELETE FROM labs
             WHERE id = %s

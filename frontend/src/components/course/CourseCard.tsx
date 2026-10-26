@@ -1,65 +1,42 @@
+import type { ReactNode } from "react";
 import { Link } from "react-router-dom";
-import { Badge } from "@/components/ui/badge";
-import { DIFFICULTY_MAP, COURSE_COLORS } from "@/utils/constants";
-import type { Course, CourseRef } from "@/api/courses";
-import { motion } from "framer-motion";
+import type { Course } from "@/api";
+import { COURSE_TINTS, DIFFICULTY_MAP } from "@/utils/constants";
+import { cn } from "@/lib/utils";
 
 interface Props {
-  course: Course | CourseRef;
-  basePath: string;
-  index?: number;
+  course: Course;
+  to: string;
+  footer?: ReactNode;
+  badge?: ReactNode;
 }
 
-export function CourseCard({ course, basePath, index = 0 }: Props) {
-  const colorClass = COURSE_COLORS[course.id % COURSE_COLORS.length];
-  const full = "difficulty" in course ? course : null;
-  const diff = DIFFICULTY_MAP[full?.difficulty ?? ""] ?? DIFFICULTY_MAP.intermediate;
-
+export function CourseCard({ course, to, footer, badge }: Props) {
+  const tint = COURSE_TINTS[course.id % COURSE_TINTS.length];
+  const diff = DIFFICULTY_MAP[course.difficulty] ?? DIFFICULTY_MAP.intermediate;
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.35, delay: index * 0.05 }}
-    >
-      <Link
-        to={`${basePath}/courses/${course.id}`}
-        className="group block rounded-2xl bg-card border border-border hover:border-primary/30 transition-all duration-300 overflow-hidden"
-      >
-        {/* Color header */}
-        <div className={`h-28 bg-gradient-to-br ${colorClass} relative overflow-hidden`}>
-          <span className="absolute -bottom-4 -right-2 text-8xl font-heading text-white/10 leading-none select-none">
+    <div className="group flex flex-col rounded-lg bg-card border border-border hover:border-primary/50 transition-colors overflow-hidden">
+      <Link to={to} className="flex-1 flex flex-col focus-visible:outline-offset-[-2px]">
+        <div className="relative h-20 overflow-hidden" style={{ background: tint }}>
+          <span className="absolute right-3 -bottom-5 font-heading text-[64px] leading-none text-white/10 select-none">
             {course.title.charAt(0)}
           </span>
+          <div className="absolute left-4 top-3 flex gap-1.5">
+            <span className={cn("rounded-md border px-2 py-0.5 text-[11px] font-medium bg-black/20", diff.color)}>{diff.label}</span>
+            {badge}
+          </div>
         </div>
-
-        {/* Content */}
-        <div className="p-5">
-          <h3 className="font-heading text-lg text-foreground mb-3 line-clamp-2 group-hover:text-primary transition-colors">
+        <div className="p-4 flex-1">
+          <h3 className="font-body text-[15px] font-semibold text-foreground leading-snug line-clamp-2 group-hover:text-primary transition-colors">
             {course.title}
           </h3>
-
-          <div className="flex flex-wrap gap-1.5 mb-4">
-            {full && (
-              <>
-                <Badge className={diff.color} variant="secondary">
-                  {diff.label}
-                </Badge>
-                {full.tags?.slice(0, 2).map((tag) => (
-                  <Badge key={tag} variant="outline" className="border-border text-muted-foreground text-xs">
-                    {tag}
-                  </Badge>
-                ))}
-              </>
-            )}
-          </div>
-
-          {full?.description && (
-            <p className="text-sm text-muted-foreground line-clamp-2">
-              {full.description}
-            </p>
+          {course.description && <p className="text-sm text-muted-foreground mt-1.5 line-clamp-2">{course.description}</p>}
+          {course.tags?.length > 0 && (
+            <p className="text-xs text-muted-foreground mt-3">{course.tags.slice(0, 3).join(", ")}</p>
           )}
         </div>
       </Link>
-    </motion.div>
+      {footer && <div className="px-4 pb-4">{footer}</div>}
+    </div>
   );
 }

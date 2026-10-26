@@ -1,42 +1,59 @@
+"""Нормализация текста: приведение к нижнему регистру, лемматизация (Natasha),
+удаление стоп-слов. Результат — последовательность лемм, по которой строится
+SimHash-отпечаток и проверяются продукционные правила."""
+from __future__ import annotations
+
 import re
-import nltk
-from nltk.corpus import stopwords
-from natasha import Doc
-from natasha import (
-    Segmenter, 
-    MorphVocab, 
-    NewsEmbedding, 
-    NewsMorphTagger
-)
+import threading
+from functools import lru_cache
+
+from .stopwords import RUSSIAN_STOPWORDS
+
+_CLEAN_RE = re.compile(r"[^a-zA-Zа-яёА-ЯЁ0-9\s-]")
+_lock = threading.Lock()
+
 
 class TextNormalizer:
-    def __init__(self, language='russian'):
-        self.__segmenter = Segmenter()
-        self.__morph_vocab = MorphVocab()
-        self.__morph_tagger = NewsMorphTagger(NewsEmbedding())
-        self.__stopwords = set(stopwords.words(language))
+    _instance = None
 
-    def normalize_text(self, text: str, remove_stopwords=True, use_lemmatization=True) -> str:
-        nltk.download('stopwords')
-        text = text.lower()
-        text = re.sub(r'[^a-zA-Zа-яё\s]', ' ', text)
+    def __new__(cls, *args, **kwargs):
+        with _lock:
+            if cls._instance is None:
+                inst = super().__new__(cls)
+                from natasha import MorphVocab, NewsEmbedding, NewsMorphTagger, Segmenter
+                inst._segmenter = Segmenter()
+                inst._morph_vocab = MorphVocab()
+                inst._morph_tagger = NewsMorphTagger(NewsEmbedding())
+                cls._instance = inst
+        return cls._instance
 
-        doc = Doc(text)
-        doc.segment(self.__segmenter)
+    def __init__(self, language: str = "russian") -> None:  # noqa: D401 — совместимость
+        pass
 
-        # Морфологический разбор
-        doc.tag_morph(self.__morph_tagger)
+    def lemmas(self, text: str, remove_stopwords: bool = True) -> list[str]:
+        return list(_lemmas_cached(self, text, remove_stopwords))
 
-        # Лемматизация
-        if use_lemmatization:
-            for token in doc.tokens:
-                token.lemmatize(self.__morph_vocab)
-            words = [token.lemma for token in doc.tokens]
-        else:
-            words = [token.text for token in doc.tokens]
+    def normalize_text(self, text: str, remove_stopwords: bool = True) -> str:
+        return " ".join(self.lemmas(text, remove_stopwords))
 
-        # Удаление стоп-слов
-        if remove_stopwords:
-            words = [word for word in words if word not in self.__stopwords]
+    def _lemmatize(self, text: str, remove_stopwords: bool) -> tuple[str, ...]:
+        from natasha import Doc
+        cleaned = _CLEAN_RE.sub(" ", text.lower())
+        doc = Doc(cleaned)
+        doc.segment(self._segmenter)
+        doc.tag_morph(self._morph_tagger)
+        out = []
+        for token in doc.tokens:
+            token.lemmatize(self._morph_vocab)
+            lemma = (token.lemma or token.text).strip("-")
+            if not lemma or lemma.isdigit():
+                continue
+            if remove_stopwords and lemma in RUSSIAN_STOPWORDS:
+                continue
+            out.append(lemma)
+        return tuple(out)
 
-        return ' '.join(words)
+
+@lru_cache(maxsize=256)
+def _lemmas_cached(normalizer: TextNormalizer, text: str, remove_stopwords: bool) -> tuple[str, ...]:
+    return normalizer._lemmatize(text, remove_stopwords)

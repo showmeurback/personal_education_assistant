@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { Toaster } from "@/components/ui/sonner";
@@ -24,11 +24,13 @@ import TeacherCourses from "@/pages/teacher/Courses";
 import CourseEdit from "@/pages/teacher/CourseEdit";
 import CourseView from "@/pages/teacher/CourseView";
 import LabsManage from "@/pages/teacher/LabsManage";
-import PendingReports from "@/pages/teacher/PendingReports";
+import ReportsQueue from "@/pages/teacher/ReportsQueue";
+import ReportReview from "@/pages/teacher/ReportReview";
 import Analytics from "@/pages/teacher/Analytics";
 import Students from "@/pages/teacher/Students";
 import Requests from "@/pages/teacher/Requests";
 import CourseFiles from "@/pages/teacher/CourseFiles";
+import SystemPage from "@/pages/teacher/SystemPage";
 
 const queryClient = new QueryClient({
   defaultOptions: { queries: { retry: 1, refetchOnWindowFocus: false } },
@@ -40,15 +42,13 @@ export default function App() {
       <TooltipProvider>
         <BrowserRouter>
           <Routes>
-            {/* Public */}
             <Route element={<AuthLayout />}>
               <Route path="/" element={<Landing />} />
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
             </Route>
 
-            {/* Student */}
-            <Route element={<AppLayout />}>
+            <Route element={<AppLayout role="student" />}>
               <Route path="/student/dashboard" element={<StudentDashboard />} />
               <Route path="/student/my-courses" element={<MyCourses />} />
               <Route path="/student/catalog" element={<Catalog />} />
@@ -61,8 +61,7 @@ export default function App() {
               <Route path="/student/profile" element={<Profile />} />
             </Route>
 
-            {/* Teacher */}
-            <Route element={<AppLayout />}>
+            <Route element={<AppLayout role="teacher" />}>
               <Route path="/teacher/dashboard" element={<TeacherDashboard />} />
               <Route path="/teacher/courses" element={<TeacherCourses />} />
               <Route path="/teacher/courses/new" element={<CourseEdit />} />
@@ -73,13 +72,15 @@ export default function App() {
               <Route path="/teacher/courses/:id/students" element={<Students />} />
               <Route path="/teacher/courses/:id/requests" element={<Requests />} />
               <Route path="/teacher/courses/:id/files" element={<CourseFiles />} />
-              <Route path="/teacher/reports" element={<PendingReports />} />
+              <Route path="/teacher/reports" element={<ReportsQueue />} />
+              <Route path="/teacher/reports/:reportId" element={<ReportReview />} />
+              <Route path="/teacher/system" element={<SystemPage />} />
             </Route>
 
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </BrowserRouter>
-        <Toaster richColors position="bottom-right" />
+        <Toaster richColors position="bottom-right" theme="dark" />
       </TooltipProvider>
     </QueryClientProvider>
   );

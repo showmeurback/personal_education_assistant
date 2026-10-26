@@ -42,8 +42,8 @@ class TestResultRepository:
             detail_query = """
                 INSERT INTO test_result_answers
                     (test_result_id, question_num, question_text, options,
-                     user_answer, correct_answer, is_correct)
-                VALUES (%s, %s, %s, %s, %s, %s, %s)
+                     user_answer, correct_answer, is_correct, explanation)
+                VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
             """
             curs.execute(detail_query, (
                 result_id,
@@ -53,6 +53,7 @@ class TestResultRepository:
                 ans["user_answer"],
                 ans["correct_answer"],
                 ans["is_correct"],
+                ans.get("explanation"),
             ))
 
         return result_id
@@ -167,10 +168,17 @@ class TestResultRepository:
         return curs.fetchall()
 
     @postgre_connection(__config)
+    def get_owner(self, test_result_id: int, curs: cursor = None) -> tuple[int, int] | None:
+        """(student_id, course_id) результата теста."""
+        curs.execute("SELECT student_id, course_id FROM test_results WHERE id = %s", (test_result_id,))
+        row = curs.fetchone()
+        return (row[0], row[1]) if row else None
+
+    @postgre_connection(__config)
     def get_answers(self, test_result_id: int, curs: cursor = None) -> list[tuple]:
         query = """
             SELECT question_num, question_text, options, user_answer,
-                   correct_answer, is_correct
+                   correct_answer, is_correct, explanation
             FROM test_result_answers
             WHERE test_result_id = %s
             ORDER BY question_num

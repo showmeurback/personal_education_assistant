@@ -11,8 +11,12 @@ class TestParser:
         questions = []
         errors = []
 
-        question_pattern = r'(?:QUESTION|ВОПРОС)\s*[:\.]?\s*(\d+)\s*[:\.]?\s*(.+?)(?=(?:QUESTION|ВОПРОС|$))'
-        question_matches = re.finditer(question_pattern, text, re.IGNORECASE | re.DOTALL)
+        # Заголовок вопроса распознаётся только в начале строки («ВОПРОС 3: …»).
+        # Прежнее выражение принимало слово «вопрос» внутри текста за начало
+        # нового вопроса и разрывало формулировки.
+        question_pattern = (r'^[ \t*#]*(?:QUESTION|ВОПРОС)\s*(\d+)\s*[:.)]?\s*(.+?)'
+                            r'(?=^[ \t*#]*(?:QUESTION|ВОПРОС)\s*\d+|\Z)')
+        question_matches = re.finditer(question_pattern, text, re.IGNORECASE | re.DOTALL | re.MULTILINE)
 
         for match in question_matches:
             try:
@@ -27,8 +31,8 @@ class TestParser:
 
                 for idx, line in enumerate(lines):
                     line = line.strip()
-                    if line and not re.match(r'^[A-D]\)', line):
-                        question_text = line
+                    if line and not re.match(r'^[A-DА-Г][\).]', line):
+                        question_text = line.strip(" *:#")
                         options_start_idx = idx + 1
                         break
 
@@ -71,7 +75,7 @@ class TestParser:
             if not line:
                 continue
 
-            match = re.match(r'^([A-D])\)\s*(.*)', line)
+            match = re.match(r'^\**([A-D])[\).]\**\s*(.*)', line)
             if match:
                 if current_letter and current_text:
                     options[current_letter] = current_text

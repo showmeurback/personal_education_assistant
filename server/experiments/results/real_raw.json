@@ -1,0 +1,4122 @@
+[
+ {
+  "mode": "symbolic",
+  "repeat": 1,
+  "id": 1,
+  "lab": 101,
+  "category": "real_ok",
+  "expected": "approve",
+  "title": "ЛР 1. Информационно-поисковая система и оценка качества поиска",
+  "decision": "approve",
+  "decided_by": "symbolic",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 0,
+  "seconds": 0.7,
+  "reason": "Формальные проверки пройдены",
+  "rules": [
+   [
+    {
+     "rule_id": "R1",
+     "title": "Отчёт содержит текст",
+     "outcome": "pass",
+     "message": "Текст отчёта извлечён",
+     "value": 769,
+     "threshold": 20
+    },
+    {
+     "rule_id": "R2",
+     "title": "Минимальный объём",
+     "outcome": "pass",
+     "message": "Объём 769 слов",
+     "value": 769,
+     "threshold": 100
+    },
+    {
+     "rule_id": "R3",
+     "title": "Обязательные разделы",
+     "outcome": "pass",
+     "message": "Все обязательные разделы присутствуют",
+     "value": 2,
+     "threshold": 2
+    },
+    {
+     "rule_id": "R4",
+     "title": "Язык отчёта",
+     "outcome": "pass",
+     "message": "Отчёт на русском языке",
+     "value": 0.945,
+     "threshold": 0.5
+    },
+    {
+     "rule_id": "R5",
+     "title": "Предельный объём",
+     "outcome": "pass",
+     "message": "Объём в допустимых пределах",
+     "value": 6197,
+     "threshold": 60000
+    },
+    {
+     "rule_id": "R6",
+     "title": "Соответствие теме (по понятиям задания)",
+     "outcome": "pass",
+     "message": "Найдено 25 из 25 ключевых понятий задания",
+     "value": 1.0,
+     "threshold": 0.2
+    }
+   ]
+  ],
+  "judges": []
+ },
+ {
+  "mode": "symbolic",
+  "repeat": 1,
+  "id": 2,
+  "lab": 102,
+  "category": "real_ok",
+  "expected": "approve",
+  "title": "ЛР 2. Автоматическое распознавание языка текстов",
+  "decision": "approve",
+  "decided_by": "symbolic",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 0,
+  "seconds": 0.23,
+  "reason": "Формальные проверки пройдены",
+  "rules": [
+   [
+    {
+     "rule_id": "R1",
+     "title": "Отчёт содержит текст",
+     "outcome": "pass",
+     "message": "Текст отчёта извлечён",
+     "value": 2138,
+     "threshold": 20
+    },
+    {
+     "rule_id": "R2",
+     "title": "Минимальный объём",
+     "outcome": "pass",
+     "message": "Объём 2138 слов",
+     "value": 2138,
+     "threshold": 100
+    },
+    {
+     "rule_id": "R3",
+     "title": "Обязательные разделы",
+     "outcome": "pass",
+     "message": "Все обязательные разделы присутствуют",
+     "value": 2,
+     "threshold": 2
+    },
+    {
+     "rule_id": "R4",
+     "title": "Язык отчёта",
+     "outcome": "pass",
+     "message": "Отчёт на русском языке",
+     "value": 0.871,
+     "threshold": 0.5
+    },
+    {
+     "rule_id": "R5",
+     "title": "Предельный объём",
+     "outcome": "pass",
+     "message": "Объём в допустимых пределах",
+     "value": 15162,
+     "threshold": 60000
+    },
+    {
+     "rule_id": "R6",
+     "title": "Соответствие теме (по понятиям задания)",
+     "outcome": "pass",
+     "message": "Найдено 25 из 25 ключевых понятий задания",
+     "value": 1.0,
+     "threshold": 0.2
+    }
+   ]
+  ],
+  "judges": []
+ },
+ {
+  "mode": "symbolic",
+  "repeat": 1,
+  "id": 3,
+  "lab": 103,
+  "category": "real_ok",
+  "expected": "approve",
+  "title": "ЛР 3. Автоматическое реферирование документов",
+  "decision": "approve",
+  "decided_by": "symbolic",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 0,
+  "seconds": 0.12,
+  "reason": "Формальные проверки пройдены",
+  "rules": [
+   [
+    {
+     "rule_id": "R1",
+     "title": "Отчёт содержит текст",
+     "outcome": "pass",
+     "message": "Текст отчёта извлечён",
+     "value": 2514,
+     "threshold": 20
+    },
+    {
+     "rule_id": "R2",
+     "title": "Минимальный объём",
+     "outcome": "pass",
+     "message": "Объём 2514 слов",
+     "value": 2514,
+     "threshold": 100
+    },
+    {
+     "rule_id": "R3",
+     "title": "Обязательные разделы",
+     "outcome": "pass",
+     "message": "Все обязательные разделы присутствуют",
+     "value": 2,
+     "threshold": 2
+    },
+    {
+     "rule_id": "R4",
+     "title": "Язык отчёта",
+     "outcome": "pass",
+     "message": "Отчёт на русском языке",
+     "value": 0.813,
+     "threshold": 0.5
+    },
+    {
+     "rule_id": "R5",
+     "title": "Предельный объём",
+     "outcome": "pass",
+     "message": "Объём в допустимых пределах",
+     "value": 17469,
+     "threshold": 60000
+    },
+    {
+     "rule_id": "R6",
+     "title": "Соответствие теме (по понятиям задания)",
+     "outcome": "pass",
+     "message": "Найдено 25 из 25 ключевых понятий задания",
+     "value": 1.0,
+     "threshold": 0.2
+    }
+   ]
+  ],
+  "judges": []
+ },
+ {
+  "mode": "symbolic",
+  "repeat": 1,
+  "id": 4,
+  "lab": 104,
+  "category": "real_ok",
+  "expected": "approve",
+  "title": "ЛР 9. Автоматизированная система распознавания речи",
+  "decision": "approve",
+  "decided_by": "symbolic",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 0,
+  "seconds": 0.43,
+  "reason": "Формальные проверки пройдены",
+  "rules": [
+   [
+    {
+     "rule_id": "R1",
+     "title": "Отчёт содержит текст",
+     "outcome": "pass",
+     "message": "Текст отчёта извлечён",
+     "value": 6724,
+     "threshold": 20
+    },
+    {
+     "rule_id": "R2",
+     "title": "Минимальный объём",
+     "outcome": "pass",
+     "message": "Объём 6724 слов",
+     "value": 6724,
+     "threshold": 100
+    },
+    {
+     "rule_id": "R3",
+     "title": "Обязательные разделы",
+     "outcome": "pass",
+     "message": "Все обязательные разделы присутствуют",
+     "value": 2,
+     "threshold": 2
+    },
+    {
+     "rule_id": "R4",
+     "title": "Язык отчёта",
+     "outcome": "pass",
+     "message": "Отчёт на русском языке",
+     "value": 0.8,
+     "threshold": 0.5
+    },
+    {
+     "rule_id": "R5",
+     "title": "Предельный объём",
+     "outcome": "pass",
+     "message": "Объём в допустимых пределах",
+     "value": 47563,
+     "threshold": 60000
+    },
+    {
+     "rule_id": "R6",
+     "title": "Соответствие теме (по понятиям задания)",
+     "outcome": "pass",
+     "message": "Найдено 25 из 25 ключевых понятий задания",
+     "value": 1.0,
+     "threshold": 0.2
+    }
+   ]
+  ],
+  "judges": []
+ },
+ {
+  "mode": "symbolic",
+  "repeat": 1,
+  "id": 5,
+  "lab": 105,
+  "category": "real_ok",
+  "expected": "approve",
+  "title": "ЛР 1. Управление доступом с помощью списков контроля доступа",
+  "decision": "approve",
+  "decided_by": "symbolic",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 0,
+  "seconds": 0.21,
+  "reason": "Формальные проверки пройдены",
+  "rules": [
+   [
+    {
+     "rule_id": "R1",
+     "title": "Отчёт содержит текст",
+     "outcome": "pass",
+     "message": "Текст отчёта извлечён",
+     "value": 4651,
+     "threshold": 20
+    },
+    {
+     "rule_id": "R2",
+     "title": "Минимальный объём",
+     "outcome": "pass",
+     "message": "Объём 4651 слов",
+     "value": 4651,
+     "threshold": 100
+    },
+    {
+     "rule_id": "R3",
+     "title": "Обязательные разделы",
+     "outcome": "pass",
+     "message": "Все обязательные разделы присутствуют",
+     "value": 2,
+     "threshold": 2
+    },
+    {
+     "rule_id": "R4",
+     "title": "Язык отчёта",
+     "outcome": "pass",
+     "message": "Отчёт на русском языке",
+     "value": 0.6,
+     "threshold": 0.5
+    },
+    {
+     "rule_id": "R5",
+     "title": "Предельный объём",
+     "outcome": "pass",
+     "message": "Объём в допустимых пределах",
+     "value": 33342,
+     "threshold": 60000
+    },
+    {
+     "rule_id": "R6",
+     "title": "Соответствие теме (по понятиям задания)",
+     "outcome": "pass",
+     "message": "Найдено 25 из 25 ключевых понятий задания",
+     "value": 1.0,
+     "threshold": 0.2
+    }
+   ]
+  ],
+  "judges": []
+ },
+ {
+  "mode": "symbolic",
+  "repeat": 1,
+  "id": 6,
+  "lab": 106,
+  "category": "real_ok",
+  "expected": "approve",
+  "title": "ЛР 2–4. Анализ защищённости приложений",
+  "decision": "approve",
+  "decided_by": "symbolic",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 0,
+  "seconds": 0.35,
+  "reason": "Формальные проверки пройдены",
+  "rules": [
+   [
+    {
+     "rule_id": "R1",
+     "title": "Отчёт содержит текст",
+     "outcome": "pass",
+     "message": "Текст отчёта извлечён",
+     "value": 5224,
+     "threshold": 20
+    },
+    {
+     "rule_id": "R2",
+     "title": "Минимальный объём",
+     "outcome": "pass",
+     "message": "Объём 5224 слов",
+     "value": 5224,
+     "threshold": 100
+    },
+    {
+     "rule_id": "R3",
+     "title": "Обязательные разделы",
+     "outcome": "pass",
+     "message": "Все обязательные разделы присутствуют",
+     "value": 2,
+     "threshold": 2
+    },
+    {
+     "rule_id": "R4",
+     "title": "Язык отчёта",
+     "outcome": "pass",
+     "message": "Отчёт на русском языке",
+     "value": 0.811,
+     "threshold": 0.5
+    },
+    {
+     "rule_id": "R5",
+     "title": "Предельный объём",
+     "outcome": "pass",
+     "message": "Объём в допустимых пределах",
+     "value": 37774,
+     "threshold": 60000
+    },
+    {
+     "rule_id": "R6",
+     "title": "Соответствие теме (по понятиям задания)",
+     "outcome": "pass",
+     "message": "Найдено 25 из 25 ключевых понятий задания",
+     "value": 1.0,
+     "threshold": 0.2
+    }
+   ]
+  ],
+  "judges": []
+ },
+ {
+  "mode": "symbolic",
+  "repeat": 1,
+  "id": 7,
+  "lab": 107,
+  "category": "real_ok",
+  "expected": "approve",
+  "title": "ЛР 1. Формализация предметной области в базе знаний",
+  "decision": "approve",
+  "decided_by": "symbolic",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 0,
+  "seconds": 0.04,
+  "reason": "Формальные проверки пройдены",
+  "rules": [
+   [
+    {
+     "rule_id": "R1",
+     "title": "Отчёт содержит текст",
+     "outcome": "pass",
+     "message": "Текст отчёта извлечён",
+     "value": 836,
+     "threshold": 20
+    },
+    {
+     "rule_id": "R2",
+     "title": "Минимальный объём",
+     "outcome": "pass",
+     "message": "Объём 836 слов",
+     "value": 836,
+     "threshold": 100
+    },
+    {
+     "rule_id": "R3",
+     "title": "Обязательные разделы",
+     "outcome": "pass",
+     "message": "Все обязательные разделы присутствуют",
+     "value": 2,
+     "threshold": 2
+    },
+    {
+     "rule_id": "R4",
+     "title": "Язык отчёта",
+     "outcome": "pass",
+     "message": "Отчёт на русском языке",
+     "value": 0.527,
+     "threshold": 0.5
+    },
+    {
+     "rule_id": "R5",
+     "title": "Предельный объём",
+     "outcome": "pass",
+     "message": "Объём в допустимых пределах",
+     "value": 6627,
+     "threshold": 60000
+    },
+    {
+     "rule_id": "R6",
+     "title": "Соответствие теме (по понятиям задания)",
+     "outcome": "pass",
+     "message": "Найдено 25 из 25 ключевых понятий задания",
+     "value": 1.0,
+     "threshold": 0.2
+    }
+   ]
+  ],
+  "judges": []
+ },
+ {
+  "mode": "symbolic",
+  "repeat": 1,
+  "id": 8,
+  "lab": 108,
+  "category": "real_ok",
+  "expected": "approve",
+  "title": "ЛР 2. Классификатор сообщений",
+  "decision": "approve",
+  "decided_by": "symbolic",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 0,
+  "seconds": 0.05,
+  "reason": "Формальные проверки пройдены",
+  "rules": [
+   [
+    {
+     "rule_id": "R1",
+     "title": "Отчёт содержит текст",
+     "outcome": "pass",
+     "message": "Текст отчёта извлечён",
+     "value": 853,
+     "threshold": 20
+    },
+    {
+     "rule_id": "R2",
+     "title": "Минимальный объём",
+     "outcome": "pass",
+     "message": "Объём 853 слов",
+     "value": 853,
+     "threshold": 100
+    },
+    {
+     "rule_id": "R3",
+     "title": "Обязательные разделы",
+     "outcome": "pass",
+     "message": "Все обязательные разделы присутствуют",
+     "value": 2,
+     "threshold": 2
+    },
+    {
+     "rule_id": "R4",
+     "title": "Язык отчёта",
+     "outcome": "pass",
+     "message": "Отчёт на русском языке",
+     "value": 0.84,
+     "threshold": 0.5
+    },
+    {
+     "rule_id": "R5",
+     "title": "Предельный объём",
+     "outcome": "pass",
+     "message": "Объём в допустимых пределах",
+     "value": 6261,
+     "threshold": 60000
+    },
+    {
+     "rule_id": "R6",
+     "title": "Соответствие теме (по понятиям задания)",
+     "outcome": "pass",
+     "message": "Найдено 25 из 25 ключевых понятий задания",
+     "value": 1.0,
+     "threshold": 0.2
+    }
+   ]
+  ],
+  "judges": []
+ },
+ {
+  "mode": "symbolic",
+  "repeat": 1,
+  "id": 9,
+  "lab": 109,
+  "category": "real_ok",
+  "expected": "approve",
+  "title": "ЛР 3. Логические правила и фразы ответа",
+  "decision": "approve",
+  "decided_by": "symbolic",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 0,
+  "seconds": 0.1,
+  "reason": "Формальные проверки пройдены",
+  "rules": [
+   [
+    {
+     "rule_id": "R1",
+     "title": "Отчёт содержит текст",
+     "outcome": "pass",
+     "message": "Текст отчёта извлечён",
+     "value": 1874,
+     "threshold": 20
+    },
+    {
+     "rule_id": "R2",
+     "title": "Минимальный объём",
+     "outcome": "pass",
+     "message": "Объём 1874 слов",
+     "value": 1874,
+     "threshold": 100
+    },
+    {
+     "rule_id": "R3",
+     "title": "Обязательные разделы",
+     "outcome": "pass",
+     "message": "Все обязательные разделы присутствуют",
+     "value": 2,
+     "threshold": 2
+    },
+    {
+     "rule_id": "R4",
+     "title": "Язык отчёта",
+     "outcome": "pass",
+     "message": "Отчёт на русском языке",
+     "value": 0.77,
+     "threshold": 0.5
+    },
+    {
+     "rule_id": "R5",
+     "title": "Предельный объём",
+     "outcome": "pass",
+     "message": "Объём в допустимых пределах",
+     "value": 14161,
+     "threshold": 60000
+    },
+    {
+     "rule_id": "R6",
+     "title": "Соответствие теме (по понятиям задания)",
+     "outcome": "pass",
+     "message": "Найдено 25 из 25 ключевых понятий задания",
+     "value": 1.0,
+     "threshold": 0.2
+    }
+   ]
+  ],
+  "judges": []
+ },
+ {
+  "mode": "symbolic",
+  "repeat": 1,
+  "id": 10,
+  "lab": 110,
+  "category": "real_ok",
+  "expected": "approve",
+  "title": "ЛР 4. Агенты решателя задач",
+  "decision": "approve",
+  "decided_by": "symbolic",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 0,
+  "seconds": 0.23,
+  "reason": "Формальные проверки пройдены",
+  "rules": [
+   [
+    {
+     "rule_id": "R1",
+     "title": "Отчёт содержит текст",
+     "outcome": "pass",
+     "message": "Текст отчёта извлечён",
+     "value": 3696,
+     "threshold": 20
+    },
+    {
+     "rule_id": "R2",
+     "title": "Минимальный объём",
+     "outcome": "pass",
+     "message": "Объём 3696 слов",
+     "value": 3696,
+     "threshold": 100
+    },
+    {
+     "rule_id": "R3",
+     "title": "Обязательные разделы",
+     "outcome": "pass",
+     "message": "Все обязательные разделы присутствуют",
+     "value": 2,
+     "threshold": 2
+    },
+    {
+     "rule_id": "R4",
+     "title": "Язык отчёта",
+     "outcome": "pass",
+     "message": "Отчёт на русском языке",
+     "value": 0.865,
+     "threshold": 0.5
+    },
+    {
+     "rule_id": "R5",
+     "title": "Предельный объём",
+     "outcome": "pass",
+     "message": "Объём в допустимых пределах",
+     "value": 27472,
+     "threshold": 60000
+    },
+    {
+     "rule_id": "R6",
+     "title": "Соответствие теме (по понятиям задания)",
+     "outcome": "pass",
+     "message": "Найдено 25 из 25 ключевых понятий задания",
+     "value": 1.0,
+     "threshold": 0.2
+    }
+   ]
+  ],
+  "judges": []
+ },
+ {
+  "mode": "symbolic",
+  "repeat": 1,
+  "id": 11,
+  "lab": 105,
+  "category": "real_wrong_lab",
+  "expected": "reject",
+  "title": "ЛР 1. Информационно-поисковая система и оценка качества поиска → ЛР 1. Управление доступом с помощью списков контроля доступа",
+  "decision": "approve",
+  "decided_by": "symbolic",
+  "score": null,
+  "similarity": 0.531,
+  "llm_calls": 0,
+  "seconds": 0.01,
+  "reason": "Формальные проверки пройдены",
+  "rules": [
+   [
+    {
+     "rule_id": "R1",
+     "title": "Отчёт содержит текст",
+     "outcome": "pass",
+     "message": "Текст отчёта извлечён",
+     "value": 769,
+     "threshold": 20
+    },
+    {
+     "rule_id": "R2",
+     "title": "Минимальный объём",
+     "outcome": "pass",
+     "message": "Объём 769 слов",
+     "value": 769,
+     "threshold": 100
+    },
+    {
+     "rule_id": "R3",
+     "title": "Обязательные разделы",
+     "outcome": "pass",
+     "message": "Все обязательные разделы присутствуют",
+     "value": 2,
+     "threshold": 2
+    },
+    {
+     "rule_id": "R4",
+     "title": "Язык отчёта",
+     "outcome": "pass",
+     "message": "Отчёт на русском языке",
+     "value": 0.945,
+     "threshold": 0.5
+    },
+    {
+     "rule_id": "R5",
+     "title": "Предельный объём",
+     "outcome": "pass",
+     "message": "Объём в допустимых пределах",
+     "value": 6197,
+     "threshold": 60000
+    },
+    {
+     "rule_id": "R6",
+     "title": "Соответствие теме (по понятиям задания)",
+     "outcome": "pass",
+     "message": "Найдено 6 из 25 ключевых понятий задания",
+     "value": 0.24,
+     "threshold": 0.2
+    }
+   ]
+  ],
+  "judges": []
+ },
+ {
+  "mode": "symbolic",
+  "repeat": 1,
+  "id": 12,
+  "lab": 106,
+  "category": "real_wrong_lab",
+  "expected": "reject",
+  "title": "ЛР 2. Автоматическое распознавание языка текстов → ЛР 2–4. Анализ защищённости приложений",
+  "decision": "approve",
+  "decided_by": "symbolic",
+  "score": null,
+  "similarity": 0.578,
+  "llm_calls": 0,
+  "seconds": 0.01,
+  "reason": "Формальные проверки пройдены",
+  "rules": [
+   [
+    {
+     "rule_id": "R1",
+     "title": "Отчёт содержит текст",
+     "outcome": "pass",
+     "message": "Текст отчёта извлечён",
+     "value": 2138,
+     "threshold": 20
+    },
+    {
+     "rule_id": "R2",
+     "title": "Минимальный объём",
+     "outcome": "pass",
+     "message": "Объём 2138 слов",
+     "value": 2138,
+     "threshold": 100
+    },
+    {
+     "rule_id": "R3",
+     "title": "Обязательные разделы",
+     "outcome": "pass",
+     "message": "Все обязательные разделы присутствуют",
+     "value": 2,
+     "threshold": 2
+    },
+    {
+     "rule_id": "R4",
+     "title": "Язык отчёта",
+     "outcome": "pass",
+     "message": "Отчёт на русском языке",
+     "value": 0.871,
+     "threshold": 0.5
+    },
+    {
+     "rule_id": "R5",
+     "title": "Предельный объём",
+     "outcome": "pass",
+     "message": "Объём в допустимых пределах",
+     "value": 15162,
+     "threshold": 60000
+    },
+    {
+     "rule_id": "R6",
+     "title": "Соответствие теме (по понятиям задания)",
+     "outcome": "pass",
+     "message": "Найдено 11 из 25 ключевых понятий задания",
+     "value": 0.44,
+     "threshold": 0.2
+    }
+   ]
+  ],
+  "judges": []
+ },
+ {
+  "mode": "symbolic",
+  "repeat": 1,
+  "id": 13,
+  "lab": 107,
+  "category": "real_wrong_lab",
+  "expected": "reject",
+  "title": "ЛР 3. Автоматическое реферирование документов → ЛР 1. Формализация предметной области в базе знаний",
+  "decision": "approve",
+  "decided_by": "symbolic",
+  "score": null,
+  "similarity": 0.5,
+  "llm_calls": 0,
+  "seconds": 0.02,
+  "reason": "Формальные проверки пройдены",
+  "rules": [
+   [
+    {
+     "rule_id": "R1",
+     "title": "Отчёт содержит текст",
+     "outcome": "pass",
+     "message": "Текст отчёта извлечён",
+     "value": 2514,
+     "threshold": 20
+    },
+    {
+     "rule_id": "R2",
+     "title": "Минимальный объём",
+     "outcome": "pass",
+     "message": "Объём 2514 слов",
+     "value": 2514,
+     "threshold": 100
+    },
+    {
+     "rule_id": "R3",
+     "title": "Обязательные разделы",
+     "outcome": "pass",
+     "message": "Все обязательные разделы присутствуют",
+     "value": 2,
+     "threshold": 2
+    },
+    {
+     "rule_id": "R4",
+     "title": "Язык отчёта",
+     "outcome": "pass",
+     "message": "Отчёт на русском языке",
+     "value": 0.813,
+     "threshold": 0.5
+    },
+    {
+     "rule_id": "R5",
+     "title": "Предельный объём",
+     "outcome": "pass",
+     "message": "Объём в допустимых пределах",
+     "value": 17469,
+     "threshold": 60000
+    },
+    {
+     "rule_id": "R6",
+     "title": "Соответствие теме (по понятиям задания)",
+     "outcome": "pass",
+     "message": "Найдено 16 из 25 ключевых понятий задания",
+     "value": 0.64,
+     "threshold": 0.2
+    }
+   ]
+  ],
+  "judges": []
+ },
+ {
+  "mode": "symbolic",
+  "repeat": 1,
+  "id": 14,
+  "lab": 108,
+  "category": "real_wrong_lab",
+  "expected": "reject",
+  "title": "ЛР 9. Автоматизированная система распознавания речи → ЛР 2. Классификатор сообщений",
+  "decision": "approve",
+  "decided_by": "symbolic",
+  "score": null,
+  "similarity": 0.578,
+  "llm_calls": 0,
+  "seconds": 0.07,
+  "reason": "Формальные проверки пройдены",
+  "rules": [
+   [
+    {
+     "rule_id": "R1",
+     "title": "Отчёт содержит текст",
+     "outcome": "pass",
+     "message": "Текст отчёта извлечён",
+     "value": 6724,
+     "threshold": 20
+    },
+    {
+     "rule_id": "R2",
+     "title": "Минимальный объём",
+     "outcome": "pass",
+     "message": "Объём 6724 слов",
+     "value": 6724,
+     "threshold": 100
+    },
+    {
+     "rule_id": "R3",
+     "title": "Обязательные разделы",
+     "outcome": "pass",
+     "message": "Все обязательные разделы присутствуют",
+     "value": 2,
+     "threshold": 2
+    },
+    {
+     "rule_id": "R4",
+     "title": "Язык отчёта",
+     "outcome": "pass",
+     "message": "Отчёт на русском языке",
+     "value": 0.8,
+     "threshold": 0.5
+    },
+    {
+     "rule_id": "R5",
+     "title": "Предельный объём",
+     "outcome": "pass",
+     "message": "Объём в допустимых пределах",
+     "value": 47563,
+     "threshold": 60000
+    },
+    {
+     "rule_id": "R6",
+     "title": "Соответствие теме (по понятиям задания)",
+     "outcome": "pass",
+     "message": "Найдено 14 из 25 ключевых понятий задания",
+     "value": 0.56,
+     "threshold": 0.2
+    }
+   ]
+  ],
+  "judges": []
+ },
+ {
+  "mode": "symbolic",
+  "repeat": 1,
+  "id": 15,
+  "lab": 109,
+  "category": "real_wrong_lab",
+  "expected": "reject",
+  "title": "ЛР 1. Управление доступом с помощью списков контроля доступа → ЛР 3. Логические правила и фразы ответа",
+  "decision": "approve",
+  "decided_by": "symbolic",
+  "score": null,
+  "similarity": 0.516,
+  "llm_calls": 0,
+  "seconds": 0.03,
+  "reason": "Формальные проверки пройдены",
+  "rules": [
+   [
+    {
+     "rule_id": "R1",
+     "title": "Отчёт содержит текст",
+     "outcome": "pass",
+     "message": "Текст отчёта извлечён",
+     "value": 4651,
+     "threshold": 20
+    },
+    {
+     "rule_id": "R2",
+     "title": "Минимальный объём",
+     "outcome": "pass",
+     "message": "Объём 4651 слов",
+     "value": 4651,
+     "threshold": 100
+    },
+    {
+     "rule_id": "R3",
+     "title": "Обязательные разделы",
+     "outcome": "pass",
+     "message": "Все обязательные разделы присутствуют",
+     "value": 2,
+     "threshold": 2
+    },
+    {
+     "rule_id": "R4",
+     "title": "Язык отчёта",
+     "outcome": "pass",
+     "message": "Отчёт на русском языке",
+     "value": 0.6,
+     "threshold": 0.5
+    },
+    {
+     "rule_id": "R5",
+     "title": "Предельный объём",
+     "outcome": "pass",
+     "message": "Объём в допустимых пределах",
+     "value": 33342,
+     "threshold": 60000
+    },
+    {
+     "rule_id": "R6",
+     "title": "Соответствие теме (по понятиям задания)",
+     "outcome": "pass",
+     "message": "Найдено 12 из 25 ключевых понятий задания",
+     "value": 0.48,
+     "threshold": 0.2
+    }
+   ]
+  ],
+  "judges": []
+ },
+ {
+  "mode": "symbolic",
+  "repeat": 1,
+  "id": 16,
+  "lab": 110,
+  "category": "real_wrong_lab",
+  "expected": "reject",
+  "title": "ЛР 2–4. Анализ защищённости приложений → ЛР 4. Агенты решателя задач",
+  "decision": "approve",
+  "decided_by": "symbolic",
+  "score": null,
+  "similarity": 0.609,
+  "llm_calls": 0,
+  "seconds": 0.03,
+  "reason": "Формальные проверки пройдены",
+  "rules": [
+   [
+    {
+     "rule_id": "R1",
+     "title": "Отчёт содержит текст",
+     "outcome": "pass",
+     "message": "Текст отчёта извлечён",
+     "value": 5224,
+     "threshold": 20
+    },
+    {
+     "rule_id": "R2",
+     "title": "Минимальный объём",
+     "outcome": "pass",
+     "message": "Объём 5224 слов",
+     "value": 5224,
+     "threshold": 100
+    },
+    {
+     "rule_id": "R3",
+     "title": "Обязательные разделы",
+     "outcome": "pass",
+     "message": "Все обязательные разделы присутствуют",
+     "value": 2,
+     "threshold": 2
+    },
+    {
+     "rule_id": "R4",
+     "title": "Язык отчёта",
+     "outcome": "pass",
+     "message": "Отчёт на русском языке",
+     "value": 0.811,
+     "threshold": 0.5
+    },
+    {
+     "rule_id": "R5",
+     "title": "Предельный объём",
+     "outcome": "pass",
+     "message": "Объём в допустимых пределах",
+     "value": 37774,
+     "threshold": 60000
+    },
+    {
+     "rule_id": "R6",
+     "title": "Соответствие теме (по понятиям задания)",
+     "outcome": "pass",
+     "message": "Найдено 15 из 25 ключевых понятий задания",
+     "value": 0.6,
+     "threshold": 0.2
+    }
+   ]
+  ],
+  "judges": []
+ },
+ {
+  "mode": "symbolic",
+  "repeat": 1,
+  "id": 17,
+  "lab": 101,
+  "category": "real_wrong_lab",
+  "expected": "reject",
+  "title": "ЛР 1. Формализация предметной области в базе знаний → ЛР 1. Информационно-поисковая система и оценка качества поиска",
+  "decision": "approve",
+  "decided_by": "symbolic",
+  "score": null,
+  "similarity": 0.5,
+  "llm_calls": 0,
+  "seconds": 0.01,
+  "reason": "Формальные проверки пройдены",
+  "rules": [
+   [
+    {
+     "rule_id": "R1",
+     "title": "Отчёт содержит текст",
+     "outcome": "pass",
+     "message": "Текст отчёта извлечён",
+     "value": 836,
+     "threshold": 20
+    },
+    {
+     "rule_id": "R2",
+     "title": "Минимальный объём",
+     "outcome": "pass",
+     "message": "Объём 836 слов",
+     "value": 836,
+     "threshold": 100
+    },
+    {
+     "rule_id": "R3",
+     "title": "Обязательные разделы",
+     "outcome": "pass",
+     "message": "Все обязательные разделы присутствуют",
+     "value": 2,
+     "threshold": 2
+    },
+    {
+     "rule_id": "R4",
+     "title": "Язык отчёта",
+     "outcome": "pass",
+     "message": "Отчёт на русском языке",
+     "value": 0.527,
+     "threshold": 0.5
+    },
+    {
+     "rule_id": "R5",
+     "title": "Предельный объём",
+     "outcome": "pass",
+     "message": "Объём в допустимых пределах",
+     "value": 6627,
+     "threshold": 60000
+    },
+    {
+     "rule_id": "R6",
+     "title": "Соответствие теме (по понятиям задания)",
+     "outcome": "pass",
+     "message": "Найдено 7 из 25 ключевых понятий задания",
+     "value": 0.28,
+     "threshold": 0.2
+    }
+   ]
+  ],
+  "judges": []
+ },
+ {
+  "mode": "symbolic",
+  "repeat": 1,
+  "id": 18,
+  "lab": 102,
+  "category": "real_wrong_lab",
+  "expected": "reject",
+  "title": "ЛР 2. Классификатор сообщений → ЛР 2. Автоматическое распознавание языка текстов",
+  "decision": "approve",
+  "decided_by": "symbolic",
+  "score": null,
+  "similarity": 0.578,
+  "llm_calls": 0,
+  "seconds": 0.01,
+  "reason": "Формальные проверки пройдены",
+  "rules": [
+   [
+    {
+     "rule_id": "R1",
+     "title": "Отчёт содержит текст",
+     "outcome": "pass",
+     "message": "Текст отчёта извлечён",
+     "value": 853,
+     "threshold": 20
+    },
+    {
+     "rule_id": "R2",
+     "title": "Минимальный объём",
+     "outcome": "pass",
+     "message": "Объём 853 слов",
+     "value": 853,
+     "threshold": 100
+    },
+    {
+     "rule_id": "R3",
+     "title": "Обязательные разделы",
+     "outcome": "pass",
+     "message": "Все обязательные разделы присутствуют",
+     "value": 2,
+     "threshold": 2
+    },
+    {
+     "rule_id": "R4",
+     "title": "Язык отчёта",
+     "outcome": "pass",
+     "message": "Отчёт на русском языке",
+     "value": 0.84,
+     "threshold": 0.5
+    },
+    {
+     "rule_id": "R5",
+     "title": "Предельный объём",
+     "outcome": "pass",
+     "message": "Объём в допустимых пределах",
+     "value": 6261,
+     "threshold": 60000
+    },
+    {
+     "rule_id": "R6",
+     "title": "Соответствие теме (по понятиям задания)",
+     "outcome": "pass",
+     "message": "Найдено 7 из 25 ключевых понятий задания",
+     "value": 0.28,
+     "threshold": 0.2
+    }
+   ]
+  ],
+  "judges": []
+ },
+ {
+  "mode": "symbolic",
+  "repeat": 1,
+  "id": 19,
+  "lab": 103,
+  "category": "real_wrong_lab",
+  "expected": "reject",
+  "title": "ЛР 3. Логические правила и фразы ответа → ЛР 3. Автоматическое реферирование документов",
+  "decision": "approve",
+  "decided_by": "symbolic",
+  "score": null,
+  "similarity": 0.391,
+  "llm_calls": 0,
+  "seconds": 0.01,
+  "reason": "Формальные проверки пройдены",
+  "rules": [
+   [
+    {
+     "rule_id": "R1",
+     "title": "Отчёт содержит текст",
+     "outcome": "pass",
+     "message": "Текст отчёта извлечён",
+     "value": 1874,
+     "threshold": 20
+    },
+    {
+     "rule_id": "R2",
+     "title": "Минимальный объём",
+     "outcome": "pass",
+     "message": "Объём 1874 слов",
+     "value": 1874,
+     "threshold": 100
+    },
+    {
+     "rule_id": "R3",
+     "title": "Обязательные разделы",
+     "outcome": "pass",
+     "message": "Все обязательные разделы присутствуют",
+     "value": 2,
+     "threshold": 2
+    },
+    {
+     "rule_id": "R4",
+     "title": "Язык отчёта",
+     "outcome": "pass",
+     "message": "Отчёт на русском языке",
+     "value": 0.77,
+     "threshold": 0.5
+    },
+    {
+     "rule_id": "R5",
+     "title": "Предельный объём",
+     "outcome": "pass",
+     "message": "Объём в допустимых пределах",
+     "value": 14161,
+     "threshold": 60000
+    },
+    {
+     "rule_id": "R6",
+     "title": "Соответствие теме (по понятиям задания)",
+     "outcome": "pass",
+     "message": "Найдено 8 из 25 ключевых понятий задания",
+     "value": 0.32,
+     "threshold": 0.2
+    }
+   ]
+  ],
+  "judges": []
+ },
+ {
+  "mode": "symbolic",
+  "repeat": 1,
+  "id": 20,
+  "lab": 104,
+  "category": "real_wrong_lab",
+  "expected": "reject",
+  "title": "ЛР 4. Агенты решателя задач → ЛР 9. Автоматизированная система распознавания речи",
+  "decision": "approve",
+  "decided_by": "symbolic",
+  "score": null,
+  "similarity": 0.469,
+  "llm_calls": 0,
+  "seconds": 0.02,
+  "reason": "Формальные проверки пройдены",
+  "rules": [
+   [
+    {
+     "rule_id": "R1",
+     "title": "Отчёт содержит текст",
+     "outcome": "pass",
+     "message": "Текст отчёта извлечён",
+     "value": 3696,
+     "threshold": 20
+    },
+    {
+     "rule_id": "R2",
+     "title": "Минимальный объём",
+     "outcome": "pass",
+     "message": "Объём 3696 слов",
+     "value": 3696,
+     "threshold": 100
+    },
+    {
+     "rule_id": "R3",
+     "title": "Обязательные разделы",
+     "outcome": "pass",
+     "message": "Все обязательные разделы присутствуют",
+     "value": 2,
+     "threshold": 2
+    },
+    {
+     "rule_id": "R4",
+     "title": "Язык отчёта",
+     "outcome": "pass",
+     "message": "Отчёт на русском языке",
+     "value": 0.865,
+     "threshold": 0.5
+    },
+    {
+     "rule_id": "R5",
+     "title": "Предельный объём",
+     "outcome": "pass",
+     "message": "Объём в допустимых пределах",
+     "value": 27472,
+     "threshold": 60000
+    },
+    {
+     "rule_id": "R6",
+     "title": "Соответствие теме (по понятиям задания)",
+     "outcome": "pass",
+     "message": "Найдено 12 из 25 ключевых понятий задания",
+     "value": 0.48,
+     "threshold": 0.2
+    }
+   ]
+  ],
+  "judges": []
+ },
+ {
+  "mode": "neural",
+  "repeat": 1,
+  "id": 1,
+  "lab": 101,
+  "category": "real_ok",
+  "expected": "approve",
+  "title": "ЛР 1. Информационно-поисковая система и оценка качества поиска",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 29.93,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "rules": [],
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.86,
+    "summary": "Отчёт описывает полноценную русскоязычную информационно-поисковую систему с вероятностным поиском BM25, программным расчётом метрик качества, их табличным и графическим представлением и справочным интерфейсом.",
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.82,
+    "summary": "Отчёт в целом соответствует требованиям: основные компоненты системы реализованы, но активная ссылка на документ в поисковой выдаче явно не подтверждена.",
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.92,
+    "summary": "Отчёт описывает основную функциональность системы, но не подтверждает обязательное наличие активной ссылки на документ в результатах поиска.",
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 1,
+  "id": 2,
+  "lab": 102,
+  "category": "real_ok",
+  "expected": "approve",
+  "title": "ЛР 2. Автоматическое распознавание языка текстов",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 225.06,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "rules": [],
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.98,
+    "summary": "Отчёт полностью соответствует требованиям лабораторной работы: реализованы все три метода распознавания для варианта 5, соблюдены требования к корпусу, метрикам, выходным данным и интерфейсу.",
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.97,
+    "summary": "Отчёт полностью соответствует требованиям варианта 5: реализованы все три метода распознавания, соблюдены требования к корпусам, метрикам, интерфейсу, выходным данным и сравнению методов.",
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.96,
+    "summary": "Отчёт полностью соответствует требованиям лабораторной работы: корпус, профили, метрики, сравнение трёх методов и все требования к системе выполнены и подтверждены результатами.",
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 1,
+  "id": 3,
+  "lab": 103,
+  "category": "real_ok",
+  "expected": "approve",
+  "title": "ЛР 3. Автоматическое реферирование документов",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 249.61,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "rules": [],
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.97,
+    "summary": "Отчёт соответствует требованиям лабораторной работы: реализована система автоматического реферирования с интеграцией OSTIS, сохранением, печатью и справкой.",
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": false,
+    "verdict": null,
+    "confidence": null,
+    "summary": "",
+    "error": "Ответ модели не содержит JSON с полем verdict; начало ответа: ''"
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.93,
+    "summary": "Отчёт подтверждает выполнение всех требований варианта 5: разработана и протестирована система автоматического реферирования с интеграцией OSTIS, сохранением, печатью и справкой.",
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 1,
+  "id": 4,
+  "lab": 104,
+  "category": "real_ok",
+  "expected": "approve",
+  "title": "ЛР 9. Автоматизированная система распознавания речи",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 84.22,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "rules": [],
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.98,
+    "summary": "Отчёт соответствует требованиям лабораторной работы: основные задачи варианта 5 реализованы, описаны и проверены.",
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.98,
+    "summary": "Отчёт полностью соответствует требованиям лабораторной работы: все задачи варианта 5 выполнены и подтверждены описанием архитектуры, алгоритмов и результатами тестирования.",
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.97,
+    "summary": "Отчёт полностью раскрывает цель, задачи, архитектуру, алгоритмы и результаты проверки системы и соответствует требованиям лабораторной работы.",
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 1,
+  "id": 5,
+  "lab": 105,
+  "category": "real_ok",
+  "expected": "approve",
+  "title": "ЛР 1. Управление доступом с помощью списков контроля доступа",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 140.76,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "rules": [],
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.9,
+    "summary": "Отчёт соответствует требованиям лабораторной работы: представлена программа настройки и проверки прав доступа к объектам файловой системы и оформлен полный отчёт о проделанной работе.",
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.88,
+    "summary": "Отчёт содержит разработанную программу настройки и проверки прав доступа к объектам файловой системы с полным листингом кода, демонстрацией результатов и корректно оформленными выводами, поэтому требования лабораторной работы выполнены.",
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.82,
+    "summary": "Отчёт включает программу настройки и проверки прав доступа к объектам файловой системы с подтверждающей демонстрацией и оформлен по требуемой структуре.",
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 1,
+  "id": 6,
+  "lab": 106,
+  "category": "real_ok",
+  "expected": "approve",
+  "title": "ЛР 2–4. Анализ защищённости приложений",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 238.26,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "rules": [],
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.8,
+    "summary": "Отчёт в целом соответствует требованиям лабораторной работы: приложение реализовано и продемонстрировано, а анализ охватывает безопасность ОС, компонентов, сети и конфиденциальности данных с методикой и рекомендациями.",
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.78,
+    "summary": "Отчёт в целом соответствует требованиям: заявленная функциональность приложения подтверждена, а анализ охватывает безопасность ОС, компонентов, сети и конфиденциальности данных с методикой оценки и рекомендациями.",
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.8,
+    "summary": "Отчёт частично соответствует требованиям: анализ безопасности компонентов и конфиденциальности данных выполнен, но функциональность подтверждена не полностью, а анализ по политикам безопасности ОС и сети проведён лишь частично.",
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 1,
+  "id": 7,
+  "lab": 107,
+  "category": "real_ok",
+  "expected": "approve",
+  "title": "ЛР 1. Формализация предметной области в базе знаний",
+  "decision": "reject",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 58.81,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "rules": [],
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.8,
+    "summary": "Отчёт в целом соответствует требованиям лабораторной работы по формализации, наполнению и тестированию базы знаний по теме «Спортсмены».",
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.75,
+    "summary": "Отчёт не принят: при достаточном объёме понятий и экземпляров не раскрыты свойства и домены отношений и не указаны использованные открытые источники.",
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.9,
+    "summary": "Отчёт не принят: не заданы свойства и домены отношений, не приведены определения, примечания и ссылки на открытые источники, а также не показаны конкретные связи между экземплярами.",
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 1,
+  "id": 8,
+  "lab": 108,
+  "category": "real_ok",
+  "expected": "approve",
+  "title": "ЛР 2. Классификатор сообщений",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 359.65,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "rules": [],
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.82,
+    "summary": "Отчёт в целом соответствует требованиям: сценарий, классы, сущности, обучение и тестирование в NIKA представлены, хотя собственное приложение Wit.ai не возвращало намерения и тестирование выполнено на общем приложении.",
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.72,
+    "summary": "Отчёт в целом соответствует требованиям: описан достаточный сценарий диалога, определены классы и сущности, показано обучение и тестирование всех понятий в NIKA, при этом отмечено, что собственное приложение Wit.ai не возвращало намерения и тестирование выполнено на общем приложении.",
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.75,
+    "summary": "Отчёт не принят, поскольку ключевой пункт обучения и проверки классификатора Wit.ai не подтверждён результатами: собственное приложение не работало, тестирование велось на общем приложении, а сам отчёт указывает на необходимость отдельного подтверждения проверки всех сущностей.",
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 1,
+  "id": 9,
+  "lab": 109,
+  "category": "real_ok",
+  "expected": "approve",
+  "title": "ЛР 3. Логические правила и фразы ответа",
+  "decision": "reject",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 37.0,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "rules": [],
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.97,
+    "summary": "Отчёт частично соответствует требованиям: правила и тестирование описаны, но эксперимент с изменением базы знаний и требуемое число рабочих шаблонных фраз не выполнены.",
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.96,
+    "summary": "Отчёт частично соответствует требованиям: не выполнен ключевой эксперимент с разными ответами на один вопрос при изменении базы знаний и не обеспечено полное покрытие классов ответных фраз.",
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "summary": "Отчёт не соответствует требованиям из-за неподтверждённого охвата всех классов ответов, недостатка рабочих шаблонных фраз и отсутствия требуемого эксперимента с изменением базы знаний.",
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 1,
+  "id": 10,
+  "lab": 110,
+  "category": "real_ok",
+  "expected": "approve",
+  "title": "ЛР 4. Агенты решателя задач",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 16.56,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "rules": [],
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.99,
+    "summary": "Отчёт полностью соответствует требованиям лабораторной работы: разработаны и интегрированы два агента, их работа проверена и подробно задокументирована.",
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.98,
+    "summary": "Отчёт полностью раскрывает варианты, реализацию, интеграцию, тестирование и документацию двух агентов системы NIKA и соответствует требованиям лабораторной работы.",
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.98,
+    "summary": "Отчёт полностью подтверждает выполнение всех проверяемых требований лабораторной работы двумя агентами с различными векторами вариантов.",
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 1,
+  "id": 11,
+  "lab": 105,
+  "category": "real_wrong_lab",
+  "expected": "reject",
+  "title": "ЛР 1. Информационно-поисковая система и оценка качества поиска → ЛР 1. Управление доступом с помощью списков контроля доступа",
+  "decision": "reject",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 24.8,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "rules": [],
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "summary": "Отчёт не соответствует заданию: вместо программы настройки и проверки ACL описана информационно-поисковая система.",
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": false,
+    "confidence": 1.0,
+    "summary": "Отчёт не соответствует заданию: вместо программы настройки и проверки ACL представлена информационно-поисковая система.",
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": false,
+    "confidence": 1.0,
+    "summary": "Отчёт не соответствует требованиям лабораторной работы, поскольку полностью посвящён информационно-поисковой системе, а не настройке и проверке ACL.",
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 1,
+  "id": 12,
+  "lab": 106,
+  "category": "real_wrong_lab",
+  "expected": "reject",
+  "title": "ЛР 2. Автоматическое распознавание языка текстов → ЛР 2–4. Анализ защищённости приложений",
+  "decision": "reject",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 37.49,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "rules": [],
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "summary": "Отчёт описывает систему распознавания языка текстовых документов и не соответствует требованиям о разработке приложения с пользователями, управлением конфиденциальными данными и анализом безопасности.",
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "summary": "Отчёт описывает полностью реализованную систему распознавания языка текстов, но не соответствует требованиям задания по разработке приложения с пользователями, авторизацией, CRUD и поиском данных и анализом безопасности.",
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "summary": "Отчёт не соответствует требованиям, поскольку посвящён распознаванию языка, а не управлению пользователями, работе с конфиденциальными данными и анализу безопасности.",
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 1,
+  "id": 13,
+  "lab": 107,
+  "category": "real_wrong_lab",
+  "expected": "reject",
+  "title": "ЛР 3. Автоматическое реферирование документов → ЛР 1. Формализация предметной области в базе знаний",
+  "decision": "reject",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 139.19,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "rules": [],
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.97,
+    "summary": "Отчёт выполнен по другой теме — системе автоматического реферирования, а требования формализации предметной области и тестирования базы знаний в NIKA не выполнены.",
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "summary": "Отчёт не соответствует требованиям лабораторной работы: вместо формализации предметной области и тестирования в NIKA представлено веб-приложение для автоматического реферирования.",
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "summary": "Отчёт не соответствует заданию: вместо формализации предметной области и тестирования базы знаний в NIKA представлено приложение автоматического реферирования.",
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 1,
+  "id": 14,
+  "lab": 108,
+  "category": "real_wrong_lab",
+  "expected": "reject",
+  "title": "ЛР 9. Автоматизированная система распознавания речи → ЛР 2. Классификатор сообщений",
+  "decision": "reject",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 23.31,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "rules": [],
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "summary": "Отчёт не соответствует требованиям лабораторной работы: вместо диалога из 8 сообщений и обучения классификатора Wit.ai представлена система распознавания речи.",
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.98,
+    "summary": "Отчёт не соответствует требованиям: вместо диалогового сценария, классификатора Wit.ai и его тестирования в Нике описана система распознавания речи.",
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "summary": "Отчёт не соответствует требованиям: вместо диалогового сценария с обучением классификатора Wit.ai и тестированием в Нике описана система распознавания речи.",
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 1,
+  "id": 15,
+  "lab": 109,
+  "category": "real_wrong_lab",
+  "expected": "reject",
+  "title": "ЛР 1. Управление доступом с помощью списков контроля доступа → ЛР 3. Логические правила и фразы ответа",
+  "decision": "reject",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 13.42,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "rules": [],
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "summary": "Отчёт описывает совершенно другую лабораторную работу (управление доступом в ОС и MariaDB) и не содержит ни одного из обязательных элементов задания по механизму ответов на сообщения.",
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "summary": "Отчёт выполнен по совершенно другой теме (списки контроля доступа и MariaDB) и не содержит ни одного из ключевых требований задания о логических правилах ответа и базе знаний NIKA.",
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "summary": "Отчёт посвящён управлению доступом в ОС и MariaDB и не подтверждает выполнение ни одного из содержательных пунктов задания по механизму ответов на сообщения в системе NIKA.",
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 1,
+  "id": 16,
+  "lab": 110,
+  "category": "real_wrong_lab",
+  "expected": "reject",
+  "title": "ЛР 2–4. Анализ защищённости приложений → ЛР 4. Агенты решателя задач",
+  "decision": "reject",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 34.89,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "rules": [],
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "summary": "Отчёт посвящён несвязанным лабораторным работам по анализу защищённости приложений и серверов и не содержит требуемой реализации агента с базой знаний и интеграцией в NIKA.",
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "summary": "Отчёт посвящён несвязанным лабораторным работам по анализу защищённости приложений и серверов и не выполняет требования задания по проектированию, реализации, интеграции и тестированию агента с базой знаний в системе NIKA.",
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "summary": "Отчёт посвящён анализу защищённости веб-приложений и удалённых серверов, а не разработке, интеграции и тестированию агентов с базой знаний в системе NIKA.",
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 1,
+  "id": 17,
+  "lab": 101,
+  "category": "real_wrong_lab",
+  "expected": "reject",
+  "title": "ЛР 1. Формализация предметной области в базе знаний → ЛР 1. Информационно-поисковая система и оценка качества поиска",
+  "decision": "reject",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 28.59,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "rules": [],
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "summary": "Отчёт описывает другую лабораторную работу по базам знаний и не содержит требуемой вероятностной информационно-поисковой системы, её результатов и метрик качества.",
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "summary": "Отчёт не соответствует требованиям, поскольку описывает другую лабораторную работу по построению базы знаний, а не информационно-поисковую систему варианта 5.",
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "summary": "Отчёт выполнен по существенно другой лабораторной работе и не подтверждает ни одного ключевого требования варианта 5.",
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 1,
+  "id": 18,
+  "lab": 102,
+  "category": "real_wrong_lab",
+  "expected": "reject",
+  "title": "ЛР 2. Классификатор сообщений → ЛР 2. Автоматическое распознавание языка текстов",
+  "decision": "reject",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 39.95,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "rules": [],
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "summary": "Отчёт описывает совершенно другую лабораторную работу по классификации диалоговых сообщений Wit.ai и не удовлетворяет требованиям распознавания языка текстовых документов.",
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "summary": "Отчёт не соответствует требованиям лабораторной работы, поскольку описывает совершенно другое задание по классификации диалоговых сообщений.",
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": false,
+    "confidence": 1.0,
+    "summary": "Отчёт не соответствует требованиям лабораторной работы, поскольку полностью посвящён другой предметной области и не содержит обязательных этапов распознавания языка.",
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 1,
+  "id": 19,
+  "lab": 103,
+  "category": "real_wrong_lab",
+  "expected": "reject",
+  "title": "ЛР 3. Логические правила и фразы ответа → ЛР 3. Автоматическое реферирование документов",
+  "decision": "reject",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 34.87,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "rules": [],
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "summary": "Отчёт описывает систему NIKA для диалоговых ответов, а не требуемую систему автоматического реферирования документов на базе OSTIS.",
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "summary": "Отчёт описывает иную лабораторную работу и не выполняет требования к системе автоматического реферирования на OSTIS.",
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": false,
+    "confidence": 1.0,
+    "summary": "Отчёт не соответствует требованиям лабораторной работы, поскольку описывает другую тему и не реализует автоматическое реферирование документов.",
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "neural",
+  "repeat": 1,
+  "id": 20,
+  "lab": 104,
+  "category": "real_wrong_lab",
+  "expected": "reject",
+  "title": "ЛР 4. Агенты решателя задач → ЛР 9. Автоматизированная система распознавания речи",
+  "decision": "reject",
+  "decided_by": "judges",
+  "score": null,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 41.03,
+  "reason": "Голосование большинством (вариант без символьных компонентов)",
+  "rules": [],
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "summary": "Отчёт описывает совершенно другую лабораторную работу — агентов для базы знаний NIKA по спортсменам, поэтому требованиям по системе распознавания речи и анализу сочинений по литературе он не соответствует.",
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "summary": "Отчёт не соответствует требованиям лабораторной работы, поскольку описывает другую систему и не содержит реализации распознавания речи и анализа сочинений.",
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "summary": "Отчёт посвящён совершенно другой лабораторной работе — агентам для предметной области «Спортсмены» в NIKA, а не системе распознавания речи и анализа сочинений по литературе.",
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 1,
+  "id": 1,
+  "lab": 101,
+  "category": "real_ok",
+  "expected": "approve",
+  "title": "ЛР 1. Информационно-поисковая система и оценка качества поиска",
+  "decision": "manual_review",
+  "decided_by": "judges",
+  "score": 0.587,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 28.84,
+  "reason": "Голоса разделились 2:1, P = 0.59",
+  "rules": [
+   [
+    {
+     "rule_id": "R1",
+     "title": "Отчёт содержит текст",
+     "outcome": "pass",
+     "message": "Текст отчёта извлечён",
+     "value": 769,
+     "threshold": 20
+    },
+    {
+     "rule_id": "R2",
+     "title": "Минимальный объём",
+     "outcome": "pass",
+     "message": "Объём 769 слов",
+     "value": 769,
+     "threshold": 100
+    },
+    {
+     "rule_id": "R3",
+     "title": "Обязательные разделы",
+     "outcome": "pass",
+     "message": "Все обязательные разделы присутствуют",
+     "value": 2,
+     "threshold": 2
+    },
+    {
+     "rule_id": "R4",
+     "title": "Язык отчёта",
+     "outcome": "pass",
+     "message": "Отчёт на русском языке",
+     "value": 0.945,
+     "threshold": 0.5
+    },
+    {
+     "rule_id": "R5",
+     "title": "Предельный объём",
+     "outcome": "pass",
+     "message": "Объём в допустимых пределах",
+     "value": 6197,
+     "threshold": 60000
+    },
+    {
+     "rule_id": "R6",
+     "title": "Соответствие теме (по понятиям задания)",
+     "outcome": "pass",
+     "message": "Найдено 25 из 25 ключевых понятий задания",
+     "value": 1.0,
+     "threshold": 0.2
+    }
+   ]
+  ],
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.86,
+    "summary": "Отчёт описывает полноценную русскоязычную информационно-поисковую систему с вероятностным поиском BM25, программным расчётом метрик качества, их табличным и графическим представлением и справочным интерфейсом.",
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.82,
+    "summary": "Отчёт в целом соответствует требованиям: основные компоненты системы реализованы, но активная ссылка на документ в поисковой выдаче явно не подтверждена.",
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.92,
+    "summary": "Отчёт описывает основную функциональность системы, но не подтверждает обязательное наличие активной ссылки на документ в результатах поиска.",
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 1,
+  "id": 2,
+  "lab": 102,
+  "category": "real_ok",
+  "expected": "approve",
+  "title": "ЛР 2. Автоматическое распознавание языка текстов",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": 0.97,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 225.15,
+  "reason": "Единогласно «за», P = 0.97 ≥ 0.65",
+  "rules": [
+   [
+    {
+     "rule_id": "R1",
+     "title": "Отчёт содержит текст",
+     "outcome": "pass",
+     "message": "Текст отчёта извлечён",
+     "value": 2138,
+     "threshold": 20
+    },
+    {
+     "rule_id": "R2",
+     "title": "Минимальный объём",
+     "outcome": "pass",
+     "message": "Объём 2138 слов",
+     "value": 2138,
+     "threshold": 100
+    },
+    {
+     "rule_id": "R3",
+     "title": "Обязательные разделы",
+     "outcome": "pass",
+     "message": "Все обязательные разделы присутствуют",
+     "value": 2,
+     "threshold": 2
+    },
+    {
+     "rule_id": "R4",
+     "title": "Язык отчёта",
+     "outcome": "pass",
+     "message": "Отчёт на русском языке",
+     "value": 0.871,
+     "threshold": 0.5
+    },
+    {
+     "rule_id": "R5",
+     "title": "Предельный объём",
+     "outcome": "pass",
+     "message": "Объём в допустимых пределах",
+     "value": 15162,
+     "threshold": 60000
+    },
+    {
+     "rule_id": "R6",
+     "title": "Соответствие теме (по понятиям задания)",
+     "outcome": "pass",
+     "message": "Найдено 25 из 25 ключевых понятий задания",
+     "value": 1.0,
+     "threshold": 0.2
+    }
+   ]
+  ],
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.98,
+    "summary": "Отчёт полностью соответствует требованиям лабораторной работы: реализованы все три метода распознавания для варианта 5, соблюдены требования к корпусу, метрикам, выходным данным и интерфейсу.",
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.97,
+    "summary": "Отчёт полностью соответствует требованиям варианта 5: реализованы все три метода распознавания, соблюдены требования к корпусам, метрикам, интерфейсу, выходным данным и сравнению методов.",
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.96,
+    "summary": "Отчёт полностью соответствует требованиям лабораторной работы: корпус, профили, метрики, сравнение трёх методов и все требования к системе выполнены и подтверждены результатами.",
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 1,
+  "id": 3,
+  "lab": 103,
+  "category": "real_ok",
+  "expected": "approve",
+  "title": "ЛР 3. Автоматическое реферирование документов",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": 0.953,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 249.73,
+  "reason": "Единогласно «за», P = 0.95 ≥ 0.65",
+  "rules": [
+   [
+    {
+     "rule_id": "R1",
+     "title": "Отчёт содержит текст",
+     "outcome": "pass",
+     "message": "Текст отчёта извлечён",
+     "value": 2514,
+     "threshold": 20
+    },
+    {
+     "rule_id": "R2",
+     "title": "Минимальный объём",
+     "outcome": "pass",
+     "message": "Объём 2514 слов",
+     "value": 2514,
+     "threshold": 100
+    },
+    {
+     "rule_id": "R3",
+     "title": "Обязательные разделы",
+     "outcome": "pass",
+     "message": "Все обязательные разделы присутствуют",
+     "value": 2,
+     "threshold": 2
+    },
+    {
+     "rule_id": "R4",
+     "title": "Язык отчёта",
+     "outcome": "pass",
+     "message": "Отчёт на русском языке",
+     "value": 0.813,
+     "threshold": 0.5
+    },
+    {
+     "rule_id": "R5",
+     "title": "Предельный объём",
+     "outcome": "pass",
+     "message": "Объём в допустимых пределах",
+     "value": 17469,
+     "threshold": 60000
+    },
+    {
+     "rule_id": "R6",
+     "title": "Соответствие теме (по понятиям задания)",
+     "outcome": "pass",
+     "message": "Найдено 25 из 25 ключевых понятий задания",
+     "value": 1.0,
+     "threshold": 0.2
+    }
+   ]
+  ],
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.97,
+    "summary": "Отчёт соответствует требованиям лабораторной работы: реализована система автоматического реферирования с интеграцией OSTIS, сохранением, печатью и справкой.",
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.96,
+    "summary": "Отчёт соответствует требованиям задания: реализована и описана система автоматического реферирования с интеграцией OSTIS, сохранением, печатью и справочными средствами.",
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.93,
+    "summary": "Отчёт подтверждает выполнение всех требований варианта 5: разработана и протестирована система автоматического реферирования с интеграцией OSTIS, сохранением, печатью и справкой.",
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 1,
+  "id": 4,
+  "lab": 104,
+  "category": "real_ok",
+  "expected": "approve",
+  "title": "ЛР 9. Автоматизированная система распознавания речи",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": 0.977,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 84.33,
+  "reason": "Единогласно «за», P = 0.98 ≥ 0.65",
+  "rules": [
+   [
+    {
+     "rule_id": "R1",
+     "title": "Отчёт содержит текст",
+     "outcome": "pass",
+     "message": "Текст отчёта извлечён",
+     "value": 6724,
+     "threshold": 20
+    },
+    {
+     "rule_id": "R2",
+     "title": "Минимальный объём",
+     "outcome": "pass",
+     "message": "Объём 6724 слов",
+     "value": 6724,
+     "threshold": 100
+    },
+    {
+     "rule_id": "R3",
+     "title": "Обязательные разделы",
+     "outcome": "pass",
+     "message": "Все обязательные разделы присутствуют",
+     "value": 2,
+     "threshold": 2
+    },
+    {
+     "rule_id": "R4",
+     "title": "Язык отчёта",
+     "outcome": "pass",
+     "message": "Отчёт на русском языке",
+     "value": 0.8,
+     "threshold": 0.5
+    },
+    {
+     "rule_id": "R5",
+     "title": "Предельный объём",
+     "outcome": "pass",
+     "message": "Объём в допустимых пределах",
+     "value": 47563,
+     "threshold": 60000
+    },
+    {
+     "rule_id": "R6",
+     "title": "Соответствие теме (по понятиям задания)",
+     "outcome": "pass",
+     "message": "Найдено 25 из 25 ключевых понятий задания",
+     "value": 1.0,
+     "threshold": 0.2
+    }
+   ]
+  ],
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.98,
+    "summary": "Отчёт соответствует требованиям лабораторной работы: основные задачи варианта 5 реализованы, описаны и проверены.",
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.98,
+    "summary": "Отчёт полностью соответствует требованиям лабораторной работы: все задачи варианта 5 выполнены и подтверждены описанием архитектуры, алгоритмов и результатами тестирования.",
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.97,
+    "summary": "Отчёт полностью раскрывает цель, задачи, архитектуру, алгоритмы и результаты проверки системы и соответствует требованиям лабораторной работы.",
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 1,
+  "id": 5,
+  "lab": 105,
+  "category": "real_ok",
+  "expected": "approve",
+  "title": "ЛР 1. Управление доступом с помощью списков контроля доступа",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": 0.867,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 140.82,
+  "reason": "Единогласно «за», P = 0.87 ≥ 0.65",
+  "rules": [
+   [
+    {
+     "rule_id": "R1",
+     "title": "Отчёт содержит текст",
+     "outcome": "pass",
+     "message": "Текст отчёта извлечён",
+     "value": 4651,
+     "threshold": 20
+    },
+    {
+     "rule_id": "R2",
+     "title": "Минимальный объём",
+     "outcome": "pass",
+     "message": "Объём 4651 слов",
+     "value": 4651,
+     "threshold": 100
+    },
+    {
+     "rule_id": "R3",
+     "title": "Обязательные разделы",
+     "outcome": "pass",
+     "message": "Все обязательные разделы присутствуют",
+     "value": 2,
+     "threshold": 2
+    },
+    {
+     "rule_id": "R4",
+     "title": "Язык отчёта",
+     "outcome": "pass",
+     "message": "Отчёт на русском языке",
+     "value": 0.6,
+     "threshold": 0.5
+    },
+    {
+     "rule_id": "R5",
+     "title": "Предельный объём",
+     "outcome": "pass",
+     "message": "Объём в допустимых пределах",
+     "value": 33342,
+     "threshold": 60000
+    },
+    {
+     "rule_id": "R6",
+     "title": "Соответствие теме (по понятиям задания)",
+     "outcome": "pass",
+     "message": "Найдено 25 из 25 ключевых понятий задания",
+     "value": 1.0,
+     "threshold": 0.2
+    }
+   ]
+  ],
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.9,
+    "summary": "Отчёт соответствует требованиям лабораторной работы: представлена программа настройки и проверки прав доступа к объектам файловой системы и оформлен полный отчёт о проделанной работе.",
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.88,
+    "summary": "Отчёт содержит разработанную программу настройки и проверки прав доступа к объектам файловой системы с полным листингом кода, демонстрацией результатов и корректно оформленными выводами, поэтому требования лабораторной работы выполнены.",
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.82,
+    "summary": "Отчёт включает программу настройки и проверки прав доступа к объектам файловой системы с подтверждающей демонстрацией и оформлен по требуемой структуре.",
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 1,
+  "id": 6,
+  "lab": 106,
+  "category": "real_ok",
+  "expected": "approve",
+  "title": "ЛР 2–4. Анализ защищённости приложений",
+  "decision": "manual_review",
+  "decided_by": "judges",
+  "score": 0.593,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 238.38,
+  "reason": "Голоса разделились 2:1, P = 0.59",
+  "rules": [
+   [
+    {
+     "rule_id": "R1",
+     "title": "Отчёт содержит текст",
+     "outcome": "pass",
+     "message": "Текст отчёта извлечён",
+     "value": 5224,
+     "threshold": 20
+    },
+    {
+     "rule_id": "R2",
+     "title": "Минимальный объём",
+     "outcome": "pass",
+     "message": "Объём 5224 слов",
+     "value": 5224,
+     "threshold": 100
+    },
+    {
+     "rule_id": "R3",
+     "title": "Обязательные разделы",
+     "outcome": "pass",
+     "message": "Все обязательные разделы присутствуют",
+     "value": 2,
+     "threshold": 2
+    },
+    {
+     "rule_id": "R4",
+     "title": "Язык отчёта",
+     "outcome": "pass",
+     "message": "Отчёт на русском языке",
+     "value": 0.811,
+     "threshold": 0.5
+    },
+    {
+     "rule_id": "R5",
+     "title": "Предельный объём",
+     "outcome": "pass",
+     "message": "Объём в допустимых пределах",
+     "value": 37774,
+     "threshold": 60000
+    },
+    {
+     "rule_id": "R6",
+     "title": "Соответствие теме (по понятиям задания)",
+     "outcome": "pass",
+     "message": "Найдено 25 из 25 ключевых понятий задания",
+     "value": 1.0,
+     "threshold": 0.2
+    }
+   ]
+  ],
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.8,
+    "summary": "Отчёт в целом соответствует требованиям лабораторной работы: приложение реализовано и продемонстрировано, а анализ охватывает безопасность ОС, компонентов, сети и конфиденциальности данных с методикой и рекомендациями.",
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.78,
+    "summary": "Отчёт в целом соответствует требованиям: заявленная функциональность приложения подтверждена, а анализ охватывает безопасность ОС, компонентов, сети и конфиденциальности данных с методикой оценки и рекомендациями.",
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.8,
+    "summary": "Отчёт частично соответствует требованиям: анализ безопасности компонентов и конфиденциальности данных выполнен, но функциональность подтверждена не полностью, а анализ по политикам безопасности ОС и сети проведён лишь частично.",
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 1,
+  "id": 7,
+  "lab": 107,
+  "category": "real_ok",
+  "expected": "approve",
+  "title": "ЛР 1. Формализация предметной области в базе знаний",
+  "decision": "manual_review",
+  "decided_by": "judges",
+  "score": 0.383,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 58.83,
+  "reason": "Голоса разделились 1:2, P = 0.38",
+  "rules": [
+   [
+    {
+     "rule_id": "R1",
+     "title": "Отчёт содержит текст",
+     "outcome": "pass",
+     "message": "Текст отчёта извлечён",
+     "value": 836,
+     "threshold": 20
+    },
+    {
+     "rule_id": "R2",
+     "title": "Минимальный объём",
+     "outcome": "pass",
+     "message": "Объём 836 слов",
+     "value": 836,
+     "threshold": 100
+    },
+    {
+     "rule_id": "R3",
+     "title": "Обязательные разделы",
+     "outcome": "pass",
+     "message": "Все обязательные разделы присутствуют",
+     "value": 2,
+     "threshold": 2
+    },
+    {
+     "rule_id": "R4",
+     "title": "Язык отчёта",
+     "outcome": "pass",
+     "message": "Отчёт на русском языке",
+     "value": 0.527,
+     "threshold": 0.5
+    },
+    {
+     "rule_id": "R5",
+     "title": "Предельный объём",
+     "outcome": "pass",
+     "message": "Объём в допустимых пределах",
+     "value": 6627,
+     "threshold": 60000
+    },
+    {
+     "rule_id": "R6",
+     "title": "Соответствие теме (по понятиям задания)",
+     "outcome": "pass",
+     "message": "Найдено 25 из 25 ключевых понятий задания",
+     "value": 1.0,
+     "threshold": 0.2
+    }
+   ]
+  ],
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.8,
+    "summary": "Отчёт в целом соответствует требованиям лабораторной работы по формализации, наполнению и тестированию базы знаний по теме «Спортсмены».",
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.75,
+    "summary": "Отчёт не принят: при достаточном объёме понятий и экземпляров не раскрыты свойства и домены отношений и не указаны использованные открытые источники.",
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.9,
+    "summary": "Отчёт не принят: не заданы свойства и домены отношений, не приведены определения, примечания и ссылки на открытые источники, а также не показаны конкретные связи между экземплярами.",
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 1,
+  "id": 8,
+  "lab": 108,
+  "category": "real_ok",
+  "expected": "approve",
+  "title": "ЛР 2. Классификатор сообщений",
+  "decision": "manual_review",
+  "decided_by": "judges",
+  "score": 0.597,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 359.75,
+  "reason": "Голоса разделились 2:1, P = 0.60",
+  "rules": [
+   [
+    {
+     "rule_id": "R1",
+     "title": "Отчёт содержит текст",
+     "outcome": "pass",
+     "message": "Текст отчёта извлечён",
+     "value": 853,
+     "threshold": 20
+    },
+    {
+     "rule_id": "R2",
+     "title": "Минимальный объём",
+     "outcome": "pass",
+     "message": "Объём 853 слов",
+     "value": 853,
+     "threshold": 100
+    },
+    {
+     "rule_id": "R3",
+     "title": "Обязательные разделы",
+     "outcome": "pass",
+     "message": "Все обязательные разделы присутствуют",
+     "value": 2,
+     "threshold": 2
+    },
+    {
+     "rule_id": "R4",
+     "title": "Язык отчёта",
+     "outcome": "pass",
+     "message": "Отчёт на русском языке",
+     "value": 0.84,
+     "threshold": 0.5
+    },
+    {
+     "rule_id": "R5",
+     "title": "Предельный объём",
+     "outcome": "pass",
+     "message": "Объём в допустимых пределах",
+     "value": 6261,
+     "threshold": 60000
+    },
+    {
+     "rule_id": "R6",
+     "title": "Соответствие теме (по понятиям задания)",
+     "outcome": "pass",
+     "message": "Найдено 25 из 25 ключевых понятий задания",
+     "value": 1.0,
+     "threshold": 0.2
+    }
+   ]
+  ],
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.82,
+    "summary": "Отчёт в целом соответствует требованиям: сценарий, классы, сущности, обучение и тестирование в NIKA представлены, хотя собственное приложение Wit.ai не возвращало намерения и тестирование выполнено на общем приложении.",
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.72,
+    "summary": "Отчёт в целом соответствует требованиям: описан достаточный сценарий диалога, определены классы и сущности, показано обучение и тестирование всех понятий в NIKA, при этом отмечено, что собственное приложение Wit.ai не возвращало намерения и тестирование выполнено на общем приложении.",
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.75,
+    "summary": "Отчёт не принят, поскольку ключевой пункт обучения и проверки классификатора Wit.ai не подтверждён результатами: собственное приложение не работало, тестирование велось на общем приложении, а сам отчёт указывает на необходимость отдельного подтверждения проверки всех сущностей.",
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 1,
+  "id": 9,
+  "lab": 109,
+  "category": "real_ok",
+  "expected": "approve",
+  "title": "ЛР 3. Логические правила и фразы ответа",
+  "decision": "reject",
+  "decided_by": "judges",
+  "score": 0.027,
+  "similarity": null,
+  "llm_calls": 4,
+  "seconds": 77.48,
+  "reason": "Единогласно «против», P = 0.03 ≤ 0.35",
+  "rules": [
+   [
+    {
+     "rule_id": "R1",
+     "title": "Отчёт содержит текст",
+     "outcome": "pass",
+     "message": "Текст отчёта извлечён",
+     "value": 1874,
+     "threshold": 20
+    },
+    {
+     "rule_id": "R2",
+     "title": "Минимальный объём",
+     "outcome": "pass",
+     "message": "Объём 1874 слов",
+     "value": 1874,
+     "threshold": 100
+    },
+    {
+     "rule_id": "R3",
+     "title": "Обязательные разделы",
+     "outcome": "pass",
+     "message": "Все обязательные разделы присутствуют",
+     "value": 2,
+     "threshold": 2
+    },
+    {
+     "rule_id": "R4",
+     "title": "Язык отчёта",
+     "outcome": "pass",
+     "message": "Отчёт на русском языке",
+     "value": 0.77,
+     "threshold": 0.5
+    },
+    {
+     "rule_id": "R5",
+     "title": "Предельный объём",
+     "outcome": "pass",
+     "message": "Объём в допустимых пределах",
+     "value": 14161,
+     "threshold": 60000
+    },
+    {
+     "rule_id": "R6",
+     "title": "Соответствие теме (по понятиям задания)",
+     "outcome": "pass",
+     "message": "Найдено 25 из 25 ключевых понятий задания",
+     "value": 1.0,
+     "threshold": 0.2
+    }
+   ]
+  ],
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.97,
+    "summary": "Отчёт частично соответствует требованиям: правила и тестирование описаны, но эксперимент с изменением базы знаний и требуемое число рабочих шаблонных фраз не выполнены.",
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.96,
+    "summary": "Отчёт частично соответствует требованиям: не выполнен ключевой эксперимент с разными ответами на один вопрос при изменении базы знаний и не обеспечено полное покрытие классов ответных фраз.",
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "summary": "Отчёт не соответствует требованиям из-за неподтверждённого охвата всех классов ответов, недостатка рабочих шаблонных фраз и отсутствия требуемого эксперимента с изменением базы знаний.",
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 1,
+  "id": 10,
+  "lab": 110,
+  "category": "real_ok",
+  "expected": "approve",
+  "title": "ЛР 4. Агенты решателя задач",
+  "decision": "approve",
+  "decided_by": "judges",
+  "score": 0.983,
+  "similarity": null,
+  "llm_calls": 3,
+  "seconds": 16.59,
+  "reason": "Единогласно «за», P = 0.98 ≥ 0.65",
+  "rules": [
+   [
+    {
+     "rule_id": "R1",
+     "title": "Отчёт содержит текст",
+     "outcome": "pass",
+     "message": "Текст отчёта извлечён",
+     "value": 3696,
+     "threshold": 20
+    },
+    {
+     "rule_id": "R2",
+     "title": "Минимальный объём",
+     "outcome": "pass",
+     "message": "Объём 3696 слов",
+     "value": 3696,
+     "threshold": 100
+    },
+    {
+     "rule_id": "R3",
+     "title": "Обязательные разделы",
+     "outcome": "pass",
+     "message": "Все обязательные разделы присутствуют",
+     "value": 2,
+     "threshold": 2
+    },
+    {
+     "rule_id": "R4",
+     "title": "Язык отчёта",
+     "outcome": "pass",
+     "message": "Отчёт на русском языке",
+     "value": 0.865,
+     "threshold": 0.5
+    },
+    {
+     "rule_id": "R5",
+     "title": "Предельный объём",
+     "outcome": "pass",
+     "message": "Объём в допустимых пределах",
+     "value": 27472,
+     "threshold": 60000
+    },
+    {
+     "rule_id": "R6",
+     "title": "Соответствие теме (по понятиям задания)",
+     "outcome": "pass",
+     "message": "Найдено 25 из 25 ключевых понятий задания",
+     "value": 1.0,
+     "threshold": 0.2
+    }
+   ]
+  ],
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.99,
+    "summary": "Отчёт полностью соответствует требованиям лабораторной работы: разработаны и интегрированы два агента, их работа проверена и подробно задокументирована.",
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.98,
+    "summary": "Отчёт полностью раскрывает варианты, реализацию, интеграцию, тестирование и документацию двух агентов системы NIKA и соответствует требованиям лабораторной работы.",
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": true,
+    "confidence": 0.98,
+    "summary": "Отчёт полностью подтверждает выполнение всех проверяемых требований лабораторной работы двумя агентами с различными векторами вариантов.",
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 1,
+  "id": 11,
+  "lab": 105,
+  "category": "real_wrong_lab",
+  "expected": "reject",
+  "title": "ЛР 1. Информационно-поисковая система и оценка качества поиска → ЛР 1. Управление доступом с помощью списков контроля доступа",
+  "decision": "reject",
+  "decided_by": "judges",
+  "score": 0.003,
+  "similarity": 0.531,
+  "llm_calls": 4,
+  "seconds": 38.29,
+  "reason": "Единогласно «против», P = 0.00 ≤ 0.35",
+  "rules": [
+   [
+    {
+     "rule_id": "R1",
+     "title": "Отчёт содержит текст",
+     "outcome": "pass",
+     "message": "Текст отчёта извлечён",
+     "value": 769,
+     "threshold": 20
+    },
+    {
+     "rule_id": "R2",
+     "title": "Минимальный объём",
+     "outcome": "pass",
+     "message": "Объём 769 слов",
+     "value": 769,
+     "threshold": 100
+    },
+    {
+     "rule_id": "R3",
+     "title": "Обязательные разделы",
+     "outcome": "pass",
+     "message": "Все обязательные разделы присутствуют",
+     "value": 2,
+     "threshold": 2
+    },
+    {
+     "rule_id": "R4",
+     "title": "Язык отчёта",
+     "outcome": "pass",
+     "message": "Отчёт на русском языке",
+     "value": 0.945,
+     "threshold": 0.5
+    },
+    {
+     "rule_id": "R5",
+     "title": "Предельный объём",
+     "outcome": "pass",
+     "message": "Объём в допустимых пределах",
+     "value": 6197,
+     "threshold": 60000
+    },
+    {
+     "rule_id": "R6",
+     "title": "Соответствие теме (по понятиям задания)",
+     "outcome": "pass",
+     "message": "Найдено 6 из 25 ключевых понятий задания",
+     "value": 0.24,
+     "threshold": 0.2
+    }
+   ]
+  ],
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "summary": "Отчёт не соответствует заданию: вместо программы настройки и проверки ACL описана информационно-поисковая система.",
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": false,
+    "confidence": 1.0,
+    "summary": "Отчёт не соответствует заданию: вместо программы настройки и проверки ACL представлена информационно-поисковая система.",
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": false,
+    "confidence": 1.0,
+    "summary": "Отчёт не соответствует требованиям лабораторной работы, поскольку полностью посвящён информационно-поисковой системе, а не настройке и проверке ACL.",
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 1,
+  "id": 12,
+  "lab": 106,
+  "category": "real_wrong_lab",
+  "expected": "reject",
+  "title": "ЛР 2. Автоматическое распознавание языка текстов → ЛР 2–4. Анализ защищённости приложений",
+  "decision": "reject",
+  "decided_by": "judges",
+  "score": 0.01,
+  "similarity": 0.578,
+  "llm_calls": 4,
+  "seconds": 50.19,
+  "reason": "Единогласно «против», P = 0.01 ≤ 0.35",
+  "rules": [
+   [
+    {
+     "rule_id": "R1",
+     "title": "Отчёт содержит текст",
+     "outcome": "pass",
+     "message": "Текст отчёта извлечён",
+     "value": 2138,
+     "threshold": 20
+    },
+    {
+     "rule_id": "R2",
+     "title": "Минимальный объём",
+     "outcome": "pass",
+     "message": "Объём 2138 слов",
+     "value": 2138,
+     "threshold": 100
+    },
+    {
+     "rule_id": "R3",
+     "title": "Обязательные разделы",
+     "outcome": "pass",
+     "message": "Все обязательные разделы присутствуют",
+     "value": 2,
+     "threshold": 2
+    },
+    {
+     "rule_id": "R4",
+     "title": "Язык отчёта",
+     "outcome": "pass",
+     "message": "Отчёт на русском языке",
+     "value": 0.871,
+     "threshold": 0.5
+    },
+    {
+     "rule_id": "R5",
+     "title": "Предельный объём",
+     "outcome": "pass",
+     "message": "Объём в допустимых пределах",
+     "value": 15162,
+     "threshold": 60000
+    },
+    {
+     "rule_id": "R6",
+     "title": "Соответствие теме (по понятиям задания)",
+     "outcome": "pass",
+     "message": "Найдено 11 из 25 ключевых понятий задания",
+     "value": 0.44,
+     "threshold": 0.2
+    }
+   ]
+  ],
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "summary": "Отчёт описывает систему распознавания языка текстовых документов и не соответствует требованиям о разработке приложения с пользователями, управлением конфиденциальными данными и анализом безопасности.",
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "summary": "Отчёт описывает полностью реализованную систему распознавания языка текстов, но не соответствует требованиям задания по разработке приложения с пользователями, авторизацией, CRUD и поиском данных и анализом безопасности.",
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "summary": "Отчёт не соответствует требованиям, поскольку посвящён распознаванию языка, а не управлению пользователями, работе с конфиденциальными данными и анализу безопасности.",
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 1,
+  "id": 13,
+  "lab": 107,
+  "category": "real_wrong_lab",
+  "expected": "reject",
+  "title": "ЛР 3. Автоматическое реферирование документов → ЛР 1. Формализация предметной области в базе знаний",
+  "decision": "reject",
+  "decided_by": "judges",
+  "score": 0.017,
+  "similarity": 0.5,
+  "llm_calls": 4,
+  "seconds": 170.11,
+  "reason": "Единогласно «против», P = 0.02 ≤ 0.35",
+  "rules": [
+   [
+    {
+     "rule_id": "R1",
+     "title": "Отчёт содержит текст",
+     "outcome": "pass",
+     "message": "Текст отчёта извлечён",
+     "value": 2514,
+     "threshold": 20
+    },
+    {
+     "rule_id": "R2",
+     "title": "Минимальный объём",
+     "outcome": "pass",
+     "message": "Объём 2514 слов",
+     "value": 2514,
+     "threshold": 100
+    },
+    {
+     "rule_id": "R3",
+     "title": "Обязательные разделы",
+     "outcome": "pass",
+     "message": "Все обязательные разделы присутствуют",
+     "value": 2,
+     "threshold": 2
+    },
+    {
+     "rule_id": "R4",
+     "title": "Язык отчёта",
+     "outcome": "pass",
+     "message": "Отчёт на русском языке",
+     "value": 0.813,
+     "threshold": 0.5
+    },
+    {
+     "rule_id": "R5",
+     "title": "Предельный объём",
+     "outcome": "pass",
+     "message": "Объём в допустимых пределах",
+     "value": 17469,
+     "threshold": 60000
+    },
+    {
+     "rule_id": "R6",
+     "title": "Соответствие теме (по понятиям задания)",
+     "outcome": "pass",
+     "message": "Найдено 16 из 25 ключевых понятий задания",
+     "value": 0.64,
+     "threshold": 0.2
+    }
+   ]
+  ],
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.97,
+    "summary": "Отчёт выполнен по другой теме — системе автоматического реферирования, а требования формализации предметной области и тестирования базы знаний в NIKA не выполнены.",
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "summary": "Отчёт не соответствует требованиям лабораторной работы: вместо формализации предметной области и тестирования в NIKA представлено веб-приложение для автоматического реферирования.",
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "summary": "Отчёт не соответствует заданию: вместо формализации предметной области и тестирования базы знаний в NIKA представлено приложение автоматического реферирования.",
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 1,
+  "id": 14,
+  "lab": 108,
+  "category": "real_wrong_lab",
+  "expected": "reject",
+  "title": "ЛР 9. Автоматизированная система распознавания речи → ЛР 2. Классификатор сообщений",
+  "decision": "reject",
+  "decided_by": "judges",
+  "score": 0.013,
+  "similarity": 0.578,
+  "llm_calls": 4,
+  "seconds": 35.62,
+  "reason": "Единогласно «против», P = 0.01 ≤ 0.35",
+  "rules": [
+   [
+    {
+     "rule_id": "R1",
+     "title": "Отчёт содержит текст",
+     "outcome": "pass",
+     "message": "Текст отчёта извлечён",
+     "value": 6724,
+     "threshold": 20
+    },
+    {
+     "rule_id": "R2",
+     "title": "Минимальный объём",
+     "outcome": "pass",
+     "message": "Объём 6724 слов",
+     "value": 6724,
+     "threshold": 100
+    },
+    {
+     "rule_id": "R3",
+     "title": "Обязательные разделы",
+     "outcome": "pass",
+     "message": "Все обязательные разделы присутствуют",
+     "value": 2,
+     "threshold": 2
+    },
+    {
+     "rule_id": "R4",
+     "title": "Язык отчёта",
+     "outcome": "pass",
+     "message": "Отчёт на русском языке",
+     "value": 0.8,
+     "threshold": 0.5
+    },
+    {
+     "rule_id": "R5",
+     "title": "Предельный объём",
+     "outcome": "pass",
+     "message": "Объём в допустимых пределах",
+     "value": 47563,
+     "threshold": 60000
+    },
+    {
+     "rule_id": "R6",
+     "title": "Соответствие теме (по понятиям задания)",
+     "outcome": "pass",
+     "message": "Найдено 14 из 25 ключевых понятий задания",
+     "value": 0.56,
+     "threshold": 0.2
+    }
+   ]
+  ],
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "summary": "Отчёт не соответствует требованиям лабораторной работы: вместо диалога из 8 сообщений и обучения классификатора Wit.ai представлена система распознавания речи.",
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.98,
+    "summary": "Отчёт не соответствует требованиям: вместо диалогового сценария, классификатора Wit.ai и его тестирования в Нике описана система распознавания речи.",
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "summary": "Отчёт не соответствует требованиям: вместо диалогового сценария с обучением классификатора Wit.ai и тестированием в Нике описана система распознавания речи.",
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 1,
+  "id": 15,
+  "lab": 109,
+  "category": "real_wrong_lab",
+  "expected": "reject",
+  "title": "ЛР 1. Управление доступом с помощью списков контроля доступа → ЛР 3. Логические правила и фразы ответа",
+  "decision": "reject",
+  "decided_by": "judges",
+  "score": 0.01,
+  "similarity": 0.516,
+  "llm_calls": 4,
+  "seconds": 33.51,
+  "reason": "Единогласно «против», P = 0.01 ≤ 0.35",
+  "rules": [
+   [
+    {
+     "rule_id": "R1",
+     "title": "Отчёт содержит текст",
+     "outcome": "pass",
+     "message": "Текст отчёта извлечён",
+     "value": 4651,
+     "threshold": 20
+    },
+    {
+     "rule_id": "R2",
+     "title": "Минимальный объём",
+     "outcome": "pass",
+     "message": "Объём 4651 слов",
+     "value": 4651,
+     "threshold": 100
+    },
+    {
+     "rule_id": "R3",
+     "title": "Обязательные разделы",
+     "outcome": "pass",
+     "message": "Все обязательные разделы присутствуют",
+     "value": 2,
+     "threshold": 2
+    },
+    {
+     "rule_id": "R4",
+     "title": "Язык отчёта",
+     "outcome": "pass",
+     "message": "Отчёт на русском языке",
+     "value": 0.6,
+     "threshold": 0.5
+    },
+    {
+     "rule_id": "R5",
+     "title": "Предельный объём",
+     "outcome": "pass",
+     "message": "Объём в допустимых пределах",
+     "value": 33342,
+     "threshold": 60000
+    },
+    {
+     "rule_id": "R6",
+     "title": "Соответствие теме (по понятиям задания)",
+     "outcome": "pass",
+     "message": "Найдено 12 из 25 ключевых понятий задания",
+     "value": 0.48,
+     "threshold": 0.2
+    }
+   ]
+  ],
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "summary": "Отчёт описывает совершенно другую лабораторную работу (управление доступом в ОС и MariaDB) и не содержит ни одного из обязательных элементов задания по механизму ответов на сообщения.",
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "summary": "Отчёт выполнен по совершенно другой теме (списки контроля доступа и MariaDB) и не содержит ни одного из ключевых требований задания о логических правилах ответа и базе знаний NIKA.",
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "summary": "Отчёт посвящён управлению доступом в ОС и MariaDB и не подтверждает выполнение ни одного из содержательных пунктов задания по механизму ответов на сообщения в системе NIKA.",
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 1,
+  "id": 16,
+  "lab": 110,
+  "category": "real_wrong_lab",
+  "expected": "reject",
+  "title": "ЛР 2–4. Анализ защищённости приложений → ЛР 4. Агенты решателя задач",
+  "decision": "reject",
+  "decided_by": "judges",
+  "score": 0.01,
+  "similarity": 0.609,
+  "llm_calls": 4,
+  "seconds": 45.55,
+  "reason": "Единогласно «против», P = 0.01 ≤ 0.35",
+  "rules": [
+   [
+    {
+     "rule_id": "R1",
+     "title": "Отчёт содержит текст",
+     "outcome": "pass",
+     "message": "Текст отчёта извлечён",
+     "value": 5224,
+     "threshold": 20
+    },
+    {
+     "rule_id": "R2",
+     "title": "Минимальный объём",
+     "outcome": "pass",
+     "message": "Объём 5224 слов",
+     "value": 5224,
+     "threshold": 100
+    },
+    {
+     "rule_id": "R3",
+     "title": "Обязательные разделы",
+     "outcome": "pass",
+     "message": "Все обязательные разделы присутствуют",
+     "value": 2,
+     "threshold": 2
+    },
+    {
+     "rule_id": "R4",
+     "title": "Язык отчёта",
+     "outcome": "pass",
+     "message": "Отчёт на русском языке",
+     "value": 0.811,
+     "threshold": 0.5
+    },
+    {
+     "rule_id": "R5",
+     "title": "Предельный объём",
+     "outcome": "pass",
+     "message": "Объём в допустимых пределах",
+     "value": 37774,
+     "threshold": 60000
+    },
+    {
+     "rule_id": "R6",
+     "title": "Соответствие теме (по понятиям задания)",
+     "outcome": "pass",
+     "message": "Найдено 15 из 25 ключевых понятий задания",
+     "value": 0.6,
+     "threshold": 0.2
+    }
+   ]
+  ],
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "summary": "Отчёт посвящён несвязанным лабораторным работам по анализу защищённости приложений и серверов и не содержит требуемой реализации агента с базой знаний и интеграцией в NIKA.",
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "summary": "Отчёт посвящён несвязанным лабораторным работам по анализу защищённости приложений и серверов и не выполняет требования задания по проектированию, реализации, интеграции и тестированию агента с базой знаний в системе NIKA.",
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "summary": "Отчёт посвящён анализу защищённости веб-приложений и удалённых серверов, а не разработке, интеграции и тестированию агентов с базой знаний в системе NIKA.",
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 1,
+  "id": 17,
+  "lab": 101,
+  "category": "real_wrong_lab",
+  "expected": "reject",
+  "title": "ЛР 1. Формализация предметной области в базе знаний → ЛР 1. Информационно-поисковая система и оценка качества поиска",
+  "decision": "reject",
+  "decided_by": "judges",
+  "score": 0.01,
+  "similarity": 0.5,
+  "llm_calls": 4,
+  "seconds": 40.37,
+  "reason": "Единогласно «против», P = 0.01 ≤ 0.35",
+  "rules": [
+   [
+    {
+     "rule_id": "R1",
+     "title": "Отчёт содержит текст",
+     "outcome": "pass",
+     "message": "Текст отчёта извлечён",
+     "value": 836,
+     "threshold": 20
+    },
+    {
+     "rule_id": "R2",
+     "title": "Минимальный объём",
+     "outcome": "pass",
+     "message": "Объём 836 слов",
+     "value": 836,
+     "threshold": 100
+    },
+    {
+     "rule_id": "R3",
+     "title": "Обязательные разделы",
+     "outcome": "pass",
+     "message": "Все обязательные разделы присутствуют",
+     "value": 2,
+     "threshold": 2
+    },
+    {
+     "rule_id": "R4",
+     "title": "Язык отчёта",
+     "outcome": "pass",
+     "message": "Отчёт на русском языке",
+     "value": 0.527,
+     "threshold": 0.5
+    },
+    {
+     "rule_id": "R5",
+     "title": "Предельный объём",
+     "outcome": "pass",
+     "message": "Объём в допустимых пределах",
+     "value": 6627,
+     "threshold": 60000
+    },
+    {
+     "rule_id": "R6",
+     "title": "Соответствие теме (по понятиям задания)",
+     "outcome": "pass",
+     "message": "Найдено 7 из 25 ключевых понятий задания",
+     "value": 0.28,
+     "threshold": 0.2
+    }
+   ]
+  ],
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "summary": "Отчёт описывает другую лабораторную работу по базам знаний и не содержит требуемой вероятностной информационно-поисковой системы, её результатов и метрик качества.",
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "summary": "Отчёт не соответствует требованиям, поскольку описывает другую лабораторную работу по построению базы знаний, а не информационно-поисковую систему варианта 5.",
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "summary": "Отчёт выполнен по существенно другой лабораторной работе и не подтверждает ни одного ключевого требования варианта 5.",
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 1,
+  "id": 18,
+  "lab": 102,
+  "category": "real_wrong_lab",
+  "expected": "reject",
+  "title": "ЛР 2. Классификатор сообщений → ЛР 2. Автоматическое распознавание языка текстов",
+  "decision": "reject",
+  "decided_by": "judges",
+  "score": 0.007,
+  "similarity": 0.578,
+  "llm_calls": 4,
+  "seconds": 53.31,
+  "reason": "Единогласно «против», P = 0.01 ≤ 0.35",
+  "rules": [
+   [
+    {
+     "rule_id": "R1",
+     "title": "Отчёт содержит текст",
+     "outcome": "pass",
+     "message": "Текст отчёта извлечён",
+     "value": 853,
+     "threshold": 20
+    },
+    {
+     "rule_id": "R2",
+     "title": "Минимальный объём",
+     "outcome": "pass",
+     "message": "Объём 853 слов",
+     "value": 853,
+     "threshold": 100
+    },
+    {
+     "rule_id": "R3",
+     "title": "Обязательные разделы",
+     "outcome": "pass",
+     "message": "Все обязательные разделы присутствуют",
+     "value": 2,
+     "threshold": 2
+    },
+    {
+     "rule_id": "R4",
+     "title": "Язык отчёта",
+     "outcome": "pass",
+     "message": "Отчёт на русском языке",
+     "value": 0.84,
+     "threshold": 0.5
+    },
+    {
+     "rule_id": "R5",
+     "title": "Предельный объём",
+     "outcome": "pass",
+     "message": "Объём в допустимых пределах",
+     "value": 6261,
+     "threshold": 60000
+    },
+    {
+     "rule_id": "R6",
+     "title": "Соответствие теме (по понятиям задания)",
+     "outcome": "pass",
+     "message": "Найдено 7 из 25 ключевых понятий задания",
+     "value": 0.28,
+     "threshold": 0.2
+    }
+   ]
+  ],
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "summary": "Отчёт описывает совершенно другую лабораторную работу по классификации диалоговых сообщений Wit.ai и не удовлетворяет требованиям распознавания языка текстовых документов.",
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "summary": "Отчёт не соответствует требованиям лабораторной работы, поскольку описывает совершенно другое задание по классификации диалоговых сообщений.",
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": false,
+    "confidence": 1.0,
+    "summary": "Отчёт не соответствует требованиям лабораторной работы, поскольку полностью посвящён другой предметной области и не содержит обязательных этапов распознавания языка.",
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 1,
+  "id": 19,
+  "lab": 103,
+  "category": "real_wrong_lab",
+  "expected": "reject",
+  "title": "ЛР 3. Логические правила и фразы ответа → ЛР 3. Автоматическое реферирование документов",
+  "decision": "reject",
+  "decided_by": "judges",
+  "score": 0.007,
+  "similarity": 0.391,
+  "llm_calls": 4,
+  "seconds": 50.02,
+  "reason": "Единогласно «против», P = 0.01 ≤ 0.35",
+  "rules": [
+   [
+    {
+     "rule_id": "R1",
+     "title": "Отчёт содержит текст",
+     "outcome": "pass",
+     "message": "Текст отчёта извлечён",
+     "value": 1874,
+     "threshold": 20
+    },
+    {
+     "rule_id": "R2",
+     "title": "Минимальный объём",
+     "outcome": "pass",
+     "message": "Объём 1874 слов",
+     "value": 1874,
+     "threshold": 100
+    },
+    {
+     "rule_id": "R3",
+     "title": "Обязательные разделы",
+     "outcome": "pass",
+     "message": "Все обязательные разделы присутствуют",
+     "value": 2,
+     "threshold": 2
+    },
+    {
+     "rule_id": "R4",
+     "title": "Язык отчёта",
+     "outcome": "pass",
+     "message": "Отчёт на русском языке",
+     "value": 0.77,
+     "threshold": 0.5
+    },
+    {
+     "rule_id": "R5",
+     "title": "Предельный объём",
+     "outcome": "pass",
+     "message": "Объём в допустимых пределах",
+     "value": 14161,
+     "threshold": 60000
+    },
+    {
+     "rule_id": "R6",
+     "title": "Соответствие теме (по понятиям задания)",
+     "outcome": "pass",
+     "message": "Найдено 8 из 25 ключевых понятий задания",
+     "value": 0.32,
+     "threshold": 0.2
+    }
+   ]
+  ],
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "summary": "Отчёт описывает систему NIKA для диалоговых ответов, а не требуемую систему автоматического реферирования документов на базе OSTIS.",
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "summary": "Отчёт описывает иную лабораторную работу и не выполняет требования к системе автоматического реферирования на OSTIS.",
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": false,
+    "confidence": 1.0,
+    "summary": "Отчёт не соответствует требованиям лабораторной работы, поскольку описывает другую тему и не реализует автоматическое реферирование документов.",
+    "error": null
+   }
+  ]
+ },
+ {
+  "mode": "hybrid",
+  "repeat": 1,
+  "id": 20,
+  "lab": 104,
+  "category": "real_wrong_lab",
+  "expected": "reject",
+  "title": "ЛР 4. Агенты решателя задач → ЛР 9. Автоматизированная система распознавания речи",
+  "decision": "reject",
+  "decided_by": "judges",
+  "score": 0.01,
+  "similarity": 0.469,
+  "llm_calls": 4,
+  "seconds": 66.85,
+  "reason": "Единогласно «против», P = 0.01 ≤ 0.35",
+  "rules": [
+   [
+    {
+     "rule_id": "R1",
+     "title": "Отчёт содержит текст",
+     "outcome": "pass",
+     "message": "Текст отчёта извлечён",
+     "value": 3696,
+     "threshold": 20
+    },
+    {
+     "rule_id": "R2",
+     "title": "Минимальный объём",
+     "outcome": "pass",
+     "message": "Объём 3696 слов",
+     "value": 3696,
+     "threshold": 100
+    },
+    {
+     "rule_id": "R3",
+     "title": "Обязательные разделы",
+     "outcome": "pass",
+     "message": "Все обязательные разделы присутствуют",
+     "value": 2,
+     "threshold": 2
+    },
+    {
+     "rule_id": "R4",
+     "title": "Язык отчёта",
+     "outcome": "pass",
+     "message": "Отчёт на русском языке",
+     "value": 0.865,
+     "threshold": 0.5
+    },
+    {
+     "rule_id": "R5",
+     "title": "Предельный объём",
+     "outcome": "pass",
+     "message": "Объём в допустимых пределах",
+     "value": 27472,
+     "threshold": 60000
+    },
+    {
+     "rule_id": "R6",
+     "title": "Соответствие теме (по понятиям задания)",
+     "outcome": "pass",
+     "message": "Найдено 12 из 25 ключевых понятий задания",
+     "value": 0.48,
+     "threshold": 0.2
+    }
+   ]
+  ],
+  "judges": [
+   {
+    "judge": "loyal",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "summary": "Отчёт описывает совершенно другую лабораторную работу — агентов для базы знаний NIKA по спортсменам, поэтому требованиям по системе распознавания речи и анализу сочинений по литературе он не соответствует.",
+    "error": null
+   },
+   {
+    "judge": "objective",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "summary": "Отчёт не соответствует требованиям лабораторной работы, поскольку описывает другую систему и не содержит реализации распознавания речи и анализа сочинений.",
+    "error": null
+   },
+   {
+    "judge": "strict",
+    "valid": true,
+    "verdict": false,
+    "confidence": 0.99,
+    "summary": "Отчёт посвящён совершенно другой лабораторной работе — агентам для предметной области «Спортсмены» в NIKA, а не системе распознавания речи и анализа сочинений по литературе.",
+    "error": null
+   }
+  ]
+ }
+]

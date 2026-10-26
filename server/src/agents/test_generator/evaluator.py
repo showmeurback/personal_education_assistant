@@ -25,7 +25,7 @@ class TestEvaluator:
 
             for i, (question, user_answer) in enumerate(zip(questions, user_answers)):
                 correct_answer = question.correct_answer
-                is_correct = user_answer.upper() == correct_answer.upper()
+                is_correct = (user_answer or "").strip().upper() == correct_answer.strip().upper()
 
                 if is_correct:
                     correct_count += 1
@@ -33,7 +33,7 @@ class TestEvaluator:
                 result = EvaluationResult(
                     question_num=question.question_num,
                     question_text=question.text,
-                    user_answer=user_answer.upper(),
+                    user_answer=(user_answer or "").strip().upper(),
                     correct_answer=correct_answer,
                     is_correct=is_correct,
                     options=question.options
@@ -71,21 +71,9 @@ class TestEvaluator:
             )
 
     @staticmethod
-    def _get_grade(percentage: float) -> tuple:
-        """Определяет оценку по проценту правильных ответов"""
-        # Сортируем диапазоны в порядке убывания для корректной проверки
-        grade_scale = sorted(
-            Config.GRADE_SCALE.items(),
-            key=lambda x: x[0][0],
-            reverse=True
-        )
-
-        for (min_pct, max_pct), grade_info in grade_scale:
-            if min_pct <= percentage <= max_pct:
-                return (
-                    grade_info['grade'],
-                    grade_info['description']
-                )
-
-        # Если ничего не найдено - самая низкая оценка
-        return ("0", "Неудовлетворительно")
+    def _get_grade(percentage: float) -> tuple[str, str]:
+        """Оценка по 10-балльной шкале: первая граница, не превышающая процент."""
+        for lower, grade, description in Config.GRADE_SCALE:
+            if percentage >= lower:
+                return grade, description
+        return "0", "Неудовлетворительно"

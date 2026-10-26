@@ -1,1 +1,1 @@
-from .workflow import VerificationAgent
+from .pipeline import VerificationPipeline, VerificationResult

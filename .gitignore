@@ -58,6 +58,7 @@ coverage.xml
 *.temp
 
 main_report/
-reports/
-report/
+/reports/
+/report/
 proxy_forwarder.py
+server/experiments/.gen_cache.json

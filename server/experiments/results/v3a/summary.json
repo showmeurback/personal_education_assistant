@@ -1,0 +1,200 @@
+{
+  "model": {
+    "loyal": "nvidia/nemotron-3.5-lightning-30b-a3b@nothink",
+    "objective": "openai/gpt-oss-20b",
+    "strict": "nvidia/nemotron-3-ultra-550b-a55b@nothink"
+  },
+  "provider": "https://integrate.api.nvidia.com/v1",
+  "dataset_size": 45,
+  "categories": {
+    "original": 12,
+    "weak_ok": 6,
+    "copy_exact": 3,
+    "copy_light": 3,
+    "incomplete": 6,
+    "off_topic": 3,
+    "keywords": 3,
+    "injection": 3,
+    "too_short": 3,
+    "no_sections": 3
+  },
+  "duration_minutes": 21.1,
+  "shared_judgements": true,
+  "relabeled": [
+    18
+  ],
+  "modes": {
+    "symbolic": {
+      "metrics": {
+        "reports": 45,
+        "accuracy_auto": 0.733,
+        "coverage": 1.0,
+        "accuracy_strict": 0.733,
+        "accuracy_with_teacher": 0.733,
+        "precision_reject": 1.0,
+        "recall_reject": 0.571,
+        "f1_reject": 0.727,
+        "false_accept_rate": 0.429,
+        "false_reject_rate": 0.0,
+        "manual_rate": 0.0,
+        "llm_calls_total": 0,
+        "llm_calls_mean": 0,
+        "seconds_mean": 0.04,
+        "seconds_median": 0.03,
+        "decided_by": {
+          "symbolic": 32,
+          "simhash": 6,
+          "rules": 7
+        },
+        "invalid_judgements": 0
+      },
+      "by_category": {
+        "original": {
+          "approve": 11,
+          "reject": 1
+        },
+        "weak_ok": {
+          "approve": 6
+        },
+        "copy_exact": {
+          "reject": 3
+        },
+        "copy_light": {
+          "reject": 3
+        },
+        "incomplete": {
+          "approve": 6
+        },
+        "off_topic": {
+          "reject": 3
+        },
+        "keywords": {
+          "approve": 3
+        },
+        "injection": {
+          "approve": 3
+        },
+        "too_short": {
+          "reject": 3
+        },
+        "no_sections": {
+          "reject": 3
+        }
+      }
+    },
+    "neural": {
+      "metrics": {
+        "reports": 45,
+        "accuracy_auto": 0.778,
+        "coverage": 1.0,
+        "accuracy_strict": 0.778,
+        "accuracy_with_teacher": 0.778,
+        "precision_reject": 1.0,
+        "recall_reject": 0.643,
+        "f1_reject": 0.783,
+        "false_accept_rate": 0.357,
+        "false_reject_rate": 0.0,
+        "manual_rate": 0.0,
+        "llm_calls_total": 135,
+        "llm_calls_mean": 3,
+        "seconds_mean": 22.28,
+        "seconds_median": 21.55,
+        "decided_by": {
+          "judges": 45
+        },
+        "invalid_judgements": 0
+      },
+      "by_category": {
+        "original": {
+          "approve": 12
+        },
+        "weak_ok": {
+          "approve": 6
+        },
+        "copy_exact": {
+          "approve": 3
+        },
+        "copy_light": {
+          "approve": 3
+        },
+        "incomplete": {
+          "reject": 6
+        },
+        "off_topic": {
+          "reject": 3
+        },
+        "keywords": {
+          "reject": 3
+        },
+        "injection": {
+          "reject": 3
+        },
+        "too_short": {
+          "reject": 3
+        },
+        "no_sections": {
+          "approve": 3
+        }
+      }
+    },
+    "hybrid": {
+      "metrics": {
+        "reports": 45,
+        "accuracy_auto": 1.0,
+        "coverage": 1.0,
+        "accuracy_strict": 1.0,
+        "accuracy_with_teacher": 1.0,
+        "precision_reject": 1.0,
+        "recall_reject": 1.0,
+        "f1_reject": 1.0,
+        "false_accept_rate": 0.0,
+        "false_reject_rate": 0.0,
+        "manual_rate": 0.0,
+        "llm_calls_total": 111,
+        "llm_calls_mean": 2.47,
+        "seconds_mean": 5.86,
+        "seconds_median": 0.01,
+        "decided_by": {
+          "judges": 32,
+          "simhash": 6,
+          "rules": 7
+        },
+        "invalid_judgements": 0
+      },
+      "by_category": {
+        "original": {
+          "approve": 11,
+          "reject": 1
+        },
+        "weak_ok": {
+          "approve": 6
+        },
+        "copy_exact": {
+          "reject": 3
+        },
+        "copy_light": {
+          "reject": 3
+        },
+        "incomplete": {
+          "reject": 6
+        },
+        "off_topic": {
+          "reject": 3
+        },
+        "keywords": {
+          "reject": 3
+        },
+        "injection": {
+          "reject": 3
+        },
+        "too_short": {
+          "reject": 3
+        },
+        "no_sections": {
+          "reject": 3
+        }
+      }
+    }
+  },
+  "note_version": "итоговая версия: разные модели оценщиков, правила A6 и R7"
+}
