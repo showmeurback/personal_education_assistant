@@ -23,6 +23,8 @@ services:
       EDUCATION_DATABASE_PORT: 5432
       WEAVIATE_HOST: weaviate
       UPLOADS_DIR: /app/uploads
+      # демонстрационные курсы и пользователи при первом запуске (false — пустая система)
+      SEED_DEMO: ${SEED_DEMO:-true}
       TZ: Europe/Minsk
       HTTP_PROXY: ${HTTP_PROXY:-}
       HTTPS_PROXY: ${HTTPS_PROXY:-}

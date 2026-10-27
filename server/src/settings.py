@@ -193,6 +193,8 @@ class AppSettings(_Base):
     weaviate_port: int = Field(default=8080, alias="WEAVIATE_PORT")
     weaviate_grpc_port: int = Field(default=50051, alias="WEAVIATE_GRPC_PORT")
     dev_reload: bool = Field(default=False, alias="DEV_RELOAD")
+    # наполнение демонстрационными данными при первом запуске (пустая база)
+    seed_demo: bool = Field(default=False, alias="SEED_DEMO")
 
 
 class PostgreDatabaseConfig(_Base):
