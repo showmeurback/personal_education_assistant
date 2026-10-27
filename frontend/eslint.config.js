@@ -19,6 +19,14 @@ export default defineConfig([
       ecmaVersion: 2020,
       globals: globals.browser,
     },
+    rules: {
+      // эффект, записанный стрелкой без фигурных скобок, возвращает значение выражения,
+      // и React вызывает его как функцию очистки (так scrollIntoView обрушивал чат и экзамен)
+      'no-restricted-syntax': ['error', {
+        selector: "CallExpression[callee.name=/^use(Layout)?Effect$/] > ArrowFunctionExpression[expression=true]:not([body.type='ArrowFunctionExpression']):not([body.type='FunctionExpression'])",
+        message: 'Тело эффекта пишите в фигурных скобках: эффект может вернуть только функцию очистки.',
+      }],
+    },
   },
   {
     // сгенерированные компоненты shadcn/ui экспортируют варианты стилей вместе с компонентами

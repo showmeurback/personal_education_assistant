@@ -141,12 +141,19 @@ class ReportService:
                      requirements: LabRequirements) -> dict:
         async with self._semaphore():
             try:
-                result: VerificationResult = await self.pipeline.run(
+                # общий предел времени: даже при зависшем внешнем сервисе отчёт не остаётся «проверяется»
+                result: VerificationResult = await asyncio.wait_for(self.pipeline.run(
                     text=doc.text, images=doc.images, requirements=requirements,
-                    student_id=student_id, lab_id=lab_id)
+                    student_id=student_id, lab_id=lab_id), timeout=verification_settings.check_timeout)
             except Exception as exc:  # отчёт не должен «зависнуть» в статусе «проверяется»
-                logger.exception(f"Проверка отчёта {report_id} не завершилась: {exc}")
-                message = ("Автоматическая проверка не завершилась из-за внутренней ошибки. "
+                timed_out = isinstance(exc, (asyncio.TimeoutError, TimeoutError))
+                if timed_out:
+                    logger.warning(f"Проверка отчёта {report_id} не уложилась в {verification_settings.check_timeout:.0f} с")
+                else:
+                    logger.exception(f"Проверка отчёта {report_id} не завершилась: {exc}")
+                message = (f"Сервисы языковых моделей не ответили за {verification_settings.check_timeout / 60:.0f} мин. "
+                           "Отчёт передан преподавателю для ручной проверки." if timed_out else
+                           "Автоматическая проверка не завершилась из-за внутренней ошибки. "
                            "Отчёт передан преподавателю для ручной проверки.")
                 await asyncio.to_thread(self.reports.finish_check, report_id, ReportStatus.MANUAL_REVIEW, message)
                 await asyncio.to_thread(
@@ -154,7 +161,7 @@ class ReportService:
                     final_score=None, max_similarity=None, llm_calls=0, duration_ms=0,
                     protocol=[{"order": 1, "step": 1, "title": "Сбой проверки", "component": "Сервис проверки",
                                "kind": "symbolic", "status": "fail", "duration_ms": 0,
-                               "details": {"error": type(exc).__name__}}])
+                               "details": {"error": "Превышено время проверки" if timed_out else type(exc).__name__}}])
                 return {"report_id": report_id, "status": ReportStatus.MANUAL_REVIEW.value,
                         "decision": "manual_review", "decided_by": "error", "reason": "Сбой проверки",
                         "message": message, "score": None, "llm_calls": 0, "vision_calls": 0,

@@ -43,3 +43,22 @@ def test_mistake_review_explains_each_wrong_answer():
     out = review_mistakes(wrong, "Быстрая сортировка имеет среднюю сложность O(n log n).")
     assert set(out) == {2, 5} and all(out.values())
     assert review_mistakes([], "x") == {}
+
+
+def test_assistant_test_mistakes_tool_reads_explanations(monkeypatch):
+    """Инструмент ассистента «Ошибки в тесте» принимает строки с объяснением (7 полей) и без него (6)."""
+    from rag import queries
+
+    class Repo:
+        def get_owner(self, _rid):
+            return (7,)
+
+        def get_answers(self, _rid):
+            return [(1, "Вопрос 1", '{"A": "a", "B": "b"}', "B", "A", False, "Верный ответ — A"),
+                    (2, "Вопрос 2", {"A": "a"}, "A", "A", True, None),
+                    (3, "Вопрос 3", {"A": "a", "B": "b"}, "A", "B", False)]
+
+    monkeypatch.setattr(queries, "TestResultRepository", Repo)
+    mistakes = queries.query_test_mistakes(1, student_id=7)
+    assert [m["question_num"] for m in mistakes] == [1, 3]
+    assert mistakes[0]["explanation"] == "Верный ответ — A" and "explanation" not in mistakes[1]

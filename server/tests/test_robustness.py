@@ -178,3 +178,80 @@ def test_default_auth_secret_is_replaced_by_generated_one(monkeypatch, tmp_path)
     monkeypatch.setattr(security, "_secret_cache", None)
     assert security.signing_secret() == s1  # ключ сохранён и переживает перезапуск
     monkeypatch.setattr(security, "_secret_cache", None)
+
+
+def test_hung_judge_model_is_cut_off_by_timeout(monkeypatch):
+    """Зависшая модель оценщика не задерживает проверку: по истечении предела оценка недействительна."""
+    import asyncio
+    from agents.verification import judges
+
+    async def hang(*_a, **_k):
+        await asyncio.sleep(30)
+
+    monkeypatch.setattr(judges, "ainvoke_text", hang)
+    monkeypatch.setattr(judges, "cfg", judges.cfg.model_copy(update={"judge_timeout": 0.2}))
+    verdict = asyncio.run(judges._run_judge("objective", "Задание", "Текст отчёта", "openai/gpt-oss-20b"))
+    assert not verdict.valid and "не ответила" in verdict.error and verdict.duration_ms < 2000
+
+
+def test_hung_check_goes_to_manual_review(monkeypatch):
+    """Если проверка целиком не уложилась в предел, отчёт не остаётся «проверяется», а уходит преподавателю."""
+    import asyncio
+    from agents.verification.rules import LabRequirements
+    from services import report_service as rs
+
+    saved = {}
+
+    class Reports:
+        def finish_check(self, report_id, status, message):
+            saved["status"], saved["message"] = status, message
+
+        def add_check(self, **kw):
+            saved["check"] = kw
+
+    class Pipeline:
+        async def run(self, **_kw):
+            await asyncio.sleep(30)
+
+    service = rs.ReportService.__new__(rs.ReportService)
+    service.pipeline, service.reports = Pipeline(), Reports()
+    service._sem = None
+    monkeypatch.setattr(service, "_semaphore", lambda: asyncio.Semaphore(1))
+    monkeypatch.setattr(rs, "verification_settings", rs.verification_settings.model_copy(update={"check_timeout": 0.2}))
+    doc = type("Doc", (), {"text": "текст", "images": []})()
+    out = asyncio.run(service._check(1, 1, 1, doc, LabRequirements(task="задание")))
+    assert out["decision"] == "manual_review" and saved["status"] == rs.ReportStatus.MANUAL_REVIEW
+    assert "не ответили" in saved["message"]
+
+
+def test_overloaded_model_in_stream_is_retried(monkeypatch):
+    """Перегрузка провайдера посреди потока (HTTP 200) не доходит до студента: ответ повторяется."""
+    import asyncio
+    import json
+    import openai
+    from types import SimpleNamespace
+    from api.endpoints import chat as ep
+
+    calls, saved = [], []
+
+    def flaky_stream(*_args):
+        calls.append(1)
+        yield {"type": "step", "text": "Разбираю вопрос"}
+        if len(calls) == 1:
+            yield {"type": "token", "text": "черно"}
+            raise openai.APIError("Service temporarily overloaded", request=None, body=None)
+        yield {"type": "done", "response": "Ответ", "tools": [], "sources": []}
+
+    monkeypatch.setattr(ep, "_history_and_storage", lambda chat_id, user: ([], "s", 1, "чат"))
+    monkeypatch.setattr(ep, "_save_exchange", lambda *a: saved.append(a[-1]))
+    monkeypatch.setattr(ep, "stream_ask", flaky_stream)
+    monkeypatch.setattr(ep, "STREAM_RETRY_DELAY", 0)
+
+    async def collect():
+        response = ep.send_message_stream(1, ep.MessageModel(message="вопрос"), SimpleNamespace(id=1))
+        return [chunk async for chunk in response.body_iterator]
+
+    events = [json.loads(c[len("data: "):]) for c in asyncio.run(collect()) if c.startswith("data:")]
+    kinds = [e["type"] for e in events]
+    assert len(calls) == 2 and "error" not in kinds and kinds[-1] == "done"
+    assert "reset" in kinds and saved == ["Ответ"]

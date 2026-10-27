@@ -219,7 +219,18 @@ export interface ChatMessage {
   content: string;
   tools?: string[];
   sources?: string[];
+  /** шаги агента, показанные во время потокового ответа */
+  steps?: string[];
+  /** ответ ещё генерируется */
+  streaming?: boolean;
 }
+
+export type ChatStreamEvent =
+  | { type: "step"; text: string }
+  | { type: "token"; text: string }
+  | { type: "reset" }
+  | { type: "done"; response: string; tools: string[]; sources: string[] }
+  | { type: "error"; detail: string };
 
 export interface CourseAnalytics {
   test_averages: { student_id: number; first_name: string; last_name: string; test_count: number; avg_percentage: number | null }[];

@@ -32,8 +32,10 @@ PROVIDER_PRESETS = {
     },
     "nvidia": {
         "base_url": "https://integrate.api.nvidia.com/v1",
-        "model": "minimaxai/minimax-m3.1-flash",
-        "embedding_model": "nvidia/nemotron-3.5-embed-8b",
+        # ассистент, тесты, экзамен: ultra без рассуждения — 12–30 с на ответ агента против 49–97 с
+        # у minimax-m3.1-flash при том же качестве (сравнение на 4 вопросах, октябрь 2026)
+        "model": "nvidia/nemotron-3-ultra-550b-a55b@nothink",
+        "embedding_model": "nvidia/nemotron-3.5-embed-1b",  # 8b с октября 2026 не отвечает; R7 на 1b — тот же результат
         # оценщики на моделях разных семейств и размеров: ошибки меньше коррелируют;
         # «@nothink» — без этапа рассуждения (ответ за секунды, а не минуты)
         "judge_models": {
@@ -104,9 +106,10 @@ class LLMSettings(_Base):
         spec = self.judge_models.strip()
         if spec.lower() == "same":  # все оценщики на одной модели (вариант v2)
             return self.judge_model or self.model
+        # LLM_MODEL меняет только ассистента, тесты и экзамен; модели оценщиков — LLM_JUDGE_MODEL(S),
+        # иначе смена модели ассистента молча меняла бы и проверку отчётов
         pairs = {k.strip(): v.strip() for k, v in (p.split("=", 1) for p in spec.split(",") if "=" in p)} if spec else \
-            ({} if self.judge_model or self.model_override else
-             PROVIDER_PRESETS.get(self.provider.lower(), {}).get("judge_models", {}))
+            ({} if self.judge_model else PROVIDER_PRESETS.get(self.provider.lower(), {}).get("judge_models", {}))
         return pairs.get(judge, "").strip() or self.judge_model or self.model
 
 
@@ -180,6 +183,12 @@ class VerificationSettings(_Base):
     lab_match_timeout: float = Field(default=15.0, alias="LAB_MATCH_TIMEOUT")
     # число одновременных проверок отчётов (остальные ждут в очереди)
     check_concurrency: int = Field(default=4, alias="VERIFICATION_CONCURRENCY")
+    # предельное время ответа одного оценщика и пояснения: зависшая модель не задерживает проверку
+    # (оценщик считается не ответившим, решают остальные или преподаватель — правило A1)
+    judge_timeout: float = Field(default=120.0, alias="JUDGE_TIMEOUT")
+    feedback_timeout: float = Field(default=60.0, alias="FEEDBACK_TIMEOUT")
+    # предельное время проверки отчёта целиком; по истечении отчёт уходит на ручную проверку
+    check_timeout: float = Field(default=420.0, alias="CHECK_TIMEOUT")
 
 
 class AuthSettings(_Base):

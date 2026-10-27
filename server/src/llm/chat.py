@@ -55,6 +55,14 @@ def get_chat_model(
     """
     provider = llm_settings.provider.lower()
     temp = llm_settings.temperature if temperature is None else temperature
+    # «модель@nothink» допускается везде, в том числе в LLM_MODEL: суффикс отключает рассуждение;
+    # «модель@low» (gpt-oss) — сокращённый этап рассуждения (reasoning_effort)
+    name, flag = split_model(model or llm_settings.model)
+    if thinking is None:
+        thinking = flag
+    effort = None
+    if name and "@" in name:
+        name, _, effort = name.partition("@")
     if provider == "mock":
         from .mock import MockChatModel
         return MockChatModel()
@@ -69,12 +77,12 @@ def get_chat_model(
     return ChatOpenAI(
         base_url=llm_settings.base_url,
         api_key=llm_settings.api_key,
-        model=model or llm_settings.model,
+        model=name,
         temperature=temp,
         max_tokens=(max_tokens or llm_settings.max_tokens) + llm_settings.reasoning_reserve,
         timeout=timeout or llm_settings.timeout,
-        extra_body={"chat_template_kwargs": {"enable_thinking": False}}
-        if thinking is False and provider == "nvidia" else None,
+        extra_body=({"chat_template_kwargs": {"enable_thinking": False}} if thinking is False and provider == "nvidia"
+                    else {"reasoning_effort": effort} if effort else None),
         max_retries=llm_settings.max_retries if max_retries is None else max_retries,
         # необязательные заголовки атрибуции OpenRouter; другими поставщиками игнорируются
         default_headers={"HTTP-Referer": "https://github.com/showmeurback/personal_education_assistant",
@@ -82,12 +90,20 @@ def get_chat_model(
     )
 
 
+REASONING_EFFORTS = ("low", "medium", "high")
+
+
 def split_model(spec: str | None) -> tuple[str | None, bool | None]:
-    """«модель@nothink» → (модель, thinking=False): гибридная модель без этапа рассуждения."""
+    """«модель@nothink» → (модель, thinking=False): гибридная модель без этапа рассуждения.
+
+    Суффикс уровня рассуждения («@low», «@medium», «@high» — для моделей gpt-oss) остаётся
+    в имени: его разбирает get_chat_model и передаёт поставщику как reasoning_effort."""
     if not spec:
         return None, None
     name, _, flag = spec.partition("@")
-    return name, (False if flag == "nothink" else None)
+    if flag == "nothink":
+        return name, False
+    return (spec if flag in REASONING_EFFORTS else name), None
 
 
 def _rate_limit_delay(exc: Exception, attempt: int) -> float | None:

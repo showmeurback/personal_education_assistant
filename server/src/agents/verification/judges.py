@@ -112,11 +112,18 @@ async def _run_judge(judge: str, requirements: str, report_text: str, model: str
         # temperature=0 — максимально воспроизводимые оценки
         # «модель@nothink» — гибридная модель без этапа рассуждения (быстрее)
         name, thinking = split_model(model)
-        raw = await ainvoke_text(messages, temperature=0.0, max_tokens=llm_settings.judge_max_tokens,
-                                 model=name, thinking=thinking)
+        limit = cfg.judge_timeout
+        # один запрос не дольше предела, одна повторная попытка — и общий предел на всё сразу
+        raw = await asyncio.wait_for(
+            ainvoke_text(messages, temperature=0.0, max_tokens=llm_settings.judge_max_tokens,
+                         model=name, thinking=thinking, timeout=limit, max_retries=0, retries=1),
+            timeout=limit)
         result = parse_judge_output(judge, raw)
         if not result.valid:
             result.error = f"{result.error}; начало ответа: {raw[:160]!r}"
+    except asyncio.TimeoutError:
+        result = JudgeVerdict(judge, stance["title"], valid=False,
+                              error=f"Модель не ответила за {cfg.judge_timeout:.0f} с")
     except Exception as exc:  # сетевые ошибки, лимиты API и т. п.
         result = JudgeVerdict(judge, stance["title"], valid=False, error=f"{type(exc).__name__}: {exc}"[:300])
     result.duration_ms = int((time.perf_counter() - started) * 1000)

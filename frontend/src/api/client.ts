@@ -46,6 +46,39 @@ export const put = <T>(path: string, body: unknown) => api<T>(path, { method: "P
 export const patch = <T>(path: string, body: unknown) => api<T>(path, { method: "PATCH", body: JSON.stringify(body) });
 export const del = <T>(path: string) => api<T>(path, { method: "DELETE" });
 
+/**
+ * POST с потоковым ответом (Server-Sent Events): каждое событие `data: {...}` передаётся в onEvent
+ * по мере поступления. Ошибка HTTP до начала потока выбрасывается как ApiError.
+ */
+export async function postStream<E>(path: string, body: unknown, onEvent: (event: E) => void,
+                                    signal?: AbortSignal): Promise<void> {
+  const res = await fetch(`/api/v1${path}`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json", Accept: "text/event-stream", ...authHeader() },
+    body: JSON.stringify(body),
+    signal,
+  });
+  if (!res.ok || !res.body) {
+    await handle<unknown>(res);
+    throw new ApiError(res.status, "Сервер не вернул поток ответа");
+  }
+  const reader = res.body.getReader();
+  const decoder = new TextDecoder();
+  let buffer = "";
+  for (;;) {
+    const { value, done } = await reader.read();
+    if (done) break;
+    buffer += decoder.decode(value, { stream: true });
+    let sep: number;
+    while ((sep = buffer.indexOf("\n\n")) >= 0) {
+      const block = buffer.slice(0, sep);
+      buffer = buffer.slice(sep + 2);
+      const data = block.split("\n").filter((l) => l.startsWith("data:")).map((l) => l.slice(5).trimStart()).join("\n");
+      if (data) onEvent(JSON.parse(data) as E);  // строки «: ping» — служебные, пропускаются
+    }
+  }
+}
+
 export async function upload<T>(path: string, form: FormData): Promise<T> {
   const res = await fetch(`/api/v1${path}`, { method: "POST", body: form, headers: authHeader() });
   return handle<T>(res);

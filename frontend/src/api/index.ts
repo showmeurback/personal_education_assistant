@@ -1,4 +1,4 @@
-import { del, download, get, patch, post, put, upload } from "./client";
+import { del, download, get, patch, post, postStream, put, upload } from "./client";
 import type * as T from "./types";
 
 export * from "./types";
@@ -123,6 +123,9 @@ export const chatApi = {
       rows.map((m) => ({ role: m.role === "human" ? "user" : "assistant", content: m.content }) as T.ChatMessage)),
   send: (chatId: number, message: string) =>
     post<{ response: string; tools: string[]; sources: string[] }>(`/chats/${chatId}/messages`, { message }),
+  /** потоковый ответ: шаги агента и текст по мере генерации */
+  sendStream: (chatId: number, message: string, onEvent: (e: T.ChatStreamEvent) => void, signal?: AbortSignal) =>
+    postStream<T.ChatStreamEvent>(`/chats/${chatId}/messages/stream`, { message }, onEvent, signal),
 };
 
 export const systemApi = {

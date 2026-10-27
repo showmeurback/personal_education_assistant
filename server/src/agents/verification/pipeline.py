@@ -272,8 +272,11 @@ class VerificationPipeline:
         ]
         try:
             name, thinking = split_model(llm_settings.feedback_model)
-            text = (await ainvoke_text(messages, temperature=0.3, max_tokens=700,
-                                       model=name, thinking=thinking)).strip()
+            limit = cfg.feedback_timeout
+            text = (await asyncio.wait_for(
+                ainvoke_text(messages, temperature=0.3, max_tokens=700, model=name, thinking=thinking,
+                             timeout=limit, max_retries=0, retries=1),
+                timeout=limit)).strip()
             calls = 1
         except Exception as exc:
             text = "Отчёт не соответствует требованиям задания. " + "; ".join(findings[:4])

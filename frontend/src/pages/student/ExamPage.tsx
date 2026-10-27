@@ -23,7 +23,8 @@ export default function ExamPage() {
   const [avg, setAvg] = useState<number | null | undefined>(undefined);
   const endRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => endRef.current?.scrollIntoView({ behavior: "smooth", block: "end" }), [entries, busy]);
+  // тело в фигурных скобках: эффект не должен возвращать результат scrollIntoView (в новых браузерах — Promise)
+  useEffect(() => { endRef.current?.scrollIntoView({ behavior: "smooth", block: "end" }); }, [entries, busy]);
 
   const start = async () => {
     setBusy(true);

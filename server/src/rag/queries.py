@@ -42,18 +42,22 @@ def query_test_mistakes(test_result_id: int, student_id: int | None = None) -> l
     rows = repo.get_answers(test_result_id)
     mistakes = []
     for row in (rows or []):
-        q_num, q_text, options, user_ans, correct_ans, is_correct = row
+        # седьмое поле — объяснение ошибки (разбор теста); у старых результатов его может не быть
+        q_num, q_text, options, user_ans, correct_ans, is_correct, *rest = row
         if is_correct:
             continue
         if isinstance(options, str):
             options = json.loads(options)
-        mistakes.append({
+        mistake = {
             "question_num": q_num,
             "question_text": q_text,
             "options": options,
             "user_answer": user_ans,
             "correct_answer": correct_ans,
-        })
+        }
+        if rest and rest[0]:
+            mistake["explanation"] = rest[0]
+        mistakes.append(mistake)
     return mistakes
 
 

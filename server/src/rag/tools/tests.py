@@ -56,6 +56,7 @@ def make_test_tools(student_id: int, course_id: int):
                     f"\nВопрос {m['question_num']}: {m['question_text']}\n"
                     f"  Твой ответ: **{m['user_answer']}** — {user_text}\n"
                     f"  Правильный ответ: **{m['correct_answer']}** — {correct_text}"
+                    + (f"\n  Разбор: {m['explanation']}" if m.get("explanation") else "")
                 )
             result = "\n".join(lines)
             logger.debug(f"    ← get_test_mistakes: {len(mistakes)} ошибок")

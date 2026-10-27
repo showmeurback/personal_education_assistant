@@ -1,0 +1,5 @@
+{
+ "openai/gpt-oss-20b": {"acc": 24, "n": 26, "by": {"own": [10, 8, 0], "wrong": [10, 10, 0], "inject": [6, 6, 0]}, "median_s": 11.3},
+ "openai/gpt-oss-20b@low": {"acc": 24, "n": 26, "by": {"own": [10, 8, 0], "wrong": [10, 10, 0], "inject": [6, 6, 0]}, "median_s": 10.1},
+ "nvidia/nemotron-3.5-bolt-e4b": {"acc": 25, "n": 26, "by": {"own": [10, 9, 0], "wrong": [10, 10, 0], "inject": [6, 6, 0]}, "median_s": 6.8}
+}

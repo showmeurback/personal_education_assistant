@@ -1,7 +1,7 @@
 """Сквозные сценарии против запущенной системы (docker compose up).
 
 Запуск:  E2E_BASE_URL=http://localhost:8000 pytest -m e2e -v
-Идентификаторы сценариев (E1…E20) используются в пояснительной записке.
+Идентификаторы сценариев (E1…E21) используются в пояснительной записке.
 Группы: T — типичные, B — граничные, N — отрицательные.
 """
 import os
@@ -261,3 +261,25 @@ def test_E20_T_weak_topics_map_after_test(world):
         assert 0 <= t["mastery"] < 0.7 and t["level"]
     other = call("GET", f"/courses/{world['cid']}/weak-topics", world["teacher"]["token"])
     assert other.status_code == 403
+
+
+def test_E21_T_rag_chat_streams_steps_and_text(world):
+    """Потоковый ответ ассистента: шаги агента и текст приходят по частям, ответ сохраняется в истории."""
+    import json as _json
+    tok = world["students"][3]["token"]
+    chat = call("POST", "/chats", tok, json={"course_id": world["cid"]}).json()
+    events = []
+    with requests.post(f"{API}/chats/{chat['chat_id']}/messages/stream", stream=True, timeout=300,
+                       headers={"Authorization": f"Bearer {tok}"},
+                       json={"message": "Какова сложность сортировки пузырьком?"}) as r:
+        assert r.status_code == 200 and r.headers["content-type"].startswith("text/event-stream")
+        for line in r.iter_lines(decode_unicode=True):
+            if line and line.startswith("data:"):
+                events.append(_json.loads(line[5:]))
+    kinds = [e["type"] for e in events]
+    assert "error" not in kinds, events
+    assert kinds[0] == "step" and kinds[-1] == "done" and kinds.count("token") > 1
+    done = events[-1]
+    assert done["response"].strip() and "Поиск по материалам курса" in done["tools"]
+    history = call("GET", f"/chats/{chat['chat_id']}/messages", tok).json()
+    assert [m["role"] for m in history] == ["human", "ai"] and history[1]["content"] == done["response"]
