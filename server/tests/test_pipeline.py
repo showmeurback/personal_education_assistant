@@ -78,7 +78,7 @@ async def test_llm_failure_degrades_to_manual_review(monkeypatch):
         return JudgeVerdict(judge, judge, valid=False, error="TimeoutError")
     monkeypatch.setattr("agents.verification.pipeline.run_judge", broken)
     r = await check(VerificationPipeline(InMemoryReportIndex()), GOOD_REPORT)
-    assert r.decision is D.MANUAL_REVIEW and "валидных оценок" in r.reason
+    assert r.decision is D.MANUAL_REVIEW and "проверяющих" in r.reason
 
 
 async def test_judge_disagreement_goes_to_teacher(monkeypatch):

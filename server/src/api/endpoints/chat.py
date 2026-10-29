@@ -2,6 +2,7 @@ import json
 import queue
 import threading
 import time
+from datetime import datetime, timezone
 
 from fastapi import Depends, HTTPException
 from fastapi.responses import StreamingResponse
@@ -30,6 +31,10 @@ class MessageModel(BaseModel):
     message: str = Field(min_length=1, max_length=4000)
 
 
+class PinModel(BaseModel):
+    pinned: bool
+
+
 class RenameModel(BaseModel):
     name: str = Field(min_length=1, max_length=120)
 
@@ -53,8 +58,9 @@ def create_chat(payload: CreateChatModel, user: CurrentUser = Depends(require_st
 @app.get("/api/v1/me/chats", tags=["Чат"])
 def my_chats(user: CurrentUser = Depends(require_student)):
     rows = ChatRepository().get_student_chats(user.id)
-    return [{"chat_id": cid, "name": name, "course_id": course_id, "course_title": title, "created_at": created}
-            for (cid, name, course_id, title, created) in rows]
+    return [{"chat_id": cid, "name": name, "course_id": course_id, "course_title": title, "created_at": created,
+             "pinned": pinned}
+            for (cid, name, course_id, title, created, pinned) in rows]
 
 
 @app.delete("/api/v1/chats/{chat_id}", tags=["Чат"])
@@ -71,10 +77,20 @@ def rename_chat(chat_id: int, payload: RenameModel, user: CurrentUser = Depends(
     return {"success": True, "name": payload.name.strip()}
 
 
+@app.put("/api/v1/chats/{chat_id}/pin", tags=["Чат"])
+def pin_chat(chat_id: int, payload: PinModel, user: CurrentUser = Depends(require_student)):
+    """Закрепление чата: закреплённые чаты идут в списке первыми."""
+    _own_chat(chat_id, user)
+    ChatRepository().set_pinned(chat_id, payload.pinned)
+    return {"success": True, "pinned": payload.pinned}
+
+
 @app.get("/api/v1/chats/{chat_id}/messages", tags=["Чат"])
 def get_messages(chat_id: int, user: CurrentUser = Depends(require_student)):
     _own_chat(chat_id, user)
-    return [{"role": role, "content": content} for (role, content) in ChatRepository().get_messages(chat_id, limit=200)]
+    return [{"role": role, "content": content, "created_at": sent_at,
+             "tools": (meta or {}).get("tools", []), "sources": (meta or {}).get("sources", [])}
+            for (role, content, sent_at, meta) in ChatRepository().get_messages(chat_id, limit=200)]
 
 
 def _history_and_storage(chat_id: int, user: CurrentUser) -> tuple[list, str, int, str]:
@@ -83,15 +99,25 @@ def _history_and_storage(chat_id: int, user: CurrentUser) -> tuple[list, str, in
     if not storage_id:
         raise HTTPException(400, "У курса нет загруженных материалов")
     history = []
-    for role, content in ChatRepository().get_messages(chat_id, limit=20):
+    for role, content, _sent_at, _meta in ChatRepository().get_messages(chat_id, limit=20):
         history.append(HumanMessage(content=content) if role == "human" else AIMessage(content=content))
     return history, storage_id, course_id, name
 
 
-def _save_exchange(chat_id: int, name: str, had_history: bool, question: str, answer: str) -> None:
+def _now() -> datetime:
+    return datetime.now(timezone.utc)
+
+
+def _iso(moment: datetime) -> str:
+    return moment.strftime("%Y-%m-%dT%H:%M:%SZ")
+
+
+def _save_exchange(chat_id: int, name: str, had_history: bool, question: str, answer: str,
+                   asked_at: datetime | None = None, answered_at: datetime | None = None,
+                   meta: dict | None = None) -> None:
     repo = ChatRepository()
-    repo.add_message(chat_id, "human", question)
-    repo.add_message(chat_id, "ai", answer)
+    repo.add_message(chat_id, "human", question, asked_at)
+    repo.add_message(chat_id, "ai", answer, answered_at, meta)
     if name == "Новый чат" and not had_history:
         title = question.strip().replace("\n", " ")
         repo.rename_chat(chat_id, title[:60] + ("…" if len(title) > 60 else ""))
@@ -99,10 +125,13 @@ def _save_exchange(chat_id: int, name: str, had_history: bool, question: str, an
 
 @app.post("/api/v1/chats/{chat_id}/messages", tags=["Чат"])
 async def send_message(chat_id: int, payload: MessageModel, user: CurrentUser = Depends(require_student)):
+    asked_at = _now()
     history, storage_id, course_id, name = _history_and_storage(chat_id, user)
     result = await run_in_threadpool(ask, storage_id, payload.message, history, user.id, course_id, chat_id)
-    _save_exchange(chat_id, name, bool(history), payload.message, result["response"])
-    return result
+    answered_at = _now()
+    _save_exchange(chat_id, name, bool(history), payload.message, result["response"], asked_at, answered_at,
+                   {"tools": result["tools"], "sources": result["sources"]})
+    return {**result, "asked_at": _iso(asked_at), "answered_at": _iso(answered_at)}
 
 
 def _llm_error_text(exc: Exception) -> str:
@@ -119,6 +148,7 @@ def send_message_stream(chat_id: int, payload: MessageModel, user: CurrentUser =
 
     Агент работает в отдельном потоке и складывает события в очередь, поэтому, даже если
     студент закрыл страницу, ответ дописывается и сохраняется в истории диалога."""
+    asked_at = _now()
     history, storage_id, course_id, name = _history_and_storage(chat_id, user)
     events: queue.Queue = queue.Queue()
 
@@ -132,7 +162,11 @@ def send_message_stream(chat_id: int, payload: MessageModel, user: CurrentUser =
                 try:
                     for event in stream_ask(storage_id, payload.message, history, user.id, course_id, chat_id):
                         if event["type"] == "done":
-                            _save_exchange(chat_id, name, bool(history), payload.message, event["response"])
+                            answered_at = _now()
+                            _save_exchange(chat_id, name, bool(history), payload.message, event["response"],
+                                           asked_at, answered_at,
+                                           {"tools": event["tools"], "sources": event["sources"]})
+                            event = {**event, "asked_at": _iso(asked_at), "answered_at": _iso(answered_at)}
                         events.put(event)
                     return
                 except Exception as exc:  # noqa: BLE001 — любая ошибка должна дойти до клиента событием

@@ -4,6 +4,7 @@ import { cn } from "@/lib/utils";
 import type { ProtocolStep, ReportCheck } from "@/api";
 import { DECIDED_BY_MAP, DECISION_MAP } from "@/utils/constants";
 import { Meter } from "@/components/common";
+import { KIND_LABEL, plainStep } from "@/utils/plain";
 
 /**
  * Протокол гибридной проверки отчёта.
@@ -34,7 +35,7 @@ function DecisionSummary({ check }: { check: ReportCheck }) {
     <div className="grid grid-cols-2 gap-px rounded-md overflow-hidden border border-border bg-border">
       <SummaryCell label="Решение системы" value={<span className={d.color}>{d.label}</span>} />
       <SummaryCell label="Кем принято" value={DECIDED_BY_MAP[check.decided_by] ?? check.decided_by} small />
-      <SummaryCell label="Обращений к LLM" value={check.llm_calls} />
+      <SummaryCell label="Обращений к ИИ" value={check.llm_calls} />
       <SummaryCell label="Время проверки" value={`${(check.duration_ms / 1000).toFixed(1)} с`} />
     </div>
   );
@@ -64,8 +65,10 @@ function StatusIcon({ status }: { status: string }) {
 }
 
 function StepRow({ step, last, teacher }: { step: ProtocolStep; last: boolean; teacher: boolean }) {
-  const [open, setOpen] = useState(step.status === "fail" || step.kind === "neural");
+  // раскрыты только шаги, из-за которых отчёт отклонён; остальное — по щелчку
+  const [open, setOpen] = useState(step.status === "fail");
   const symbolic = step.kind === "symbolic";
+  const plain = plainStep(step);
   return (
     <li className="relative pl-11 pb-5">
       {!last && <span className="absolute left-[15px] top-8 bottom-0 w-px bg-border" aria-hidden />}
@@ -85,18 +88,24 @@ function StepRow({ step, last, teacher }: { step: ProtocolStep; last: boolean; t
       >
         <div className="flex-1 min-w-0">
           <p className="text-sm font-semibold text-foreground flex items-center gap-2">
-            {step.title} <StatusIcon status={step.status} />
+            {plain.title} <StatusIcon status={step.status} />
           </p>
           <p className="text-xs text-muted-foreground">
-            {symbolic ? "Символьный компонент" : "Нейросетевой компонент"}: {step.component}
-            {step.duration_ms > 0 && <> — {step.duration_ms} мс</>}
+            {symbolic ? KIND_LABEL.symbolic : KIND_LABEL.neural}
+            {step.duration_ms > 0 && <> · {step.duration_ms < 1000 ? `${step.duration_ms} мс` : `${(step.duration_ms / 1000).toFixed(1)} с`}</>}
           </p>
         </div>
         <ChevronDown className={cn("w-4 h-4 text-muted-foreground transition-transform", open && "rotate-180")} />
       </button>
       {open && (
-        <div className="mt-3 rounded-md bg-surface/60 border border-border p-3 text-sm">
+        <div className="mt-3 rounded-md bg-surface/60 border border-border p-3 text-sm space-y-2">
+          {plain.text && <p className="text-muted-foreground">{plain.text}</p>}
           <StepDetails step={step} teacher={teacher} />
+          {teacher && (
+            <p className="text-[11px] text-muted-foreground/80 pt-1 border-t border-border/60">
+              Техническое название: {step.title} — {step.component} ({symbolic ? "символьный компонент" : "нейросетевой компонент"})
+            </p>
+          )}
         </div>
       )}
     </li>
@@ -110,14 +119,14 @@ function StepDetails({ step, teacher }: { step: ProtocolStep; teacher: boolean }
   if (Array.isArray(d.rules)) return <RulesTable rules={d.rules as Dict[]} />;
   if (Array.isArray(d.descriptions)) return <ImageDetails d={d} />;
   if (d.lab_match) return <LabMatchDetails m={d.lab_match as Dict} />;
-  if (Object.keys(d).length === 1 && "error" in d) return <p className="text-destructive text-sm">Проверка прервана внутренней ошибкой ({String(d.error)}); отчёт передан преподавателю.</p>;
+  if (Object.keys(d).length === 1 && "error" in d) return <p className="text-destructive text-sm">Проверка прервана из-за технической ошибки ({String(d.error)}); отчёт передан преподавателю.</p>;
   if ("bits" in d) return <SimhashDetails d={d} teacher={teacher} />;
   if ("judge" in d) return <JudgeDetails d={d} />;
   if ("decision" in d) return <AggregationDetails d={d} />;
   if ("lemmas" in d) {
     return (
       <div className="space-y-2">
-        <p className="text-muted-foreground">Слов: {String(d.words)}, значимых лемм: {String(d.lemmas)}</p>
+        <p className="text-muted-foreground">Слов в отчёте: {String(d.words)}, из них значимых: {String(d.lemmas)}</p>
         {Array.isArray(d.task_terms) && (d.task_terms as string[]).length > 0 && (
           <div>
             <p className="text-xs text-muted-foreground mb-1">Ключевые понятия задания</p>
@@ -159,7 +168,7 @@ function SimhashDetails({ d, teacher }: { d: Dict; teacher: boolean }) {
   const maxH = Number(d.max_hamming);
   const threshold = 1 - maxH / bits;
   if (!nearest) {
-    return <p className="text-muted-foreground">Других отчётов по этой лабораторной в индексе нет — сравнивать не с чем.</p>;
+    return <p className="text-muted-foreground">Других отчётов по этой работе пока нет — сравнивать не с чем.</p>;
   }
   const sim = Number(nearest.similarity);
   return (
@@ -170,12 +179,14 @@ function SimhashDetails({ d, teacher }: { d: Dict; teacher: boolean }) {
       </div>
       <Meter value={sim} tone={sim >= threshold ? "danger" : "primary"} markers={[{ at: threshold, label: "порог" }]} />
       <p className="text-xs text-muted-foreground">
-        Расстояние Хэмминга {String(nearest.hamming)} из {bits} бит; дубликатом считается расстояние ≤ {maxH}
-        (сходство ≥ {(threshold * 100).toFixed(0)}%).
-        {teacher && nearest.report_id != null && <> Ближайший отчёт № {String(nearest.report_id)}.</>}
+        Отчёт считается списанным, если сходство не меньше {(threshold * 100).toFixed(0)}%.
+        {teacher && nearest.report_id != null && <> Самый похожий — отчёт № {String(nearest.report_id)}.</>}
       </p>
-      {teacher && typeof d.fingerprint_hex === "string" && (
-        <p className="text-xs text-muted-foreground">Отпечаток: <code className="text-foreground">{d.fingerprint_hex}</code></p>
+      {teacher && (
+        <p className="text-[11px] text-muted-foreground/80">
+          Метод SimHash: расстояние Хэмминга {String(nearest.hamming)} из {bits} бит, порог ≤ {maxH}
+          {typeof d.fingerprint_hex === "string" && <>; отпечаток <code>{d.fingerprint_hex}</code></>}.
+        </p>
       )}
     </div>
   );
@@ -183,7 +194,7 @@ function SimhashDetails({ d, teacher }: { d: Dict; teacher: boolean }) {
 
 function JudgeDetails({ d }: { d: Dict }) {
   if (!d.valid) {
-    return <p className="text-destructive text-sm">Оценка не получена: {String(d.error ?? "ошибка модели")}. Агрегатор учитывает только валидные оценки.</p>;
+    return <p className="text-destructive text-sm">Оценка не получена: {String(d.error ?? "сервис ИИ не ответил")}. Итоговое решение учитывает только полученные оценки.</p>;
   }
   const verdict = Boolean(d.verdict);
   const conf = Number(d.confidence ?? 0);
@@ -198,7 +209,7 @@ function JudgeDetails({ d }: { d: Dict }) {
         <span className="text-xs text-muted-foreground w-28 text-right">уверенность {(conf * 100).toFixed(0)}%</span>
       </div>
       {d.summary ? <p className="text-foreground">{String(d.summary)}</p> : null}
-      {d.model ? <p className="text-xs text-muted-foreground">Модель: {String(d.model)}</p> : null}
+      {d.model ? <p className="text-[11px] text-muted-foreground/80">Модель ИИ: {String(d.model)}</p> : null}
       {criteria.length > 0 && (
         <ul className="space-y-1">
           {criteria.map((c, i) => (
@@ -224,7 +235,7 @@ function LabMatchDetails({ m }: { m: Dict }) {
         <>
           <div className="flex justify-between text-xs text-muted-foreground">
             <span>Сходство отчёта с заданием этой работы</span>
-            <span className="text-foreground">{target.toFixed(2)}</span>
+            <span className="text-foreground">{Math.round(target * 100)}%</span>
           </div>
           <Meter value={target} tone={m.doubt ? "warning" : "primary"}
             markers={t ? [{ at: Number(t.min_similarity), label: "порог" }] : undefined} />
@@ -232,7 +243,7 @@ function LabMatchDetails({ m }: { m: Dict }) {
       )}
       {other != null && (
         <p className="text-xs text-muted-foreground">
-          Ближайшая другая лабораторная курса: {other.toFixed(2)} (сомнение, если она ближе на {String(t?.margin ?? "")} и более).
+          Сходство с самой похожей другой работой курса: {Math.round(other * 100)}%. Если другая работа заметно ближе, решение остаётся за преподавателем.
         </p>
       )}
       <p className="text-foreground">{String(m.reason ?? "")}</p>
@@ -247,9 +258,9 @@ function ImageDetails({ d }: { d: Dict }) {
     <div className="space-y-2">
       <p className="text-xs text-muted-foreground">
         Изображений в отчёте: {String(d.images)}, описано: {String(d.described)}
-        {Number(d.cached) > 0 && <> (из кэша: {String(d.cached)})</>}
-        {skipped > 0 && <>; сверх ограничения в {String(d.max_images)} не описано: {skipped}</>}.
-        Описания вставлены в текст на место рисунков и переданы оценщикам. Модель: {String(d.model)}.
+        {Number(d.cached) > 0 && <> (описаны ранее: {String(d.cached)})</>}
+        {skipped > 0 && <>; не описано сверх ограничения в {String(d.max_images)}: {skipped}</>}.
+        Описания вставлены в текст на место рисунков и переданы проверяющим. Модель ИИ: {String(d.model)}.
       </p>
       <ul className="space-y-1.5">
         {items.map((it) => (
@@ -257,7 +268,7 @@ function ImageDetails({ d }: { d: Dict }) {
             <span className="text-xs text-muted-foreground w-14 shrink-0 pt-0.5">Рис. {String(it.index)}</span>
             {it.valid
               ? <span className="text-foreground">{String(it.description)}</span>
-              : <span className="text-muted-foreground">не описано: {String(it.error ?? "ошибка модели")}</span>}
+              : <span className="text-muted-foreground">не описано: {String(it.error ?? "сервис ИИ не ответил")}</span>}
           </li>
         ))}
       </ul>
@@ -272,17 +283,17 @@ function AggregationDetails({ d }: { d: Dict }) {
       {score != null && (
         <>
           <div className="flex justify-between text-xs text-muted-foreground">
-            <span>Итоговая оценка «за принятие» P</span>
-            <span className="text-foreground">{score.toFixed(2)}</span>
+            <span>Итоговая оценка в пользу принятия</span>
+            <span className="text-foreground">{Math.round(score * 100)}%</span>
           </div>
           <Meter value={score} tone={score >= 0.65 ? "success" : score <= 0.35 ? "danger" : "warning"}
             markers={[{ at: 0.35, label: "порог отклонения" }, { at: 0.65, label: "порог принятия" }]} />
         </>
       )}
       {d.votes_for != null && (
-        <p className="text-xs text-muted-foreground">Голоса: за — {String(d.votes_for)}, против — {String(d.votes_against)}; валидных оценок {String(d.valid)}.</p>
+        <p className="text-xs text-muted-foreground">Проверяющих за принятие: {String(d.votes_for)}, против: {String(d.votes_against)}; получено оценок: {String(d.valid)} из 3.</p>
       )}
-      <p className="text-foreground">Правило {String(d.rule)}: {String(d.reason)}</p>
+      <p className="text-foreground">{String(d.reason)} <span className="text-xs text-muted-foreground">(правило {String(d.rule)})</span></p>
     </div>
   );
 }
@@ -290,8 +301,8 @@ function AggregationDetails({ d }: { d: Dict }) {
 function Legend() {
   return (
     <div className="flex flex-wrap gap-4 text-xs text-muted-foreground pt-1">
-      <span className="flex items-center gap-1.5"><span className="w-3 h-3 rounded-[2px] bg-symbolic" /> символьный шаг</span>
-      <span className="flex items-center gap-1.5"><span className="w-3 h-3 rounded-full bg-neural" /> нейросетевой шаг</span>
+      <span className="flex items-center gap-1.5"><span className="w-3 h-3 rounded-[2px] bg-symbolic" /> проверка по точным правилам</span>
+      <span className="flex items-center gap-1.5"><span className="w-3 h-3 rounded-full bg-neural" /> проверка искусственным интеллектом</span>
     </div>
   );
 }

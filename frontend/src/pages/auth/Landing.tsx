@@ -2,11 +2,12 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Logo } from "@/components/layout/Logo";
 import { PipelineHero } from "@/components/landing/PipelineHero";
+import { ThemeToggle } from "@/components/layout/ThemeToggle";
 
 const features = [
   {
     title: "Проверка отчётов с объяснением",
-    text: "Формальные правила и поиск заимствований отсекают явные проблемы, три языковых оценщика судят по смыслу, арбитр сводит решение. Каждый шаг виден в протоколе.",
+    text: "Точные правила отсеивают явные проблемы и списывание, искусственный интеллект проверяет отчёт по смыслу, а спорные случаи решает преподаватель. Каждый шаг виден в протоколе.",
   },
   {
     title: "Ассистент по материалам курса",
@@ -27,8 +28,10 @@ export default function Landing() {
     <div className="min-h-screen bg-background">
       <header className="flex items-center justify-between px-5 sm:px-10 h-16 border-b border-border">
         <Logo />
-        <div className="flex gap-2">
-          <Link to="/login"><Button variant="ghost">Войти</Button></Link>
+        <div className="flex items-center gap-2">
+          <ThemeToggle />
+          {/* на узком экране вход — кнопкой «У меня есть аккаунт» под заголовком */}
+          <Link to="/login" className="hidden sm:block"><Button variant="ghost">Войти</Button></Link>
           <Link to="/register"><Button>Создать аккаунт</Button></Link>
         </div>
       </header>
@@ -39,8 +42,9 @@ export default function Landing() {
             Персональный ассистент по обучению
           </h1>
           <p className="mt-5 text-lg text-muted-foreground max-w-xl leading-relaxed">
-            Гибридная интеллектуальная система: точные правила там, где ответ должен быть
-            проверяемым, и языковые модели там, где нужно понимать смысл текста.
+            Помогает студентам учиться, а преподавателям любых дисциплин — проверять отчёты:
+            точные правила там, где ответ должен быть проверяемым, и искусственный интеллект там,
+            где нужно понимать смысл текста.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <Link to="/register"><Button size="lg">Начать обучение</Button></Link>
@@ -50,8 +54,8 @@ export default function Landing() {
         <figure className="rounded-lg border border-border bg-card p-5 sm:p-7">
           <PipelineHero />
           <figcaption className="mt-3 text-sm text-muted-foreground">
-            Как проверяется отчёт: квадраты — символьные шаги, круги — нейросетевые.
-            До языковых моделей доходят только отчёты, прошедшие формальную проверку.
+            Как проверяется отчёт: квадраты — проверка по точным правилам, круги — искусственный интеллект.
+            До ИИ доходят только отчёты, которые прошли формальную проверку.
           </figcaption>
         </figure>
       </section>

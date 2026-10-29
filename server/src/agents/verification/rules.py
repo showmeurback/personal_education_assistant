@@ -182,7 +182,7 @@ def _r_length_limit(f: ReportFacts, req: LabRequirements) -> RuleResult:
     ok = f.char_count <= cfg.max_report_chars
     return RuleResult("R5", "Предельный объём", Outcome.PASS if ok else Outcome.WARN,
                       "Объём в допустимых пределах" if ok
-                      else f"Отчёт длиннее {cfg.max_report_chars} символов: оценщикам передаётся начало текста",
+                      else f"Отчёт длиннее {cfg.max_report_chars} символов: искусственному интеллекту передаётся начало текста",
                       f.char_count, cfg.max_report_chars)
 
 

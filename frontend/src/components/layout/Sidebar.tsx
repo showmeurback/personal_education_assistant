@@ -6,6 +6,7 @@ import {
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Logo } from "./Logo";
+import { ThemeToggle } from "./ThemeToggle";
 
 const studentNav = [
   { to: "/student/dashboard", icon: LayoutDashboard, label: "Главная" },
@@ -66,6 +67,7 @@ export function Sidebar() {
             <p className="text-sm text-foreground truncate">{name}</p>
             <p className="text-xs text-muted-foreground">{role === "teacher" ? "Преподаватель" : "Студент"}</p>
           </div>
+          <ThemeToggle />
           <button
             onClick={logout}
             className="p-2 rounded-md text-muted-foreground hover:text-foreground hover:bg-surface-2 transition-colors"
@@ -83,9 +85,12 @@ export function Sidebar() {
     <>
       <header className="lg:hidden sticky top-0 z-30 flex items-center justify-between h-14 px-4 bg-sidebar-background border-b border-sidebar-border">
         <Logo />
-        <button className="p-2 text-muted-foreground" onClick={() => setOpen(true)} aria-label="Открыть меню">
-          <Menu className="w-5 h-5" />
-        </button>
+        <div className="flex items-center gap-1">
+          <ThemeToggle />
+          <button className="p-2 text-muted-foreground" onClick={() => setOpen(true)} aria-label="Открыть меню">
+            <Menu className="w-5 h-5" />
+          </button>
+        </div>
       </header>
       <aside className="hidden lg:flex fixed left-0 top-0 z-40 h-screen w-64 border-r border-sidebar-border bg-sidebar-background flex-col">
         {content}

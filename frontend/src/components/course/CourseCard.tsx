@@ -17,7 +17,8 @@ export function CourseCard({ course, to, footer, badge }: Props) {
   return (
     <div className="group flex flex-col rounded-lg bg-card border border-border hover:border-primary/50 transition-colors overflow-hidden">
       <Link to={to} className="flex-1 flex flex-col focus-visible:outline-offset-[-2px]">
-        <div className="relative h-20 overflow-hidden" style={{ background: tint }}>
+        {/* обложка тёмная в обеих темах: внутри действуют токены тёмной темы */}
+        <div className="dark relative h-20 overflow-hidden" style={{ background: tint }}>
           <span className="absolute right-3 -bottom-5 font-heading text-[64px] leading-none text-white/10 select-none">
             {course.title.charAt(0)}
           </span>

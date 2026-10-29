@@ -62,3 +62,23 @@ def test_assistant_test_mistakes_tool_reads_explanations(monkeypatch):
     mistakes = queries.query_test_mistakes(1, student_id=7)
     assert [m["question_num"] for m in mistakes] == [1, 3]
     assert mistakes[0]["explanation"] == "Верный ответ — A" and "explanation" not in mistakes[1]
+
+
+def test_generated_options_are_shuffled_without_breaking_answers():
+    """Верный ответ не остаётся всегда на позиции «B»; текст верного ответа сохраняется."""
+    import random
+    from agents.test_generator.models import Question
+    from agents.test_generator.service import shuffle_options
+    rng = random.Random(7)
+    positions = set()
+    for i in range(40):
+        q = Question(question_num=i, text="Вопрос?", correct_answer="B",
+                     options={"A": "неверно 1", "B": "верно", "C": "неверно 2", "D": "неверно 3"})
+        s = shuffle_options(q, rng)
+        assert s.options[s.correct_answer] == "верно" and sorted(s.options) == ["A", "B", "C", "D"]
+        assert sorted(s.options.values()) == sorted(q.options.values())
+        positions.add(s.correct_answer)
+    assert positions == {"A", "B", "C", "D"}
+    keep = Question(question_num=1, text="?", correct_answer="D",
+                    options={"A": "1", "B": "2", "C": "3", "D": "Все перечисленные варианты"})
+    assert shuffle_options(keep, rng) == keep

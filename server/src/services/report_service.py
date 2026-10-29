@@ -151,7 +151,7 @@ class ReportService:
                     logger.warning(f"Проверка отчёта {report_id} не уложилась в {verification_settings.check_timeout:.0f} с")
                 else:
                     logger.exception(f"Проверка отчёта {report_id} не завершилась: {exc}")
-                message = (f"Сервисы языковых моделей не ответили за {verification_settings.check_timeout / 60:.0f} мин. "
+                message = (f"Сервис искусственного интеллекта не ответил за {verification_settings.check_timeout / 60:.0f} мин. "
                            "Отчёт передан преподавателю для ручной проверки." if timed_out else
                            "Автоматическая проверка не завершилась из-за внутренней ошибки. "
                            "Отчёт передан преподавателю для ручной проверки.")

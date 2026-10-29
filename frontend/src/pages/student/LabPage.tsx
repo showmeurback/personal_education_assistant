@@ -1,3 +1,5 @@
+import { Markdown } from "@/components/common/Markdown";
+import { plainText } from "@/lib/markdown";
 import { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
@@ -162,7 +164,7 @@ function SubmissionResult({ report }: { report: Report }) {
         <h2 className="font-body text-base font-semibold text-foreground">Результат проверки</h2>
         <StatusBadge status={report.status} />
       </div>
-      {report.ai_summary && <p className="text-foreground whitespace-pre-wrap">{report.ai_summary}</p>}
+      {report.ai_summary && <Markdown className="prose-base">{report.ai_summary}</Markdown>}
       {report.check?.protocol && (
         <details className="mt-4">
           <summary className="cursor-pointer text-sm text-primary">Как система пришла к решению</summary>
@@ -193,11 +195,11 @@ function HistoryItem({ report }: { report: Report }) {
       </div>
       {report.comment && <p className="text-sm text-foreground mt-2">Комментарий преподавателя: {report.comment}</p>}
       {report.status === "ai-rejected" && report.ai_summary && !open && (
-        <p className="text-sm text-muted-foreground mt-2 whitespace-pre-wrap line-clamp-3">{report.ai_summary}</p>
+        <p className="text-sm text-muted-foreground mt-2 line-clamp-3">{plainText(report.ai_summary)}</p>
       )}
       {open && report.check?.protocol && (
         <div className="mt-4">
-          {report.ai_summary && <p className="text-sm text-foreground mb-3 whitespace-pre-wrap">{report.ai_summary}</p>}
+          {report.ai_summary && <Markdown className="mb-3">{report.ai_summary}</Markdown>}
           <ProtocolView check={report.check} steps={report.check.protocol} />
         </div>
       )}

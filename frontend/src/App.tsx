@@ -80,7 +80,8 @@ export default function App() {
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </BrowserRouter>
-        <Toaster richColors position="bottom-right" theme="dark" />
+        {/* тема уведомлений следует теме интерфейса (см. components/ui/sonner.tsx) */}
+        <Toaster richColors position="bottom-right" />
       </TooltipProvider>
     </QueryClientProvider>
   );

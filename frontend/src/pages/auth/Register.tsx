@@ -10,6 +10,7 @@ import { authApi, errorMessage } from "@/api";
 import { TAGS } from "@/utils/constants";
 import { Chip } from "@/components/common";
 import { Logo } from "@/components/layout/Logo";
+import { ThemeToggle } from "@/components/layout/ThemeToggle";
 
 const STEPS = ["Аккаунт", "Интересы", "О себе"];
 
@@ -51,7 +52,8 @@ export default function Register() {
     setInterests((p) => (p.includes(tag) ? p.filter((t) => t !== tag) : [...p, tag]));
 
   return (
-    <div className="min-h-screen bg-background flex items-center justify-center px-4 py-10">
+    <div className="relative min-h-screen bg-background flex items-center justify-center px-4 py-10">
+      <ThemeToggle className="absolute right-4 top-4" />
       <div className="w-full max-w-md">
         <Link to="/" className="flex justify-center mb-8"><Logo /></Link>
         <div className="rounded-lg bg-card border border-border p-6 sm:p-7">

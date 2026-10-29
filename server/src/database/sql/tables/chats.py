@@ -53,7 +53,17 @@ def _create_table_chat_preferences(curs: cursor = None) -> None:
     curs.execute(query)
 
 
+@postgre_connection(_config)
+def _migrate_chats(curs: cursor = None) -> None:
+    # закреплённые чаты показываются в списке первыми, в порядке закрепления
+    curs.execute("ALTER TABLE chats ADD COLUMN IF NOT EXISTS pinned_at TIMESTAMP WITHOUT TIME ZONE")
+    # инструменты и файлы-источники ответа ассистента: показываются и после перезагрузки страницы
+    curs.execute("ALTER TABLE chat_messages ADD COLUMN IF NOT EXISTS meta JSONB")
+
+
 def create_chats_tables():
+    # миграция — после создания обеих таблиц: на пустой базе chat_messages ещё нет
     _create_table_chats()
     _create_table_chat_messages()
+    _migrate_chats()
     _create_table_chat_preferences()

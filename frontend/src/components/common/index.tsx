@@ -36,7 +36,8 @@ export function Panel({ children, className, title, description, actions }: {
   actions?: ReactNode;
 }) {
   return (
-    <section className={cn("rounded-lg bg-card border border-border p-5 sm:p-6", className)}>
+    // min-w-0: внутри сетки панель не растягивается шириной таблицы — таблица прокручивается сама
+    <section className={cn("min-w-0 rounded-lg bg-card border border-border p-5 sm:p-6", className)}>
       {(title || actions) && (
         <div className="flex items-start justify-between gap-3 mb-4">
           <div>

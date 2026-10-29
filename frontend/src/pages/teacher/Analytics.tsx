@@ -5,10 +5,10 @@ import { coursesApi } from "@/api";
 import { Loading, PageHeader, Panel, StatTile } from "@/components/common";
 import { DECIDED_BY_MAP, EXAM_VERDICT_MAP } from "@/utils/constants";
 
-const AXIS = { fill: "#8fa3c8", fontSize: 12 };
-const TT = { contentStyle: { background: "#0f1b36", border: "1px solid #213560", borderRadius: 6, color: "#e7edf8", fontSize: 13 } };
+const AXIS = { fill: "var(--muted-foreground)", fontSize: 12 };
+const TT = { contentStyle: { background: "var(--popover)", border: "1px solid var(--border)", borderRadius: 6, color: "var(--popover-foreground)", fontSize: 13 } };
 const DIFF: Record<string, string> = { easy: "Лёгкий", medium: "Средний", hard: "Сложный" };
-const DECISION: Record<string, string> = { approve: "Принять", reject: "Отклонить", manual_review: "Ручная проверка" };
+const DECISION: Record<string, string> = { approve: "Принят", reject: "Отклонён", manual_review: "Передан преподавателю" };
 
 function avg(xs: (number | null)[]) {
   const v = xs.filter((x): x is number => x != null);
@@ -34,7 +34,7 @@ export default function Analytics() {
     (byDate[k] ??= []).push(r.percentage ?? 0);
   }
   const timeline = Object.entries(byDate).map(([date, v]) => ({ date, avg: Math.round(v.reduce((a, b) => a + b, 0) / v.length) }));
-  const verdicts = data.verdict_distribution.map((v) => ({ name: EXAM_VERDICT_MAP[v.verdict]?.label ?? v.verdict, value: v.count, color: EXAM_VERDICT_MAP[v.verdict]?.color ?? "#8fa3c8" }));
+  const verdicts = data.verdict_distribution.map((v) => ({ name: EXAM_VERDICT_MAP[v.verdict]?.label ?? v.verdict, value: v.count, color: EXAM_VERDICT_MAP[v.verdict]?.color ?? "var(--muted-foreground)" }));
   const verification = data.verification.map((v) => ({
     name: `${DECISION[v.decision] ?? v.decision}: ${DECIDED_BY_MAP[v.decided_by] ?? v.decided_by}`,
     count: v.count, ms: Math.round(v.avg_ms), llm: v.avg_llm_calls.toFixed(1),
@@ -51,14 +51,16 @@ export default function Analytics() {
       </div>
 
       <div className="grid lg:grid-cols-2 gap-4">
-        <Panel title="Автоматическая проверка отчётов" description="Сколько решений приняли символьные компоненты, а сколько — ансамбль оценщиков." className="lg:col-span-2">
+        <Panel title="Автоматическая проверка отчётов" description="Сколько отчётов решено по правилам, а сколько — с участием искусственного интеллекта." className="lg:col-span-2">
           {verification.length ? (
-            <table className="w-full text-sm">
-              <thead><tr className="text-left text-xs text-muted-foreground"><th className="pb-2 font-normal">Решение и кем принято</th><th className="pb-2 font-normal text-right">Отчётов</th><th className="pb-2 font-normal text-right">Среднее время</th><th className="pb-2 font-normal text-right">Обращений к LLM</th></tr></thead>
+            <div className="overflow-x-auto">
+            <table className="w-full text-sm min-w-[520px]">
+              <thead><tr className="text-left text-xs text-muted-foreground"><th className="pb-2 font-normal">Решение и что его приняло</th><th className="pb-2 font-normal text-right">Отчётов</th><th className="pb-2 font-normal text-right">Среднее время</th><th className="pb-2 font-normal text-right">Обращений к ИИ</th></tr></thead>
               <tbody>{verification.map((v) => (
                 <tr key={v.name} className="border-t border-border"><td className="py-2 text-foreground">{v.name}</td><td className="py-2 text-right">{v.count}</td><td className="py-2 text-right text-muted-foreground">{(v.ms / 1000).toFixed(1)} с</td><td className="py-2 text-right text-muted-foreground">{v.llm}</td></tr>
               ))}</tbody>
             </table>
+            </div>
           ) : <Empty text="Отчёты ещё не проходили автоматическую проверку" />}
         </Panel>
 
@@ -70,8 +72,8 @@ export default function Analytics() {
                 <YAxis type="category" dataKey="topic" width={180} tick={AXIS} axisLine={false} tickLine={false} />
                 <Tooltip {...TT} formatter={(v) => [`${v}%`, "Точность"]} />
                 <Bar dataKey="accuracy_pct" radius={[0, 4, 4, 0]} maxBarSize={26}>
-                  {data.topic_accuracy.map((t, i) => <Cell key={i} fill={t.accuracy_pct < 60 ? "#f0556a" : t.accuracy_pct < 80 ? "#f2b544" : "#3b7bff"} />)}
-                  <LabelList dataKey="accuracy_pct" position="right" formatter={(v) => `${v}%`} style={{ fill: "#8fa3c8", fontSize: 12 }} />
+                  {data.topic_accuracy.map((t, i) => <Cell key={i} fill={t.accuracy_pct < 60 ? "var(--destructive)" : t.accuracy_pct < 80 ? "var(--chart-3)" : "var(--primary)"} />)}
+                  <LabelList dataKey="accuracy_pct" position="right" formatter={(v) => `${v}%`} style={{ fill: "var(--muted-foreground)", fontSize: 12 }} />
                 </Bar>
               </BarChart>
             </ResponsiveContainer>
@@ -82,13 +84,13 @@ export default function Analytics() {
           {data.lab_funnel.length ? (
             <ResponsiveContainer width="100%" height={230}>
               <BarChart data={data.lab_funnel.map((l) => ({ name: `ЛР ${l.number}`, "Сдали": l.submitted, "Принято": l.approved, "Отклонено": l.rejected }))}>
-                <CartesianGrid stroke="#213560" vertical={false} />
+                <CartesianGrid stroke="var(--border)" vertical={false} />
                 <XAxis dataKey="name" tick={AXIS} axisLine={false} tickLine={false} />
                 <YAxis tick={AXIS} axisLine={false} tickLine={false} allowDecimals={false} />
-                <Tooltip {...TT} /><Legend wrapperStyle={{ fontSize: 12, color: "#8fa3c8" }} />
-                <Bar dataKey="Сдали" fill="#3b7bff" radius={[3, 3, 0, 0]} maxBarSize={20} />
-                <Bar dataKey="Принято" fill="#2ebd85" radius={[3, 3, 0, 0]} maxBarSize={20} />
-                <Bar dataKey="Отклонено" fill="#f0556a" radius={[3, 3, 0, 0]} maxBarSize={20} />
+                <Tooltip {...TT} /><Legend wrapperStyle={{ fontSize: 12, color: "var(--muted-foreground)" }} />
+                <Bar dataKey="Сдали" fill="var(--primary)" radius={[3, 3, 0, 0]} maxBarSize={20} />
+                <Bar dataKey="Принято" fill="var(--success)" radius={[3, 3, 0, 0]} maxBarSize={20} />
+                <Bar dataKey="Отклонено" fill="var(--destructive)" radius={[3, 3, 0, 0]} maxBarSize={20} />
               </BarChart>
             </ResponsiveContainer>
           ) : <Empty text="Лабораторных нет" />}
@@ -111,11 +113,11 @@ export default function Analytics() {
           {timeline.length ? (
             <ResponsiveContainer width="100%" height={210}>
               <LineChart data={timeline}>
-                <CartesianGrid stroke="#213560" vertical={false} />
+                <CartesianGrid stroke="var(--border)" vertical={false} />
                 <XAxis dataKey="date" tick={AXIS} axisLine={false} tickLine={false} />
                 <YAxis domain={[0, 100]} tick={AXIS} axisLine={false} tickLine={false} unit="%" />
                 <Tooltip {...TT} formatter={(v) => [`${v}%`, "Средний результат"]} />
-                <Line type="monotone" dataKey="avg" stroke="#3b7bff" strokeWidth={2.5} dot={{ r: 3, fill: "#3b7bff" }} />
+                <Line type="monotone" dataKey="avg" stroke="var(--primary)" strokeWidth={2.5} dot={{ r: 3, fill: "var(--primary)" }} />
               </LineChart>
             </ResponsiveContainer>
           ) : <Empty text="Нет активности" />}
@@ -128,7 +130,7 @@ export default function Analytics() {
                 <XAxis dataKey="name" tick={AXIS} axisLine={false} tickLine={false} />
                 <YAxis domain={[0, 100]} tick={AXIS} axisLine={false} tickLine={false} unit="%" />
                 <Tooltip {...TT} formatter={(v) => [`${v}%`, "Средний результат"]} />
-                <Bar dataKey="avg" fill="#3b7bff" radius={[3, 3, 0, 0]} maxBarSize={56} />
+                <Bar dataKey="avg" fill="var(--primary)" radius={[3, 3, 0, 0]} maxBarSize={56} />
               </BarChart>
             </ResponsiveContainer>
           ) : <Empty text="Нет данных" />}

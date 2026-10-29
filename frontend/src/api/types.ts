@@ -212,6 +212,8 @@ export interface Chat {
   course_id: number;
   course_title: string;
   created_at: string;
+  /** закреплённые чаты идут в списке первыми */
+  pinned: boolean;
 }
 
 export interface ChatMessage {
@@ -223,13 +225,15 @@ export interface ChatMessage {
   steps?: string[];
   /** ответ ещё генерируется */
   streaming?: boolean;
+  /** время отправки (ISO 8601, UTC) */
+  created_at?: string;
 }
 
 export type ChatStreamEvent =
   | { type: "step"; text: string }
   | { type: "token"; text: string }
   | { type: "reset" }
-  | { type: "done"; response: string; tools: string[]; sources: string[] }
+  | { type: "done"; response: string; tools: string[]; sources: string[]; asked_at?: string; answered_at?: string }
   | { type: "error"; detail: string };
 
 export interface CourseAnalytics {

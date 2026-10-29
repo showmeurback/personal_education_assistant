@@ -62,7 +62,7 @@ def aggregate(verdicts: list[JudgeVerdict], *, topic_doubt: bool = False,
     if len(valid) < k_min:
         return AggregationResult(VerificationDecision.MANUAL_REVIEW, None, votes_for, votes_against,
                                  len(valid), "A1",
-                                 f"Получено {len(valid)} валидных оценок из {len(verdicts)} (нужно ≥ {k_min})")
+                                 f"Ответили {len(valid)} проверяющих из {len(verdicts)}, а для решения нужно не меньше {k_min}")
 
     total_w = sum(weights.get(v.judge, 1.0) for v in valid)
     score = sum(weights.get(v.judge, 1.0) * v.p_accept for v in valid) / total_w
@@ -72,13 +72,13 @@ def aggregate(verdicts: list[JudgeVerdict], *, topic_doubt: bool = False,
         if topic_doubt:
             return AggregationResult(VerificationDecision.MANUAL_REVIEW, score, votes_for, votes_against,
                                      len(valid), "A5",
-                                     "Оценщики приняли отчёт, но правило темы (R6 или R7) сомневается "
-                                     "в соответствии работе — противоречие передано преподавателю")
+                                     "Проверяющие ИИ приняли отчёт, но по формальным признакам он похож на другую тему "
+                                     "или работу — решение за преподавателем")
         return AggregationResult(VerificationDecision.APPROVE, score, votes_for, votes_against,
-                                 len(valid), "A2", f"Единогласно «за», P = {score:.2f} ≥ {t_acc}")
+                                 len(valid), "A2", f"Все проверяющие за принятие, итоговая оценка {score:.0%}")
     if votes_for == 0 and score <= t_rej:
         return AggregationResult(VerificationDecision.REJECT, score, votes_for, votes_against,
-                                 len(valid), "A3", f"Единогласно «против», P = {score:.2f} ≤ {t_rej}")
+                                 len(valid), "A3", f"Все проверяющие против принятия, итоговая оценка {score:.0%}")
     strong_names = [j.strip() for j in cfg.strong_judges.split(",") if j.strip()]
     strong = [v for v in valid if v.judge in strong_names]
     if (votes_for and votes_against and len(strong) == len(strong_names) >= 2
@@ -90,18 +90,18 @@ def aggregate(verdicts: list[JudgeVerdict], *, topic_doubt: bool = False,
             if topic_doubt:
                 return AggregationResult(VerificationDecision.MANUAL_REVIEW, score, votes_for, votes_against,
                                          len(valid), "A5",
-                                         "Сильные оценщики приняли отчёт, но правило темы сомневается — "
-                                         "противоречие передано преподавателю")
+                                         "Самые точные проверяющие приняли отчёт, но по формальным признакам он похож на "
+                                         "другую тему или работу — решение за преподавателем")
             return AggregationResult(VerificationDecision.APPROVE, score, votes_for, votes_against, len(valid),
-                                     "A6", f"Голоса {votes_for}:{votes_against}; «за» уверенно голосуют "
-                                           f"сильные оценщики ({names}), P = {score:.2f}")
+                                     "A6", f"Мнения разделились {votes_for}:{votes_against}, но самые точные проверяющие "
+                                           f"({names}) уверенно за принятие, итоговая оценка {score:.0%}")
         return AggregationResult(VerificationDecision.REJECT, score, votes_for, votes_against, len(valid),
-                                 "A6", f"Голоса {votes_for}:{votes_against}; «против» уверенно голосуют "
-                                       f"сильные оценщики ({names}), P = {score:.2f}")
+                                 "A6", f"Мнения разделились {votes_for}:{votes_against}, но самые точные проверяющие "
+                                       f"({names}) уверенно против принятия, итоговая оценка {score:.0%}")
     if votes_for and votes_against:
-        reason = f"Голоса разделились {votes_for}:{votes_against}, P = {score:.2f}"
+        reason = f"Мнения проверяющих разделились {votes_for}:{votes_against} — решение за преподавателем"
     else:
-        reason = f"Единогласное решение с недостаточной уверенностью, P = {score:.2f}"
+        reason = f"Проверяющие согласны, но не уверены (итоговая оценка {score:.0%}) — решение за преподавателем"
     return AggregationResult(VerificationDecision.MANUAL_REVIEW, score, votes_for, votes_against,
                              len(valid), "A4", reason)
 

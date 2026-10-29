@@ -47,7 +47,7 @@ export default function LabsManage() {
   return (
     <div className="max-w-3xl">
       <PageHeader back={{ to: `/teacher/courses/${courseId}`, label: "К курсу" }} title="Лабораторные работы"
-        description="Задание и формальные требования к отчёту: по ним работают продукционные правила проверки."
+        description="Задание и требования к отчёту: по ним система проверяет отчёты студентов."
         actions={<Button onClick={openNew}>Добавить</Button>} />
       {labs.data?.length ? (
         <ul className="rounded-lg border border-border divide-y divide-border bg-card">
@@ -81,7 +81,7 @@ export default function LabsManage() {
             </div>
             <div className="space-y-1.5"><Label htmlFor="ta">Задание</Label>
               <Textarea id="ta" rows={5} value={form.task} onChange={(e) => setForm({ ...form, task: e.target.value })} />
-              <p className="text-xs text-muted-foreground">Ключевые понятия задания система ищет в отчёте (правило R6), а оценщики сверяют отчёт с этим текстом.</p></div>
+              <p className="text-xs text-muted-foreground">Система ищет в отчёте ключевые понятия задания, а искусственный интеллект сверяет отчёт с этим текстом. Пишите задание так, как выдаёте его студентам.</p></div>
             <div className="grid grid-cols-[140px_1fr] gap-3">
               <div className="space-y-1.5"><Label htmlFor="mw">Минимум слов</Label>
                 <Input id="mw" type="number" min={0} placeholder="120" value={form.min_words}

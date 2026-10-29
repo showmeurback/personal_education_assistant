@@ -15,7 +15,7 @@ export default function ReportsQueue() {
   return (
     <div>
       <PageHeader title="Проверка отчётов"
-        description="Сначала показаны отчёты, по которым компоненты системы разошлись во мнениях." />
+        description="Сначала показаны отчёты, по которым автоматическая проверка не пришла к уверенному решению." />
       <div role="tablist" className="inline-flex rounded-md border border-border bg-card p-1 mb-6">
         {([["queue", `Ждут решения (${queue.data?.length ?? 0})`], ["history", "Все отправки"]] as const).map(([k, l]) => (
           <button key={k} role="tab" aria-selected={tab === k} onClick={() => setTab(k)}

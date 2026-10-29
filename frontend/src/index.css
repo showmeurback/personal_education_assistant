@@ -64,9 +64,63 @@
 :root {
   --radius: 0.6rem;
 
-  /* Тёмно-синяя тема: глубокий navy-фон, кобальтовый основной цвет.
-     Фиолетовый (бывший фирменный цвет) теперь обозначает нейросетевые
-     компоненты, кобальт — символьные. */
+  /* Светлая тема: холодный светлый фон, тот же кобальт для символьных компонентов
+     и фиолетовый для нейросетевых; оттенки статусов затемнены для контраста на белом. */
+  --background: #f3f6fb;
+  --foreground: #0e1a33;
+  --card: #ffffff;
+  --card-foreground: #0e1a33;
+  --popover: #ffffff;
+  --popover-foreground: #0e1a33;
+  --primary: #2b63e0;
+  --primary-foreground: #ffffff;
+  --secondary: #e6ecf7;
+  --secondary-foreground: #0e1a33;
+  --muted: #e6ecf7;
+  --muted-foreground: #4f5f7d;
+  --accent: #dbe5f8;
+  --accent-foreground: #0e1a33;
+  --destructive: #c4304a;
+  --destructive-foreground: #ffffff;
+  --success: #12805a;
+  --success-foreground: #ffffff;
+  --warning: #996100;
+  --warning-foreground: #ffffff;
+  --border: #d3dcec;
+  --input: #c6d2e6;
+  --ring: #2b63e0;
+  --chart-1: #2b63e0;
+  --chart-2: #12805a;
+  --chart-3: #c98a12;
+  --chart-4: #7a55e6;
+  --chart-5: #c4304a;
+
+  --sidebar: #e9eff8;
+  --sidebar-foreground: #3c4c6a;
+  --sidebar-primary: #2b63e0;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #d9e3f5;
+  --sidebar-accent-foreground: #0e1a33;
+  --sidebar-border: #d3dcec;
+  --sidebar-ring: #2b63e0;
+
+  --surface: #edf2f9;
+  --surface-2: #e0e8f5;
+
+  --symbolic: #2b63e0;
+  --neural: #7a55e6;
+
+  --logo-bg: #ffffff;
+  --logo-stroke: #c6d2e6;
+  --scroll-thumb: #c1cde2;
+  --scroll-thumb-hover: #9fb0cd;
+
+  color-scheme: light;
+}
+
+/* Тёмно-синяя тема: глубокий navy-фон, кобальтовый основной цвет.
+   Фиолетовый обозначает нейросетевые компоненты, кобальт — символьные. */
+.dark {
   --background: #0a1328;
   --foreground: #e7edf8;
   --card: #0f1b36;
@@ -111,6 +165,11 @@
   --symbolic: #3b7bff;
   --neural: #9b7bff;
 
+  --logo-bg: #13213f;
+  --logo-stroke: #2a4275;
+  --scroll-thumb: #2a4275;
+  --scroll-thumb-hover: #3a5799;
+
   color-scheme: dark;
 }
 
@@ -146,20 +205,32 @@
     background: transparent;
   }
   .chat-scroll::-webkit-scrollbar-thumb {
-    background: #2a4275;
+    background: var(--scroll-thumb);
     border-radius: 9999px;
   }
   .chat-scroll::-webkit-scrollbar-thumb:hover {
-    background: #3a5799;
+    background: var(--scroll-thumb-hover);
   }
   .chat-scroll {
     scrollbar-width: thin;
-    scrollbar-color: #2a4275 transparent;
+    scrollbar-color: var(--scroll-thumb) transparent;
   }
 }
 
 /* Ответы ассистента: типографика Markdown в цветах темы */
+/* в обеих темах — цвета токенов, поэтому prose-invert не нужен */
 .prose {
+  --tw-prose-body: var(--color-foreground);
+  --tw-prose-headings: var(--color-foreground);
+  --tw-prose-bold: var(--color-foreground);
+  --tw-prose-links: var(--color-primary);
+  --tw-prose-code: var(--color-foreground);
+  --tw-prose-quotes: var(--color-muted-foreground);
+  --tw-prose-bullets: var(--color-muted-foreground);
+  --tw-prose-counters: var(--color-muted-foreground);
+  --tw-prose-hr: var(--color-border);
+  --tw-prose-th-borders: var(--color-border);
+  --tw-prose-td-borders: var(--color-border);
   --tw-prose-invert-body: var(--color-foreground);
   --tw-prose-invert-headings: var(--color-foreground);
   --tw-prose-invert-bold: var(--color-foreground);
@@ -168,3 +239,11 @@
 }
 .prose :where(h1, h2, h3, h4):not(:where(.not-prose *)) { font-family: var(--font-body); font-weight: 600; }
 .prose :where(table):not(:where(.not-prose *)) { font-size: 0.85em; }
+.prose :where(code):not(:where(pre *, .not-prose *)) {
+  background: var(--color-surface-2);
+  border-radius: 4px;
+  padding: 0.1em 0.35em;
+  font-weight: 500;
+}
+.prose :where(code):not(:where(.not-prose *))::before,
+.prose :where(code):not(:where(.not-prose *))::after { content: none; }

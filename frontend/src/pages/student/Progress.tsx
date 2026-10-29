@@ -30,12 +30,12 @@ export default function Progress() {
         <Panel title="Тесты">
           {t.length ? (
             <table className="w-full text-sm">
-              <thead><tr className="text-left text-xs text-muted-foreground"><th className="pb-2 font-normal">Тема</th><th className="pb-2 font-normal">Результат</th><th className="pb-2 font-normal">Дата</th></tr></thead>
+              <thead><tr className="text-left text-xs text-muted-foreground"><th className="pb-2 pr-3 font-normal">Тема</th><th className="pb-2 pr-3 font-normal">Результат</th><th className="pb-2 font-normal">Дата</th></tr></thead>
               <tbody>{t.map((x) => (
                 <tr key={x.id} className="border-t border-border">
                   <td className="py-2 pr-3 text-foreground">{x.topic ?? "—"}<span className="block text-xs text-muted-foreground">{title(x.course_id)}</span></td>
                   <td className={`py-2 pr-3 ${x.percentage >= 70 ? "text-success" : x.percentage >= 50 ? "text-warning" : "text-destructive"}`}>{Math.round(x.percentage)}%</td>
-                  <td className="py-2 text-muted-foreground">{formatDate(x.created_at)}</td>
+                  <td className="py-2 text-muted-foreground whitespace-nowrap">{formatDate(x.created_at)}</td>
                 </tr>))}</tbody>
             </table>
           ) : <p className="text-sm text-muted-foreground">Тестов ещё не было.</p>}
@@ -43,12 +43,12 @@ export default function Progress() {
         <Panel title="Экзамены">
           {e.length ? (
             <table className="w-full text-sm">
-              <thead><tr className="text-left text-xs text-muted-foreground"><th className="pb-2 font-normal">Курс</th><th className="pb-2 font-normal">Балл</th><th className="pb-2 font-normal">Дата</th></tr></thead>
+              <thead><tr className="text-left text-xs text-muted-foreground"><th className="pb-2 pr-3 font-normal">Курс</th><th className="pb-2 pr-3 font-normal">Балл</th><th className="pb-2 font-normal">Дата</th></tr></thead>
               <tbody>{e.map((x) => (
                 <tr key={x.id} className="border-t border-border">
                   <td className="py-2 pr-3 text-foreground">{title(x.course_id)}</td>
                   <td className={`py-2 pr-3 ${(x.avg_score ?? 0) >= 75 ? "text-success" : (x.avg_score ?? 0) >= 35 ? "text-warning" : "text-destructive"}`}>{x.avg_score == null ? "—" : `${Math.round(x.avg_score)} / 100`}</td>
-                  <td className="py-2 text-muted-foreground">{formatDate(x.created_at)}</td>
+                  <td className="py-2 text-muted-foreground whitespace-nowrap">{formatDate(x.created_at)}</td>
                 </tr>))}</tbody>
             </table>
           ) : <p className="text-sm text-muted-foreground">Экзаменов ещё не было.</p>}

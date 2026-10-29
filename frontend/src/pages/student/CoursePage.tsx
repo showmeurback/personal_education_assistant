@@ -37,7 +37,7 @@ export default function CoursePage() {
   return (
     <div>
       <PageHeader back={{ to: "/student/my-courses", label: "Мои курсы" }} title={c.title} />
-      <div className="rounded-lg border border-border p-5 sm:p-6 mb-6" style={{ background: COURSE_TINTS[c.id % COURSE_TINTS.length] }}>
+      <div className="dark rounded-lg border border-border p-5 sm:p-6 mb-6" style={{ background: COURSE_TINTS[c.id % COURSE_TINTS.length] }}>
         <div className="flex flex-wrap gap-2 mb-3">
           <span className={`rounded-md border px-2 py-0.5 text-xs bg-black/20 ${diff.color}`}>{diff.label}</span>
           {c.tags.map((t) => <span key={t} className="rounded-md bg-black/20 px-2 py-0.5 text-xs text-white/80">{t}</span>)}
@@ -210,7 +210,7 @@ function WeakTopicsPanel({ courseId, hasMaterials }: { courseId: number; hasMate
       {data.strong.length > 0 && (
         <p className="text-sm text-muted-foreground">Освоено хорошо: {data.strong.map((s) => `${s.topic} (${Math.round(s.mastery * 100)} %)`).join(", ")}.</p>
       )}
-      <p className="text-xs text-muted-foreground">{data.method}{data.with_advice && !data.llm_used && data.topics.length > 0 ? " Советы сейчас недоступны: языковая модель не ответила." : ""}</p>
+      <p className="text-xs text-muted-foreground">{data.method}{data.with_advice && !data.llm_used && data.topics.length > 0 ? " Советы сейчас недоступны: сервис искусственного интеллекта не ответил." : ""}</p>
     </div>
   );
 }

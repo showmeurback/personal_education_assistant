@@ -23,7 +23,7 @@ export default function TeacherDashboard() {
         <StatTile label="Курсов" value={list.length} />
         <StatTile label="Студентов на курсах" value={list.reduce((s, c) => s + c.students, 0)} />
         <StatTile label="Отчётов к проверке" value={q.length} tone="primary" />
-        <StatTile label="Из них спорных" value={manual} tone={manual ? "warning" : "default"} hint="Компоненты системы разошлись" />
+        <StatTile label="Из них спорных" value={manual} tone={manual ? "warning" : "default"} hint="Автоматическая проверка не уверена — решаете вы" />
       </div>
 
       {q.length > 0 && (

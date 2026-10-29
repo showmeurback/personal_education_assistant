@@ -1,14 +1,29 @@
+/** Темы курсов и интересы студентов: общие предметные области и направления ИТ (тот же список на сервере). */
 export const TAGS = [
+  "Математика",
+  "Физика",
+  "Химия",
+  "Биология",
+  "Медицина",
+  "История",
+  "Право",
+  "Экономика",
+  "Менеджмент",
+  "Психология",
+  "Педагогика",
+  "Филология",
+  "Иностранные языки",
+  "Искусство и дизайн",
+  "Инженерия",
+  "Электроника",
   "Программирование",
+  "Алгоритмы",
   "Базы данных",
   "Сети",
   "Операционные системы",
-  "Алгоритмы",
   "Web",
   "Мобильная разработка",
   "AI/ML",
-  "Математика",
-  "Электроника",
   "Безопасность",
   "DevOps",
 ] as const;
@@ -30,7 +45,7 @@ export const REPORT_STATUS_MAP: Record<string, { label: string; color: string; h
   checking: {
     label: "Проверяется",
     color: "bg-neural/15 text-foreground border-neural/40",
-    hint: "Идёт автоматическая проверка: правила, поиск заимствований, описание рисунков и оценщики",
+    hint: "Идёт автоматическая проверка: формальные требования, поиск списывания, описание рисунков и проверка искусственным интеллектом",
   },
   pending: {
     label: "У преподавателя",
@@ -40,7 +55,7 @@ export const REPORT_STATUS_MAP: Record<string, { label: string; color: string; h
   "manual-review": {
     label: "Ручная проверка",
     color: "bg-warning/15 text-warning border-warning/30",
-    hint: "Компоненты системы разошлись во мнениях — решение примет преподаватель",
+    hint: "Автоматическая проверка не пришла к уверенному решению — его примет преподаватель",
   },
   approved: { label: "Принят", color: "bg-success/15 text-success border-success/30", hint: "Отчёт принят преподавателем" },
   "not-approved": {
@@ -63,16 +78,16 @@ export const DECISION_MAP: Record<string, { label: string; color: string }> = {
 
 export const DECIDED_BY_MAP: Record<string, string> = {
   error: "сбой проверки — передан преподавателю",
-  rules: "продукционные правила",
-  simhash: "фильтр заимствований SimHash",
-  judges: "ансамбль LLM-оценщиков и арбитр",
-  symbolic: "символьные компоненты",
+  rules: "формальные требования",
+  simhash: "поиск списывания",
+  judges: "проверяющие ИИ и итоговое правило",
+  symbolic: "проверка по правилам",
 };
 
 export const EXAM_VERDICT_MAP: Record<string, { label: string; color: string }> = {
-  correct: { label: "Верно", color: "#2ebd85" },
-  partial: { label: "Частично", color: "#f2b544" },
-  incorrect: { label: "Неверно", color: "#f0556a" },
+  correct: { label: "Верно", color: "var(--success)" },
+  partial: { label: "Частично", color: "var(--chart-3)" },
+  incorrect: { label: "Неверно", color: "var(--destructive)" },
 };
 
 /** Оттенки синего для обложек курсов — без случайных радужных градиентов. */
@@ -90,4 +105,37 @@ export function formatDateTime(value: string | null | undefined): string {
   return Number.isNaN(d.getTime())
     ? value
     : d.toLocaleString("ru-RU", { day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" });
+}
+
+function sameDay(a: Date, b: Date) {
+  return a.getFullYear() === b.getFullYear() && a.getMonth() === b.getMonth() && a.getDate() === b.getDate();
+}
+
+/** День сообщения чата: «Сегодня», «Вчера» или дата (с годом, если он не текущий). */
+export function messageDay(value: string | null | undefined): string {
+  if (!value) return "";
+  const d = new Date(value);
+  if (Number.isNaN(d.getTime())) return "";
+  const now = new Date();
+  const yesterday = new Date(now);
+  yesterday.setDate(now.getDate() - 1);
+  if (sameDay(d, now)) return "Сегодня";
+  if (sameDay(d, yesterday)) return "Вчера";
+  return d.toLocaleDateString("ru-RU", {
+    day: "numeric", month: "long", ...(d.getFullYear() !== now.getFullYear() ? { year: "numeric" } : {}),
+  });
+}
+
+/** Время отправки сообщения (часы и минуты в часовом поясе пользователя). */
+export function messageTime(value: string): string {
+  const d = new Date(value);
+  return Number.isNaN(d.getTime()) ? "" : d.toLocaleTimeString("ru-RU", { hour: "2-digit", minute: "2-digit" });
+}
+
+/** Полная дата и время — подсказка при наведении на время сообщения. */
+export function messageTimeFull(value: string): string {
+  const d = new Date(value);
+  return Number.isNaN(d.getTime())
+    ? ""
+    : d.toLocaleString("ru-RU", { day: "numeric", month: "long", year: "numeric", hour: "2-digit", minute: "2-digit", second: "2-digit" });
 }

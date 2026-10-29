@@ -283,3 +283,24 @@ def test_E21_T_rag_chat_streams_steps_and_text(world):
     assert done["response"].strip() and "Поиск по материалам курса" in done["tools"]
     history = call("GET", f"/chats/{chat['chat_id']}/messages", tok).json()
     assert [m["role"] for m in history] == ["human", "ai"] and history[1]["content"] == done["response"]
+    # время отправки: вопрос — момент запроса, ответ — момент готовности (UTC, ISO 8601)
+    from datetime import datetime
+    asked, answered = (datetime.fromisoformat(m["created_at"].replace("Z", "+00:00")) for m in history)
+    assert asked <= answered and done["asked_at"] == history[0]["created_at"]
+    # инструменты и источники ответа сохраняются в истории
+    assert history[1]["tools"] == done["tools"] and history[1]["sources"] == done["sources"]
+
+
+def test_E22_T_chat_can_be_pinned(world):
+    """Закреплённый чат идёт в списке первым, после открепления возвращается на место по дате."""
+    tok = world["students"][3]["token"]
+    first = call("POST", "/chats", tok, json={"course_id": world["cid"]}).json()["chat_id"]
+    call("POST", "/chats", tok, json={"course_id": world["cid"]})
+    assert call("PUT", f"/chats/{first}/pin", tok, json={"pinned": True}).json()["pinned"] is True
+    chats = call("GET", "/me/chats", tok).json()
+    assert chats[0]["chat_id"] == first and chats[0]["pinned"] is True
+    call("PUT", f"/chats/{first}/pin", tok, json={"pinned": False})
+    chats = call("GET", "/me/chats", tok).json()
+    assert chats[0]["chat_id"] != first and not any(c["pinned"] for c in chats if c["chat_id"] == first)
+    other = world["students"][0]["token"]
+    assert call("PUT", f"/chats/{first}/pin", other, json={"pinned": True}).status_code == 404

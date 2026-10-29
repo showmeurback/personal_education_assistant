@@ -118,9 +118,13 @@ export const chatApi = {
   create: (courseId: number) => post<{ chat_id: number; name: string }>("/chats", { course_id: courseId }),
   rename: (chatId: number, name: string) => patch(`/chats/${chatId}`, { name }),
   remove: (chatId: number) => del(`/chats/${chatId}`),
+  pin: (chatId: number, pinned: boolean) => put<{ pinned: boolean }>(`/chats/${chatId}/pin`, { pinned }),
   history: (chatId: number) =>
-    get<{ role: string; content: string }[]>(`/chats/${chatId}/messages`).then((rows) =>
-      rows.map((m) => ({ role: m.role === "human" ? "user" : "assistant", content: m.content }) as T.ChatMessage)),
+    get<{ role: string; content: string; created_at: string; tools?: string[]; sources?: string[] }[]>(`/chats/${chatId}/messages`).then((rows) =>
+      rows.map((m) => ({
+        role: m.role === "human" ? "user" : "assistant", content: m.content, created_at: m.created_at,
+        tools: m.tools, sources: m.sources,
+      }) as T.ChatMessage)),
   send: (chatId: number, message: string) =>
     post<{ response: string; tools: string[]; sources: string[] }>(`/chats/${chatId}/messages`, { message }),
   /** потоковый ответ: шаги агента и текст по мере генерации */

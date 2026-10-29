@@ -69,8 +69,8 @@ function CourseForm({ courseId, initial }: {
             <div className="flex flex-wrap gap-2">{TAGS.map((t) => <Chip key={t} active={tags.includes(t)} onClick={() => setTags((p) => p.includes(t) ? p.filter((x) => x !== t) : [...p, t])}>{t}</Chip>)}</div></div>
           <div className="space-y-1.5"><Label htmlFor="e">Экзаменационные вопросы</Label>
             <Textarea id="e" rows={6} value={exam} onChange={(e) => setExam(e.target.value)}
-              placeholder={"1. Что такое нормализация отношений?\n2. Чем отличается INNER JOIN от LEFT JOIN?"} />
-            <p className="text-xs text-muted-foreground">По одному вопросу на строку (с вопросительным знаком). Если вопросов меньше, чем выбрал студент, недостающие сгенерирует модель по этому тексту.</p></div>
+              placeholder={"1. Что утверждает закон сохранения энергии?\n2. Чем отличается рыночная экономика от плановой?"} />
+            <p className="text-xs text-muted-foreground">По одному вопросу на строку (с вопросительным знаком). Если вопросов меньше, чем выбрал студент, недостающие составит искусственный интеллект по материалам курса.</p></div>
           <Button onClick={() => save.mutate()} disabled={!title.trim() || save.isPending}>{save.isPending ? "Сохраняем…" : isNew ? "Создать курс" : "Сохранить изменения"}</Button>
         </div>
       </Panel>

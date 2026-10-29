@@ -11,6 +11,8 @@
 """
 from __future__ import annotations
 
+import random
+import re
 import threading
 import time
 import uuid
@@ -46,6 +48,27 @@ class TestServiceError(Exception):
     pass
 
 
+# Вариант, который ссылается на другие варианты («все перечисленные», «A и B»), нельзя переставлять
+_POSITIONAL = re.compile(r"(все|ни один|оба)\b.*(вариант|перечисл|ответ)|\b[A-DА-Г]\s*(и|или|,)\s*[A-DА-Г]\b",
+                         re.IGNORECASE)
+
+
+def shuffle_options(q: Question, rng: random.Random) -> Question:
+    """Символьная перестановка вариантов ответа.
+
+    Языковые модели чаще ставят верный ответ на одну и ту же позицию (на практике — «B»),
+    и студент мог бы угадывать по букве. Варианты переставляются случайно, буква верного
+    ответа пересчитывается; вопросы с вариантами, ссылающимися на другие варианты, не трогаются."""
+    letters = sorted(q.options)
+    if q.correct_answer not in q.options or any(_POSITIONAL.search(t) for t in q.options.values()):
+        return q
+    order = letters[:]
+    rng.shuffle(order)
+    options = {new: q.options[old] for new, old in zip(letters, order)}
+    correct = letters[order.index(q.correct_answer)]
+    return q.model_copy(update={"options": options, "correct_answer": correct})
+
+
 class TestService:
     def __init__(self) -> None:
         self._sessions: dict[str, TestSession] = {}
@@ -78,7 +101,8 @@ class TestService:
                                                  difficulty=difficulty)
         if not response.success or not response.questions:
             raise TestServiceError(response.error or "Не удалось сгенерировать тест")
-        questions = response.questions[:num_questions]
+        rng = random.Random()
+        questions = [shuffle_options(q, rng) for q in response.questions[:num_questions]]
         for i, q in enumerate(questions, start=1):
             q.question_num = i
         test_id = self._put(TestSession(student_id=student_id, course_id=course_id, topic=topic,

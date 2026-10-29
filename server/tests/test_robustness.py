@@ -221,7 +221,7 @@ def test_hung_check_goes_to_manual_review(monkeypatch):
     doc = type("Doc", (), {"text": "текст", "images": []})()
     out = asyncio.run(service._check(1, 1, 1, doc, LabRequirements(task="задание")))
     assert out["decision"] == "manual_review" and saved["status"] == rs.ReportStatus.MANUAL_REVIEW
-    assert "не ответили" in saved["message"]
+    assert "не ответил за" in saved["message"]
 
 
 def test_overloaded_model_in_stream_is_retried(monkeypatch):
@@ -234,7 +234,7 @@ def test_overloaded_model_in_stream_is_retried(monkeypatch):
 
     calls, saved = [], []
 
-    def flaky_stream(*_args):
+    def flaky_stream(*_args, **_kw):
         calls.append(1)
         yield {"type": "step", "text": "Разбираю вопрос"}
         if len(calls) == 1:
@@ -243,7 +243,7 @@ def test_overloaded_model_in_stream_is_retried(monkeypatch):
         yield {"type": "done", "response": "Ответ", "tools": [], "sources": []}
 
     monkeypatch.setattr(ep, "_history_and_storage", lambda chat_id, user: ([], "s", 1, "чат"))
-    monkeypatch.setattr(ep, "_save_exchange", lambda *a: saved.append(a[-1]))
+    monkeypatch.setattr(ep, "_save_exchange", lambda *a, **k: saved.append(a[4]))
     monkeypatch.setattr(ep, "stream_ask", flaky_stream)
     monkeypatch.setattr(ep, "STREAM_RETRY_DELAY", 0)
 

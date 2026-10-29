@@ -39,7 +39,7 @@ export default function CourseView() {
   return (
     <div>
       <PageHeader back={{ to: "/teacher/courses", label: "Курсы" }} title={c.title} />
-      <div className="rounded-lg border border-border p-5 sm:p-6 mb-6" style={{ background: COURSE_TINTS[c.id % COURSE_TINTS.length] }}>
+      <div className="dark rounded-lg border border-border p-5 sm:p-6 mb-6" style={{ background: COURSE_TINTS[c.id % COURSE_TINTS.length] }}>
         <div className="flex flex-wrap gap-2 mb-3">
           <span className={`rounded-md border px-2 py-0.5 text-xs bg-black/20 ${diff.color}`}>{diff.label}</span>
           {c.tags.map((t) => <span key={t} className="rounded-md bg-black/20 px-2 py-0.5 text-xs text-white/80">{t}</span>)}
@@ -54,7 +54,7 @@ export default function CourseView() {
           </Link>
         ))}
       </div>
-      <Panel title="Удаление курса" description="Будут удалены лабораторные, отчёты, результаты и векторное хранилище материалов.">
+      <Panel title="Удаление курса" description="Будут удалены лабораторные, отчёты, результаты студентов и загруженные материалы.">
         <Button variant="outline" className="border-destructive/40 text-destructive hover:bg-destructive/10"
           onClick={() => { if (window.confirm(`Удалить курс «${c.title}» без возможности восстановления?`)) remove.mutate(); }}>
           Удалить курс

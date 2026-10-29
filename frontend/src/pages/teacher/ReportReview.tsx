@@ -1,3 +1,4 @@
+import { Markdown } from "@/components/common/Markdown";
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
@@ -64,7 +65,7 @@ export default function ReportReview() {
           ) : r.comment ? <Panel title="Комментарий"><p className="text-sm text-foreground">{r.comment}</p></Panel> : null}
         </div>
         <Panel title="Протокол автоматической проверки">
-          {r.ai_summary && <p className="text-sm text-foreground whitespace-pre-wrap mb-4">{r.ai_summary}</p>}
+          {r.ai_summary && <Markdown className="mb-4">{r.ai_summary}</Markdown>}
           {check?.protocol ? <ProtocolView check={check} steps={check.protocol} teacher /> : <p className="text-sm text-muted-foreground">Протокол отсутствует.</p>}
         </Panel>
       </div>

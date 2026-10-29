@@ -19,7 +19,7 @@ export default function CourseFiles() {
     mutationFn: (files: File[]) => coursesApi.uploadFiles(courseId, files),
     onSuccess: (r) => {
       const chunks = r.indexed.reduce((s, x) => s + x.chunks, 0);
-      toast.success(`Проиндексировано файлов: ${r.indexed.length}, фрагментов: ${chunks}`);
+      toast.success(`Файлов загружено: ${r.indexed.length}. Ассистент уже может по ним отвечать (частей текста: ${chunks}).`);
       r.errors.forEach((e) => toast.error(`${e.filename}: ${e.error}`));
       refresh();
     },
@@ -30,7 +30,7 @@ export default function CourseFiles() {
   return (
     <div className="max-w-3xl">
       <PageHeader back={{ to: `/teacher/courses/${courseId}`, label: "К курсу" }} title="Материалы курса"
-        description="Файлы разбиваются на фрагменты и векторизуются — на них опираются ассистент и генератор тестов."
+        description="Лекции и методички курса: по ним ассистент отвечает студентам и составляет тесты. Поддерживаются PDF, DOCX и текстовые файлы."
         actions={
           <Button onClick={() => input.current?.click()} disabled={uploadM.isPending}>
             {uploadM.isPending ? <><Loader2 className="w-4 h-4 mr-2 animate-spin" /> Индексация…</> : <><Upload className="w-4 h-4 mr-2" /> Загрузить</>}
